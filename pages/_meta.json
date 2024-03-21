@@ -1,15 +1,61 @@
 {
   "index": "Introduction",
-  "another": "Another Page",
-  "advanced": "Advanced (A Folder)",
+  "build": {
+    "title": "Build"
+  },
+  "theme-and-styling": {
+    "title": "Theme & Styling"
+  },
+  "test": {
+    "title": "Test"
+  },
+  "deploy": {
+    "title": "Deploy"
+  },
+  "extending-ensemble": {
+    "title": "Extending Ensemble"
+  },
+  "--": {
+    "type": "separator",
+    "title": "References"
+  },
+  "widgets": {
+    "title": "Widgets"
+  },
+  "composite-widgets": {
+    "title": "Composite Widgets"
+  },
+  "actions": {
+    "title": "Actions"
+  },
+  "apis": {
+    "title": "APIs"
+  },
+  "device-capabilities": {
+    "title": "Device Capabilities"
+  },
+  "javascript": {
+    "title": "Javascript"
+  },
+  "app-and-device": {
+    "title": "App & Device objects"
+  },
+  "---": {
+    "type": "separator"
+  },
+  "tips-and-tricks": {
+    "title": "Tips & Tricks"
+  },
   "about": {
-    "title": "About",
-    "type": "page"
+    "title": "About ↗",
+    "type": "page",
+    "href": "https://ensembleui.com",
+    "newWindow": true
   },
   "contact": {
-    "title": "Contact ↗",
+    "title": "Ensemble Studio ↗",
     "type": "page",
-    "href": "https://twitter.com/shuding_",
+    "href": "https://studio.ensembleui.com",
     "newWindow": true
   }
 }

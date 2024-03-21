@@ -2,17 +2,20 @@ import React from 'react'
 import { DocsThemeConfig } from 'nextra-theme-docs'
 
 const config: DocsThemeConfig = {
-  logo: <span>My Project</span>,
+  logo: <span>Ensemble Docs</span>,
   project: {
-    link: 'https://github.com/shuding/nextra-docs-template',
+    link: 'https://github.com/ensembleui/',
   },
   chat: {
-    link: 'https://discord.com',
+    link: 'https://discord.gg/cEHkJTmn75',
   },
   docsRepositoryBase: 'https://github.com/shuding/nextra-docs-template',
   footer: {
-    text: 'Nextra Docs Template',
+    text: 'Ensemble',
   },
+  sidebar: {
+    defaultMenuCollapseLevel: 1
+  }
 }
 
 export default config

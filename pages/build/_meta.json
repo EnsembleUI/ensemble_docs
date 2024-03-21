@@ -1,0 +1,25 @@
+{
+    "page-structure": {
+      "title": "Page structure"
+    },
+    "layouts": {
+      "title": "Layouts"
+    },
+    "local-storage": {
+      "title": "Local storage"
+    },
+    "use-mock-api-response": {
+      "title": "Mock APIs"
+    },
+    "secrets": {
+      "title": "App secrets"
+    },
+    "authentication": {
+      "title": "Authentication"
+    },
+    "deep-link": {
+      "title": "Deep Linking"
+    }
+
+  }
+  
