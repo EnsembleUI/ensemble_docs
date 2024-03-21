@@ -9,7 +9,7 @@ const config: DocsThemeConfig = {
   chat: {
     link: 'https://discord.gg/cEHkJTmn75',
   },
-  docsRepositoryBase: 'https://github.com/shuding/nextra-docs-template',
+  docsRepositoryBase: 'https://github.com/EnsembleUI/ensemble_documentation',
   footer: {
     text: 'Ensemble',
   },
