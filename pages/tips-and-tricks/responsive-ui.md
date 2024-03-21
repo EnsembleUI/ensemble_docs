@@ -60,7 +60,7 @@ GridView:
 # https://studio.ensembleui.com/app/nWsD5baeykm3W772kkSw/screen/WS6fad3K96prUBXM4Hde
 ```
 
-![Flex](responsive-grid.png)
+![Flex](/images/responsive-grid.png)
 
 ## 3. Wrap content with Flow widget
 
@@ -78,7 +78,7 @@ Flow:
 # https://studio.ensembleui.com/app/nWsD5baeykm3W772kkSw/screen/YbsqXNaXL5kpxKavlGKQ    
 ```
 
-![Flow](responsive-flow.png)
+![Flow](/images/responsive-flow.png)
 
 ## 4. Toggle between horizontal and vertical layouts with Flex widget
 
@@ -94,4 +94,4 @@ Flex:
 
 ```
 
-![Flex](responsive-flex.png)
+![Flex](/images/responsive-flex.png)

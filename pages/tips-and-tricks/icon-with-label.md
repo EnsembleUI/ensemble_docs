@@ -56,8 +56,8 @@ ViewGroup:
 
 
 **Output**
-![Alt text](image.png)
-![Alt text](/images/image-1.png)
+![Alt text](/images/tips-and-tricks/image.png)
+![Alt text](/images/tips-and-tricks/image-1.png)
 
 **Note:**`BottomNavBar is used to navigate across whole application so it always has a separate screen where it comes under [View Group]() with all the items corresponding to each screen of your application.`
 
