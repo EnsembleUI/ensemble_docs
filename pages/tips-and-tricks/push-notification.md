@@ -49,22 +49,22 @@ Future<void> _backgroundNotificationHandler(RemoteMessage message) async {
 ## IOS setup
 
 ####  Add push notification capability in xcode
-![xcode push notification capability](../assets/push-capability.gif)
+![xcode push notification capability](/images/tips-and-tricks/assets/push-capability.gif)
 
 
 
 #### Create an APNs key 
 Here is the link to apple developer website to create APNs key and download it.[Apple developer key link](https://developer.apple.com/account/resources/authkeys/list)
-![Developer portal key](../assets/developer-apple-keys.png)
+![Developer portal key](/images/tips-and-tricks/assets/developer-apple-keys.png)
 
-![Create key and check APNs ](../assets/APNs-key.png)
+![Create key and check APNs ](/images/tips-and-tricks/assets/APNs-key.png)
 
 #### Upload APNs key to Firebase 
 
 Now upload the APNs key to firebase console. 
 So, under the firebase project settings > Cloud Messaging > Apple app configuration. You can upload the APNs key that we downloaded from the previous step.
 
-![Firebase App APNs key upload](../assets/firebase-apns.png)
+![Firebase App APNs key upload](/images/tips-and-tricks/assets/firebase-apns.png)
 
 ---
 That's all now you can go to your firebase messaging module and send a push notification and it will work for both the platform android and IOS. 
