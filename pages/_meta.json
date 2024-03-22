@@ -37,8 +37,11 @@
   "javascript": {
     "title": "Javascript"
   },
-  "app-and-device": {
-    "title": "App & Device objects"
+  "app-object": {
+    "title": "App object"
+  },
+  "device-object": {
+    "title": "Device object"
   },
   "---": {
     "type": "separator"

@@ -1,14 +1,28 @@
+import { Callout } from 'nextra/components'
+
 # Translations
 
 Ensemble supports localization of app content so that your app users can view the app in their preferred language.
+
+## How it works
+
+When an app loads, Ensemble checks the defualt language of the device (e.g. languages setting in iOS, Android, or Chrome browser). 
+
+1. If device default langugae is supported by your app, Ensemble uses that language.
+2. Else, Ensemble uses the app's default language.
 
 ## Set up languages
 
 In Ensemble Studio, navigate to your app and select Translations from the left menu. Add new language to start with.
 
+<Callout type="info">
+  The first language you add is set as the default. You can update the default language when you add more by clicking the `...` menu on the language.
+</Callout>
+
+
 ![add language](/images/translations/add-language.png)
 
-## Add content
+## Add language content
 
 Language content is created in YAML. Add key/value pairs for each text.
 
@@ -48,3 +62,5 @@ When refrencing translations, prepend `r@` before the key assigned to the text:
 Use the 🌎 icon on top of the preview to select a language. The preview updates and shows the UI in the selected language.
 
 ![add language](/images/translations/test-language.png)
+
+
