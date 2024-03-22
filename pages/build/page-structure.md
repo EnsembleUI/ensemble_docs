@@ -1,6 +1,6 @@
-# Ensemble Page Structure
+# Ensemble Screen Structure
 
-An Ensemble app comprises a series of pages and assets. Each page starts with a [View](#view), followed by an optional [header](#header), an optional [menu](#menu), and a single widget for the body. There can be one of two things on ensemble page either a [View](#view) or group of multiple views together as [ViewGroup](#view-group).
+An Ensemble app comprises a series of screens, and other artifacts such as reusable widgets, scripts, asset files, etc. Each screen starts with a [View](#view), followed by an optional [header](#header), an optional [menu](#menu), and a single widget for the body. There can be one of two things on ensemble page either a [View](#view) or group of multiple views together as [ViewGroup](#view-group).
 
 List of things you will find reference and details here.
 
@@ -12,7 +12,7 @@ List of things you will find reference and details here.
 - [API](#api)
 - [Global](#global)
 
-<img src="/images/page_structure_0.png" alt="Page Skeleton" height="70%" width="70%">
+<img src="/images/view-structure.png" alt="Page Skeleton" height="70%" width="70%">
 
 ## View Group
 
@@ -65,12 +65,12 @@ The View widget defines the overall structure of a page, including properties li
 
 #### View.styles
 
-| Property               | Type                                                       | Description                                                                                                                                                                                                                                                                                                                          |
-| :--------------------- |:-----------------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Property | Type | Description |
+| :------- |:-----|:------------|
 | backgroundColor        | [Color](/widget-reference/types#Color)                     | Background color for the screen starting with '0xFF' for full opacity e.g 0xFFCCCCCC. It can be specified as a number, a predefined color name, or a hexadecimal value starting with '0x'. `transparent` `black` `blue` `white` `red` `grey` `teal` `amber` `pink` `purple` `yellow` `green` `brown` `cyan` `indigo` `lime` `orange` |
-| backgroundImage        | [BackgroundImage](/widget-reference/types#BackgroundImage) | Background image of the View.                                                                                                                                                                                                                                                                                                        |
-| useSafeArea            | boolean                                                    | Applicable only when we don't have a header. If true, insert paddings around the body content to account for the the devices' Safe Area (e.g. iPhone notch). Default is false.                                                                                                                                                       |
-| scrollableView         | boolean                                                    | Specify if the content of this screen is scrollable with a global scrollbar. Using this also allow you to customize the scrolling experience of the header.                                                                                                                                                                          |
+| backgroundImage        | [BackgroundImage](/widget-reference/types#BackgroundImage) | Background image of the View. |
+| useSafeArea            | boolean                                                    | Applicable only when we don't have a header. If true, insert paddings around the body content to account for the the devices' Safe Area (e.g. iPhone notch). Default is false.|
+| scrollableView         | boolean                                                    | Specify if the content of this screen is scrollable with a global scrollbar. Using this also allow you to customize the scrolling experience of the header. |
 | showNavigationIcon     | boolean                                                    | For a screen with header, the App will automatically show the Menu, Back, or Close icon (for modal screen) before the title. On modal screen without the header, the Close icon will be shown. Set this flag to false if you wish to hide the icons and handle the navigation yourself.                                              |
 | navigationIconPosition | string                                                     | On modal screen without a header, you can position the close button at the `start` or `end` of the screen. For left-to-right languages like English, start is on the left and end is on the right. This property has no effect on a screen with header.                                                                              |
 
@@ -84,23 +84,23 @@ The header contains the Safe Area (e.g. iPhone notch) and by default has the bac
 
 #### Properties
 
-| Property           | Type                                 | Description                                                                                                                                                                                                                           |
-|:-------------------|:-------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| titleText          | string                               | The title for the screen                                                                                                                                                                                                              |
-| titleWidget        | [Widget](widget-reference/directory) | Render this widget as the screen title                                                                                                                                                                                                |
-| styles             | object                               | [see properties](#headerstyles)                                                                                                                                                                                                       |
+| Property | Type | Description |
+| :------- |:-----|:------------|
+| titleText          | string                               | The title for the screen |
+| titleWidget        | [Widget](widget-reference/directory) | Render this widget as the screen title |
+| styles             | object                               | [see properties](#headerstyles) |
 | flexibleBackground | [Widget](widget-reference/directory) | This widget (typically used as an background image) acts as the header's background, with the title bar and the bottom widget overlaid on top. On non-scrollable screen, its dimensions is dictated by the header's width and height. |
 
 #### Header.styles
 
-| Property          | Type                                   | Description                                                                                                                                                                                                                                                                                                                                                                    |
-| :---------------- |:---------------------------------------| :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Property | Type | Description |
+| :------- |:-----|:------------|
 | backgroundColor   | [Color](/widget-reference/types#Color) | By default the background color uses the theme's 'primary' color. You can override the header's background color here. It can be specified as a number, a predefined color name, or a hexadecimal value starting with '0x'. `transparent` `black` `blue` `white` `red` `grey` `teal` `amber` `pink` `purple` `yellow` `green` `brown` `cyan` `indigo` `lime` `orange`          |
 | color             | [Color](/widget-reference/types#Color) | By default the navigation icon, title, and action icons uses the theme's 'onPrimary' color. You can override their colors here. It can be specified as a number, a predefined color name, or a hexadecimal value starting with '0x'. `transparent` `black` `blue` `white` `red` `grey` `teal` `amber` `pink` `purple` `yellow` `green` `brown` `cyan` `indigo` `lime` `orange` |
-| elevation         | integer                                | Raise the header on its z-coordinates relative to the body. This effectively creates a drop shadow on the header's bottom edge. Minimum value: 0, Maximum value: 24                                                                                                                                                                                                            |
+| elevation         | integer                                | Raise the header on its z-coordinates relative to the body. This effectively creates a drop shadow on the header's bottom edge. Minimum value: 0, Maximum value: 24 |
 | shadowColor       | [Color](/widget-reference/types#Color) | If elevation is non-zero, this will override the drop shadow color of the header's bottom edge, starting with '0xFF' for full opacity. `transparent` `black` `blue` `white` `red` `grey` `teal` `amber` `pink` `purple` `yellow` `green` `brown` `cyan` `indigo` `lime` `orange`                                                                                               |
-| centerTitle       | boolean                                | Whether to align the title in the title bar's center horizontally (default: true)                                                                                                                                                                                                                                                                                              |
-| titleBarHeight    | integer                                | For consistency, the header's title bar has the default fixed height of 56 regardless of its content. You may adjust its height here. Minimum value is `0`                                                                                                                                                                                                                     |
+| centerTitle       | boolean                                | Whether to align the title in the title bar's center horizontally (default: true) |
+| titleBarHeight    | integer                                | For consistency, the header's title bar has the default fixed height of 56 regardless of its content. You may adjust its height here. Minimum value is `0` |
 | flexibleMinHeight | integer                                | Applicable only if scrollableView is enabled. This attribute effectively sets the header's min height on scrolling (header's height will varies between the flexibleMinHeight and flexibleMaxHeight). Note that this attribute will be ignored if smaller than the titleBarHeight                                                                                              |
 | flexibleMaxHeight | integer                                | Applicable only if scrollableView is enabled. This attribute effectively sets the header's max height on scrolling (header's height will varies between the flexibleMinHeight and flexibleMaxHeight). This attribute will be ignored if smaller than the flexibleMinHeight                                                                                                     |
 
@@ -123,22 +123,22 @@ This is the navigation bar at the bottom of the screen, typical of most iOS and 
 
 #### BottomNavBar.items
 
-| Property                | Type              | Description                                                                                                                                                                                                                                                                                                                          |
-| :---------------------- | :---------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| icon                    | string            | Icon name from ` Material Icons``Font Awesome``Remix ` or `custom font icons`.                                                                                                                                                                                                                                                       |
-| iconLibrary             | string            | Enables the usage of various icon libraries like `FontAwesome`, `Remix`, `Material Icons` or `custom icon` fonts within ensemble.                                                                                                                                                                                                    |
-| label                   | string            | Defines the text displayed below the icon, providing a descriptive title or name for the menu item                                                                                                                                                                                                                                   |
-| page                    | string            | The new page to navigate to on click                                                                                                                                                                                                                                                                                                 |
-| selected                | string            | Mark this item as selected. There should only be one selected item per page.                                                                                                                                                                                                                                                         |
-| floating                | boolean           | Mark this item as a floating icon                                                                                                                                                                                                                                                                                                    |
-| floatingMargin          | integer or string | The margin around the floating.                                                                                                                                                                                                                                                                                                      |
-| floatingAlignment       | string            | How to align the floating in the BottomNavBar. The values are ` left``center``right ` and `none`                                                                                                                                                                                                                                     |
-| color                   | [Color](/widget-reference/types#Color) | Unselected icon color, starting with '0xFF' for full opacity e.g 0xFFCCCCCC. It can be specified as a number, a predefined color name, or a hexadecimal value starting with '0x'. `transparent` `black` `blue` `white` `red` `grey` `teal` `amber` `pink` `purple` `yellow` `green` `brown` `cyan` `indigo` `lime` `orange`          |
+| Property | Type | Description |
+| :------- |:-----|:------------|
+| icon | string            | Icon name from ` Material Icons``Font Awesome``Remix ` or `custom font icons`. |
+| iconLibrary | string            | Enables the usage of various icon libraries like `FontAwesome`, `Remix`, `Material Icons` or `custom icon` fonts within ensemble. |
+| label | string            | Defines the text displayed below the icon, providing a descriptive title or name for the menu item |
+| page | string            | The new page to navigate to on click |
+| selected | string            | Mark this item as selected. There should only be one selected item per page. |
+| floating | boolean           | Mark this item as a floating icon |
+| floatingMargin | integer or string | The margin around the floating. |
+| floatingAlignment       | string            | How to align the floating in the BottomNavBar. The values are ` left``center``right ` and `none` |
+| color | [Color](/widget-reference/types#Color) | Unselected icon color, starting with '0xFF' for full opacity e.g 0xFFCCCCCC. It can be specified as a number, a predefined color name, or a hexadecimal value starting with '0x'. `transparent` `black` `blue` `white` `red` `grey` `teal` `amber` `pink` `purple` `yellow` `green` `brown` `cyan` `indigo` `lime` `orange` |
 | selectedColor           | [Color](/widget-reference/types#Color) | Selected icon color, starting with '0xFF' for full opacity e.g 0xFFCCCCCC. It can be specified as a number, a predefined color name, or a hexadecimal value starting with '0x'. `transparent` `black` `blue` `white` `red` `grey` `teal` `amber` `pink` `purple` `yellow` `green` `brown` `cyan` `indigo` `lime` `orange`            |
 | backgroundColor         | [Color](/widget-reference/types#Color) | Background color of the box. which can be represented in different formats. It can be specified as a number, a predefined color name, or a hexadecimal value starting with '0x'. `transparent` `black` `blue` `white` `red` `grey` `teal` `amber` `pink` `purple` `yellow` `green` `brown` `cyan` `indigo` `lime` `orange`           |
 | floatingBackgroundColor | [Color](/widget-reference/types#Color) | Floating item background color, starting with '0xFF' for full opacity e.g 0xFFCCCCCC. It can be specified as a number, a predefined color name, or a hexadecimal value starting with '0x'. `transparent` `black` `blue` `white` `red` `grey` `teal` `amber` `pink` `purple` `yellow` `green` `brown` `cyan` `indigo` `lime` `orange` |
-| floatingIconColor       | [Color](/widget-reference/types#Color) | Floating item icon color, starting with '0xFF' for full opacity e.g 0xFFCCCCCC. It can be specified as a number, a predefined color name, or a hexadecimal value starting with '0x'. `transparent` `black` `blue` `white` `red` `grey` `teal` `amber` `pink` `purple` `yellow` `green` `brown` `cyan` `indigo` `lime` `orange`       |
-| customItem              | object            | Allows user to use custom widgets for two states `selected` and `UnSelected`.                                                                                                                                                                                                                                                        |
+| floatingIconColor       | [Color](/widget-reference/types#Color) | Floating item icon color, starting with '0xFF' for full opacity e.g 0xFFCCCCCC. It can be specified as a number, a predefined color name, or a hexadecimal value starting with '0x'. `transparent` `black` `blue` `white` `red` `grey` `teal` `amber` `pink` `purple` `yellow` `green` `brown` `cyan` `indigo` `lime` `orange` |
+| customItem              | object            | Allows user to use custom widgets for two states `selected` and `UnSelected`. |
 
 ##### BottomNavBar.items.customItem
 
@@ -149,8 +149,8 @@ This is the navigation bar at the bottom of the screen, typical of most iOS and 
 
 #### BottomNavBar.styles
 
-| Property        | Type              | Description                                                                                                                                                                                                                                                                                                                |
-| :-------------- | :---------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Property | Type | Description |
+| :------- |:-----|:------------|
 | backgroundColor | [Color](/widget-reference/types#Color) | Background color of the box. which can be represented in different formats. It can be specified as a number, a predefined color name, or a hexadecimal value starting with '0x'. `transparent` `black` `blue` `white` `red` `grey` `teal` `amber` `pink` `purple` `yellow` `green` `brown` `cyan` `indigo` `lime` `orange` |
 
 #### Example
@@ -227,8 +227,8 @@ This menu type puts the menu behind a drawer icon on the header. The drawer icon
 
 #### Drawer.styles
 
-| Property        | Type              | Description                                                                                                                                                                                                                                                                                                                |
-| :-------------- | :---------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Property | Type | Description |
+| :------- |:-----|:------------|
 | backgroundColor | integer or string | Background color of the box. which can be represented in different formats. It can be specified as a number, a predefined color name, or a hexadecimal value starting with '0x'. `transparent` `black` `blue` `white` `red` `grey` `teal` `amber` `pink` `purple` `yellow` `green` `brown` `cyan` `indigo` `lime` `orange` |
 
 #### Example
@@ -262,8 +262,8 @@ You can also check live example [here](https://studio.ensembleui.com/app/e24402c
 
 ##### Output
 
-![Alt text](/images/image-2.png)
-![Alt text](/images/image-1.png)
+![Alt text](/images/build/image-2.png)
+![Alt text](/images/build/image-1.png)
 
 ### End Drawer
 
@@ -333,7 +333,7 @@ You can also check live example [here](https://studio.ensembleui.com/app/e24402c
 
 ##### Output
 
-![Alt text](/images/image-3.png)
+![Alt text](/images/build/image-3.png)
 
 ## Body
 
@@ -399,7 +399,7 @@ Global: |-
 
 The output can be checked in the logs for browser
 
-![Alt text](/images/image-6.png)
+![Alt text](/images/build/image-6.png)
 
 ## Putting it together
 
@@ -454,6 +454,6 @@ menu:
 
 #### Output
 
-![Alt text](/images/image-4.png)
+![Alt text](/images/build/image-4.png)
 
 You can check the complete App [here](https://studio.ensembleui.com/app/iM58Wgr7bgzTxEi7rV40/screen/cYMnCfhOya8Vq1QG6aCC?propertyPanelEnabled=true&instantPreviewDisabled=false)
