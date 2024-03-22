@@ -1,4 +1,4 @@
-# Device information
+# Device object
 
 You have access to the following properties of the device.
 

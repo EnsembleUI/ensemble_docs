@@ -9,16 +9,29 @@
   "theme-and-styling": {
     "title": "Theme & Styling"
   },
+  "translations": {
+    "title": "Translations (i18n)"
+  },
+  "authentication": {
+    "title": "Authentication"
+  },
+  "deep-link": {
+    "title": "Deep linking"
+  },
+  "extending-ensemble": {
+    "title": "Extending Ensemble"
+  },
+  "--Launch": {
+    "type": "separator",
+    "title": "Launch you app"
+  },
   "test": {
     "title": "Test"
   },
   "deploy": {
     "title": "Deploy"
   },
-  "extending-ensemble": {
-    "title": "Extending Ensemble"
-  },
-  "--": {
+  "--References": {
     "type": "separator",
     "title": "References"
   },
@@ -40,8 +53,11 @@
   "javascript": {
     "title": "Javascript"
   },
-  "app-and-device": {
-    "title": "App & Device objects"
+  "app-object": {
+    "title": "App object"
+  },
+  "device-object": {
+    "title": "Device object"
   },
   "---": {
     "type": "separator"

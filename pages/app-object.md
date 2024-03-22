@@ -1,4 +1,4 @@
-# App Information
+# App object
 
 Get ensemble app informations such as appId, version, etc in Ensemble Definition Language
 
@@ -7,6 +7,10 @@ Get ensemble app informations such as appId, version, etc in Ensemble Definition
 - packageName - Android package name or iOS bundleId
 - version - Project Version (ex: 1.0.0)
 - bundleNumber - Project Build Number (2)
+- theme - The app's current theme
+- themes - List of all configured themes
+
+See the [themes docs](/theme-and-styling/theme) for more details.
 
 ```yaml
 View:

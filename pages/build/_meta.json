@@ -13,11 +13,5 @@
     },
     "secrets": {
         "title": "App secrets"
-    },
-    "authentication": {
-        "title": "Authentication"
-    },
-    "deep-link": {
-        "title": "Deep Linking"
     }
 }
