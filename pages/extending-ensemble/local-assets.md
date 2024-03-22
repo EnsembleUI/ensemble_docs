@@ -7,12 +7,12 @@ Environment variables can be used for many purposes. You define them in your App
 ### Define the environment variables
 
 Navigate to your App's setting and add an environment variable.
-<img src="/images/build_extend_env_config.png" alt="Add Environment Variable" style="border: solid 1px lightgrey" />
+<img src="/images/env_config.png" alt="Add Environment Variable" style="border: solid 1px lightgrey" />
 
 ### Using the environment variables
 
 Any screens can reference the variable with `${env.variable_name}`. Here we prefix the image with the `imageBaseUrl`.
-<img src="/images/build_extend_env_usage.png" alt="Add Environment Variable" style="border: solid 1px lightgrey" />
+<img src="/images/env_usage.png" alt="Add Environment Variable" style="border: solid 1px lightgrey" />
 
 ### Override environment variables to load images locally
 

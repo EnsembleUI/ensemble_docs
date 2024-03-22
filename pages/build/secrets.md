@@ -5,14 +5,14 @@ Your application may require using sensitive values for managing access to remot
 ### Define Secrets for development
 
 Navigate to your App's setting and add a secret
-<img src="/images/build_extend_secrets_config.png" alt="Add Secret" style="border: solid 1px lightgrey" />
+<img src="/images/secrets_config.png" alt="Add Secret" style="border: solid 1px lightgrey" />
 
 Only application owners and editors can add or change secret values due to their sensitive nature.
 
 ### Using Secrets
 
 Any screens can reference the variable with `${secrets.key_name}`. Here we are simply displaying the secret value in a text field.
-<img src="/images/build_extend_secrets_usage.png" alt="Use Secret" style="border: solid 1px lightgrey" />
+<img src="/images/secrets_usage.png" alt="Use Secret" style="border: solid 1px lightgrey" />
 
 ### Inject Production Secrets for Deployment
 
