@@ -9,7 +9,7 @@ const config: DocsThemeConfig = {
   chat: {
     link: 'https://discord.gg/cEHkJTmn75',
   },
-  docsRepositoryBase: 'https://github.com/EnsembleUI/ensemble_documentation',
+  docsRepositoryBase: 'https://github.com/EnsembleUI/ensemble_docs/blob/main',
   footer: {
     text: 'Ensemble',
   },
