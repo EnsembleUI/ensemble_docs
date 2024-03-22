@@ -13,5 +13,5 @@ Add your question [Builder Support channel](https://discord.com/channels/1031982
 Make sure to provide us with details. If you have an existing screen, share a link to your screen in Ensemble Studio. To allow others to access it, make your app public. You can undo this after your issue is resolved.
 
 
-![Make app public](/images/tips-and-tricks/images/make-app-public.jpg)
+![Make app public](/images/make-app-public.jpg)
 

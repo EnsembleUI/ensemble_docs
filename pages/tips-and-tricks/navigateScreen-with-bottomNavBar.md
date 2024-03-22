@@ -96,6 +96,6 @@ ViewGroup:
               userId: "${ensemble.storage.userAccount != null ? ensemble.storage.userAccount.id : ''}"
 ```
 
-![Alt text](/images/image-9.png)
+![Alt text](/images/tips/image-9.png)
 
-![Alt text](/images/image-10.png)
+![Alt text](/images/tips/image-10.png)

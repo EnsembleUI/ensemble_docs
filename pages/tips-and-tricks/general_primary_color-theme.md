@@ -9,7 +9,7 @@ Lets us consider an App where we want to use `0xFF308775` color for our all Butt
 
 1. Go to your App and click on **Theme** in left side panel. Here is hw it looks like.
 
-![Alt text](/images/image-4.png).
+![Alt text](/images/tips/image-4.png).
 
 2. Then use the code below to define [primary]() color for button color, focus color etc.
 
@@ -27,6 +27,7 @@ Colors:
 
 **Output**
 
-![Alt text](/images/image-5.png)
+![Alt text](/images/tips/image-5.png)
+
 
 Note: `Just like all other Web and Mobile technologies like Html, Css and Flutter etc if there is style done on a button it will be of higher priority then theme so to let theme work no need to style button color at all.`

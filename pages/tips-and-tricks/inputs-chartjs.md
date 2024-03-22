@@ -2,7 +2,6 @@
 
 The ChartJs widget in ensemble may sometime not accept variables in plain ChartJS widget so a better way to go about this is to use Code section in ensemble to define configuration for the ChartJs and there we can easily use the variables ( inputs ). In our example we will look how we use labels passed as inputs to the ChartJs custom widget and use them according to our need.
 
-**Example**
 
 #### Custom Widget
 
@@ -82,7 +81,6 @@ Widget:
 #### Screen Code
 
 
-
 ```yaml
 Spendings:
   inputs:
@@ -91,11 +89,9 @@ Spendings:
 ```
 
 
-
 **Output**
 
-![Alt text](/images/image-8.png)
-
+![Alt text](/images/tips/image-8.png)
 
 
 #### Explanation
