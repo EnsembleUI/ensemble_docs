@@ -15,6 +15,8 @@ First, run `pnpm i` to install the dependencies.
 
 Then, run `pnpm dev` to start the development server and visit localhost:3000.
 
+To use a different port, run `pnpm next dev -p <port_number>`.
+
 
 ## Deployment & hosting
 

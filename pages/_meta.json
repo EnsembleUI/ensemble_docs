@@ -3,6 +3,9 @@
   "build": {
     "title": "Build"
   },
+  "concepts": {
+    "title": "Concepts"
+  },
   "theme-and-styling": {
     "title": "Theme & Styling"
   },
