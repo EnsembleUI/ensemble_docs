@@ -1,13 +1,35 @@
 {
   "index": "Introduction",
-  "build": {
-    "title": "Build"
+  "studio-overview": {
+    "title": "Studio overview",
+    "display": "hidden"
   },
-  "concepts": {
-    "title": "Concepts"
+  "--Concepts": {
+    "type": "separator",
+    "title": "Build your app"
+  },
+  "screens-and-widgets": {
+    "title": "Screens & Widgets"
+  },
+  "events-and-actions": {
+    "title": "Events & Actions",
+    "display": "hidden"
+  },
+  "scripts-with-js": {
+    "title": "Scripts with JS",
+    "display": "hidden"
+  },
+  "apis": {
+    "title": "APIs"
   },
   "theme-and-styling": {
     "title": "Theme & Styling"
+  },
+  "local-storage": {
+    "title": "Local Storage"
+  },
+  "app-settings": {
+    "title": "App Settings"
   },
   "translations": {
     "title": "Translations (i18n)"
@@ -23,7 +45,7 @@
   },
   "--Launch": {
     "type": "separator",
-    "title": "Launch you app"
+    "title": "Launch your app"
   },
   "test": {
     "title": "Test"
@@ -44,13 +66,10 @@
   "actions": {
     "title": "Actions"
   },
-  "apis": {
-    "title": "APIs"
-  },
   "device-capabilities": {
     "title": "Device Capabilities"
   },
-  "javascript": {
+  "javascript-reference": {
     "title": "Javascript"
   },
   "app-object": {

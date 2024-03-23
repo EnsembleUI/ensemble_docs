@@ -1,0 +1,14 @@
+{
+    "screen-structure": {
+      "title": "Screen structure"
+    },
+    "layouts": {
+        "title": "Layouts"
+    },
+    "widgets": {
+        "title": "Widgets"
+    },
+    "widget-sizing": {
+        "title": "Widget sizing"
+    }
+}

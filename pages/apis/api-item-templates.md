@@ -1,6 +1,6 @@
-# Binding APIs to Item Templates in Ensemble
+# Binding APIs to Item Templates
 
-When developing user interfaces, it's common to display lists of items, and Ensemble simplifies this process by providing the item-template property in the YAML syntax. This property can be assigned to container widgets like Column or Row and is particularly useful for binding API responses to data-driven UI elements.
+When developing user interfaces, it's common to display lists of items, and Ensemble simplifies this process by providing the item-template property. This property can be assigned to container widgets like GridView or Carousel and is particularly useful for binding API responses to data-driven UI elements.
 
 `item-template` takes the following properties:
 
@@ -16,7 +16,7 @@ When developing user interfaces, it's common to display lists of items, and Ense
 
 ```yaml
 item-template:
-  data: ${getPeople2.body.results}
+  data: ${getPeople.body.results}
   name: item
   template:
     Text:
