@@ -1,6 +1,17 @@
 const withNextra = require('nextra')({
   theme: 'nextra-theme-docs',
-  themeConfig: './theme.config.tsx',
+  themeConfig: './theme.config.tsx'
 })
 
-module.exports = withNextra()
+module.exports = withNextra({
+  async redirects() {
+    return [
+      {
+        // from 'error/message' to 'tips-and-tricks/error-message'
+        source: '/error/:errorId',
+        destination: '/tips-and-tricks/:errorId',
+        permanent: false,
+      },
+    ]
+  }
+})

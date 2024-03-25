@@ -18,3 +18,9 @@ Welcome to our Tips and Tricks page! Here, you'll find a collection of expert in
 - [Push Notification](/tips-and-tricks/push-notification.md)
 - [Using device width and height](/tips-and-tricks/using-device-dimentions.md)
 - [Floating Button](/tips-and-tricks/floatingButton.md)
+
+
+Below are some common error messages and their solutions:
+
+- [Widget requires a width](/tips-and-tricks/no-bounded-width)
+- [Widget requires a height](/tips-and-tricks/no-bounded-height)
