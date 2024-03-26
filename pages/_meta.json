@@ -4,7 +4,7 @@
     "title": "Studio overview",
     "display": "hidden"
   },
-  "--Concepts": {
+  "--Build": {
     "type": "separator",
     "title": "Build your app"
   },
