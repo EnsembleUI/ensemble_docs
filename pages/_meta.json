@@ -43,6 +43,9 @@
   "extending-ensemble": {
     "title": "Extending Ensemble"
   },
+  "concepts": {
+    "title": "Concepts"
+  },
   "--Launch": {
     "type": "separator",
     "title": "Launch your app"

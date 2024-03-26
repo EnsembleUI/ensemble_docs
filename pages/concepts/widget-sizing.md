@@ -7,12 +7,13 @@ In Ensemble, widget sizing is governed by a system of constraints passed down fr
 
 Starting from the root (the screen dimension), constraints are passed down the layout tree to determine the size of each widget. Most widgets, if themselves receive constraints from their parent, will recalculate the constraints (e.g. subtract padding from the available space) and pass them down to their children. A widget may come up with its own size, but it will always be bounded by the constraints provided by its parent.
 
-**Note**: *Row does not provided the **width constraint** to its children. Any children of Row must be able to determine their own width, or an error may occur. Similarly Column does not provide the **height constraint** to its children.*
-
-**Note**: *Scrollable widgets (e.g ListView, Screen with scrollableView = true) do not provide constraints to their children in the scrollable direction.*
-
 **Note**: *Any widget that does not receive constraints from its parent will not be able to pass the constraints down to its children.*
 
+**Parent widgets that do not provide constraints to their children:**
+- *Row does not provided the **width constraint** to its children. Any children of Row must be able to determine their own width, or an error may occur.*
+- *Similarly Column does not provide the **height constraint** to its children*
+- *Stack does not provide **width nor height constraint** to its children.*
+- *Scrollable widgets (e.g ListView, Screen with scrollableView = true) do not provide constraints to their children in the **scrollable direction**.*
 
 #### Widget with Intrinsic Sizes
 Some widgets can automatically determine their own dimensions based on their content or specific properties. These widgets are straightforward to use because they require minimal configuration to look right.
@@ -28,7 +29,7 @@ Text:
 **Note**: *just because a widget can determine its own size doesn't mean it will get the size it needs. The final sizing will be bounded by the constraints (minimum/maximum width and minimum/maximum height) provided by the parent widget.*
 
 #### Widgets without Intrinsic Sizes
-Conversely, some widgets cannot determine their sizes. These widgets rely on their parent to provide the sizing constraints. Without the constraint an error will occur, and the system will attempt to give you warnings. If the warning system misses this, the screen may be rendered as a blank screen.
+Conversely, some widgets cannot determine their sizes (or it may not make sense to). These widgets rely on their parent to provide the sizing constraints. Without the constraint an error will occur, and the system will attempt to give you warnings. If the warning system misses this, the screen may be rendered as a blank screen.
 
 **Examples:** Divider, Map, TextInput (width), ..
 ```yaml
