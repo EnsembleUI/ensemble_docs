@@ -22,5 +22,7 @@ Welcome to our Tips and Tricks page! Here, you'll find a collection of expert in
 
 Below are some common error messages and their solutions:
 
-- [Widget requires a width](/tips-and-tricks/no-bounded-width)
-- [Widget requires a height](/tips-and-tricks/no-bounded-height)
+- [Widget requires a width](/error/no-bounded-width)
+- [Widget requires a height](/error/no-bounded-height)
+- [FlexRow requires a width for child distribution](/error/flexrow-no-bounded-width)
+- [FlexColumn requires a height for child distribution](/error/flexcolumn-no-bounded-height)
