@@ -23,13 +23,13 @@ This guide provides step-by-step instructions on generating an API key for App S
 5. **Generate a New API Key:**
    - Click on the `+` button.
   
-![Keys section](https://github.com/EnsembleUI/ensemble_docs/assets/46677360/a1622af9-6bc4-44e8-9d40-01ecaa802e38)
+![Keys section](/images/deploy/a1622af9-6bc4-44e8-9d40-01ecaa802e38.png)
 
 6. **Fill in the Details:**
    - Provide a name for your API key. It will be useful to identify your key later on.
    - Choose `App Manager` in the access part of the dialog.
 
-![API Key form](https://github.com/EnsembleUI/ensemble_docs/assets/46677360/63059213-709b-4686-84ab-7293398951e1)
+![API Key form](/images/deploy/63059213-709b-4686-84ab-7293398951e1.png)
 
 7. **Generate the Key:**
    - Click on the `Generate` button to create the API key.
@@ -38,7 +38,7 @@ This guide provides step-by-step instructions on generating an API key for App S
    - There will be a `Download` button for the newly generated key. Download the `.p8` file which is the API key.
    - Safely store the key file, as it cannot be downloaded again.
 
-![Download the generated API Key](https://github.com/EnsembleUI/ensemble_docs/assets/46677360/4998013e-c189-4289-97b9-e4a6fb61038a)
+![Download the generated API Key](/images/deploy/4998013e-c189-4289-97b9-e4a6fb61038a.png)
 
 9. **Copy Key ID and Issuer ID:**
    - Copy the `Key ID` for the generated key. Also, copy the `Issuer Id` at the top.
