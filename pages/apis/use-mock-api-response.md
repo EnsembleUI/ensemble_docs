@@ -2,9 +2,13 @@
 A key to developing an app quickly is to build the user interface independently of the back-end. This allows the team building the UI to be unblocked and move fast while also providing actual API payloads to the back-end team to build. Another advantage of this approach is that app could be built quickly with mockdata and be demo'd to customers for feedback. 
 Ensemble provides a framework for mockng API responses that allow you to do that. You can mock all APIs or some and test with mockdata by simply setting a property. 
 
-## Setting/unsetting `useMockResponse`
+- To get hands-on experience with mock APIs, check the live example on [Ensemble Studio](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/UmaRcuduyIZmvOfk9BJu)
+  
+## 1. Setting/unsetting `useMockResponse`
+Firstly, to use mock data in your app, it's important to update the global script of the screen, making sure that the API calls are directed to the mock data instead of the actual URL.
 ```javascript
-app.useMockResponse = true
+Global: |-
+  app.useMockResponse = true;
 ```
 this sets the `useMockResponse` in the persistent storage but namespaces it by the appId i.e. <appid>_useMockResponse. 
 
@@ -25,9 +29,10 @@ You can obtain appId for your app anytime by doing -
 appInfo.appId
 ```
 
-## How to specify mock data on the API definitions
-
+## 2. Specify mock data on the API definitions
+Mock data can be specified in 2 different ways, each offering flexibility and customization options to meet your development and testing needs.
 ### Inline on the API
+Below is an example of an API definition, where `mockResponse` property is utilized to specify the inline mock data, which includes a `body` object containing mock data elements such as `title` and `list`. Additionally, response `headers` can be defined to simulate various scenarios. This approach is useful for quickly defining and modifying mock data directly within the API definition.
 ```yaml
   slowAPI:
     inputs:
@@ -61,7 +66,7 @@ appInfo.appId
       console.log('mockDataFromFunction='+uniqueId);
       response.body.list.push({name: 'mockDataFromFunction adding in onResponse - '+uniqueId});
 ```
-where the function could be define either in the `Global` script block on the current screen or in a separate script and imported in. Following is a sample function that is used in the `mockDataFromFunction` API in the yaml above - 
+The above API `mockDataFromFunction` endpoint utilizes a function to generate and return mock data dynamically. The `mockResponse` property references the `getMockResponse()` function, which is responsible for generating the mock data. The function could be defined either in the `Global` script block on the current screen or in a separate script and imported in. This method offers greater flexibility and allows for more complex mock data generation logic.
 ```javascript
 var abc = 'var abc';
 function getMockResponse() {
@@ -79,8 +84,9 @@ function getMockResponse() {
   };
 }
 ```
+- Response from mock API can be used in a similar way as real API. To understand the utilization of API responses, detailed documentation is available [here](access-api-response).
 ### Mocking an error response
-simply set `statusCode` to an error statusCode
+You can simply set `statusCode` property of the error to a specified status code such as "500" and `reasonPhrase` property to provide bit of description related to the error.
 ```yaml
   mockError:
     inputs:
