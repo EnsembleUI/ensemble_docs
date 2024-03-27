@@ -29,7 +29,7 @@ const config: DocsThemeConfig = {
     const { asPath, defaultLocale, locale } = useRouter()
     const { frontMatter } = useConfig()
     const url =
-      'https://my-app.com' +
+      'https://ensembleui.com' +
       (defaultLocale === locale ? asPath : `/${locale}${asPath}`)
  
     return (
