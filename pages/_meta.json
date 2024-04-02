@@ -25,6 +25,9 @@
   "theme-and-styling": {
     "title": "Theme & Styling"
   },
+  "assets": {
+    "title": "Assets"
+  },
   "local-storage": {
     "title": "Local Storage"
   },

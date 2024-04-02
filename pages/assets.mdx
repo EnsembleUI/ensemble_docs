@@ -1,0 +1,30 @@
+import { Callout } from 'nextra/components'
+
+# Assets (images, videos, etc.)
+
+You can manage the assets required by your app within Ensemble Studio. These are typically files such as:
+
+- image files (PNGs, JPEGs, SVGs, etc.)
+- video files
+- audio files
+- JSON source for [Lottie widget](/widgets/lottie)
+
+<Callout type="info">
+  When you build and deploy your app, these assets are included in your built output. These assets are loaded instantly in iOS and Android apps instead of downloading them over the network. This approach avoides any delay in displaying the assets.
+</Callout>
+
+
+## Upload assets
+
+Navigate to your app inside Ensemble Studio. Select Assets from the left menu. Click on Add assets and upload your file.
+
+![add language](/images/app-assets/assets_landing.png)
+
+## Reference an assets
+
+![add language](/images/app-assets/assets_example.png)
+
+1. Click on the `...` icon of the asset.
+2. Select `Copy path`.
+3. Paste the path in the relevant widget. This is typically the `source` property of widgets such as Image.
+
