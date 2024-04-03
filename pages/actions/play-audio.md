@@ -1,6 +1,6 @@
 # playAudio
 
-playAudio action allows users to play a given audio file either from url or from assets. It requires a unique id passed to it so that the audio can be referrenced in future. It has parameters like `source`, `volumne`, `balance` and `position`.
+The playAudio action allows users to play a given audio file from a URL or asset. It requires a unique ID passed to it so that the audio can be referenced.
 
 ### Properties
 

@@ -1,6 +1,6 @@
 # pauseAudio
 
-pauseAudio action allows users to pause a already playing audio file
+The pauseAudio action allows users to pause an already-playing audio file.
 
 ### Properties
 
