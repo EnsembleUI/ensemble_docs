@@ -25,7 +25,7 @@ API:
 
 
 This GraphQL API operates on Hasura's platform. To submit a query, we send a POST request to the correct URL, along with the required 
-headers. The request payload includes both the data and its fields to be retrieved from the API. 
+headers. The request payload includes the data and its fields to be retrieved from the API. 
 
 Let's say that within each profile object, there is also a posts object that includes the id and title fields. We have the option to include
 them in our query as well.
@@ -39,7 +39,7 @@ API:
       Content-Type: application/json
       x-hasura-admin-secret: eS2vHbx9568eJsXCTzrc57Mc2QfGNn387i4pNOAqVP7cE4nTOLTJYAiduo0a72GK
     body:
-      query: 'query myQuery{profiles {id name posts{id title}}}'
+      query: '{profiles {id name posts{id title}}}'
 ```
 The response will include the data object, which in turn will have each profile object containing their id, name, and posts fields. 
 Additionally, it will provide the id and title associated with each posts object.
