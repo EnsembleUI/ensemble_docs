@@ -1,6 +1,6 @@
 # resumeAudio
 
-resumeAudio action allows users to resume a previously paused audio
+The resumeAudio action allows users to resume a previously paused audio
 
 ### Properties
 

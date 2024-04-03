@@ -1,6 +1,6 @@
 # seekAudio
 
-seekAudio action allows users to pause a already-playing audio file
+The seekAudio action allows users to pause a already-playing audio file
 
 ### Properties
 

@@ -1,6 +1,6 @@
 # stopAudio
 
-stopAudio action allows users to stop a already playing audio file
+The stopAudio action allows users to stop a already playing audio file
 
 ### Properties
 
