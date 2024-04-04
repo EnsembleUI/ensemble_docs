@@ -10,17 +10,6 @@ The Map widget enables the display of _location markers_ and _overlays_, providi
 Wrap your map inside a Column to apply additional styling.
 
 ```yaml
-View:
-
-  onLoad:
-    invokeAPI:
-      name: getVenue
-
-  body:
-    Column:
-      styles:
-        padding: 40 16
-      children:
         - Column:
             styles:
               padding: 0 16 24 16
@@ -39,17 +28,45 @@ View:
                     name: location
                     location: ${location.lat} ${location.lng}
 
-API:
-  getVenue:
-    uri: https://dummyjson.com/users/1
-    method: GET
-    onResponse: |-
-      response.body = {
-        "location": [{
-          "lat": 33.8120918,
-          "lng": -117.9215491
-        }]
-      };
+```
+
+Widget Marker in Map
+
+```yaml
+      - Map:
+          styles:
+            autoZoom: true
+            includeCurrentLocationInAutoZoom: false
+            locationEnabled: true
+            showToolbar: false
+            height: 180
+          markers:
+            widget:
+              Text:
+                styles:
+                  padding: 10
+                  backgroundColor: white
+                  borderColor: black
+                  borderRadius: 20
+                text: my label
+
+```
+
+Image Marker in Map
+
+```yaml
+      - Map:
+          styles:
+            autoZoom: true
+            includeCurrentLocationInAutoZoom: false
+            locationEnabled: true
+            showToolbar: false
+            height: 180
+          markers:
+            image:
+              source: <url or local assets>
+              resizedWidth:
+              resizedHeight:
 
 ```
 
