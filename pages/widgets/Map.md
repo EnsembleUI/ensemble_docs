@@ -5,53 +5,160 @@ The Map widget enables the display of _location markers_ and _overlays_, providi
 [Test in Kitchen Sink](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/36e52d1a-39c5-4a6b-b064-2be6cfe3cf7b)
 
 
-## Adjusting border radius and padding of a map
-
-Wrap your map inside a Column to apply additional styling.
+## Basic Usage
+Map requires a dimension to render. Most parent widget will provide a constraint so Map can stretch to fit. When the parent doesn't provide a size, e.g. Column on the vertical axis, you must provide the dimension on that axis. Below we use a FlexColumn which will consume all available vertical space, and in turn gives Map the complete screen height.
 
 ```yaml
 View:
-
   onLoad:
     invokeAPI:
       name: getVenue
 
   body:
-    Column:
-      styles:
-        padding: 40 16
+    FlexColumn:
       children:
-        - Column:
+        - Map:
             styles:
-              padding: 0 16 24 16
-              borderRadius: 24
-              clipContent: true
-            children:
-              - Map:
-                  styles:
-                    autoZoom: true
-                    includeCurrentLocationInAutoZoom: false
-                    locationEnabled: true
-                    showToolbar: false
-                    height: 180
-                  markers:
-                    data: ${getVenue.body.location} 
-                    name: location
-                    location: ${location.lat} ${location.lng}
+              # zoom to fit all markers
+              autoZoom: true
+              # position the toolbar
+              toolbarAlignment: centerLeft
+            markers:
+              data: ${getVenue.body.location}
+              name: location
+              location: ${location.lat} ${location.lng}
 
 API:
   getVenue:
     uri: https://dummyjson.com/users/1
     method: GET
     onResponse: |-
+      // modifying the response to add latitute and longitude
       response.body = {
         "location": [{
-          "lat": 33.8120918,
-          "lng": -117.9215491
+          "lat": 37.82159,
+          "lng": -121.99996
         }]
       };
 
 ```
+
+## Using custom markers
+Ensemble provides three different ways of customizing markers. You can use any Ensemble icons, use images via URLs or local asset, or define a custom widget to render as a marker.
+### Using Ensemble icons (Native only)
+Ensemble provides Material, FontAwesome, and Remix icons out of the box, and you can use these icons as markers. This is supported on Native platform only (Web is not currently supported).
+```yaml
+View:
+  onLoad:
+    invokeAPI:
+      name: getVenue
+ 
+  body:
+    Map:
+      styles:
+        autoZoom: true
+        autoZoomPadding: 100
+      markers:
+        data: ${getVenue.body.location} 
+        name: location
+        location: ${location.lat} ${location.lng}
+        marker:
+          icon:
+            name: home_5_line
+            library: remix
+        selectedMarker:
+          icon:
+            name: building_2_line
+            library: remix
+            backgroundColor: blue
+                  
+ 
+API:
+  getVenue:
+    uri: https://dummyjson.com/users/1
+    method: GET
+    onResponse: |-
+      
+      response.body = {
+        "location": [{
+          "lat": 37.82159,
+          "lng": -121.99996
+        }, {
+          "lat": 37.773972,
+          "lng": -122.431297
+        }]
+      };
+
+```
+<img src="/images/screenshots/map2.png" alt="Screenshot" width="450">
+
+### Using Images
+You can use images as markers by providing a URL or local asset. To further fine-tune the marker dimension, use `resizedWidth` or `resizedHeight`, but avoid using both to maintain the aspect ratio.
+```yaml
+Map:
+  styles:
+    autoZoom: true
+    autoZoomPadding: 100
+  markers:
+    data: ${getVenue.body.location}
+    name: location
+    location: ${location.lat} ${location.lng}
+    marker:
+      image:
+        source: <URL or local asset>
+        resizedWidth: 40
+```
+
+### Using custom widget (Native only)
+You can use a custom widget to render as a marker. This will only supported on Native platform.
+```yaml
+View:
+  onLoad:
+    invokeAPI:
+      name: getVenue
+ 
+  body:
+    Map:
+      styles:
+        autoZoom: true
+        autoZoomPadding: 100
+      markers:
+        data: ${getVenue.body.items} 
+        name: item
+        location: ${item.lat} ${item.lng}
+        marker:
+          widget:
+            Text:
+              text: ${item.city}
+              styles:
+                padding: 5 10
+                borderColor: blue
+                backgroundColor: white
+                borderRadius: 100
+                textStyle:
+                  color: black
+                  
+ 
+API:
+  getVenue:
+    uri: https://dummyjson.com/users/1
+    method: GET
+    onResponse: |-
+
+      response.body = {
+        "items": [{
+          "lat": 37.82159,
+          "lng": -121.99996,
+          "city": "Danville"
+        }, {
+          "lat": 37.773972,
+          "lng": -122.431297,
+          "city": "San Francisco"
+
+        }]
+      };
+```
+<img src="/images/screenshots/map3.png" alt="Screenshot" width="450">
 
 ## Properties
 
