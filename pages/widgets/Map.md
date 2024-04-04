@@ -47,6 +47,7 @@ API:
 Ensemble provides three different ways of customizing markers. You can use any Ensemble icons, use images via URLs or local asset, or define a custom widget to render as a marker.
 ### Using Ensemble icons (Native only)
 Ensemble provides Material, FontAwesome, and Remix icons out of the box, and you can use these icons as markers. This is supported on Native platform only (Web is not currently supported).
+The marker's size can be adjusted using the combination of icon's `size`, `iconPadding` (the circular shape around the icon), and `padding` (the space between the inner circular shape and the pin itself).
 ```yaml
 View:
   onLoad:
