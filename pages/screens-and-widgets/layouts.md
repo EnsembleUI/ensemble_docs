@@ -4,7 +4,7 @@ Ensemble layouts are themselves widgets that contain other widgets. Here is a co
 
 | Widget       | Documentation  | Kitchen sink example    |
 | ------------ | -------------- | ----------------------- |
-| Column       | [Link](/widget-reference/column)        | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/90a8e4df-5eab-4473-ba10-2ecffc9596b0) |
+| Column       | [Link](/widgets/column)        | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/90a8e4df-5eab-4473-ba10-2ecffc9596b0) |
 | FittedColumn | [Link](/widget-reference/fitted-column) | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/hRFxxoaBePQaLfmoBiIb)  |
 | Row          | [Link](/widget-reference/row)           | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/4bd0d453-c243-429d-a562-93cbc9db38e3) |
 | FittedRow    | [Link](/widget-reference/fitted-row)    | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/fvSONumk7npuTDmIWwis) |
