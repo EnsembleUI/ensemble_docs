@@ -112,93 +112,83 @@ console.log(roots.length); // 3
 ## Methods
 ### map
 
-The `map()` method creates a new array with the results of calling a provided function on every element in the calling array.
+The `map()` method creates a new array populated with the results of calling a provided function on every element in the calling array.
 
 **Parameters:**
 
-- `callback`: Function that produces an element of the new array, taking one argument (*note this is slightly different from js you may be used to*):
+- `callback`: Function that produces an element of the new array, taking two arguments:
   - `currentValue`: The current element being processed in the array.
+  - `index`: The index of the current element being processed in the array.
 
 **Return value:**
 
-A new array with each element being the result of the `callback` function.
+A new array with each element being the result of the callback function.
 
 **Example:**
 
 ```javascript
 var numbers = [1, 4, 9];
-var roots = numbers.map(Math.sqrt);
-console.log(roots); // [1, 2, 3]
-```
-
-### filter
-
-The `filter()` method creates a new array with all elements that pass the test implemented by the provided function.
-
-**Parameters:**
-
-- `callback`: Function that tests each element of the array, taking one argument (*note this is slightly different from js you may be used to*):
-  - `currentValue`: The current element being processed in the array.
-
-**Return value:**
-
-A new array with the elements that pass the test.
-
-**Example:**
-
-```javascript
-var numbers = [1, 4, 9];
-var evenNumbers = numbers.filter(function(num) {
-  return num % 2 === 0;
+var squares = numbers.map(function(num, index) {
+  return num * num;
 });
-console.log(evenNumbers); // [4]
+console.log(squares); // [1, 16, 81]
 ```
 
 ### forEach
 
-The `forEach()` method executes a provided function once for each array element and does not return.
+Executes a provided function once for each array element.
 
 **Parameters:**
 
-- `callback`: Function to execute for each element, taking one argument (*note this is slightly different from js you may be used to*):
-  - `currentValue`: The current element being processed in the array.
+- `callback`: Function to execute on each element, taking two arguments:
+  - `currentValue`: The current element being processed.
+  - `index`: The index of the current element being processed.
+
+**Return value:**
+
+`undefined`.
 
 **Example:**
 
 ```javascript
-var numbers = [1, 4, 9];
-numbers.forEach(function(num) {
-  console.log('Element is ' + num);
+var numbers = [1, 2, 3];
+numbers.forEach(function(num, index) {
+  console.log('Number:', num, 'at index:', index);
 });
-// Output:
-// Element is 1
-// Element is 4
-// Element is 9
 ```
 
-### push
+### reduce
 
-The `push()` method adds one or more elements to the end of an array and does not return.
+The `reduce()` method executes a reducer function on each element of the array, resulting in a single output value.
 
 **Parameters:**
 
-- `item`: The element to add to the end of the array.
+- `callback`: A function to execute on each element in the array (except for the first, if no initialValue is provided), taking four arguments:
+  - `accumulator`: The accumulator accumulates the callback's return values.
+  - `currentValue`: The current element being processed.
+- `initialValue` (optional): A value to use as the first argument to the first call of the callback.
+
+**Return value:**
+
+The single value that results from the reduction.
 
 **Example:**
 
 ```javascript
-var numbers = [1, 4, 9];
-numbers.push(16);
-console.log(numbers.length); // 4
+var numbers = [1, 2, 3, 4];
+var sum = numbers.reduce(function(total, num) {
+  return total + num;
+}, 0);
+console.log(sum); // 10
 ```
 
 ### indexOf
 
-The `indexOf()` method returns the first index at which a given element can be found in the array, or -1 if it is not present.
+Returns the first index at which a given element can be found in the array, or -1 if it is not present.
 
 **Parameters:**
 
-- `searchElement`: Element to locate in the array.
+- `searchElement`: The element to locate in the array.
 
 **Return value:**
 
@@ -207,132 +197,292 @@ The first index of the element in the array; -1 if not found.
 **Example:**
 
 ```javascript
-var numbers = [1, 4, 9, 4];
-var index = numbers.indexOf(4);
+var fruits = ['apple', 'banana', 'cantaloupe', 'blueberry'];
+var index = fruits.indexOf('banana');
 console.log(index); // 1
 ```
 
-### lastIndexOf
+### join
 
-The `lastIndexOf()` method returns the last index at which a given element can be found in the array, or -1 if it is not present. The array is searched backwards, starting from the end.
+Joins all elements of an array into a string.
 
 **Parameters:**
 
-- `searchElement`: Element to locate in the array.
+- `separator` (optional): Specifies a string to separate each pair of adjacent elements of the array. The separator is converted to a string if necessary. If omitted, the array elements are separated with a comma.
 
 **Return value:**
 
-The last index of the element in the array; -1 if not found.
+A string with all array elements joined.
 
 **Example:**
 
 ```javascript
-var numbers = [1, 4, 9, 4];
-var index = numbers.lastIndexOf(4);
-console.log(index); // 3
+var elements = ['Fire', 'Air', 'Water'];
+console.log(elements.join());      // "Fire,Air,Water"
+console.log(elements.join(''));    // "FireAirWater"
+console.log(elements.join('-'));   // "Fire-Air-Water"
 ```
 
-### sort
+### pop
 
-The `sort()` method sorts the elements of an array in place and returns the sorted array. The default sort order is built upon converting the elements into strings, then comparing their sequences of UTF-16 code unit values.
+Removes the last element from an array and returns that element. This method changes the length of the array.
 
 **Parameters:**
 
-- `compareFunction` (optional): Specifies a function that defines the sort order. If omitted, the array is sorted according to each character's Unicode code point value. 
-  -`compareFunction` is called with two parameters `(a,b)` to be compared and must return - 
-    - a negative integer if [a] is smaller than [b]
-    - zero if [a] is equal to [b], and
-    - a positive integer if [a] is greater than [b].
+None.
 
 **Return value:**
 
-The sorted array.
+The removed element from the array; `undefined` if the array is empty.
 
 **Example:**
 
 ```javascript
-var numbers = [9, 4, 1];
-var sortedNumbers = numbers.sort();
-console.log(sortedNumbers); // [1, 4, 9]
+var plants = ['broccoli', 'cauliflower', 'cabbage', 'kale', 'tomato'];
+console.log(plants.pop()); // "tomato"
+console.log(plants); // ["broccoli", "cauliflower", "cabbage", "kale"]
 ```
 
-### concat
+### push
 
-The `concat()` method is used to merge two arrays. This method does not change the existing arrays, but instead returns a new array.
+Adds one or more elements to the end of an array and returns the new length of the array.
 
 **Parameters:**
 
-- `array: Array to concatenate into a new array.
+- `elementN`: The elements to add to the end of the array.
 
 **Return value:**
 
-A new array that is the result of merging the arrays.
+The new length of the array.
 
 **Example:**
 
 ```javascript
-var array1 = [1, 2, 3];
-var array2 = [4, 5, 6];
-var mergedArray = array1.concat(array2);
-console.log(mergedArray); // [1, 2, 3, 4, 5, 6]
+var animals = ['pigs', 'goats', 'sheep'];
+var count = animals.push('cows');
+console.log(count);  // 4
+console.log(animals); // ["pigs", "goats", "sheep", "cows"]
 ```
 
-### find
+### slice
 
-The `find()` method returns the value of the first element in the array that satisfies the provided testing function. Otherwise, `-1` is returned.
+The `slice()` method returns a shallow copy of a portion of an array into a new array object selected from `start` to `end` (end not included) where `start` and `end` represent the index of items in that array. The original array will not be modified.
 
 **Parameters:**
 
-- `callback`: Function to execute on each value in the array, taking one argument:
+- `start`: Zero-based index at which to start extraction.
+- `end` (optional): Zero-based index before which to end extraction. The slice extracts up to but not including `end`.
+
+**Return value:**
+
+A new array containing the extracted elements.
+
+**Example:**
+
+```javascript
+var fruits = ['Banana', 'Orange', 'Lemon', 'Apple', 'Mango'];
+var citrus = fruits.slice(1, 3);
+console.log(citrus); // ['Orange', 'Lemon']
+```
+
+### some
+
+The `some()` method tests whether at least one element in the array passes the test implemented by the provided function. It returns a Boolean value.
+
+**Parameters:**
+
+- `callback`: Function to test for each element, taking one argument:
   - `currentValue`: The current element being processed in the array.
 
 **Return value:**
 
-The first element in the array that satisfies the provided testing function; otherwise, `-1`.
+`true` if the callback function returns a truthy value for any array element; otherwise, `false`.
 
 **Example:**
 
 ```javascript
-var numbers = [1, 4, 9];
-var found = numbers.find(function(num) {
-  return num > 2;
+var array = [1, 2, 3, 4, 5];
+var even = function(element) {
+  return element % 2 === 0;
+};
+console.log(array.some(even)); // true
+```
+
+### every
+
+The `every()` method tests whether all elements in the array pass the test implemented by the provided function. It returns a Boolean value.
+
+**Parameters:**
+
+- `callback`: Function to test for each element, taking one argument:
+  - `currentValue`: The current element being processed in the array.
+
+**Return value:**
+
+`true` if the callback function returns a truthy value for every array element; otherwise, `false`.
+
+**Example:**
+
+```javascript
+var isBelowThreshold = function(currentValue) {
+  return currentValue < 40;
+};
+var array = [1, 30, 39, 29, 10, 13];
+console.log(array.every(isBelowThreshold)); // true
+```
+
+### findIndex
+
+The `findIndex()` method returns the index of the first element in the array that satisfies the provided testing function. Otherwise, it returns -1, indicating that no element passed the test.
+
+**Parameters:**
+
+- `callback`: Function to execute on each value in the array, taking one argument:
+  - `currentValue`: The current element being processed.
+
+**Return value:**
+
+The index of the first element in the array that passes the test; otherwise, -1.
+
+**Example:**
+
+```javascript
+var array = [5, 12, 8, 130, 44];
+var isLargeNumber = function(element) {
+  return element > 13;
+};
+console.log(array.findIndex(isLargeNumber)); // 3
+```
+
+### fill
+
+The `fill()` method changes all elements in an array to a static value, from a start index (default zero) to an end index (default array.length). It returns the modified array.
+
+**Parameters:**
+
+- `value`: Value to fill the array with.
+- `start` (optional): Start index, default 0.
+- `end` (optional): End index, default array length.
+
+**Return value:**
+
+The modified array.
+
+**Example:**
+
+```javascript
+var array = [1, 2, 3, 4];
+console.log(array.fill(0, 2, 4)); // [1, 2, 0, 0]
+console.log(array.fill(5, 1)); // [1, 5, 5, 5]
+console.log(array.fill(6)); // [6, 6, 6, 6]
+```
+
+### shift
+
+The `shift()` method removes the first element from an array and returns that removed element. This method changes the length of the array.
+
+**Parameters:**
+
+None.
+
+**Return value:**
+
+The removed element from the array; `null` if the array is empty.
+
+**Example:**
+
+```javascript
+var myFish = ['angel', 'clown', 'mandarin', 'surgeon'];
+console.log('Before:', JSON.stringify(myFish));
+var shifted = myFish.shift();
+console.log('After:', JSON.stringify(myFish));
+console.log('Removed:', shifted);
+// Before: ["angel", "clown", "mandarin", "surgeon"]
+// After: ["clown", "mandarin", "surgeon"]
+// Removed: angel
+```
+
+### unshift
+
+The `unshift()` method adds one or more elements to the beginning of an array and returns the new length of the array.
+
+**Parameters:**
+
+- `...elements`: The elements to add to the front of the array.
+
+**Return value:**
+
+The new length of the array.
+
+**Example:**
+
+```javascript
+var myArray = [1, 2, 3];
+console.log(myArray.unshift(4, 5)); // 5
+console.log(myArray); // [4, 5, 1, 2, 3]
+```
+
+### splice
+
+The `splice()` method changes the contents of an array by removing or replacing existing elements and/or adding new elements in place.
+
+**Parameters:**
+
+- `start`: The index at which to start changing the array.
+- `deleteCount`: The number of elements in the array to remove from `start`.
+- `...items`: The elements to add to the array, beginning from `start`.
+
+**Return value:**
+
+An array containing the deleted elements.
+
+**Example:**
+
+```javascript
+var myFish = ['angel', 'clown', 'drum', 'mandarin', 'sturgeon'];
+var removed = myFish.splice(3, 2);
+console.log(myFish); // ["angel", "clown", "drum"]
+console.log(removed); // ["mandarin", "sturgeon"]
+```
+
+### find
+
+The `find()` method returns the value of the first element in the provided array that satisfies the provided testing function. If no values satisfy the testing function, `-1` is returned.
+
+**Parameters:**
+
+- `callback`: A function to execute on each value in the array until the function returns true, indicating that the satisfying element was found.
+
+**Return value:**
+
+The first element in the array that passes the test; `-1` if no elements pass the test.
+
+**Example:**
+
+```javascript
+var array = [5, 12, 8, 130, 44];
+var found = array.find(function(element) {
+  return element > 10;
 });
-console.log(found); // 4
+console.log(found); // 12
 ```
 
 ### includes
 
-The `includes()` method determines whether an array includes a certain element, returning `true` or `false` as appropriate.
+The `includes()` method determines whether an array includes a certain value among its entries, returning true or false as appropriate.
 
 **Parameters:**
 
 - `searchElement`: The element to search for.
-- `fromIndex` (optional): The position in this array at which to begin searching for `searchElement`
-
-**Example:**
-
-```javascript
-var numbers = [1, 4, 9];
-var found = numbers.includes(1)
-console.log(found); // true
-```
-
-### at
-
-The `at()` method returns the element at specified index.
-
-**Parameters:**
-
-- `index`: The index to get element for.
 
 **Return value:**
 
-The element at specified index.
+`true` if the array includes the element, and `false` otherwise.
 
 **Example:**
 
 ```javascript
-var numbers = [1, 4, 9];
-var element = numbers.at(1)
-console.log(element); // 4
+var array = [1, 2, 3];
+console.log(array.includes(2)); // true
+console.log(array.includes(4)); // false
 ```
