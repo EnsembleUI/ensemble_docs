@@ -14,7 +14,11 @@ Global Scripts are ideal for situations where you need:
 ## How to Create a Script
 In Ensemble Studio, navigate to your app and select `Scripts` from the left menu. Click the button `Create new script` present at the top right corner of the studio.
 
+![add language](/images/scripts/create-script.png)
+
 Now open the script file and you can use standard JavaScript syntax to define variables and functions and then save the file.
+
+![add language](/images/scripts/Add-script-content.png)
 
 > Ensemble currently supports JavaScript syntax up to ES5.
 
