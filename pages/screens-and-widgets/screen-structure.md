@@ -1,5 +1,3 @@
-import { Callout } from 'nextra/components'
-
 # Ensemble Screen Structure
 
 Ensemble apps are built using a collection of screens, along with reusable components like [widgets](/screens-and-widgets/widgets), [scripts](/javascript-reference/global-scripts), [assets](/assets), etc. This guide explores the core structure of an Ensemble screen and the elements that make it up.
@@ -110,9 +108,7 @@ The header contains the Safe Area (e.g. iPhone notch) and by default has the bac
 | titleBarHeight    | integer                                | For consistency, the header's title bar has the default fixed height of 56 regardless of its content. You may adjust its height here. Minimum value is `0` |
 | flexibleMinHeight | integer                                | Applicable only if scrollableView is enabled. This attribute effectively sets the header's min height on scrolling (header's height will varies between the flexibleMinHeight and flexibleMaxHeight). Note that this attribute will be ignored if smaller than the titleBarHeight                                                                                              |
 | flexibleMaxHeight | integer                                | Applicable only if scrollableView is enabled. This attribute effectively sets the header's max height on scrolling (header's height will varies between the flexibleMinHeight and flexibleMaxHeight). This attribute will be ignored if smaller than the flexibleMinHeight                                                                                                     |
-<Callout type="info">
-Note: When the entire View is specified as scrollable, flexible background's height can vary in height (hence flexible) on scroll with a parallax effect.
-</Callout>
+> Note: When the entire View is specified as scrollable, flexible background's height can vary in height (hence flexible) on scroll with a parallax effect.
 
 ## Menu
 
@@ -268,8 +264,8 @@ View:
 
 ##### Output
 <p align="center">
-![Alt text](/images/build/image-2.png)
-![Alt text](/images/build/image-1.png)
+<img src="/images/build/image-2.png" alt="Page Skeleton" height="70%" width="70%">
+<img src="/images/build/image-1.png" alt="Page Skeleton" height="70%" width="70%">
 </p>
 
 > To get hands-on experience with Drawer, check the live example on [Ensemble Studio](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/0073ebe9-6b0b-4ebf-9e8b-72a93a1275df#)
@@ -342,7 +338,7 @@ View:
 
 ##### Output
 <p align="center">
-![Alt text](/images/build/image-3.png)
+<img src="/images/build/image-3.png" alt="Page Skeleton" height="70%" width="70%">
 </p>
 
 
@@ -413,7 +409,7 @@ Global: |-
 
 The output can be checked in the logs for browser
 <p align="center">
-![Alt text](/images/build/image-6.png)
+<img src="/images/build/image-6.png" alt="Page Skeleton" height="70%" width="70%">
 </p>
 
 ## Putting it together
@@ -469,7 +465,7 @@ menu:
 
 #### Output
 <p align="center">
-![Alt text](/images/build/image-4.png)
+<img src="/images/build/image-4.png" alt="Page Skeleton" height="70%" width="70%">
 </p>
 
 > To get hands-on experience with a complete Application, check [Ensemble Studio](https://studio.ensembleui.com/app/iM58Wgr7bgzTxEi7rV40/screen/cYMnCfhOya8Vq1QG6aCC?propertyPanelEnabled=true&instantPreviewDisabled=false)
