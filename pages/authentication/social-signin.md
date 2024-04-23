@@ -1,7 +1,7 @@
 # Social Sign In
 
 Ensemble supports Social Sign in with Google and Apple. This guide will specifically target the **Sign in with Google** flow.
-For each service, we support three different mechanism for managing the signed-in users: [Client-side](#client-side), with your [Server](#Server-side), or with [Firebase](/build/authentication/social-signin-firebase).
+For each service, we support three different mechanism for managing the signed-in users: [Client-side](#client-side), with your [Server](#Server-side), or with [Firebase](/authentication/firebase).
 
 <video width="70%"  controls>
   <source src="/images/signin-client.mov" type="video/mp4">

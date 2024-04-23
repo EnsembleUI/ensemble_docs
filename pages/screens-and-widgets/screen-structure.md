@@ -67,8 +67,8 @@ The View widget defines the overall structure of a page, including properties li
 
 | Property | Type | Description |
 | :------- |:-----|:------------|
-| backgroundColor        | [Color](/widget-reference/types#Color)                     | Background color for the screen starting with '0xFF' for full opacity e.g 0xFFCCCCCC. It can be specified as a number, a predefined color name, or a hexadecimal value starting with '0x'. `transparent` `black` `blue` `white` `red` `grey` `teal` `amber` `pink` `purple` `yellow` `green` `brown` `cyan` `indigo` `lime` `orange` |
-| backgroundImage        | [BackgroundImage](/widget-reference/types#BackgroundImage) | Background image of the View. |
+| backgroundColor        | [Color](/widgets/types#color)                     | Background color for the screen starting with '0xFF' for full opacity e.g 0xFFCCCCCC. It can be specified as a number, a predefined color name, or a hexadecimal value starting with '0x'. `transparent` `black` `blue` `white` `red` `grey` `teal` `amber` `pink` `purple` `yellow` `green` `brown` `cyan` `indigo` `lime` `orange` |
+| backgroundImage        | [BackgroundImage](/widgets/types#backgroundimage) | Background image of the View. |
 | useSafeArea            | boolean                                                    | Applicable only when we don't have a header. If true, insert paddings around the body content to account for the the devices' Safe Area (e.g. iPhone notch). Default is false.|
 | scrollableView         | boolean                                                    | Specify if the content of this screen is scrollable with a global scrollbar. Using this also allow you to customize the scrolling experience of the header. |
 | showNavigationIcon     | boolean                                                    | For a screen with header, the App will automatically show the Menu, Back, or Close icon (for modal screen) before the title. On modal screen without the header, the Close icon will be shown. Set this flag to false if you wish to hide the icons and handle the navigation yourself.                                              |
@@ -87,18 +87,18 @@ The header contains the Safe Area (e.g. iPhone notch) and by default has the bac
 | Property | Type | Description |
 | :------- |:-----|:------------|
 | titleText          | string                               | The title for the screen |
-| titleWidget        | [Widget](widget-reference/directory) | Render this widget as the screen title |
+| titleWidget        | [Widget](/widgets) | Render this widget as the screen title |
 | styles             | object                               | [see properties](#headerstyles) |
-| flexibleBackground | [Widget](widget-reference/directory) | This widget (typically used as an background image) acts as the header's background, with the title bar and the bottom widget overlaid on top. On non-scrollable screen, its dimensions is dictated by the header's width and height. |
+| flexibleBackground | [Widget](/widgets) | This widget (typically used as an background image) acts as the header's background, with the title bar and the bottom widget overlaid on top. On non-scrollable screen, its dimensions is dictated by the header's width and height. |
 
 #### Header.styles
 
 | Property | Type | Description |
 | :------- |:-----|:------------|
-| backgroundColor   | [Color](/widget-reference/types#Color) | By default the background color uses the theme's 'primary' color. You can override the header's background color here. It can be specified as a number, a predefined color name, or a hexadecimal value starting with '0x'. `transparent` `black` `blue` `white` `red` `grey` `teal` `amber` `pink` `purple` `yellow` `green` `brown` `cyan` `indigo` `lime` `orange`          |
-| color             | [Color](/widget-reference/types#Color) | By default the navigation icon, title, and action icons uses the theme's 'onPrimary' color. You can override their colors here. It can be specified as a number, a predefined color name, or a hexadecimal value starting with '0x'. `transparent` `black` `blue` `white` `red` `grey` `teal` `amber` `pink` `purple` `yellow` `green` `brown` `cyan` `indigo` `lime` `orange` |
+| backgroundColor   | [Color](/widgets/types#color) | By default the background color uses the theme's 'primary' color. You can override the header's background color here. It can be specified as a number, a predefined color name, or a hexadecimal value starting with '0x'. `transparent` `black` `blue` `white` `red` `grey` `teal` `amber` `pink` `purple` `yellow` `green` `brown` `cyan` `indigo` `lime` `orange`          |
+| color             | [Color](/widgets/types#color) | By default the navigation icon, title, and action icons uses the theme's 'onPrimary' color. You can override their colors here. It can be specified as a number, a predefined color name, or a hexadecimal value starting with '0x'. `transparent` `black` `blue` `white` `red` `grey` `teal` `amber` `pink` `purple` `yellow` `green` `brown` `cyan` `indigo` `lime` `orange` |
 | elevation         | integer                                | Raise the header on its z-coordinates relative to the body. This effectively creates a drop shadow on the header's bottom edge. Minimum value: 0, Maximum value: 24 |
-| shadowColor       | [Color](/widget-reference/types#Color) | If elevation is non-zero, this will override the drop shadow color of the header's bottom edge, starting with '0xFF' for full opacity. `transparent` `black` `blue` `white` `red` `grey` `teal` `amber` `pink` `purple` `yellow` `green` `brown` `cyan` `indigo` `lime` `orange`                                                                                               |
+| shadowColor       | [Color](/widgets/types#color) | If elevation is non-zero, this will override the drop shadow color of the header's bottom edge, starting with '0xFF' for full opacity. `transparent` `black` `blue` `white` `red` `grey` `teal` `amber` `pink` `purple` `yellow` `green` `brown` `cyan` `indigo` `lime` `orange`                                                                                               |
 | centerTitle       | boolean                                | Whether to align the title in the title bar's center horizontally (default: true) |
 | titleBarHeight    | integer                                | For consistency, the header's title bar has the default fixed height of 56 regardless of its content. You may adjust its height here. Minimum value is `0` |
 | flexibleMinHeight | integer                                | Applicable only if scrollableView is enabled. This attribute effectively sets the header's min height on scrolling (header's height will varies between the flexibleMinHeight and flexibleMaxHeight). Note that this attribute will be ignored if smaller than the titleBarHeight                                                                                              |
@@ -133,25 +133,25 @@ This is the navigation bar at the bottom of the screen, typical of most iOS and 
 | floating | boolean           | Mark this item as a floating icon |
 | floatingMargin | integer or string | The margin around the floating. |
 | floatingAlignment       | string            | How to align the floating in the BottomNavBar. The values are ` left``center``right ` and `none` |
-| color | [Color](/widget-reference/types#Color) | Unselected icon color, starting with '0xFF' for full opacity e.g 0xFFCCCCCC. It can be specified as a number, a predefined color name, or a hexadecimal value starting with '0x'. `transparent` `black` `blue` `white` `red` `grey` `teal` `amber` `pink` `purple` `yellow` `green` `brown` `cyan` `indigo` `lime` `orange` |
-| selectedColor           | [Color](/widget-reference/types#Color) | Selected icon color, starting with '0xFF' for full opacity e.g 0xFFCCCCCC. It can be specified as a number, a predefined color name, or a hexadecimal value starting with '0x'. `transparent` `black` `blue` `white` `red` `grey` `teal` `amber` `pink` `purple` `yellow` `green` `brown` `cyan` `indigo` `lime` `orange`            |
-| backgroundColor         | [Color](/widget-reference/types#Color) | Background color of the box. which can be represented in different formats. It can be specified as a number, a predefined color name, or a hexadecimal value starting with '0x'. `transparent` `black` `blue` `white` `red` `grey` `teal` `amber` `pink` `purple` `yellow` `green` `brown` `cyan` `indigo` `lime` `orange`           |
-| floatingBackgroundColor | [Color](/widget-reference/types#Color) | Floating item background color, starting with '0xFF' for full opacity e.g 0xFFCCCCCC. It can be specified as a number, a predefined color name, or a hexadecimal value starting with '0x'. `transparent` `black` `blue` `white` `red` `grey` `teal` `amber` `pink` `purple` `yellow` `green` `brown` `cyan` `indigo` `lime` `orange` |
-| floatingIconColor       | [Color](/widget-reference/types#Color) | Floating item icon color, starting with '0xFF' for full opacity e.g 0xFFCCCCCC. It can be specified as a number, a predefined color name, or a hexadecimal value starting with '0x'. `transparent` `black` `blue` `white` `red` `grey` `teal` `amber` `pink` `purple` `yellow` `green` `brown` `cyan` `indigo` `lime` `orange` |
+| color | [Color](/widgets/types#color) | Unselected icon color, starting with '0xFF' for full opacity e.g 0xFFCCCCCC. It can be specified as a number, a predefined color name, or a hexadecimal value starting with '0x'. `transparent` `black` `blue` `white` `red` `grey` `teal` `amber` `pink` `purple` `yellow` `green` `brown` `cyan` `indigo` `lime` `orange` |
+| selectedColor           | [Color](/widgets/types#color) | Selected icon color, starting with '0xFF' for full opacity e.g 0xFFCCCCCC. It can be specified as a number, a predefined color name, or a hexadecimal value starting with '0x'. `transparent` `black` `blue` `white` `red` `grey` `teal` `amber` `pink` `purple` `yellow` `green` `brown` `cyan` `indigo` `lime` `orange`            |
+| backgroundColor         | [Color](/widgets/types#color) | Background color of the box. which can be represented in different formats. It can be specified as a number, a predefined color name, or a hexadecimal value starting with '0x'. `transparent` `black` `blue` `white` `red` `grey` `teal` `amber` `pink` `purple` `yellow` `green` `brown` `cyan` `indigo` `lime` `orange`           |
+| floatingBackgroundColor | [Color](/widgets/types#color) | Floating item background color, starting with '0xFF' for full opacity e.g 0xFFCCCCCC. It can be specified as a number, a predefined color name, or a hexadecimal value starting with '0x'. `transparent` `black` `blue` `white` `red` `grey` `teal` `amber` `pink` `purple` `yellow` `green` `brown` `cyan` `indigo` `lime` `orange` |
+| floatingIconColor       | [Color](/widgets/types#color) | Floating item icon color, starting with '0xFF' for full opacity e.g 0xFFCCCCCC. It can be specified as a number, a predefined color name, or a hexadecimal value starting with '0x'. `transparent` `black` `blue` `white` `red` `grey` `teal` `amber` `pink` `purple` `yellow` `green` `brown` `cyan` `indigo` `lime` `orange` |
 | customItem              | object            | Allows user to use custom widgets for two states `selected` and `UnSelected`. |
 
 ##### BottomNavBar.items.customItem
 
 | Property       | Type   | Description                                            |
 | :------------- | :----- | :----------------------------------------------------- |
-| widget         | [Widget](widget-reference/directory) | Custom bottom navigation item for the unselected state |
-| selectedWidget | [Widget](widget-reference/directory) | Custom bottom navigation item for the selected state   |
+| widget         | [Widget](/widgets) | Custom bottom navigation item for the unselected state |
+| selectedWidget | [Widget](/widgets) | Custom bottom navigation item for the selected state   |
 
 #### BottomNavBar.styles
 
 | Property | Type | Description |
 | :------- |:-----|:------------|
-| backgroundColor | [Color](/widget-reference/types#Color) | Background color of the box. which can be represented in different formats. It can be specified as a number, a predefined color name, or a hexadecimal value starting with '0x'. `transparent` `black` `blue` `white` `red` `grey` `teal` `amber` `pink` `purple` `yellow` `green` `brown` `cyan` `indigo` `lime` `orange` |
+| backgroundColor | [Color](/widgets/types#color) | Background color of the box. which can be represented in different formats. It can be specified as a number, a predefined color name, or a hexadecimal value starting with '0x'. `transparent` `black` `blue` `white` `red` `grey` `teal` `amber` `pink` `purple` `yellow` `green` `brown` `cyan` `indigo` `lime` `orange` |
 
 #### Example
 
@@ -355,7 +355,7 @@ API provides a convenient way to interact with external services or data sources
 | onError    | Action | The action to handle errors                                                     |
 | inputs     | Array  | The input values                                                                |
 
-You can find many great example [here](/actions/1-invokeAPI)
+You can find many great example [here](/actions/invoke-API)
 
 ## Global
 

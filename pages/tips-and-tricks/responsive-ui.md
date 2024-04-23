@@ -5,9 +5,9 @@
 ## In a nutshell:
 
 1. Use `${device.width}` to modify properties according to device width
-2. Use the [GridView widget's](/widget-reference/gridview) built-in responsive breakpoints
-3. Use the [Flow widget](/widget-reference/flow) to wrap content
-4. Use the [Flex widget](/widget-reference/flex) to toggle between horizontal and vertical layouts
+2. Use the [GridView widget's](/widgets/gridview) built-in responsive breakpoints
+3. Use the [Flow widget](/widgets/flow) to wrap content
+4. Use the [Flex widget](/widgets/flex) to toggle between horizontal and vertical layouts
 5. Avoid setting explicit width and height, specially for container widgets (Rows, Columns, GridView, etc.)
 
 
@@ -24,7 +24,7 @@ Column:
 
 ## 2. GridView's built-in breakpoints
 
-[GridView widget](/widget-reference/gridview) includes built-in responsive breakpoints. 
+[GridView widget](/widgets/gridview) includes built-in responsive breakpoints. 
 
 You can pass 1, 3, or 5 values to `horizontalTileCount` property to make the grid responsive based on predefined set of breakpoints.
 
@@ -64,7 +64,7 @@ GridView:
 
 ## 3. Wrap content with Flow widget
 
-[Flow widget](/widget-reference/flow) displays its children horizontally and wraps the children when it runs out of horizontal space.
+[Flow widget](/widgets/flow) displays its children horizontally and wraps the children when it runs out of horizontal space.
 
 ```yaml
 Flow:
@@ -82,7 +82,7 @@ Flow:
 
 ## 4. Toggle between horizontal and vertical layouts with Flex widget
 
-[Flex widget](/widget-reference/flex) dynamically switches between a Row or a Column based on the `direction` property.
+[Flex widget](/widgets/flex) dynamically switches between a Row or a Column based on the `direction` property.
 
 ```yaml
 Flex:
