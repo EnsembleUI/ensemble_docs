@@ -28,8 +28,8 @@
 | minCountMessage         | string  | Custom message to show when captured/selected media is greater than minCount                                                   |
 | permissionDeniedMessage | string  | Set custom message when access to camera is denied                                                                             |
 | nextButtonLabel         | string  | Set custom label on next button.                                                                                               |
-| cameraRotateIcon        | widget  | Set custom icon for camera rotate button. [see here](/widget-reference/Icon)                                                   |
-| galleryPickerIcon       | widget  | Set custom icon for gallery picker button. [see here](/widget-reference/Icon)                                                  |
+| cameraRotateIcon        | widget  | Set custom icon for camera rotate button. [see here](/widgets/Icon)                                                   |
+| galleryPickerIcon       | widget  | Set custom icon for gallery picker button. [see here](/widgets/Icon)                                                  |
 | focusIcon               | widget  | Set custom icon for focus node.                                                                                                |
 | assistAngle             | object  | Show assist message whenever angle goes below minAngle or above minAngle. [see properties](#values-for-optionsassistangle)     |
 | assistSpeed             | object  | Show assist message whenever camera is moving faster than maxSpeed. [see properties](#values-for-optionsassistspeed)           |
