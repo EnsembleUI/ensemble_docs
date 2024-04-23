@@ -5,7 +5,7 @@ There are two ways to re-use js code as follows -
 - `Global` block within a screen definition. This, despite its name, is limited to the screen it is defined in and cannot be referenced in other screens
 - `Scripts` a script that is defined independent of a screen (see video below) may be used anywhere in the app by simply importing it. 
 
-In both cases above, you can define javascript variables (only `var` is supported as this is ES5, see [here](/intro)) or functions. 
+In both cases above, you can define javascript variables (only `var` is supported as this is ES5, see [here](/javascript-reference/intro)) or functions. 
 
 ## Example of `Global` code block within a screen
 
