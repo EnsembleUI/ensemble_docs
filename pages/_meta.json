@@ -16,8 +16,7 @@
     "display": "hidden"
   },
   "scripts-with-js": {
-    "title": "Scripts with JS",
-    "display": "hidden"
+    "title": "Scripts with JS"
   },
   "apis": {
     "title": "APIs"
