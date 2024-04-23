@@ -43,7 +43,7 @@ This guide outlines the steps to generate a Google Play Console API Key, enablin
 8. **Manage Key:**
     - Click on the edit icon in the Action row, select `Manage Key`.
 
-![Manage Key](/images/deploy/46677360/da4986fe-311c-4080-87cc-240b119fbce2.png)
+![Manage Key](/images/deploy/da4986fe-311c-4080-87cc-240b119fbce2.png)
 
 9. **Generate JSON Key File:**
     - In the `Keys` tab, click on `Add Key`, then `Create new key`.
