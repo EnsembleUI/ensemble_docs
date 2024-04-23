@@ -240,4 +240,4 @@ API:
 | onResponse | Action | The action to handle the response                                          |
 | onError    | Action | The action to handle errors                                                |
 
-Details about API [here](/build/user-interface/1-page-structure)
+Details about API [here](/apis/api-overview)
