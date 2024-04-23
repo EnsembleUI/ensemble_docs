@@ -2,7 +2,7 @@
 
 navigateViewGroup action allows users to navigate between menu items while maintaining the menu in place. This simulate the experience when user taps on different nav items.
 
-To use this action, first create your [ViewGroup](/build/user-interface/1-page-structure?id=view-group).
+To use this action, first create your [ViewGroup](/screens-and-widgets/screen-structure#view-group).
 
 ### Properties
 
