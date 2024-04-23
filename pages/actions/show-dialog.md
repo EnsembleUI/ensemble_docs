@@ -12,11 +12,10 @@ showDialog action triggers the display of a modal dialog box within the app, pre
 
 #### properties.options
 
-| Property         | Type    | Description                                                                                                                                                                           |
-| :--------------- | :------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| minWidth         | integer |                                                                                                                                                                                       |
-| maxWidth         | integer |                                                                                                                                                                                       |
-| minHeight        | integer |                                                                                                                                                                                       |
+| Property        | Type   | Description                                                                     |
+| minWidth         | integer | |
+| maxWidth         | integer | |
+| minHeight        | integer | |
 | horizontalOffset | number  | Offset the dialog's position horizontally, with -1.0 for the screen's left and 1.0 for the screen's right. (default is 0 for centering horizontally) minimum `-1.0` and maximum `1.0` |
 | verticalOffset   | number  | Offset the dialog's position vertically, with -1.0 for the screen's top and 1.0 for the screen's bottom. (default is 0 for centering vertically) minimum `-1.0` and maximum `1.0`     |
 | style            | string  | Render the dialog with a default style. You can also specify 'none' and control your own styles in your widget. `default` `none`                                                      |
@@ -106,13 +105,6 @@ MyCustomDialog:
 Try complete example [here](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/HRIajN2i8bDDVTL32j8m?propertyPanelEnabled=true&instantPreviewDisabled=false&editorV2Enabled=true)
 
 
-
-**Output**
-
-![Alt text](/images/actions/image--4.png)
-
-![Alt text](/images/actions/image--5.png)
-
 **Example with inputs**
 
 We can also make use of inputs property for `showDialog` action to pass any input parameters to be used with dialog. Lets look at the previous example but this time with some input values.
@@ -172,8 +164,3 @@ MyCustomDialog:
 
 - In the code for showDialog we are passing an input `name` with value `Peter` which can be seen clearly in the output.
 
-**Output**
-
-![Alt text](/images/actions/image--1.png)
-
-![Alt text](/images/actions/image--3.png)
