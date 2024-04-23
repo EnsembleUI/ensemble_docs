@@ -13,6 +13,7 @@ showDialog action triggers the display of a modal dialog box within the app, pre
 #### properties.options
 
 | Property        | Type   | Description                                                                     |
+| :-------------- | :----- | :------------------------------------------------------------------------------ |
 | minWidth         | integer | |
 | maxWidth         | integer | |
 | minHeight        | integer | |
@@ -120,7 +121,7 @@ View:
     Column:
       styles: { margin: 10, gap: 5 }
       children:
-		- Text:
+	- Text:
             text: You can customize the dialog style and provide inputs as well
         - Button:
             label: Show Custom Dialog
