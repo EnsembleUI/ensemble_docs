@@ -130,7 +130,7 @@ For example.
 - [String](/javascript-reference/String)
 - [Numbers](/javascript-reference/Numbers)
 - [Date](/javascript-reference/Date)
-- [Object and Array](/javascript-reference/MapAndArray)
+- [Object and Array](/javascript-reference/Map-and-Array)
 - [Globals](/javascript-reference/Global)
 - [Math](/javascript-reference/Math)
 - [JSON](/javascript-reference/JSON)
