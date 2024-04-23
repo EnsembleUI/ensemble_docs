@@ -1,18 +1,24 @@
+import { Callout } from 'nextra/components'
+
 # Ensemble Screen Structure
 
-An Ensemble app comprises a series of screens, and other artifacts such as reusable widgets, scripts, asset files, etc. Each screen starts with a [View](#view), followed by an optional [header](#header), an optional [menu](#menu), and a single widget for the body. There can be one of two things on ensemble page either a [View](#view) or group of multiple views together as [ViewGroup](#view-group).
+Ensemble apps are built using a collection of screens, along with reusable components like [widgets](/screens-and-widgets/widgets), [scripts](/javascript-reference/global-scripts), [assets](/assets), etc. This guide explores the core structure of an Ensemble screen and the elements that make it up.
 
-List of things you will find reference and details here.
+**Key Components of Screen:**
+This section serves as a reference point for the key elements you'll encounter while creating a screen on Ensemble:
 
-- [View](#view)
-- [ViewGroup](#view-group)
-- [header](#header)
-- [Menu](#menu)
-- [Body](#body)
-- [API](#api)
-- [Global](#global)
+- [View](#view): The fundamental building block for screen content and layout.
+- [ViewGroup](#view-group): A container for managing and arranging multiple views.
+- [Header](#header): Optional element for displaying titles, navigation, or controls at the top of the screen.
+- [Menu](#menu): Optional element for user navigation within the app.
+- [Body](#body): Main content area of a screen, typically containing widgets.
+- [API](#api): The collection of functions and tools provided by Ensemble for building your app.
+- [Global](#global): Elements or functionalities accessible across all screens in your app.
 
+Below is the overview of the basic components being arranged on the screen.
+<p align="center">
 <img src="/images/view-structure.png" alt="Page Skeleton" height="70%" width="70%">
+</p>
 
 ## View Group
 
@@ -43,11 +49,12 @@ ViewGroup:
         page: Profile
 ```
 
-Check it out in [studio](https://studio.ensembleui.com/app/3vEZBIhDyYnIQo6BLN2O/screen/Wewvp6ZUyb0PBwkTAltQ?propertyPanelEnabled=true&instantPreviewDisabled=false)
-
 ##### Output
-
+<p align="center">
 <img src="/images/page_structure_1.png" style="border-radius:8px;" alt="BottomNavBar" height="500"/>
+</p>
+
+> To get hands-on experience with View Group, check the live example on [Ensemble Studio](https://studio.ensembleui.com/app/3vEZBIhDyYnIQo6BLN2O/screen/Wewvp6ZUyb0PBwkTAltQ?propertyPanelEnabled=true&instantPreviewDisabled=false)
 
 ## View
 
@@ -69,9 +76,9 @@ The View widget defines the overall structure of a page, including properties li
 | :------- |:-----|:------------|
 | backgroundColor        | [Color](/widgets/types#color)                     | Background color for the screen starting with '0xFF' for full opacity e.g 0xFFCCCCCC. It can be specified as a number, a predefined color name, or a hexadecimal value starting with '0x'. `transparent` `black` `blue` `white` `red` `grey` `teal` `amber` `pink` `purple` `yellow` `green` `brown` `cyan` `indigo` `lime` `orange` |
 | backgroundImage        | [BackgroundImage](/widgets/types#backgroundimage) | Background image of the View. |
-| useSafeArea            | boolean                                                    | Applicable only when we don't have a header. If true, insert paddings around the body content to account for the the devices' Safe Area (e.g. iPhone notch). Default is false.|
-| scrollableView         | boolean                                                    | Specify if the content of this screen is scrollable with a global scrollbar. Using this also allow you to customize the scrolling experience of the header. |
-| showNavigationIcon     | boolean                                                    | For a screen with header, the App will automatically show the Menu, Back, or Close icon (for modal screen) before the title. On modal screen without the header, the Close icon will be shown. Set this flag to false if you wish to hide the icons and handle the navigation yourself.                                              |
+| useSafeArea            | boolean                                                    | Applicable only when we don't have a header. If true, insert paddings around the body content to account for the devices' Safe Area (e.g. iPhone notch). Default is false.|
+| scrollableView         | boolean                                                    | Specify if the content of this screen is scrollable with a global scrollbar. Using this also allows you to customize the scrolling experience of the header. |
+| showNavigationIcon     | boolean                                                    | For a screen with header, the App will automatically show the Menu, Back, or Close icon (for the modal screen) before the title. On the modal screen without the header, the Close icon will be shown. Set this flag to false if you wish to hide the icons and handle the navigation yourself.                                              |
 | navigationIconPosition | string                                                     | On modal screen without a header, you can position the close button at the `start` or `end` of the screen. For left-to-right languages like English, start is on the left and end is on the right. This property has no effect on a screen with header.                                                                              |
 
 ## Header
@@ -103,8 +110,9 @@ The header contains the Safe Area (e.g. iPhone notch) and by default has the bac
 | titleBarHeight    | integer                                | For consistency, the header's title bar has the default fixed height of 56 regardless of its content. You may adjust its height here. Minimum value is `0` |
 | flexibleMinHeight | integer                                | Applicable only if scrollableView is enabled. This attribute effectively sets the header's min height on scrolling (header's height will varies between the flexibleMinHeight and flexibleMaxHeight). Note that this attribute will be ignored if smaller than the titleBarHeight                                                                                              |
 | flexibleMaxHeight | integer                                | Applicable only if scrollableView is enabled. This attribute effectively sets the header's max height on scrolling (header's height will varies between the flexibleMinHeight and flexibleMaxHeight). This attribute will be ignored if smaller than the flexibleMinHeight                                                                                                     |
-
-Note: when the entire View is specified as scrollable, flexible background's height can vary in height (hence flexible) on scroll with a parallax effect.
+<Callout type="info">
+Note: When the entire View is specified as scrollable, flexible background's height can vary in height (hence flexible) on scroll with a parallax effect.
+</Callout>
 
 ## Menu
 
@@ -199,7 +207,7 @@ This sippet has example for how user can utilize
 1. Custom widgets as items for the menu
 2. Floating icons
 
-you can check the complete example [here](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/aa634599-cd5d-411c-a4b6-1163f3b5c558).
+> To get hands-on experience with BottomNavBar, check the live example on [Ensemble Studio](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/aa634599-cd5d-411c-a4b6-1163f3b5c558).
 
 
 ### Drawer
@@ -258,16 +266,19 @@ View:
 ```
 
 
-You can also check live example [here](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/0073ebe9-6b0b-4ebf-9e8b-72a93a1275df#)
-
 ##### Output
-
+<p align="center">
 ![Alt text](/images/build/image-2.png)
 ![Alt text](/images/build/image-1.png)
+</p>
+
+> To get hands-on experience with Drawer, check the live example on [Ensemble Studio](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/0073ebe9-6b0b-4ebf-9e8b-72a93a1275df#)
 
 ### End Drawer
 
-Similar to Drawer but the drawer icon will be positioned to the 'end' of the header (right for most languages, left for RTL languages). You can check its properties [here](#drawerproperties). You can find its example in [Kitchen Sink](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/YIcCi9aXiGJKftQRNi34#)
+Similar to Drawer but the drawer icon will be positioned to the 'end' of the header (right for most languages, left for RTL languages). You can check its properties [here](#drawerproperties). 
+
+> To get hands-on experience with End Drawer, check the live example on [Ensemble Studio](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/YIcCi9aXiGJKftQRNi34#)
 
 ### SideBar
 
@@ -329,11 +340,14 @@ View:
             This page includes menu displayed as Sidebar
 ```
 
-You can also check live example [here](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/QZyoRkHHrHEAkGJMwoNU#)
-
 ##### Output
-
+<p align="center">
 ![Alt text](/images/build/image-3.png)
+</p>
+
+
+> To get hands-on experience with Sidebar, check the live example on [Ensemble Studio](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/QZyoRkHHrHEAkGJMwoNU#)
+
 
 ## Body
 
@@ -355,7 +369,7 @@ API provides a convenient way to interact with external services or data sources
 | onError    | Action | The action to handle errors                                                     |
 | inputs     | Array  | The input values                                                                |
 
-You can find many great example [here](/actions/invoke-API)
+> To learn about API's in detail, click [here](/actions/invoke-API)
 
 ## Global
 
@@ -398,8 +412,9 @@ Global: |-
 **Output**
 
 The output can be checked in the logs for browser
-
+<p align="center">
 ![Alt text](/images/build/image-6.png)
+</p>
 
 ## Putting it together
 
@@ -453,7 +468,8 @@ menu:
 
 
 #### Output
-
+<p align="center">
 ![Alt text](/images/build/image-4.png)
+</p>
 
-You can check the complete App [here](https://studio.ensembleui.com/app/iM58Wgr7bgzTxEi7rV40/screen/cYMnCfhOya8Vq1QG6aCC?propertyPanelEnabled=true&instantPreviewDisabled=false)
+> To get hands-on experience with a complete Application, check [Ensemble Studio](https://studio.ensembleui.com/app/iM58Wgr7bgzTxEi7rV40/screen/cYMnCfhOya8Vq1QG6aCC?propertyPanelEnabled=true&instantPreviewDisabled=false)
