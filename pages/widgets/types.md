@@ -100,7 +100,7 @@ This property configures a background image for a widget, including its source, 
 | Property  | Type                                           | Description                                                                                                         |
 |:----------|:-----------------------------------------------|:--------------------------------------------------------------------------------------------------------------------|
 | source    | string                                         | The Image URL to fill the background.                                                                               |
-| fallback  | [Widget](/widgets/directory)          | Return an inline widget or specify a custom widget to be rendered when the backgroundImage fails to load the image. |
+| fallback  | [Widget](/widgets)          | Return an inline widget or specify a custom widget to be rendered when the backgroundImage fails to load the image. |
 | fit       | [Fit](/widgets/types#Fit)             | How to fit the image within the dimensions.                                                                         |
 | alignment | [Alignment](/widgets/types#Alignment) | Align this image relative to its parent or dimensions.                                                              |
 
