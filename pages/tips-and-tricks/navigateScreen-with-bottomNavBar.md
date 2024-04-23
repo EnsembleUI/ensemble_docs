@@ -1,10 +1,10 @@
 # Using navigate Screen with BottomNavBar
 
-We can use [navigateScreen](/build/make-it-interactive/actions-and-events/8-navigateScreen) for combining functionality of [BottomNavBar](/build/user-interface/1-page-structure) together with it for daily tasks like beside using BottomNavBar items to navigate across different screens, we can also make use of [navigateScreen](/build/make-it-interactive/actions-and-events/8-navigateScreen) here to navigate across screen keeping the bottomNavBAr in place as well. Let us look at an example to make better sense of it.
+We can use [navigateScreen](/actions/navigate-screen) for combining functionality of [BottomNavBar](/screens-and-widgets/screen-structure#bottomnavbar) together with it for daily tasks like beside using BottomNavBar items to navigate across different screens, we can also make use of [navigateScreen](/actions/navigate-screen) here to navigate across screen keeping the bottomNavBAr in place as well. Let us look at an example to make better sense of it.
 
 **Example**
 
-In this scenario we want to navigate to Profile screen using `Account` item in the bottomNavBar menu and also an icon in our `dashboard` screen. Given is code for different screen widgets `CustomHeader` for our screen header with an Profile Picture and [ViewGroup](/build/user-interface/1-page-structure) with bottomNavBar.
+In this scenario we want to navigate to Profile screen using `Account` item in the bottomNavBar menu and also an icon in our `dashboard` screen. Given is code for different screen widgets `CustomHeader` for our screen header with an Profile Picture and [ViewGroup](/screens-and-widgets/screen-structure#view-group) with bottomNavBar.
 
 **Explanation**
 
