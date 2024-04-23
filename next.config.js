@@ -12,6 +12,12 @@ module.exports = withNextra({
         destination: '/tips-and-tricks/:errorId',
         permanent: false,
       },
+      {
+        // from 'doc/:topic' to 'concepts/:topic'
+        source: '/doc/:topic',
+        destination: '/concepts/:topic',
+        permanent: false,
+      }
     ]
   }
 })

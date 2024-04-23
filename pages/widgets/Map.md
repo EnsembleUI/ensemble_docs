@@ -91,7 +91,7 @@ API:
       };
 
 ```
-<img src="/images/screenshots/map2.png" alt="Screenshot" width="450">
+<img src="/images/screenshots/map-2.png" alt="Screenshot" width="450">
 
 ### Using Images
 You can use images as markers by providing a URL or local asset. To further fine-tune the marker dimension, use `resizedWidth` or `resizedHeight`, but avoid using both to maintain the aspect ratio.
@@ -159,7 +159,7 @@ API:
         }]
       };
 ```
-<img src="/images/screenshots/map3.png" alt="Screenshot" width="450">
+<img src="/images/screenshots/map-3.png" alt="Screenshot" width="450">
 
 ## Properties
 
