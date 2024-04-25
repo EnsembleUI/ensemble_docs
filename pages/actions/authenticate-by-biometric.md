@@ -1,4 +1,4 @@
-## biometricAuth
+## authenticateByBiometric
 
 It helps to authenticate user based on biometrics such as face and fingerprint based on sensor available on user's device. 
 
@@ -52,7 +52,7 @@ In your `AndroidManifest.xml`:
 Button:
   label: Biometric Auth
   onTap:
-    biometricAuth:
+    authenticateByBiometric:
       label: Authenticate to see your balance
 
       # if device has pin configurated but not biometric sensor be it face or finger, setting allowConfiguration to true will popup user to first configure the settings.
@@ -69,9 +69,9 @@ Button:
         //@code
         ensemble.debug('sensor is not configured');
 
-      onSensorNotAvailiable: |
+      onSensorNotAvailable: |
         //@code
-        ensemble.debug('sensor not availiable');
+        ensemble.debug('sensor not available');
 
       onError: |
         //@code
