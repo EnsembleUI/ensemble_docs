@@ -20,9 +20,7 @@ API:
       query:  'mutation {insert_profiles_one(object: {name: "chad", id: 24}) {id name}}'
 ```
 
-This GraphQL API runs on Hasura's platform. To execute a mutation, we submit a POST request to the appropriate URL with the necessary headers.
-The request body contains information about the type of operation (mutation in this case), the specific method for performing the mutation 
-(matching the server's method name), input values for the data being inserted, and the desired fields to be returned in the response. 
+This GraphQL API runs on Hasura's platform. To execute a mutation, we submit a POST request to the appropriate URL with the necessary headers.The request body contains information about the type of operation (mutation in this case), the specific method for performing the mutation (matching the server's method name), input values for the data being inserted, and the desired fields to be returned in the response. 
 
 ## Deleting a record
 
@@ -64,5 +62,47 @@ key columns in a database schema. Primary keys uniquely identify each row in a t
 that as the value. This value signifies the record in the database that we intend to update. The second input is for _set, which represents
 a unique input object utilized in mutations to modify particular fields of an object. Within this input, we include the fields that we wish
 to update in the record.
+
+## Inserting multiple records at once
+
+```
+addFourProfiles:
+    url: https://regular-satyr-34.hasura.app/v1/graphql
+    method: POST
+    inputs:
+      - profileId
+      - profileName
+      - profileIdTwo
+      - profileNameTwo
+      - profileIdThree
+      - profileNameThree
+      - profileIdFour
+      - profileNameFour
+    headers:
+      Content-Type: application/json
+      x-hasura-admin-secret: ${secrets["hasura-admin-secret"]}
+    body:
+      query:  'mutation {insert_profiles(objects: [{name: "${profileName}", id: ${profileId}}, {id: ${profileIdTwo}, name: "${profileNameTwo}"}, {id: ${profileIdThree}, name: "${profileNameThree}"}, {id: ${profileIdFour}, name: "${profileNameFour}"}]) {returning {id}}}' 
+```
+
+In the scenario described, we aim to insert several records into the database at once. The IDs and names of these records are provided as inputs and then sent to the mutation query for execution. Following Hasura GraphQL conventions, each combination of ID and name represents an individual object, which is included within the "objects" clause during processing. Additionally, we retrieve and return the IDs of each newly inserted record.
+
+## Deleting multiple records at once
+
+```
+deleteTwoProfiles:
+    url: https://regular-satyr-34.hasura.app/v1/graphql
+    method: POST
+    inputs:
+      - firstID
+      - secondID
+    headers:
+      Content-Type: application/json
+      x-hasura-admin-secret: ${secrets["hasura-admin-secret"]}
+    body:
+      query:  'mutation {delete_profiles(where: {id: {_in: [${firstID},${secondID}]}}){affected_rows}}'
+```
+
+In this context, we aim to delete multiple records from the database simultaneously. The IDs of the records to be deleted are given as inputs to the API and then passed to the mutation query for execution. Hasura GraphQL employs the where clause in deletion operations to determine which records should be deleted based on specific criteria. When using Hasura GraphQL mutations for deletion, you can utilize the where clause to filter the targeted records for deletion. Upon completing the deletion operation, we provide information about the number of affected rows.
 
 
