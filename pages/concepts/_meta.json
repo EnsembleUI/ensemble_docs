@@ -4,5 +4,8 @@
     },
     "item-template": {
         "title": "Item Template"
+    },
+    "data-binding": {
+        "title": "Data Binding"
     }
 }
