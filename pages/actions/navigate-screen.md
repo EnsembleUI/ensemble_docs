@@ -10,7 +10,7 @@ Like any other action, navigateScreen may be called in YAML or in the JS code.
 | :------------- | :----- | :-------------------------------------------------------------------------------------- |
 | name           | string | Enter the Name or ID of your Screen                                                     |
 | inputs         | object | Specify the key/value pairs to pass into the next Screen                                |
-| options        | object | [see properties]()                                                                      |
+| options        | object | [see properties](#properties-options)                                                                      |
 | onNavigateBack | action | triggers when users returns back to a screen it previously visited using navigateScreen |
 | transition | Map | [Screen transition](#screen-transition) , [Screen transition example](#screen-transition-example)
 
@@ -54,7 +54,7 @@ Animate screen transition from one to another.
 |bottomCenter|
 |bottomRight|
 
-#### properties.options
+#### properties-options
 
 | Property             | Type    | Description                                                                                                                                                                                   |
 | :------------------- | :------ | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
