@@ -7,5 +7,8 @@
     },
     "data-binding": {
         "title": "Data Binding"
+    },
+    "screen-lifecycle": {
+        "title": "Screen Lifecycle"
     }
 }
