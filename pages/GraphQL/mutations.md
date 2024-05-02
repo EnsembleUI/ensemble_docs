@@ -85,7 +85,9 @@ addFourProfiles:
       query:  'mutation {insert_profiles(objects: [{name: "${profileName}", id: ${profileId}}, {id: ${profileIdTwo}, name: "${profileNameTwo}"}, {id: ${profileIdThree}, name: "${profileNameThree}"}, {id: ${profileIdFour}, name: "${profileNameFour}"}]) {returning {id}}}' 
 ```
 
-In the scenario described, we aim to insert several records into the database at once. The IDs and names of these records are provided as inputs and then sent to the mutation query for execution. Following Hasura GraphQL conventions, each combination of ID and name represents an individual object, which is included within the "objects" clause during processing. Additionally, we retrieve and return the IDs of each newly inserted record.
+In this specific context within Hasura GraphQL, our goal is to execute a batch insertion of multiple records into the database simultaneously. To achieve this, we supply the IDs and names of these records as input parameters, which are subsequently forwarded to the mutation query for processing and execution. Adhering to Hasura GraphQL conventions, each pairing of an ID and a name is treated as a distinct entity or object, forming the basis of the "objects" clause during the processing phase.
+
+Furthermore, as part of this insertion process, we not only add the records to the database but also retrieve and return the IDs of each newly inserted record. This practice ensures that we have a comprehensive understanding of the outcome of the insertion operation, allowing us to track and manage the newly created records effectively.
 
 ## Deleting multiple records at once
 
@@ -103,6 +105,6 @@ deleteTwoProfiles:
       query:  'mutation {delete_profiles(where: {id: {_in: [${firstID},${secondID}]}}){affected_rows}}'
 ```
 
-In this context, we aim to delete multiple records from the database simultaneously. The IDs of the records to be deleted are given as inputs to the API and then passed to the mutation query for execution. Hasura GraphQL employs the where clause in deletion operations to determine which records should be deleted based on specific criteria. When using Hasura GraphQL mutations for deletion, you can utilize the where clause to filter the targeted records for deletion. Upon completing the deletion operation, we provide information about the number of affected rows.
+In this scenario within Hasura GraphQL, our objective is to perform a batch deletion of multiple records from the database concurrently. We supply the IDs of the records slated for deletion as inputs to the API, which are subsequently forwarded to the mutation query for processing. Hasura GraphQL employs the where clause as a pivotal component in deletion operations, guiding the system to discern which records are slated for deletion based on predefined criteria. By leveraging the where clause in Hasura GraphQL mutations designed for deletion, you can effectively filter and target specific records for removal, enhancing precision and control over the deletion process.
 
-
+Upon successful completion of the deletion operation, we furnish feedback regarding the impact of this action by providing information regarding the number of rows affected, offering a comprehensive view of the changes made to the database as a result of the deletion process.
