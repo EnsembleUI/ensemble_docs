@@ -8,13 +8,14 @@ To use this action, first create your [ViewGroup](/screens-and-widgets/screen-st
 
 | Property       | Type    | Description                                                                             |
 | :------------- | :------ | :-------------------------------------------------------------------------------------- |
-| viewIndex       | integer | The index of the menu item to navigate to, starting from 0                             |
+| viewIndex      | integer | The index of the menu item to navigate to, starting from 0                              |
+| name           | string  | The name of the ViewGroup. This is the name given to the screen when it was created. If the current screen is part of the ViewGroup, name is not required.  |
 
 
 ### Example
 
 
-Given the following ViewGroup:
+Given the following ViewGroup, named `home`:
 
 ```yaml
 ViewGroup:
@@ -59,12 +60,14 @@ View:
             label: Go to NavigateViewGroupScreen1
             onTap:
               navigateViewGroup:
+                name: home
                 viewIndex: 0
 
         - Button:
             label: Go to NavigateViewGroupScreen3
             onTap:
               navigateViewGroup:
+                name: home
                 viewIndex: 2
 ```
 
