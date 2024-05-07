@@ -10,5 +10,8 @@
     },
     "screen-lifecycle": {
         "title": "Screen Lifecycle"
+    },
+    "custom-widgets": {
+        "title": "Custom Widgets"
     }
 }
