@@ -3,7 +3,7 @@
 In this guide, we will enable authentication through Firebase.
 
 <video width="70%"  controls>
-  <source src="/images/firebase-auth.mov" type="video/mp4">
+  <source src="/images/firebase/firebase-auth.mov" type="video/mp4">
   <source src="movie.ogg" type="video/ogg">
   Your browser does not support the video tag.
 </video>
@@ -76,7 +76,7 @@ To get these details, use the `GoogleService-Info.plist` and  `google-services.
 
 Here's an example of the outcome.
 
-<img src="/images/firebase-account-details.png" alt="firebase account details" style="max-width: 900px;">
+<img src="/images/firebase/firebase-account-details.png" alt="firebase account details" style="max-width: 900px;">
 
 
 #### Add sign-in providers to Ensemble app
@@ -95,7 +95,7 @@ In the same file, `ensemble-config.yaml` , under `services` add the following.
 Here's an example of the outcome.
 
 
-<img src="/images/firebase-provider-details.png" alt="firebase provider details" style="max-width: 900px;">
+<img src="/images/firebase/firebase-provider-details.png" alt="firebase provider details" style="max-width: 900px;">
 
 
 ---
