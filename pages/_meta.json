@@ -58,6 +58,9 @@
   "deploy": {
     "title": "Deploy"
   },
+  "host-on-your-server": {
+    "title": "Host on your server"
+  },
   "--References": {
     "type": "separator",
     "title": "References"
