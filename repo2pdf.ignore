@@ -1,0 +1,4 @@
+{
+    "ignoredFiles": ["tsconfig.json", "dist", "node_modules", "components", "public"],
+    "ignoredExtensions": [".raw", ".json",".tsx",".js",".yaml"]
+}
