@@ -16,7 +16,7 @@ Before we start configuration, ensure that we have the following in place:
 
 Firebase supports integration with various app platforms. Here's a breakdown for each platform:
 
-![All Apps](/public/images/firebase/addApp.png)
+![All Apps](/images/firebase/addApp.png)
 #### Android
 
 - Click the Android icon(looks like a little robot) to start the setup.
@@ -49,7 +49,7 @@ Firebase supports integration with various app platforms. Here's a breakdown for
 - Click "Register app" to complete this step.
 - Firebase will provide on-screen instructions where you will find a portion with name `firebaseConfig` in code given. Copy that portion and save in a file with rest configuration files.
 
-![All Apps](/public/images/firebase/allApps.png)
+![All Apps](/images/firebase/allApps.png)
 
 ## 2. Configure Ensemble app
 Now that you've registered your app with Firebase and downloaded the configuration files, 
@@ -83,7 +83,7 @@ acts as a translator between your app and Firebase, providing the necessary info
 ```
 After we have replaced the placeholder hashtags (#) in our configuration file, it will look like this:
 
-![Configuration File](/public/images/firebase/configfile.png)
+![Configuration File](/images/firebase/configfile.png)
 
 #### Update Environmental Variables
 
@@ -91,6 +91,6 @@ Within your Ensemble application, navigate to the settings section and look for 
 - `api_providers`: Set the value of this variable to `firestore`. This tells your app to use Firebase Firestore as a data provider.
 - `firestore_config`: This is where you'll paste the complete configuration file you created earlier, including the replaced values from your downloaded configuration files.
 
-![Environment Variables](/public/images/firebase/envVari.png)
+![Environment Variables](/images/firebase/envVari.png)
 
 By following these steps, you'll successfully establish a connection between your Ensemble app and Firebase.
