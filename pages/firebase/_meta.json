@@ -1,5 +1,8 @@
 {
     "configuration": {
       "title": "Configuration"
+    },
+    "firestore-operations": {
+      "title": "Firestore"
     }
 }
