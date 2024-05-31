@@ -33,6 +33,9 @@
   "app-settings": {
     "title": "App Settings"
   },
+  "firebase": {
+    "title": "Firebase"
+  },
   "translations": {
     "title": "Translations (i18n)"
   },
