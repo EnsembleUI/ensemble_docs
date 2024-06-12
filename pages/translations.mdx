@@ -64,3 +64,74 @@ Use the 🌎 icon on top of the preview to select a language. The preview update
 ![add language](/images/translations/test-language.png)
 
 
+## Changing Language in Screens using Script
+
+To enhance user experience, you can dynamically change the app's language from within your scripts. This allows users to switch languages without restarting the app.
+
+### Retrieve Supported Languages
+
+To get an array of languages supported by your app (i.e., translations you created in Ensemble Studio), use the following code:
+
+```javascript
+// Get array of supported languages
+console.log(app.languages);
+```
+
+### Get Current Language and Locale
+To log the currently set language and locale:
+
+```javascript
+// Log currently set language
+console.log(app.language);
+
+// Log currently set locale
+console.log(app.locale);
+```
+
+### Set the Locale
+You can set the locale using the ensemble.setLocale method. This method updates the app's language dynamically.
+
+```javascript
+// Set the locale to English
+ensemble.setLocale({
+  "languageCode": "en"
+});
+```
+
+### Dropdown for Language Selection
+Implement a dropdown menu to allow users to select their preferred language. When a language is selected, the locale is updated accordingly.
+
+```javascript
+Dropdown:
+  itemTemplate:
+    data: ${app.languages}
+    name: language
+    template:
+      Text:
+        text: ${language.name} (${language.nativeName})
+    value: ${language.languageCode}
+
+  onChange: |-
+    ensemble.setLocale({ languageCode: event.data.value });
+```
+
+### Example Usage in a Screen
+Here's an example of how you might integrate the language selection dropdown into a screen:
+
+```javascript
+Screen:
+  - Dropdown:
+      itemTemplate:
+        data: ${app.languages}
+        name: language
+        template:
+          Text:
+            text: ${language.name} (${language.nativeName})
+        value: ${language.languageCode}
+
+      onChange: |-
+        ensemble.setLocale({ languageCode: event.data.value });
+
+  - Button:
+      label: r@common.submit
+```
