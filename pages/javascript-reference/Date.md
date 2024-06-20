@@ -157,6 +157,16 @@ var date = new Date();
 var dayOfWeek = date.getDay();
 console.log(dayOfWeek); // Example output: 4 (for Thursday)
 ```
+### toISOString()
+Returns the Date object as a ISO8601 string. It does not support internationalized strings.
+This string can be parsed back into the Date object using the parse() method
+
+Example:
+```js
+var event = new Date('2023-11-02 17:07:35.053068');
+var str = date.toISOString()
+console.log(str); // Example output: "2023-11-03T00:07:35.053068Z"
+```
 ### toJSON()
 Returns the Date object as an ISO 8601 formatted string in UTC.
 
@@ -165,6 +175,33 @@ Example:
 var date = new Date();
 var jsonString = date.toJSON();
 console.log(jsonString); // Example output: "2022-06-02T10:49:07.521Z"
+```
+### toLocaleDateString()
+Returns the Date object as a string, using locale conventions. It is used to represent the date portion of the Date object according to locale-specific conventions.
+
+Example:
+```js
+var event = new Date('2023-11-02T17:07:35.053Z');
+var str = event.toLocaleDateString();
+console.log(str); // Example output: "11/2/2023" (format may vary depending on the locale)
+```
+### toLocaleString()
+Returns the Date object as a string, using locale conventions. It represents the full date and time according to locale-specific conventions.
+
+Example:
+```js
+var event = new Date('2023-11-02T17:07:35.053Z');
+var str = event.toLocaleString();
+console.log(str); // Example output: "11/2/2023, 5:07:35 PM" (format may vary depending on the locale)
+```
+### toLocaleTimeString()
+Returns the time portion of the Date object as a string, using locale conventions. It is used to represent the time portion of the Date object according to locale-specific conventions.
+
+Example:
+```js
+var event = new Date('2023-11-02T17:07:35.053Z');
+var str = event.toLocaleTimeString();
+console.log(str); // Example output: "5:07:35 PM" (format may vary depending on the locale)
 ```
 ### toString()
 Returns the Date object as a human readable string. It does not support internationalized strings.
@@ -176,16 +213,16 @@ var date = new Date();
 var str = date.toString()
 console.log(str); // Example output: "2023-11-02 17:03:32.094453"
 ```
-### toISOString()
-Returns the Date object as a ISO8601 string. It does not support internationalized strings.
-This string can be parsed back into the Date object using the parse() method
+### valueOf()
+Returns the primitive value of the Date object, which is the number of milliseconds since midnight of January 1, 1970 UTC.
 
 Example:
 ```js
-var event = new Date('2023-11-02 17:07:35.053068');
-var str = date.toISOString()
-console.log(str); // Example output: "2023-11-03T00:07:35.053068Z"
+var event = new Date('2023-11-02T17:07:35.053Z');
+var val = event.valueOf();
+console.log(val); // Example output: 1698947255053
 ```
+
 ### setTime(timeValue)
 Sets the Date object to the time represented by the number of milliseconds since January 1, 1970, 00:00:00 UTC.
 
