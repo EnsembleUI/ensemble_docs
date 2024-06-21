@@ -77,6 +77,9 @@
   "actions": {
     "title": "Actions"
   },
+  "utilities": {
+    "title": "Utilities"
+  },
   "device-capabilities": {
     "title": "Device Capabilities"
   },
