@@ -177,32 +177,50 @@ var jsonString = date.toJSON();
 console.log(jsonString); // Example output: "2022-06-02T10:49:07.521Z"
 ```
 ### toLocaleDateString()
-Returns the Date object as a string, using locale conventions. It is used to represent the date portion of the Date object according to locale-specific conventions.
+Returns the date formatted with locale conventions.
+- locale (optional): A string with a BCP 47 language tag that forces a specific locale to be used. If no locale is passed in, Ensemble will automatically use the user-detected locale.
 
 Example:
 ```js
 var event = new Date('2023-11-02T17:07:35.053Z');
-var str = event.toLocaleDateString();
-console.log(str); // Example output: "11/2/2023" (format may vary depending on the locale)
-```
-### toLocaleString()
-Returns the Date object as a string, using locale conventions. It represents the full date and time according to locale-specific conventions.
 
-Example:
-```js
-var event = new Date('2023-11-02T17:07:35.053Z');
-var str = event.toLocaleString();
-console.log(str); // Example output: "11/2/2023, 5:07:35 PM" (format may vary depending on the locale)
+// "11/2/2023" (US) or "2/11/2023" (UK) depending on detected locale 
+console.log(event.toLocaleDateString());
+
+// Force a locale (British English). Output 2/11/2023
+console.log(event.toLocaleDateString('en-GB');
 ```
+
 ### toLocaleTimeString()
-Returns the time portion of the Date object as a string, using locale conventions. It is used to represent the time portion of the Date object according to locale-specific conventions.
+Returns the time portion of the Date object as a string, using locale conventions.
+- locale (optional): A string with a BCP 47 language tag that forces a specific locale to be used. If no locale is passed in, Ensemble will automatically use the user-detected locale.
 
-Example:
 ```js
 var event = new Date('2023-11-02T17:07:35.053Z');
 var str = event.toLocaleTimeString();
-console.log(str); // Example output: "5:07:35 PM" (format may vary depending on the locale)
+
+// output: "5:07:35 PM" or "17:07:35" depending on the detected locale
+console.log(str);
+
+// force es locale, outputing "17:07:35"
+console.log(event.toLocaleTimeString("es"));
+
 ```
+
+### toLocaleString()
+Returns the full date and time according to locale-specific conventions.
+- locale (optional): A string with a BCP 47 language tag that forces a specific locale to be used. If no locale is passed in, Ensemble will automatically use the user-detected locale.
+
+```js
+var event = new Date('2023-11-02T17:07:35.053Z');
+
+// output "11/2/2023, 5:07:35 PM" or "2/11/2023, 17:07:35" depending on detected locale
+console.log(event.toLocaleString());
+
+// force a locale, outputing "2/11/2023, 17:07:35"
+console.log(event.toLocaleString("es");
+```
+
 ### toString()
 Returns the Date object as a human readable string. It does not support internationalized strings.
 This string can be parsed back into the Date object using the parse() method
