@@ -62,3 +62,52 @@ So, under the firebase project settings > Cloud Messaging > Apple app configurat
 
 ---
 That's all now you can go to your firebase messaging module and send a push notification and it will work for both the platform android and IOS. 
+
+
+### Handling Notifications in JavaScript
+Ensemble provides a way to centralize notification logic in a single JavaScript function. This function is called every time a notification is received.
+
+#### Creating a Script and Handler Function
+Navigate to or create a script in the Scripts section. For example, you might have a script called Common.
+In the script, create a function that will be called whenever a notification is received. For example:
+```js
+function handle_notification(notification) {
+    // Your notification handling logic here
+}
+```
+The notification parameter contains the message data in JSON format.
+
+Inside this function, you can:
+
+- Write your routing logic
+- Access ensemble.storage
+- Perform one action: navigation
+To navigate, simply return the payload of a navigationScreen action. The framework will handle the navigation.
+
+Example:
+
+```js
+function handle_notification(notification) {
+    console.log(notification);
+    
+    // Assuming the screen name is in the FCM data section
+    var payload = {
+        "name": notification['data']['screen'],
+        // You can also pass inputs that will be accessible on the destination screen
+    };
+    
+    return payload;
+}
+```
+If you don't want to navigate, simply don't return anything.
+
+Marking the Function as a Notification Handler
+To designate your function as the notification handler:
+
+- Go to `Settings` -> `Environment Variables`
+- Add a new variable called `ensemble_notification_handler`
+- Set its value to `scriptName.handlerName`
+For our example, it would be `Common.handle_notification`.
+
+Once set, `Common.handle_notification` will be called every time a notification is received.
+
