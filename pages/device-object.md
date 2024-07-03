@@ -17,7 +17,7 @@ View:
 
 ## device.width and device.height
 
-Returns the device platform, such as `web`, `ios`, `android`, `windows`, and `mac`.
+Returns the device width and height as integers.
 
 ```yaml
 View:
