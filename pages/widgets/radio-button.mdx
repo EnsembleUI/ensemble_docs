@@ -1,0 +1,26 @@
+import BaseStyles from './_snippets/base-styles.md'
+import FormField from './_snippets/form-field.md'
+
+# RadioButton
+
+RadioButton widget renders a simple Radio button, which can be grouped with other RadioButtons anywhere on the screen with the groupId.
+
+[Test in Kitchen Sink](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/lnzZvXa2PLNV1ZkNYMsl)
+
+## Properties
+
+| Property      | Type              | Description                                                                                               |
+| :------------ | :---------------- | :-------------------------------------------------------------------------------------------------------- |
+| value         | any          | The value of this Radio Button. This value should be unique among other RadioButtons with the same groupId. |
+| groupId  | string          | The groupId that group a collection of RadioButtons. This is a required field |
+| selected | boolean            | Whether this RadioButton should be selected by default                           |
+
+<FormField />
+
+## Styles
+| Property                  | Type              | Description                                                                                                  |
+| :------------------------ | :---------------- | :----------------------------------------------------------------------------------------------------------- |
+| activeColor               | Color             | Color when a radio button is selected                                                                        |
+| inactiveColor             | Color             | Color when a radio button is not selected                                                                    |
+
+<BaseStyles />

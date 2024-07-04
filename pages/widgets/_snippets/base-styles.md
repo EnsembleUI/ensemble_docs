@@ -1,4 +1,4 @@
-
+This widget also inherits these base styles:
 | Property                     | Type                                           | Description                                                                                                                                                                                                                                                      |
 |------------------------------|------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | visible                      | boolean                                        | Toggle a widget visibility on/off. Note that an invisible widget will not occupy UI space, unless the visibilityTransitionDuration is specified.                                                                                                                 |
