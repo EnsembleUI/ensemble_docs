@@ -59,13 +59,13 @@ The DropDown Widget enables the rendering of dropdown menus, providing users wit
 | borderWidth                  | integer           | Thickness of the border. Minimum value should be 0.                                                                                                                                                                                                                                                                                           |
 | expanded                     | boolean           | If the parent is a Row or Column, this flag will stretch this widget in the appropriate direction. (e.g stretch horizontally for parent of type Row)                                                                                                                                                                                          |
 | textStyle   | [TextStyle](/widgets/types#TextStyle) | Styling for the selected text |
-| dropdownBackgroundColor | integer or string | Sets the background color of the list of options that, starting with '0xFF' for full opacity. `transparent` `black` `blue` `white` `red` `grey` `teal` `amber` `pink` `purple` `yellow` `green` `brown` `cyan` `indigo` `lime` `orange` |
-| dropdownOffsetX | integer | X-axis offset from the dropdown field of the list of options that appears when the dropdown or autocomplete is open |
-| dropdownOffsetY | integer | Y-axis offset from the dropdown field of the list of options that appears when the dropdown or autocomplete is open |
-| dropdownBorderRadius | integer | Border radius of the list of options that appears when the dropdown or autocomplete is open |
-| dropdownBorderColor | integer or string | Border color of the list of options that appears when the dropdown or autocomplete is open |
-| dropdownBorderWidth | integer | Border width of the list of options that appears when the dropdown or autocomplete is open |
-| dropdownMaxHeight | integer | Maximum height of the list of options that appears when the dropdown or autocomplete is open |
+| dropdownBackgroundColor | integer or string | Sets the background color of the panel with the list of options that appears when the dropdown is open, starting with '0xFF' for full opacity. `transparent` `black` `blue` `white` `red` `grey` `teal` `amber` `pink` `purple` `yellow` `green` `brown` `cyan` `indigo` `lime` `orange` |
+| dropdownOffsetX | integer | X-axis offset from the dropdown field of the panel with the list of options that appears when the dropdown or autocomplete is open |
+| dropdownOffsetY | integer | Y-axis offset from the dropdown field of the panel with the list of options that appears when the dropdown or autocomplete is open |
+| dropdownBorderRadius | integer | Border radius of the panel with the list of options that appears when the dropdown or autocomplete is open |
+| dropdownBorderColor | integer or string | Border color of the panel with the list of options that appears when the dropdown or autocomplete is open |
+| dropdownBorderWidth | integer | Border width of the panel with the list of options that appears when the dropdown or autocomplete is open |
+| dropdownMaxHeight | integer | Maximum height of the panel with the list of options that appears when the dropdown or autocomplete is open |
 
 ### icon
 
