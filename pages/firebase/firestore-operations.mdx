@@ -11,7 +11,7 @@ Now, let's dive into performing basic operations on our Firestore database:
   Operations on Firestore won't work unless we have configured our Ensemble application with Firebase. Learn how to configure it [here](pages/firebase/configuration.mdx).
 </Callout>
 
-- To get hands-on experience with mock APIs, check the live example on [Ensemble Studio](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/W7b1n4a1LVoQgLyAie4F)
+- To get hands-on experience with firestore operations, check the live example on [Ensemble Studio](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/W7b1n4a1LVoQgLyAie4F)
 
 ## 1. Creating a Firestore Collection
 
@@ -80,7 +80,7 @@ createProject:
     - proDes
     - proFiles
   type: firestore
-  path: users/${userId}/project
+  path: users/${userId}/Projects
   operation: add
   data:
     proName: ${proName}
@@ -104,7 +104,7 @@ setProject:
     - proDes
     - proFiles
   type: firestore
-  path: users/${userId}/project/${projectID}
+  path: users/${userId}/Projects/${projectID}
   operation: set
   data:
     proName: ${proName}
@@ -121,7 +121,7 @@ inputs:
     - userId
     - projectID
   type: firestore
-  path: users/${userId}/project/${projectID}
+  path: users/${userId}/Projects/${projectID}
   operation: update
   data:
     # Below files will be stored as Array of objects.
@@ -138,7 +138,7 @@ deleteProject:
     - userId
     - projectID
   type: firestore
-  path: users/${userId}/project/${projectID}
+  path: users/${userId}/Projects/${projectID}
   operation: delete
 ```
 
@@ -148,7 +148,7 @@ The `isCollectionGroup` feature is used to retrieve specific collections from an
 ```yaml
 getAllProjects:
   type: firestore
-  path: projects
+  path: Projects
   isCollectionGroup: true
 ```
 
