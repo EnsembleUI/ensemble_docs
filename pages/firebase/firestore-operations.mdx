@@ -63,27 +63,12 @@ getSpecificUsers:
       - age
     limit: 10
 ```
-<!--
-    pagination:
-      startAfter:
-        - age: 25
-      endBefore: 56
-      limitToLast: null 
--->
 
 **Explanation**:
 - `inputs`: We can also use dynamic variables in the path or a query.
 - `path`: Path can be any based on our collections and documents we are trying to access.
 - `query`: Filters the data based on the conditions such as [where](https://cloud.google.com/firestore/docs/query-data/queries). [orderBy, Limit](https://cloud.google.com/firestore/docs/query-data/order-limit-data).
 
-<!--
-- `pagination`: It returns a specific data group from a collection or document. It can have the following values:
-  - `startAt`: It defines the starting point for retrieved data based on a specified column. In the above case, we will get users starting from 25 years older and above.
-  - `startAfter`: It also defines the starting point but excludes the specified value.
-  - `endAt`: It defines the ending point of the data being retrieved.
-  - `endBefore`: It also defines the ending point but to the value just before the mentioned one. As mentioned, it will retrieve data to 55.
-  - `limitToLast`: Specify if needed, overrides `limit` if both are provided.
--->
 ### Add:
 The `add` operation creates a new document in a collection with a specified or auto-generated ID.
 1. **Example**:
