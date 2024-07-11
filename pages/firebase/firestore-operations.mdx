@@ -11,6 +11,8 @@ Now, let's dive into performing basic operations on our Firestore database:
   Operations on Firestore won't work unless we have configured our Ensemble application with Firebase. Learn how to configure it [here](pages/firebase/configuration.mdx).
 </Callout>
 
+- To get hands-on experience with firestore operations, check the live example on [Ensemble Studio](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/W7b1n4a1LVoQgLyAie4F)
+
 ## 1. Creating a Firestore Collection
 
 To store data in Firestore, we need to create a collection. A collection in Firestore is a container for documents, 
@@ -36,9 +38,9 @@ This operation retrieves data from our Firestore collections. We can either retr
 1. **Example (Get all users)**:
 ```yaml
 getUsers:
-    type: firestore
-    path: users
-    listenForChanges: true
+  type: firestore
+  path: users
+  listenForChanges: true
 ```
 **Explanation**:
 - `type: firestore`: Specifies that the operation is for Firestore and it is not a RestAPI.
@@ -48,47 +50,42 @@ getUsers:
 2. **Example (Get user using multiple filters)**:
 ```yaml
 getSpecificUsers:
-    inputs:
-      - userId
-    type: firestore
-    path: example/users
-    query:
-      where:
-        - field: _documentId
-          operator: ==
-          value: ${userId}
-      orderBy:
-        - age
-      limit: 10
-    pagination:
-      startAfter:
-        - age: 25
-      endBefore: 56
-      limitToLast: null
+  inputs:
+    - userId
+  type: firestore
+  path: example/users
+  query:
+    where:
+      - field: _documentId
+        operator: ==
+        value: ${userId}
+    orderBy:
+      - age
+    limit: 10
 ```
+
 **Explanation**:
 - `inputs`: We can also use dynamic variables in the path or a query.
 - `path`: Path can be any based on our collections and documents we are trying to access.
 - `query`: Filters the data based on the conditions such as [where](https://cloud.google.com/firestore/docs/query-data/queries). [orderBy, Limit](https://cloud.google.com/firestore/docs/query-data/order-limit-data).
-- `pagination`: It returns a specific data group from a collection or document. It can have the following values:
-  - `startAt`: It defines the starting point for retrieved data based on a specified column. In the above case, we will get users starting from 25 years older and above.
-  - `startAfter`: It also defines the starting point but excludes the specified value.
-  - `endAt`: It defines the ending point of the data being retrieved.
-  - `endBefore`: It also defines the ending point but to the value just before the mentioned one. As mentioned, it will retrieve data to 55.
-  - `limitToLast`: Specify if needed, overrides `limit` if both are provided.
 
 ### Add:
 The `add` operation creates a new document in a collection with a specified or auto-generated ID.
 1. **Example**:
 ```yaml
-createUser:
+createProject:
+  inputs:
+    - userId
+    - proName
+    - proDes
+    - proFiles
   type: firestore
-  path: example/users
+  path: users/${userId}/Projects
   operation: add
   data:
-    name: { First: Harry, Last: Potter }
-    age: 45
-    gender: Male
+    proName: ${proName}
+    description: ${proDes}
+    createdAt: ${(new Date()).toISOString()}
 ```
 **Explanation**:
 - `operation: add`: Indicates that a new document will be created.
@@ -99,45 +96,121 @@ The `set` operation can create a new document if it does not exist but if the do
 the entire document with the data provided, unless we use the `merge` option.
 1. **Example**:
 ```yaml
-setUser:
+setProject:
   inputs:
-    - name
-    - age
-    - gender
+    - userId
+    - projectID
+    - proName
+    - proDes
+    - proFiles
   type: firestore
-  path: example/users
+  path: users/${userId}/Projects/${projectID}
   operation: set
   data:
-    name: ${name}
-    age: ${age}
-    gender: ${gender}
+    proName: ${proName}
+    description: ${proDes}
+    setAt: ${(new Date()).toISOString()}
 ```
 
-#### Update:
+### Update:
 The `update` operation only updates the fields specified in the provided data. If the document does not exist, `update` 
 will fail with an error.
 1. **Example**:
 ```yaml
-updateUser:
-  inputs:
-    - age
+inputs:
+    - userId
+    - projectID
   type: firestore
-  path: example/users
+  path: users/${userId}/Projects/${projectID}
   operation: update
   data:
-    age: ${age}
+    # Below files will be stored as Array of objects.
+    files: [{ name: "index.js" , lines: 78 },{ name: "LMS.js" , lines: 245 }] 
+    lastUpdated: ${(new Date()).toISOString()}
 ```
 
-#### Delete:
+### Delete:
 The `delete` operation removes a document from a collection.
 1. **Example**:
 ```yaml
-deleteUser:
+deleteProject:
   inputs:
-    - userID
+    - userId
+    - projectID
   type: firestore
-  path: example/users/${userID}
+  path: users/${userId}/Projects/${projectID}
   operation: delete
 ```
+
+### Collection Group:
+The `isCollectionGroup` feature is used to retrieve specific collections from any collection. For example, if we have 100 documents in the `users` collection and each document has a sub-collection named `projects`, the `isCollectionGroup` feature helps in getting all `projects` directly rather than iterating through each document.
+1. **Example**:
+```yaml
+getAllProjects:
+  type: firestore
+  path: Projects
+  isCollectionGroup: true
+```
+
+## 3. Response of Firestore Operations
+When performing Firestore operations, we may need to manipulate the responses to fit our application's needs. Below are some common ways demonstrating how to use YAML for API calls, handle states, and display data in our app.
+#### 1. Firstly, we will make an API call as follow:
+```yaml
+invokeAPI:
+  name: getProjects
+  inputs:
+    userId: ${userID}
+```
+> We can also use `onResponse` & `onError` on firebase API calls and can perform operations on response.
+
+#### 2. Using response in `Column`:
+To display data based on the API call's state (loading, success, error), you can use the following structure:
+```yaml
+Column:
+  children:
+    - Column:
+        styles:
+          visible: '${getProjects.isLoading ? true : false}'
+        children:
+          - Progress:
+              display: circular
+    - Column:
+        styles:
+          visible: '${getProjects.isSuccess ? true : false}'
+        item-template:
+          data: ${getProjects.body.documents}
+          name: project
+          template:
+            projectDisplay: # that is an custom widget.
+              inputs:
+                name: ${project.proName}
+                des: ${project.description}
+    - Column:
+        styles:
+          visible: '${getProjects.isError ? true : false}'
+        children:
+          - Text:
+              text: "An error has occurred"
+```
+- Explanation:
+  - The first child `Column` is visible only when the API call is loading `(visible: '${getProjects.isLoading ? true : false}')`. It shows a circular progress indicator.
+  - The second child `Column` is visible only when the API call is successful `(visible: '${getProjects.isSuccess ? true : false}')`. It iterates over the documents in the response body using item-template.
+  - The third child `Column` is visible only when there is an error `(visible: '${getProjects.isError ? true : false}')`. It shows an error message.
+
+#### 3. Using response in `Dropdown`:
+To display data in a dropdown, we can use the following YAML structure:
+```yaml
+Dropdown:
+  id: selectProject
+  label: Select Project
+  itemTemplate:
+    data: ${getProjects.body.documents}
+    name: project
+    value: ${project._documentId}
+    template:
+      Text:
+        text: ${"Name:" + " " + project.proName}
+```
+
 By using these operations, we can efficiently manage our data in Firestore with an Ensemble project. Firestore's 
 real-time capabilities and simple API calls make it a powerful tool for any application.

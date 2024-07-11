@@ -5,7 +5,48 @@ Any property of a javascript object may be accessed using either the parenthesis
 - Let us know on our [Discord server](https://discord.gg/k4CJeuRc) if you need any of other capabilities
 - or open a [ticket](https://github.com/EnsembleUI/ensemble/issues)
 
-## Methods
+## Constructor
+
+```js
+var obj = {a: 1, b: 'abc'};//creates a new object with properties a and b
+var obj2 = new Object(); //creates a new empty object
+obj2['a'] = 1; //adds property a to the object
+obj2['b'] = 'abc';
+```
+
+## Static Methods
+### Object.keys(value)
+See Object.keys in javascript. Returns an array of a given object's own enumerable property names.
+
+Example - 
+```js
+var result = Object.keys({a: 1, b: 2, c: 3});
+// result: ['a', 'b', 'c']
+```
+### Object.values(value)
+See Object.values in javascript. Returns an array of a given object's own enumerable property values.
+Example - 
+```js
+var result = Object.values({a: 1, b: 2, c: 3});
+// result: [1, 2, 3]
+```
+### Object.entries(value)
+See Object.entries in javascript. Returns an array of a given object's own enumerable property [key, value] pairs.
+Example - 
+```js
+var result = Object.entries({a: 1, b: 2, c: 3});
+// result: [['a', 1], ['b', 2], ['c', 3]]
+```
+
+### Object.getOwnPropertyNames(value)
+See Object.getOwnPropertyNames(value) in javascript. Returns an array of all properties (including non-enumerable properties except for those which use Symbol) found directly in a given object.
+Example - 
+```js
+var result = Object.getOwnPropertyNames({a: 1, b: 2, c: 3});
+// result: ['a', 'b', 'c']
+```
+
+## Instance Methods
 ### keys()
 Just like the Object.keys() method in javascript. Returns an array containing the keys (propery names) of an object. 
 
