@@ -1,70 +1,65 @@
 # Push Notification
 
-So, you have built the app with ensemble but now you would like to increase the engagement and decided to implement push notification. 
-
-At ensemble we are currently supporting push notification with firebase. Here are the following steps need to be taken to enable push notification.
 
 - Initialize Notification manager
 - IOS setup, (Android doesn't require any setup).
 
-## Setup Notification manager
+## Setup
+This guide will walk you through setting up iOS/Android push notifications for your Ensemble app. Before you begin, ensure your bundle ID is correct. Also ensure the `appId` under `ensemble.properties` has the same bundle ID.
 
-In `main.dart` inside `main()` initialize notification manager with your firebase payload and `backgroundNotificationHandler`.
-- The firebase payload data can be found in Project Settings > Your apps.
-- `backgroundNotificationHandler`'s purpose is to allow you write any business logic. Here in example we are updating the app icon badge but it can be set to any business logic.
+#### iOS Setup
+An Apple developer account is required to setup push notification and deploy the app. Each account requires a single APNs certificate for push notifications that work across all your Apps. If you don't already have one, go to https://developer.apple.com/account/resources/authkeys/list.
+- Create a new Key and select "Apple Push Notification service (APNs)".
+- Download the key and save it in a secure location (you can only download it once). You will need this key to upload to Firebase.
 
-```dart
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await NotificationManager().init(
-      FirebasePayload(
-        apiKey: '<your-api-key>',
-        projectId: '<your-project-id>',
-        messagingSenderId: '<your-messaging-sender-id>',
-        appId: '<your-app-id>',
-      ),
-      backgroundNotificationHandler:_backgroundNotificationHandler,
-);
+#### Setup Firebase
+- Create a new Firebase project if not already created. Go to Project Settings.
+  - Under "General" tab, add an iOS or Android app, then download the `GoogleService-Info.plist` or `google-services.json` respectively.
+  - Under "Cloud Messaging" tab and inside "Apple app configuration", upload the APNs Authentication Key you created / downloaded earlier in your Apple developer account.
+    - Use the Key ID under the APNs key you created earlier.
+    - Use the Team ID from your Apple Developer account.
 
-@pragma('vm:entry-point')
-Future<void> _backgroundNotificationHandler(RemoteMessage message) async {
-  try {
-    //  business logic
-    await StorageManager().init();
-    int badgeCount =
-        Utils.getInt(await StorageManager().read('badgeCount'), fallback: 0);
-    int count = badgeCount + 1;
-    await StorageManager().write('badgeCount', count);
-    if (await FlutterAppBadger.isAppBadgeSupported()) {
-      return FlutterAppBadger.updateBadgeCount(count);
-    }
+### Setup Ensemble
+- Open `/starter/lib/generated/ensemble_modules.dart` with an Editor and change `useNotifications` to true.
+- open Xcode under `/starter/ios`.
+  - Under Signing & Capabilities, click on `+ Capability` button.
+  - Add `Push Notifications`.
+  - Add `Background Modes` and check `Remote notifications`, `Background fetch` and `Background processing`.
+    - drop "GoogleService-Info.plist" in ios/Runner
+- Drop the `google-services.json` in `android/app` folder.
 
-  } catch (error) {
-    debugPrint("Error running background handler ${error.toString()}");
-  }
-}
+### Testing notifications
+- Firebase requires a device token to send notification to. For testing purpose you can retrieve the device token by using the following app definition. Upon running this screen, it will ask the user to authorize Notifications. Once authorized, the device token will be displayed.
+```yaml
+View:
+    onLoad:
+      getDeviceToken:
+        onSuccess: |-
+          status.value = event.data.token;
+        onError: |-
+          status.value = 'error';
 
+    # Optional - set the header for the screen
+    header:
+      title: What's my device token
+
+    # Specify the body of the screen
+    body:
+      Column:
+        styles:
+          padding: 24
+          gap: 8
+        children:
+          - TextInput:
+              id: status
 ```
+- To send a test notification from Firebase, Go to "Messaging" and create your first campaign.
+  - Select `Firebase Notification messages`.
+  - Enter a notification text and click "Send test message".
+  - Enter the device token and click "Test".
+  - You should be receiving a push notification
 
-## IOS setup
-
-####  Add push notification capability in xcode
-
-#### Create an APNs key 
-Here is the link to apple developer website to create APNs key and download it.[Apple developer key link](https://developer.apple.com/account/resources/authkeys/list)
-![Developer portal key](/images/tips-and-tricks/assets/developer-apple-keys.png)
-
-#### Upload APNs key to Firebase 
-
-Now upload the APNs key to firebase console. 
-So, under the firebase project settings > Cloud Messaging > Apple app configuration. You can upload the APNs key that we downloaded from the previous step.
-
-
----
-That's all now you can go to your firebase messaging module and send a push notification and it will work for both the platform android and IOS. 
-
-
-### Handling Notifications in JavaScript
+## Handling Notifications in JavaScript
 Ensemble provides a way to centralize notification logic in a single JavaScript function. This function is called every time a notification is received.
 
 #### Creating a Script and Handler Function
