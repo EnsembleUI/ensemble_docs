@@ -1,6 +1,6 @@
 # Setting up Authentication with Firebase
 
-In this guide, we will enable authentication through Firebase.
+For convenience, Ensemble's Sign In can connect directly to Firebase, allowing you to manage users via Firebase console without the need for a backend server.
 
 <video width="70%"  controls>
   <source src="/images/firebase/firebase-auth.mov" type="video/mp4">
