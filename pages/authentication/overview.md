@@ -15,6 +15,19 @@ Note that if you are using Sign in with Google on iOS, Apple requires you to als
 - Open XCode from the iOS project under `/starter/ios` in XCode.
 - Select your `Runner` target and go to `Signing & Capabilities` tab.
 - Click on the `+ Capability` button and select "Sign in with Apple".
+- To enable Sign in with Apple only on iOS, you can use the Condition widget to only show if platform is iOS.
+```yaml
+Column:
+  children:
+    - SignInWithGoogle:
+        
+    # only show Sign in with Apple on iOS
+    - Conditional:
+        conditions:
+          - if: ${ensemble.device.isIOS()}
+            widget:
+              SignInWithApple:
+```
 
 ## Implementation
 - For Sign in with Google locally or with your server, go to [Social Sign In](/authentication/social-signin).
