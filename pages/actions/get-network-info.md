@@ -27,9 +27,27 @@ For all other cases, check the event.data.status property for details
 | onDenied | action | (Optional) call an Action when the user has denied access to the location. Location access is required to get the wifi data. The status could either be `denied` or `deniedForever`. `deniedForver` means that the user has denied the location access and has selected the option to never ask again. |
 | onLocationDisabled | action | (Optional) call an Action when the location is disabled. This could be because the location is disabled in the device settings. |
 
-## Permissions required for retrieving the network info
+## How to enable the `getNetworkInfo` action for your app
 
 **When using the build system in the [Ensemble Studio](https://studio.ensembleui.com) the following configurations are automatically added for you and your app is automatically built and made available on the appstore and google play for you to then test or submit for approval.**
+
+1. First enable the `ensemble_network_info` module as follows -
+- open starter/pubspec.yaml and search for `Uncomment to enable NetworkInfo` and uncomment the `ensemble_network_info` module reference -
+```yaml
+  ensemble_network_info:
+   git:
+     url: https://github.com/EnsembleUI/ensemble.git
+     ref: main
+     path: modules/ensemble_network_info
+```
+Run `pub get` to get the latest
+
+- open `starter/lib/generated/ensemble_modules.dart` and ...
+. uncomment import 'package:ensemble_network_info/network_info.dart';
+. set `useNetworkInfo = true;`
+. uncomment `GetIt.I.registerSingleton<NetworkInfoManager>(NetworkInfoImpl());`  
+
+2. Configure permissions for iOS and/or Android as follows
 
 ### Browser
 Note that `getNetworkInfo` action is available only on iOS and Android. On the web, `onError` (if specified) will be called with error `Network info is not supported on the web`. 
