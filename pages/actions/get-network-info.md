@@ -1,0 +1,93 @@
+## getNetworkInfo (works on native iOS and Android apps only)
+
+Action to retrieve the following network information -
+
+- wifiName
+- wifiBSSID
+- wifiIPv4
+- wifiIPv6
+- wifiGatewayIP
+- wifiBroadcast
+- wifiSubmask
+
+If successful, the network information will be available as event.data.networkInfo object with the property names as shows above, for example event.data.networkInfo.wifiName.
+
+In case of error, the error message will be available as event.error.
+
+For all other cases, check the event.data.status property for details
+
+## Properties for getNetworkInfo
+
+| Property   | Type | Description |
+| :-------   | :--- | :---------- |
+| onSuccess  | action  | (Required) call an Action when the network info has been retrieved successfully. Network info will be available under event.data.networkInfo object with properties wifiName, wifiBSSID, wifiIPv4, wifiIPv6, wifiGatewayIP, wifiBroadcast, wifiSubmask |
+| onError | action  | (Optional) call an Action when unable to retrieve networkInfo. This could be because the location or wifiinfo is not enabled in the app or the module has not been included. Error is available as `event.error` property |
+| onDenied | action | (Optional) call an Action when the user has denied access to the location. Location access is required to get the wifi data. The status could either be `denied` or `deniedForever`. `deniedForver` means that the user has denied the location access and has selected the option to never ask again. |
+| onLocationDisabled | action | (Optional) call an Action when the location is disabled. This could be because the location is disabled in the device settings. |
+
+## Example
+
+```yaml
+View:
+  styles:
+    useSafeArea: true
+    scrollableView: true
+
+  # Optional - set the header for the screen
+  header:
+    titleText: Home
+
+  # Specify the body of the screen
+  body:
+    Column:
+      styles:
+        padding: 24
+        gap: 8
+      children:
+        - TextInput:
+            id: wifiName
+            label: wifiName
+        - TextInput:
+            id: wifiBSSID
+            label: wifiBSSID
+        - TextInput:
+            id: wifiIPv4
+            label: wifiIPv4
+        - TextInput:
+            id: wifiIPv6
+            label: wifiIPv6
+        - TextInput:
+            id: wifiGatewayIP
+            label: wifiGatewayIP
+        - TextInput:
+            id: wifiBroadcast
+            label: wifiBroadcast 
+        - TextInput:
+            id: wifiSubmask
+            label: wifiSubmask                                    
+        - TextInput:
+            id: status
+            label: status
+            multiline: true
+            maxLines: 10
+            minLines: 4
+        - Button:
+            label: get wifi info
+            onTap:
+              getNetworkInfo:
+                onSuccess:
+                  executeCode:
+                    body: |
+                      status.value = event.data.status;
+                      wifiName.value = event.data.networkInfo.wifiName;
+                      wifiBSSID.value = event.data.networkInfo.wifiBSSID;
+                      wifiIPv4.value = event.data.networkInfo.wifiIPv4;
+                      wifiIPv6.value = event.data.networkInfo.wifiIPv6;
+                      wifiGatewayIP.value = event.data.networkInfo.wifiGatewayIP;
+                      wifiBroadcast.value = event.data.networkInfo.wifiBroadcast;
+                      wifiSubmask.value = event.data.networkInfo.wifiSubmask;
+                onError:
+                  executeCode:
+                    body: |
+                      status.value = event.error;
+```
