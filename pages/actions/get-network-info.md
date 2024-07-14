@@ -25,6 +25,14 @@ For all other cases, check the event.data.status property for details
 | onDenied | action | (Optional) call an Action when the user has denied access to the location. Location access is required to get the wifi data. The status could either be `denied` or `deniedForever`. `deniedForver` means that the user has denied the location access and has selected the option to never ask again. |
 | onLocationDisabled | action | (Optional) call an Action when the location is disabled. This could be because the location is disabled in the device settings. |
 
+## Permissions required for retrieving the network info
+
+Note that `getNetworkInfo` action is available only on iOS and Android. On the web, `onError` (if specified) will be called with error `Network info is not supported on the web`. 
+
+### iOS
+
+### Android
+
 ## Example
 
 ```yaml
