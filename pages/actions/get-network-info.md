@@ -29,12 +29,54 @@ For all other cases, check the event.data.status property for details
 
 ## Permissions required for retrieving the network info
 
+**When using the build system in the [Ensemble Studio](https://studio.ensembleui.com) the following configurations are automatically added for you and your app is automatically built and made available on the appstore and google play for you to then test or submit for approval.**
+
 ### Browser
 Note that `getNetworkInfo` action is available only on iOS and Android. On the web, `onError` (if specified) will be called with error `Network info is not supported on the web`. 
 
 ### iOS
+**Location**
+Location and `Precise Location` is required to get the `wifiName` and `wifiBSSID`. Other properties can be retrieved without location permission. When location is not enabled. `wifiName` and `wifiBSSID` will return null. 
+
+Open the `starter/ios/Runner` directory. There you will find the following two files that we need to modify - `info.plist` and `Runner.entitlements`
+
+`info.plist`: add the following.
+
+Add either `NSLocationWhenInUseUsageDescription` or  `NSLocationAlwaysUsageDescription` depending on what your apps needs. 
+Make sure to adjust the message to meet your requirements. `PreciseLocation` is a must to get the wifiName and wifiBSSID.
+
+```xml
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>We need your location to provide better services.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>We need your location to provide continuous tracking even when the app is in the background.</string>
+	<key>NSLocationUsageDescription</key>
+	<string>using location</string>
+	<key>NSLocationTemporaryUsageDescriptionDictionary</key>
+	<dict>
+		<key>PreciseLocation</key>
+		<string>We need your precise location to provide location-based services and ensure accurate tracking.</string>
+	</dict>
+```
+
+`Runner.entitlements`: add the following
+
+```xml
+	<key>com.apple.security.personal-information.location</key>
+	<true/>
+	<key>com.apple.developer.networking.wifi-info</key>
+	<true/>
+```
+You can do the above changes by using the XCode graphical interface as well. Make sure to do a clean build after making the above changes. 
 
 ### Android
+Android just needs the `Fine Location` permission as follows. 
+
+`AndroidManifest.xml` 
+
+```xml
+<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+```
 
 ## Example
 
