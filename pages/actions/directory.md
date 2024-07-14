@@ -32,6 +32,7 @@ When an event is triggered (e.g. button is tapped), you can perform actions such
 | [notification](notification.md)                             | notification action manages and handles notifications within the app, enabling effective communication with users and delivering timely updates and alerts. |
 | [pickFiles](pick-files.md)                                  | pickFiles action enables users to select files from their device for further processing or usage within the app.                                            |
 | [uploadFiles](upload-files.md)                              | uploadFiles action allows users to select and upload files from their device to the app, facilitating data transfer and sharing.                            |
+| [getNetworkInfo](get-network-info.md)                        | enables users to retrieve their device's current location, facilitating location-based functionalities within the app, such as mapping, navigation, or personalized content delivery, enhancing user experience and context-aware interactions. It requests user's permission to get his/her current location |
 
 ### Other interactions
 
