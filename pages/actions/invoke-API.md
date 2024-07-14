@@ -11,6 +11,7 @@ Both the `onResponse` and `onError` actions provide reference to the API respons
 | body       | String | the actual body of the response. This is where you are mostly interested in. JSON responses are automatically parsed and made available. Other content-types are available as strings.                               |
 | headers     | array | Key value pairs of http response headers                  |
 | reasonPhrase | String | Phrase that describes the statusCode. Http response statusCode is a 3 digit number and reasonPhrase describes that number. For example - reasonPhrase for statusCode between 200 and 299 (inclusive) is Successful. More [here](https://www.ibm.com/docs/en/cics-ts/5.5?topic=concepts-status-codes-reason-phrases)                                         |
+| type | String | By default the invokeAPI action is used to call http(s) APIs whether REST o GraphQL APIs. However, Ensemble has a deep integration with firestore. if the type is specificed as `firestore`, this action will invoke firestore APIs. For details and examples, see [Firestore Operations](pages/firebase/firestore-operations.mdx) |
 
 ## API/invokeAPI properties
 | Property   | Type   | Description                                                                |
