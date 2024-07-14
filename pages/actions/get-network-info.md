@@ -72,6 +72,8 @@ You can do the above changes by using the XCode graphical interface as well. Mak
 ### Android
 Android just needs the `Fine Location` permission as follows. 
 
+Under `starter/android/app/src/main`
+
 `AndroidManifest.xml` 
 
 ```xml
