@@ -2,6 +2,8 @@
 
 The Image Widget allows you to render images from a URL or [local assets](/extending-ensemble/local-assets). 
 
+You can manage your assets using Ensemble Studio. [See how](/assets)
+
 [Test in Kitchen Sink](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/7c7a3ffe-68ef-4e99-b9d1-4b5cee166233)
 
 
