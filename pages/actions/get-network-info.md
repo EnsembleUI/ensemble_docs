@@ -1,4 +1,4 @@
-## getNetworkInfo
+# getNetworkInfo
 
 **Works on native iOS and Android apps only. In the browser, `onError` (if specified) will be called with error `Network info is not supported on the web`.**
 
@@ -16,7 +16,7 @@ If successful, the network information will be available as event.data.networkIn
 
 In case of error, the error message will be available as event.error.
 
-For all other cases, check the event.data.status property for details
+For all other cases, check the `event.data.status` property for details
 
 ## Properties for getNetworkInfo
 
