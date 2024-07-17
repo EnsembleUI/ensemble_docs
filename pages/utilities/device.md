@@ -92,7 +92,10 @@ Returns the number of logical processors available to run threads.
 Returns the maximum number of simultaneous touch points supported by the device.
 
 
-## Location
+## Capabilities
+
+#### deviceToken
+If notification is enabled, returns the latest device token that can be used to send push notifications to this device. 
 
 #### lastLocation.latitude
 Returns the latitude of the last known location of the device. This value will only be populated if the action [getLocation](/actions/get-location.md) has been used previously and the user has granted location permission to the app.

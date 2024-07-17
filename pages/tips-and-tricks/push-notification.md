@@ -59,6 +59,26 @@ View:
   - Enter the device token and click "Test".
   - You should be receiving a push notification
 
+### Update when token changes
+- Firebase can occasionally assign a new device token. When that happens, Ensemble automatically save a copy of the latest token, accessible via `ensemble.device.deviceToken`.
+
+- To update your server with the latest token, you can usually add the logic inside your home screen (where the user has been authenticated). Below is a example:
+```yaml
+## Home screen:
+View:
+  onLoad:
+    
+API:
+  updateDeviceToken:
+    url: <my server>
+    headers:
+      Authorization: Bearer <my_bearer_token>
+    body:
+      newToken: ${ensemble.device.deviceToken}
+    
+
+```
+
 ## Handling Notifications in JavaScript
 Ensemble provides a way to centralize notification logic in a single JavaScript function. This function is called every time a notification is received.
 
