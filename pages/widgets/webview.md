@@ -10,7 +10,26 @@ The WebView Widget enables seamless integration of web content within native app
 | :------- | :----- | :-------------------------------------------------------------------- |
 | url      | string | Defines the web address (URL) to be loaded within the WebView widget. |
 | styles   | object | [See properties](#styles)                                             |
+| allowedLaunchSchemes   | array of strings | Only available on iOS and Android native apps. Will not have any affect on the web. Optionally specify array of url schemes such as 'tel:', 'mailto:', 'geo:' that when tapped should launch the apps corresponding to the scheme in the system the app is running in.. See below for more details for this property. URL schemes such as http and https are included by default and cannot be overwritten.  | 
 
+**allowedLaunchSchemes**
+
+Array of strings. 
+   * tel: opens the phone dialer
+   * mailto: opens the email client
+   * geo: opens the map application
+   * sms: opens the messaging application
+     
+When allowedLaunchSchemes is not present, by default the following schemes are permitted. 
+    'tel:',
+    'sms:',
+    'mailto:',
+    'geo:'
+
+You can override the defaults by specifying the allowedLaunchSchemes. 
+
+In order to add additional schemes to the default schemes, specify the default schemes and the additional schemes as an array value of allowedLaunchSchemes. URL schemes such as http and https are included by default and cannot be overwritten.
+                                       
 ## Events
 
 | Event | Description                                                           |
