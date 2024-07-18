@@ -1,9 +1,5 @@
 # Push Notification
 
-
-- Initialize Notification manager
-- IOS setup, (Android doesn't require any setup).
-
 ## Setup
 This guide will walk you through setting up iOS/Android push notifications for your Ensemble app. Before you begin, ensure your bundle ID is correct. Also ensure the `appId` under `ensemble.properties` has the same bundle ID.
 
@@ -33,11 +29,16 @@ An Apple developer account is required to setup push notification and deploy the
 ```yaml
 View:
     onLoad:
-      getDeviceToken:
-        onSuccess: |-
-          status.value = event.data.token;
-        onError: |-
-          status.value = 'error';
+      requestNotificationAccess:
+        onAuthorized: |-
+          status.value = event.data.deviceToken;
+        
+        # if denied, you may want to take the user to another screen, 
+        # explaining why notifications are needed with an option to
+        # take the user to Settings' Notification page.
+        onDenied:
+          navigateScreen:
+            name: Enable Notifications
 
     # Optional - set the header for the screen
     header:
@@ -56,7 +57,7 @@ View:
 - To send a test notification from Firebase, Go to "Messaging" and create your first campaign.
   - Select `Firebase Notification messages`.
   - Enter a notification text and click "Send test message".
-  - Enter the device token and click "Test".
+  - Enter the device token above and click "Test".
   - You should be receiving a push notification
 
 ### Update when token changes
@@ -67,6 +68,8 @@ View:
 ## Home screen:
 View:
   onLoad:
+    invokeAPI:
+      name: updateDeviceToken
     
 API:
   updateDeviceToken:

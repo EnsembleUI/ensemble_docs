@@ -4,10 +4,10 @@ requestNotificationAccess action prompts users to grant permission for the app t
 
 ### Properties
 
-| Property | Type   | Description                                                      |
-| :------- | :----- | :--------------------------------------------------------------- |
-| onAccept | action | Execute an Action when notification permission has been granted  |
-| onReject | action | Execute an Action when notification permission has been rejected |
+| Property     | Type   | Description                                                      |
+|:-------------| :----- | :--------------------------------------------------------------- |
+| onAuthorized | action | Execute an Action when notification permission has been granted  |
+| onDenied     | action | Execute an Action when notification permission has been rejected |
 
 **Example**
 
@@ -32,11 +32,11 @@ View:
       - Button:
           label: Checkout Ensemble Kitchen Sink
           onTap:
-          requestNotificationAccess:
-            onAccept:
-            showNotification:
-              title: A Notification
-              body: As you can see me working here
+              requestNotificationAccess:
+                onAuthorized:
+                    showNotification:
+                      title: A Notification
+                      body: As you can see me working here
 ```
 
 
