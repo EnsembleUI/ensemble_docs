@@ -165,13 +165,20 @@ console.log(result); // "world"
 
 The `match()` method retrieves the result of matching a string against a regular expression and returns null in case there is no match.
 
+***Note:*** You can specify the regex flags such as i, g, m, s and u. When `g` (global) is specified, the operation will be executed on the whole string. See the following example. 
+
 **Example:**
 
 ```javascript
-var str = "Hello, world!";
+var str = "Hello, world! world!";
 var regex = /world/;
 var result = str.match(regex);
 console.log(result); // "world"
+
+regex = /world/g; //`g` flag has been specified
+var result = str.match(regex); //due to the `g` flag, this is the same as String.matchAll
+console.log(matches[0]); // "world"
+console.log(matches[1]); // "world"
 ```
 
 ### matchAll
@@ -182,8 +189,8 @@ The `matchAll()` method returns an array of all the matched strings or an empty 
 
 ```javascript
 var str = "Hello, world! world!";
-var regex = /world/g;
-var matches = str.matchAll(regex);
+var regex = /world/;
+var matches = str.matchAll(regex);//same as specifying the `g` flag in the regex
 console.log(matches[0]); // "world"
 console.log(matches[1]); // "world"
 ```
@@ -232,6 +239,8 @@ console.log(paddedStr); // "world<<<"
 
 The `replace()` function replaces the first occurrence of a specified substring or regular expression with a new substring. It returns a new string with the replaced content while leaving the original string unchanged.
 
+***Note:*** You can specify the regex flags such as i, g, m, s and u. When `g` (global) is specified, the operation will be executed on the whole string. See the following example. 
+
 **Syntax:**
 ```javascript
 replace(pattern, replacement);
@@ -239,14 +248,18 @@ replace(pattern, replacement);
 **Example:**
 
 ```javascript
-const p = 'The quick brown fox jumps over the lazy dog. If the dog reacted, was it really lazy?';
+var p = 'The quick brown fox jumps over the lazy dog. If the dog reacted, was it really lazy?';
 
 console.log(p.replace('dog', 'monkey'));
 // Expected output: "The quick brown fox jumps over the lazy monkey. If the dog reacted, was it really lazy?"
 
-const regex = /Dog/i;
+var regex = /Dog/i;
 console.log(p.replace(regex, 'ferret'));
 // Expected output: "The quick brown fox jumps over the lazy ferret. If the dog reacted, was it really lazy?"
+
+var regex = /Dog/ig; //global flag has been specified, all occurances of dog will be replaced even though it is a replace function and not a replaceAll
+console.log(p.replace(regex, 'ferret'));
+// Expected output: "The quick brown fox jumps over the lazy ferret. If the ferret reacted, was it really lazy?"
 ```
 
 ### replaceAll
