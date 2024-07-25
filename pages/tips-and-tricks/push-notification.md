@@ -82,8 +82,32 @@ API:
 
 ```
 
-## Handling Notifications in JavaScript
-Ensemble provides a way to centralize notification logic in a single JavaScript function. This function is called every time a notification is received.
+## Handling Notifications
+Ensemble provides multiple ways to handle notifications to suit your use cases.
+1. **Notification Handler**: A notification handler (see below) is a JavaScript that will be executed on every notification received. You can run logic then navigate to a screen.
+2. If a handler is not specified but you want to navigate to a screen upon the user tapping on the notification, you can specify either the screenId or screenName in the notification payload
+```
+// example notification payload from server
+{
+  "token": "<your device token>",
+  "notification": {
+    "title": "Hi from Ensemble",
+    "body": "Hello this is a sample notification"
+  },
+  "apns": {
+    "payload": {
+      "aps": {
+        "badge": 5
+      }
+    }
+  },
+  "data": {
+    "screenId": "<ensemble_screen_id>",
+    "screenName": "<ensemble_screen_name>"
+  }
+}
+```
+3. If neither of the above is specified, the app will simply open up the app (if it is currently not on the foreground).
 
 #### Creating a Script and Handler Function
 Navigate to or create a script in the Scripts section. For example, you might have a script called Common.
