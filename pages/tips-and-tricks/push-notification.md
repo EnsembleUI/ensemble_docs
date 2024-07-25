@@ -84,10 +84,10 @@ API:
 
 ## Handling Notifications
 Ensemble provides multiple ways to handle notifications to suit your use cases.
-1. **Notification Handler**: A notification handler (see below) is a JavaScript that will be executed on every notification received. You can run logic then navigate to a screen.
-2. If a handler is not specified but you want to navigate to a screen upon the user tapping on the notification, you can specify either the screenId or screenName in the notification payload
-```
-// example notification payload from server
+1. **Notification Handler**: Define a notification handler (see below) in JavaScript to be executed on every notification received. You can run logic then return a payload to navigate to a screen.
+2. If a handler is not specified but you want to navigate to a screen upon the user tapping on the notification, simply provide either the screenId or screenName in the notification payload.
+```yaml
+# example notification payload from server
 {
   "token": "<your device token>",
   "notification": {
@@ -97,13 +97,16 @@ Ensemble provides multiple ways to handle notifications to suit your use cases.
   "apns": {
     "payload": {
       "aps": {
-        "badge": 5
+        # update the badge count on iOS
+        "badge": 5  
       }
     }
   },
+  # custom data sent to Ensemble
   "data": {
     "screenId": "<ensemble_screen_id>",
-    "screenName": "<ensemble_screen_name>"
+    "screenName": "<ensemble_screen_name>",
+    "abc": "xyz"
   }
 }
 ```
