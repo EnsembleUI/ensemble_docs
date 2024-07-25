@@ -84,32 +84,8 @@ API:
 
 ## Handling Notifications
 Ensemble provides multiple ways to handle notifications to suit your use cases.
-1. **Notification Handler**: Define a notification handler (see below) in JavaScript to be executed on every notification received. You can run logic then return a payload to navigate to a screen.
-2. If a handler is not specified but you want to navigate to a screen upon the user tapping on the notification, simply provide either the screenId or screenName in the notification payload.
-```yaml
-# example notification payload from server
-{
-  "token": "<your device token>",
-  "notification": {
-    "title": "Hi from Ensemble",
-    "body": "Hello this is a sample notification"
-  },
-  "apns": {
-    "payload": {
-      "aps": {
-        # update the badge count on iOS
-        "badge": 5  
-      }
-    }
-  },
-  # custom data sent to Ensemble
-  "data": {
-    "screenId": "<ensemble_screen_id>",
-    "screenName": "<ensemble_screen_name>",
-    "abc": "xyz"
-  }
-}
-```
+1. **[Notification Handler](#creating-a-script-and-handler-function)**: Define a notification handler (see below) in JavaScript to be executed on every notification received. You can run logic then return a payload to navigate to a screen.
+2. **[Navigating to a Screen](#navigating-to-a-screen)**: If a handler is not specified but you want to navigate to a screen upon the user tapping on the notification, simply provide either the screenId or screenName in the notification payload.
 3. If neither of the above is specified, the app will simply open up the app (if it is currently not on the foreground).
 
 #### Creating a Script and Handler Function
@@ -156,3 +132,42 @@ For our example, it would be `Common.handle_notification`.
 
 Once set, `Common.handle_notification` will be called every time a notification is received.
 
+#### Navigating to a Screen
+Instead of creating a handler function in Javascript, you can specify the screenId or screenName in the notification payload. This will navigate to the specified screen when the user taps on the notification.
+
+Here is an example notification payload sent from the server. Note the screenId / screenName (you should specify one or the other, but not both) in the data section.
+```yaml
+{
+  "token": "<your device token>",
+  "notification": {
+    "title": "Hi from Ensemble",
+    "body": "Hello this is a sample notification"
+  },
+  "apns": {
+    "payload": {
+      "aps": {
+        # update the badge count on iOS
+        "badge": 5  
+      }
+    }
+  },
+  # custom data sent to Ensemble
+  "data": {
+    "screenId": "<ensemble_screen_id>",
+    "screenName": "<ensemble_screen_name>",
+    "hello": "world"
+  }
+}
+```
+
+Upon receiving this notification, Ensemble will navigate to the screen specified, and pass along the notification title/body, along with the data payload to the screen. You can access this data in the screen using `notificationPayload.*`. Here is an example of the screen the notification will redirect to:
+```yaml
+View:
+  body:
+    Text:
+      text: |-
+        Notification redirected me here:
+        Notification title: ${notificationPayload.title}
+        Notification body: ${notificationPayload.body}
+        Notification payload: ${notificationPayload.data.hello}
+```
