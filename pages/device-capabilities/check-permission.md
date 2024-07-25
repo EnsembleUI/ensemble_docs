@@ -2,6 +2,9 @@
 
 `checkPermission` is designed to check the permission status. It includes components for checking notification, location, contacts, and camera permissions.
 
+**Inputs**
+`type`: applicable types are `notification`, `location`, `contacts`, and `camera`.
+
 **Callbacks**
 1. `onAuthorized`: Executes when the components permission to authorized. Updates the text of the component to "Authorized."
 
