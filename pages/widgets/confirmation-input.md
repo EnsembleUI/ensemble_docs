@@ -23,3 +23,4 @@ The ConfirmationInput Widget enables the seamless rendering of a verification vi
 | styles                        | object  | [See properties](#styles)                                                                       |
 | onChange                      | action  | Execute an action when a change is detected to the text field                                   |
 | onComplete                    | action  | Execute an action when the text field fully entered or when keyboard submitted button tapped    |
+| autofillEnabled         | boolean                                        | Enables or disables the autofill functionality for the input field. Default is `false`.                                                                                                                                                                                                                           |

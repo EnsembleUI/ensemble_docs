@@ -60,6 +60,7 @@ Animate screen transition from one to another.
 | :------------------- | :------ | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | replaceCurrentScreen | boolean | If true, the new screen will replace the current screen on the navigation history. Navigating back from the new screen will skip the current screen.                                          |
 | clearAllScreens      | boolean | If true, clear out all existing screens in the navigation history. This is useful when navigating to a Logout or similar page where users should not be able to go back to the prior screens. |
+| closeToasts    | boolean | Determines whether toasts (temporary messages) should be closed automatically. Default is `true`. |
 
 **Example: Calling navigateScreen - Detailed Examples for YAML and JS**
 
