@@ -76,3 +76,18 @@ View:
 
 You can find a complete example of using the deviceSecurity action in the [Ensemble Kitchen Sink](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/RLWeYjfVwopcTqhWo6mX). This example demonstrates how to integrate the action within a screen, handle the success and error cases, and display relevant information to the user based on the device's security status.
 
+### Platform Based Configurations
+
+- **Android**: No additional configurations are required.
+- **iOS**: Add following lines to the `Info.plist` file in /ios/Runner/ folder:
+
+```xml
+<key>LSApplicationQueriesSchemes</key>
+    <array>
+        <string>undecimus</string>
+        <string>sileo</string>
+        <string>zbra</string>
+        <string>filza</string>
+        <string>activator</string>
+    </array>
+```
