@@ -1,8 +1,8 @@
 # Device Security
 
-The `deviceSecurity` action checks if the device is rooted, debugged, or running on an emulator. It executes corresponding actions based on the results of these checks, enhancing security awareness and control within your application.
+The `deviceSecurity` action checks if the device is rooted, debugged, or running on an emulator. It executes corresponding actions based on the results of these checks, enhancing security awareness and control within your application
 
-### Properties
+## Properties
 
 | Property  | Type   | Description                                                                      |
 | :-------- | :----- | :------------------------------------------------------------------------------- |
@@ -91,3 +91,10 @@ You can find a complete example of using the deviceSecurity action in the [Ensem
         <string>activator</string>
     </array>
 ```
+
+---
+**NOTE**
+
+This action only works for native applications (Android and iOS), on web it will always return false.
+
+---
