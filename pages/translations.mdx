@@ -135,3 +135,22 @@ Screen:
   - Button:
       label: r@common.submit
 ```
+### (optionally) Configure different `fontFamily` for each language your app supports
+Ensemble allows you to configure a different `fontFamily` for each language that your app supports. Wherever you see `fontFamily` whether inside [Themes](https://docs.ensembleui.com/theme-and-styling/theme) or on inline styles (e.g. [Text](https://docs.ensembleui.com/widgets/types#textstyle)), you can configure a different styles for each language that your app supports. 
+
+The fontFamily property can either be:
+- A string representing the font family name.
+- An object where the keys are language codes (e.g., 'en', 'nl', 'ar', 'default') and the values are the corresponding font family names.
+
+For example - 
+```yaml
+      fontFamily:
+        en: Montserrat
+        ar: Tajawal
+        default: Montserrat
+```
+
+Supported fontFamilies are [here](https://github.com/material-foundation/flutter-packages/blob/main/packages/google_fonts/generator/families_supported)
+
+
+
