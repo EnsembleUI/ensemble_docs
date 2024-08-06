@@ -45,7 +45,7 @@ The TextInput Widget enables the rendering of interactive text input fields, all
 | onKeyPress        | On every keystroke, call Ensemble's built-in functions or execute code                                                                                                                                               |
 | onFocusReceived   | Execute an Ensemble action when the field receives focus                                                                                                                                                             |
 | onFocusLost       | Execute an Ensemble action when the field loses focus                                                                                                                                                                |
-| onChange          | Call Ensemble's built-in functions or execute code when the input changes. Note for free-form text input, this event only dispatches if the text changes AND the focus is lost (e.g. clicking on button)             |
+| onChange          | Call Ensemble's built-in functions or execute code when the input changes. This event only dispatches if the text changes AND the focus is lost (e.g. clicking on button)             |
 | onDelayedKeyPress | Execute an Action after a brief delay specified by delayedKeyPressDuration (default: 300 ms). Consecutive calls within this delay will reset the timer, useful for minimizing server calls for type-ahead scenarios. |
 
 ### icon
