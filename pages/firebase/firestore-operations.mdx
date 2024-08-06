@@ -14,6 +14,83 @@ Now, let's dive into performing basic operations on our Firestore database:
 
 - To get hands-on experience with firestore operations, check the live example on [Ensemble Studio](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/W7b1n4a1LVoQgLyAie4F)
 
+## Firestore Data types
+
+### Timestamp
+Following methods are available for Firestore's Timestamp type. 
+
+#### Timestamp.now()
+Static method. Returns a Timestamp representing the current time.
+
+Example
+```js
+var currentTimestamp = Timestamp.now();
+console.log(currentTimestamp);
+```
+#### Timestamp.fromDate(date)
+Static method. Creates a Timestamp from a JavaScript Date object.
+Example
+```js
+var specificDate = new Date('2024-08-05T12:34:56Z');
+var specificTimestamp = Timestamp.fromDate(specificDate);
+console.log(specificTimestamp);
+```
+
+#### Timestamp.fromMillis(milliseconds)
+Static method. Creates a Timestamp from a given number of milliseconds since the Unix epoch (January 1, 1970).
+
+Example
+```js
+var milliseconds = 1691237696123; // Milliseconds since the Unix epoch
+var timestampFromMillis = Timestamp.fromMillis(milliseconds);
+console.log(timestampFromMillis);
+```
+
+#### new Timestamp(seconds, nanoseconds)
+Constructor. Creates a Timestamp object from a given number of seconds since the Unix epoch and additional nanoseconds.
+
+Example
+```js
+var seconds = 1691237696;
+var nanoseconds = 123456789;
+var customTimestamp = new Timestamp(seconds, nanoseconds);
+console.log(customTimestamp);
+```
+#### toDate()
+Converts a Timestamp to the number of milliseconds since the Unix epoch.
+Example
+```js
+var milliseconds = customTimestamp.toMillis();
+console.log(milliseconds);
+```
+#### valueOf()
+Returns the number of milliseconds since the Unix epoch, similar to toMillis(). It’s used when Timestamp is compared to other values in arithmetic operations.
+
+Example
+```js
+var value = customTimestamp.valueOf();
+console.log(value);
+```
+
+Following properties are also available on each `Timestamp` object
+
+#### seconds
+The number of seconds of UTC time since Unix epoch 1970-01-01T00:00:00Z.
+
+Example
+```js
+var timestamp = new Timestamp(10,0);
+console.log(timestamp.seconds); //prints 10
+```
+#### nanoseconds
+The number of nanoseconds of UTC time since Unix epoch 1970-01-01T00:00:00Z.
+
+Example
+```js
+var timestamp = new Timestamp(10,0);
+console.log(timestamp.nanoseconds); //prints 0
+```
+
 ## 1. Creating a Firestore Collection
 
 To store data in Firestore, we need to create a collection. A collection in Firestore is a container for documents, 
