@@ -13,8 +13,8 @@ The ConfirmationInput Widget enables the seamless rendering of a verification vi
 | autoComplete                  | boolean | If it is True, then it will trigger onComplete when the user specified length and has typed the full length, False will trigger onComplete when the user hit Enter. Defaults (True).                                                                                                   |
 | fieldType                     | string  | How the input field should be displayed.                                                        |
 | inputType                     | string  | Pick a predefined input type.                                                                   |
-| obscureText                   | string  | To display the pin as obscure. `password`,`custom`,`none`(default)                              |
-| obscureSymbol                 | string  | To display in place of pin as obscure when `custom` is selected in `obscureText` property and it expects a single character. Default is `*`                                                              |
+| obscureText                   | boolean  | To display the pin as obscure. Default is `false`                             |
+| obscureSymbol                 | string/Icon  | To display in place of pin as obscure if `obscureText` is `true`, it can be a character of length `1` or a `icon` widget. Default is `*`                                                              |
 | defaultFieldBorderColor       | string  | Set the border color for inactive/unfocused state of text field.                                |
 | activeFieldBorderColor        | string  | Set the border color for active/focused state of text field.                                    |
 | filledFieldBorderColor        | string  | Set the border color for filled state of text field.                                            |
