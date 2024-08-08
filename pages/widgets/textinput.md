@@ -37,6 +37,8 @@ The TextInput Widget enables the rendering of interactive text input fields, all
 | maxLines                | integer                                        | Specifies the maximum number of lines to visually expand to. This will also enable multi-line if this number is greater than 1 and the 'multiline' property is not set.                                                           |
 | floatLabel | boolean | [floating label example](#floating-label-example)
 | autofillHints           | array                                         | List of autofill hints used to specify what type of information should be autofilled. Possible values: `"addressCity"`, `"addressCityAndState"`, `"addressState"`, `"birthday"`, `"birthdayDay"`, `"birthdayMonth"`, `"birthdayYear"`, `"countryCode"`, `"countryName"`, `"creditCardExpirationDate"`, `"creditCardExpirationDay"`, `"creditCardExpirationMonth"`, `"creditCardExpirationYear"`, `"creditCardFamilyName"`, `"creditCardGivenName"`, `"creditCardMiddleName"`, `"creditCardName"`, `"creditCardNumber"`, `"creditCardSecurityCode"`, `"creditCardType"`, `"email"`, `"familyName"`, `"fullStreetAddress"`, `"gender"`, `"givenName"`, `"impp"`, `"jobTitle"`, `"language"`, `"location"`, `"middleInitial"`, `"middleName"`, `"name"`, `"namePrefix"`, `"nameSuffix"`, `"newPassword"`, `"newUsername"`, `"nickname"`, `"oneTimeCode"`, `"organizationName"`, `"password"`, `"photo"`, `"postalAddress"`, `"postalAddressExtended"`, `"postalAddressExtendedPostalCode"`, `"postalCode"`, `"streetAddressLevel1"`, `"streetAddressLevel2"`, `"streetAddressLevel3"`, `"streetAddressLevel4"`, `"streetAddressLine1"`, `"streetAddressLine2"`, `"streetAddressLine3"`, `"sublocality"`, `"telephoneNumber"`, `"telephoneNumberAreaCode"`, `"telephoneNumberCountryCode"`, `"telephoneNumberDevice"`, `"telephoneNumberExtension"`, `"telephoneNumberLocal"`, `"telephoneNumberLocalPrefix"`, `"telephoneNumberLocalSuffix"`, `"telephoneNumberNational"`, `"transactionAmount"`, `"transactionCurrency"`, `"url"`, `"username"` |
+| maxLength | integer | The maximum number of characters allowed in the text field. If set, the text field will restrict the input to this number of characters. |
+| maxLengthEnforcement | string | none, enforced, truncateAfterCompositionEnds. [see properties](#maxlengthenforcement) |
 
 ### Actions
 
@@ -129,3 +131,10 @@ The TextInput Widget enables the rendering of interactive text input fields, all
 | box       | draw a Box border around this input widget. This property can be defined in the theme to apply to all Input widgets. |
 | underline | draw an Underline below this input widget. This property can be defined in the theme to apply to all Input widgets.  |
 
+### MaxLengthEnforcement
+
+| Property   | Type    | Description                                                                            |
+| :--------- | :------ | :------------------------------------------------------------------------------------- |
+| none       | string  | No enforcement applied to the editing value. It's possible to exceed the maxLength.    |
+| enforced   | string  | Keep the length of the text input from exceeding the max length even when the text has an unfinished composing region.    |
+| truncateAfterCompositionEnds  | string  | Users can still input text if the current value is composing even after reaching the max length limit. After composing ends, the value will be truncated. |
