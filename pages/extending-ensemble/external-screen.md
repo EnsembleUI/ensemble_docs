@@ -1,9 +1,12 @@
-# External Screen
+import { Callout } from 'nextra/components'
 
-Let's say their is a flutter screen already built or their is a screen which can't be made with Ensemble at the moment, you can construct that screen and Ensemble allows you to navigate to that custom screen.
+# Embed Flutter screen in an Ensemble app
 
-> [NOTE]  
-> You can find the entire source code [here](https://github.com/EnsembleUI/starter/tree/external-screen).
+Ensemble allows you to navigate to a screen built with Flutter. This allows you to reuse any existing Flutter screen.
+
+<Callout emoji="💡">
+  You can find the entire source code [here](https://github.com/EnsembleUI/starter/tree/external-screen).
+</Callout>
 
 
 ## How it works.
