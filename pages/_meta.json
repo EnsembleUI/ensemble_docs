@@ -4,6 +4,7 @@
     "title": "Studio overview",
     "display": "hidden"
   },
+  "training-videos": "Training videos",
   "--Build": {
     "type": "separator",
     "title": "Build your app"
