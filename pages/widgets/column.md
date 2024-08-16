@@ -15,7 +15,11 @@ Column is designed to arrange child widgets vertically, where the intrinsic size
 - **mainAxis**: This property controls the vertical alignment of the children within the Column. This property is useful only when the mainAxisSize is set to max (default) as there are available spaces to align the children.
 - **crossAxis**: This property controls the horizontal alignment of the children within the Column.
 - **scrollable**: Enable vertical scrolling when the child widgets grow wider than the available space.
-- 
+
+## Caveats
+- **Column width**: Note that setting a width for a Column acts more like a maximum width constraint. The Column determines its actual width based on the widest child, aligning the other children along the horizontal cross-axis according to this width. This means if this actual width is less than the specified width, the `crossAxis` only affects the alignment of the children within the determined (lesser) width.
+If you wish to stretch all the children to the same specified width, add `crossAxis: stretch` in addition to the fixed width.
+
 [Test in Kitchen Sink](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/90a8e4df-5eab-4473-ba10-2ecffc9596b0)
 
 ## Reference
