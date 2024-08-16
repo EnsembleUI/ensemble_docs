@@ -8,6 +8,37 @@ From color schemes to typography, widgets, and transition options, our comprehen
 
 You can find the theme on Left-Side of the panel in ensemble studio after you have selected your App.
 
+<img width="816" alt="image" src="https://github.com/user-attachments/assets/24852ef1-5627-4499-a649-abc7018b07b2">
+
+## Defining one theme
+
+You can define one or more themes for our app and switch between them dynamically. If you only need one theme, you can just define the `Styles` without any `Theme` tag, see the following example.
+
+```yaml
+Tokens:
+  Colors:
+    primary:
+      '900': '#1A2A4C'
+      '800': '#243B6A'
+      '700': '#2F4D89'
+      '600': '#0077B8'
+      '500': '#0092E0'
+      '400': '#33B8FF'
+      '300': '#70CDFF'
+      '200': '#ADE4FF'
+      '100': '#D6F1FF'
+      '50': '#EBF5FF'
+Styles:
+  Button:
+    backgroundColor: ${Colors.primary['800']}
+  .submitButton:
+    backgroundColor: green
+```
+
+## Defining multiple themes
+
+You can define one or more themes for our app and switch between them dynamically. See [Kitchen Sink Example](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/theme) for a detailed example. 
+
 
 ## Checking and Switching Themes in Javascript
 
@@ -241,7 +272,7 @@ Now let us see what properties does it have on larger level
 
 | Property       | Type   | Description                                                                                                                                                                                                                                        |
 | :------------- | :----- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| fontFamily     | string | Allows users to chose a specific font-family other than the default one. see the list of all available font families [here](https://github.com/material-foundation/flutter-packages/blob/main/packages/google_fonts/generator/families_supported). |
+| fontFamily     | string or object | Set the font family applicable for all widgets inside this container, see the list of all available font families [here](https://github.com/material-foundation/flutter-packages/blob/main/packages/google_fonts/generator/families_supported). You can specify the fontFamily name directly or specify a different fontFamily for each language, see [Here](../translations.mdx#optionally-configure-different-fontfamily-for-each-language-your-app-supports) |
 | displayLarge   | object | Largest of display styles . As the largest text on the screen, display styles are reserved for short, important text or numerals. They work best on large screens. [see properties](#textstyle)                                                    |
 | displayMedium  | object | Middle size of the display styles. As the largest text on the screen, display styles are reserved for short, important text or numerals. They work best on large screens. [see properties](#textstyle)                                             |
 | displaySmall   | object | Smallest of the display styles. As the largest text on the screen, display styles are reserved for short, important text or numerals. They work best on large screens. [see properties](#textstyle)                                                |

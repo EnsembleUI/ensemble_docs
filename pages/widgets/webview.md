@@ -20,14 +20,27 @@ Array of strings.
    * geo: opens the map application
    * sms: opens the messaging application
      
-When allowedLaunchSchemes is not present, by default the following schemes are permitted. 
+When `allowedLaunchSchemes` is not present, by default the following schemes are permitted. 
     'tel:',
     'sms:',
     'mailto:',
     'geo:'
 
-You can override the defaults by specifying the allowedLaunchSchemes. 
+You can override the defaults by specifying the `allowedLaunchSchemes`. 
 
+For example - if you are displaying messages inside your webview and want the users to be able to slack someone, you will specify the allowed url schemes as follows -
+
+```yaml
+        - WebView:
+            url: https://messages.mycompany.com
+            allowedLaunchSchemes:
+              - "tel:"
+              - "sms:"
+              - "mailto:"
+              - "slack:"
+              
+          #note that if you explicitly specify `allowedLaunchSchemes` you must specify the defaults as well if you want them to be allowed otherwise they will be overwritten
+```
 In order to add additional schemes to the default schemes, specify the default schemes and the additional schemes as an array value of allowedLaunchSchemes. URL schemes such as http and https are included by default and cannot be overwritten.
                                        
 ## Events
