@@ -11,6 +11,9 @@ When an app loads, Ensemble checks the defualt language of the device (e.g. lang
 1. If device default langugae is supported by your app, Ensemble uses that language.
 2. Else, Ensemble uses the app's default language.
 
+You can override the above behavior using [the setLocale action](#set-the-locale).
+
+
 ## Set up languages
 
 In Ensemble Studio, navigate to your app and select Translations from the left menu. Add new language to start with.
@@ -64,9 +67,9 @@ Use the 🌎 icon on top of the preview to select a language. The preview update
 ![add language](/images/translations/test-language.png)
 
 
-## Changing Language in Screens using Script
+## Setting language in app code
 
-To enhance user experience, you can dynamically change the app's language from within your scripts. This allows users to switch languages without restarting the app.
+You can dynamically change the app's language from within your app. This allows users to select a language for the app that is different than OS language.
 
 ### Retrieve Supported Languages
 
@@ -89,7 +92,17 @@ console.log(app.locale);
 ```
 
 ### Set the Locale
-You can set the locale using the ensemble.setLocale method. This method updates the app's language dynamically.
+You can set the locale using the ensemble.setLocale method. This method updates the app's language.
+
+```yaml
+Button:
+  label: Switch to English
+  onTap:
+    setLocale:
+      languageCode: en
+```
+
+This action can be triggered in code:
 
 ```javascript
 // Set the locale to English
@@ -98,24 +111,8 @@ ensemble.setLocale({
 });
 ```
 
-### Dropdown for Language Selection
-Implement a dropdown menu to allow users to select their preferred language. When a language is selected, the locale is updated accordingly.
 
-```javascript
-Dropdown:
-  itemTemplate:
-    data: ${app.languages}
-    name: language
-    template:
-      Text:
-        text: ${language.name} (${language.nativeName})
-    value: ${language.languageCode}
-
-  onChange: |-
-    ensemble.setLocale({ languageCode: event.data.value });
-```
-
-### Example Usage in a Screen
+### Example usage
 Here's an example of how you might integrate the language selection dropdown into a screen:
 
 ```javascript
@@ -135,6 +132,7 @@ Screen:
   - Button:
       label: r@common.submit
 ```
+
 ### (optionally) Configure different `fontFamily` for each language your app supports
 Ensemble allows you to configure a different `fontFamily` for each language that your app supports. Wherever you see `fontFamily` whether inside [Themes](https://docs.ensembleui.com/theme-and-styling/theme) or on inline styles (e.g. [Text](https://docs.ensembleui.com/widgets/types#textstyle)), you can configure a different styles for each language that your app supports. 
 
