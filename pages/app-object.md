@@ -1,12 +1,12 @@
-# App object
+# AppInfo object
 
-Get ensemble app informations such as appId, version, etc in Ensemble Definition Language
+Get metadata (information) about your app from Ensemble and from Appstore/Google Play. Does not apply to webapps. 
 
 - appId - Ensemble AppId (ex: GJ4nZIEFlZTv2HQGw)
-- appName - Project App Name
+- appName - App name from Appstore/Google Play
 - packageName - Android package name or iOS bundleId
-- version - Project Version (ex: 1.0.0)
-- bundleNumber - Project Build Number (2)
+- version - app's version from Appstore/Google Play
+- bundleNumber - app's Build Number from Appstore/Google Play
 - theme - The app's current theme
 - themes - List of all configured themes
 

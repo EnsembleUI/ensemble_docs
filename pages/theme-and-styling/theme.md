@@ -8,6 +8,37 @@ From color schemes to typography, widgets, and transition options, our comprehen
 
 You can find the theme on Left-Side of the panel in ensemble studio after you have selected your App.
 
+<img width="816" alt="image" src="https://github.com/user-attachments/assets/24852ef1-5627-4499-a649-abc7018b07b2">
+
+## Defining one theme
+
+You can define one or more themes for our app and switch between them dynamically. If you only need one theme, you can just define the `Styles` without any `Theme` tag, see the following example.
+
+```yaml
+Tokens:
+  Colors:
+    primary:
+      '900': '#1A2A4C'
+      '800': '#243B6A'
+      '700': '#2F4D89'
+      '600': '#0077B8'
+      '500': '#0092E0'
+      '400': '#33B8FF'
+      '300': '#70CDFF'
+      '200': '#ADE4FF'
+      '100': '#D6F1FF'
+      '50': '#EBF5FF'
+Styles:
+  Button:
+    backgroundColor: ${Colors.primary['800']}
+  .submitButton:
+    backgroundColor: green
+```
+
+## Defining multiple themes
+
+You can define one or more themes for our app and switch between them dynamically. See [Kitchen Sink Example](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/theme) for a detailed example. 
+
 
 ## Checking and Switching Themes in Javascript
 

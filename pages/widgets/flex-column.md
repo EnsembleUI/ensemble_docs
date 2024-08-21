@@ -19,6 +19,10 @@ FlexColumn is designed to lay out child widgets vertically and proportionally fr
     - 2. Widgets marked as `flexible` are laid out next. They're allowed to occupy space up to their flex factor but can be smaller if they don't require all the space. This is useful for widgets that can size themselves according to their content but should be limited to a specific portion of the available space.
     - 3. The remaining space is then divided among `expanded` widgets according to their flex factors. These widgets are stretched to fill the allocated space, ensuring that all available space is used.
 
+## Caveats
+- **FlexColumn width**: Note that setting a width for a FlexColumn acts more like a maximum width constraint. The FlexColumn determines its actual width based on the widest child, aligning the other children along the horizontal cross-axis according to this width. This means if this actual width is less than the specified width, the `crossAxis` only affects the alignment of the children within the determined (lesser) width.
+  If you wish to stretch all the children to the same specified width, add `crossAxis: stretch` in addition to the fixed width.
+
 
 ## Usage
 

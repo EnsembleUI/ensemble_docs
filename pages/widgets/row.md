@@ -14,6 +14,10 @@ Row is designed to arrange child widgets horizontally, where the intrinsic sizes
 - **crossAxis**: This property controls the vertical alignment of the children within the Row.
 - **scrollable**: Enable horizontal scrolling when the child widgets grow wider than the available space.
 
+## Caveats
+- **Row height**: Note that setting a height for a Row acts more like a maximum height constraint. The Row determines its actual height based on the tallest child, aligning the other children along the vertical cross-axis according to this height. This means if this actual height is less than the specified height, the `crossAxis` only affects the alignment of the children within the determined (lesser) height.
+If you wish to stretch all the children to the same specified height, add `crossAxis: stretch` in addition to the fixed height.
+
 [Test in Kitchen Sink](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/4bd0d453-c243-429d-a562-93cbc9db38e3)
 
 ## Properties

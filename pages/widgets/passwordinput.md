@@ -26,6 +26,8 @@ The PasswordInput Widget enables the rendering of secure password input fields, 
 | obscureToggle   | boolean | enable the toggling between plain and obscure text.                                                                                                                                                      |
 | readOnly                | boolean                                        | When it is true, the text cannot be modified by any shortcut or keyboard operation.                 |
 | selectable              | boolean                                        | Setting this to true will enable features such as long-pressing the TextField to select text and show the cut/copy/paste menu, and tapping to move the text caret text.                                                                                                                                                                                |
+| maxLength | integer | The maximum number of characters allowed in the text field. If set, the text field will restrict the input to this number of characters. |
+| maxLengthEnforcement | string | none, enforced, truncateAfterCompositionEnds. [see properties](#maxlengthenforcement) |
 
 ### icon
 
@@ -79,3 +81,11 @@ The PasswordInput Widget enables the rendering of secure password input fields, 
 | :-------- | :------------------------------------------------------------------------------------------------------------------- |
 | box       | draw a Box border around this input widget. This property can be defined in the theme to apply to all Input widgets. |
 | underline | draw an Underline below this input widget. This property can be defined in the theme to apply to all Input widgets.  |
+
+### MaxLengthEnforcement
+
+| Property   | Type    | Description                                                                            |
+| :--------- | :------ | :------------------------------------------------------------------------------------- |
+| none       | string  | No enforcement applied to the editing value. It's possible to exceed the maxLength.    |
+| enforced   | string  | Keep the length of the text input from exceeding the max length even when the text has an unfinished composing region.    |
+| truncateAfterCompositionEnds  | string  | Users can still input text if the current value is composing even after reaching the max length limit. After composing ends, the value will be truncated. |

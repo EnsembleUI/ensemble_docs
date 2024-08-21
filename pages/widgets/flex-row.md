@@ -19,6 +19,9 @@ FlexRow is designed to lay out child widgets horizontally and proportionally fro
     - 2. Widgets marked as `flexible` are laid out next. They're allowed to occupy space up to their flex factor but can be smaller if they don't require all the space. This is useful for widgets that can size themselves according to their content but should be limited to a specific portion of the available space.
     - 3. The remaining space is then divided among `expanded` widgets according to their flex factors. These widgets are stretched to fill the allocated space, ensuring that all available space is used.
 
+## Caveats
+- **Row height**: Note that setting a height for a FlexRow acts more like a maximum height constraint. The FlexRow determines its actual height based on the tallest child, aligning the other children along the vertical cross-axis according to this height. This means if this actual height is less than the specified height, the `crossAxis` only affects the alignment of the children within the determined (lesser) height.
+  If you wish to stretch all the children to the same specified height, add `crossAxis: stretch` in addition to the fixed height.
 
 ## Usage
 
