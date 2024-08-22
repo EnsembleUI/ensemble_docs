@@ -126,7 +126,7 @@ getUsers:
 - `listenForChanges`: The operation will listen for real-time updates if set to true and triggers the UI to update.
 > Default vale for `operation` is set to `add` if not mentioned.
 
-> Note: When listen for changes is set to true, the first response from the API will be {"message": "Subscribed to API", "documents": []}. Be aware of this if your response handling involves checking whether documents is empty.
+> Note: When `listenForChanges` is set to `true`, the first response from the API will be `{"message": "Subscribed to API", "documents": []}`. Be aware of this if your response handling involves checking whether `documents` is empty.
 2. **Example (Get user using multiple filters)**:
 ```yaml
 getSpecificUsers:
