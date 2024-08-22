@@ -125,6 +125,7 @@ getUsers:
 - `path`: The path to the collection or document from where we wanna retrieve the data.
 - `listenForChanges`: The operation will listen for real-time updates if set to true and triggers the UI to update.
 > Default vale for `operation` is set to `add` if not mentioned.
+
 > Note: When listen for changes is set to true, the first response from the API will be {"message": "Subscribed to API", documents: []}. Note this if you are doing any response handling involvng checking if documents is empty.
 2. **Example (Get user using multiple filters)**:
 ```yaml
