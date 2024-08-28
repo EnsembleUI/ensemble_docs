@@ -5,6 +5,9 @@ Executing a group of Actions, either in parallel (default) or sequentially with 
 - The most common use case for this is calling APIs in parallel using the `invokeAPI` action. Since APIs are asynchronous, multiple APIs will be triggered one after the other in parallel. The parallism is governed by the underlying operating system.
 - Use `executeInOrder: true` when certain actions depend on the previous action to complete before executing. An example is closing the current dialog before opening up the new one. Dialog lifecycles are asynchronous, so calling close followed immediately by open will not work as expected. Using `executeInOrder: true` will ensure that the close action completes before the open action is executed.
 
+## Caveats
+- Note that while `executeCode` action can execute asynchronous code, it will not wait and will immediately return. This means that even if it is used inside `executeActionGroup` with `executeInOrder: true`, the next action will be executed immediately after the `executeCode` action is called. 
+
 | Property       | Type     | Description                                                                          |
 |:---------------|:---------|:-------------------------------------------------------------------------------------|
 | executeInOrder | boolean  | If true, the actions will be executed in order, one after the other. (default false) |
