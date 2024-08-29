@@ -39,26 +39,149 @@ View:
 ```
 
 <iframe
-  src="https://studio.ensembleui.com/preview/index.html?appId=e24402cb-75e2-404c-866c-29e6c3dd7992&screenId=m9nXE8c1fJD4OUUDvEEF&showAction=true&devicePreview=false"
-  style={{ width: '100%', height: '500px', border: '1px solid #ccc' }}
+  src="https://studio.ensembleui.com/preview/index.html?appId=nWsD5baeykm3W772kkSw&screenId=2Q5jkkDqjYMX70RiYWm5&devicePreview=false"
+  style={{ width: '100%', height: '220px', border: '1px solid #ccc' }}
 >
 </iframe>
 
 
-## Methods
+## Update chart with new data points
 
-### Replace chart's data with setData
+You can append new data points to an existing chart:
 
-With setData, you can replacing the existing data without re-rendering the entire widget. 
-
+1. Add an id to your chart widget.
+2. Use `addLabels` and `addData` to add new data points.
+3. Use `update` to redraw the chart.
 
 **Example:**
-```javascript
-myChart.setData([
-    { label: "January", data: [30, 20, 50] },
-    { label: "February", data: [40, 35, 60] }
-]);
+```yaml
+View:
+  body:
+    Column:
+      styles:
+        gap: 16
+        padding: 24
+      children:
+        - Button:
+            label: Add Data
+            onTap:
+              executeCode:
+                body: |
+                  //@code
+                  testLineChart.addLabels(['July','August','September']);
+                  testLineChart.addData(0,[20,30,40]);
+                  testLineChart.addData(1,[5,45,25]);
+                  testLineChart.update();
+        - ChartJs:
+            id: testLineChart
+            styles:
+              width: ${device.width}
+            config: |
+              {
+                type: 'line',
+                data: {
+                  labels: [
+                    'January',
+                    'February',
+                    'March',
+                    'April',
+                    'May',
+                    'June'
+                  ],
+                  datasets: [
+                    {
+                      label: 'My First dataset',
+                      backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                      ],
+                      borderColor: [
+                        'rgba(255,99,132,1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                      ],
+                      borderWidth: 1,
+                      data: [0, 10, 5, 2, 20, 45],
+                      fill: 'start'
+                    },{
+                      label: 'My Second dataset',
+                      backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                      ],
+                      borderColor: [
+                        'rgba(255,99,132,1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                      ],
+                      borderWidth: 1,
+                      data: [5, 12, 7, 0, 18, 25],
+                      fill: 'start'
+                    }
+                  ]
+                },
+                options: {
+                  scales: {
+                    x: {
+                      ticks: {
+                        maxRotation: 0,
+                        minRotation: 0
+                      }
+                    }
+                  },
+                  plugins: {
+                    filler: {
+                      propagate: false,
+                    }
+                  },
+                  interaction: {
+                    intersect: false,
+                  },
+                  tension: 0.4
+                }
+              }
+
 ```
+
+<iframe
+  src="https://studio.ensembleui.com/preview/index.html?appId=nWsD5baeykm3W772kkSw&screenId=T9EGDCUbfYlcd04MZjho&devicePreview=false"
+  style={{ width: '100%', height: '300px', border: '1px solid #ccc' }}
+>
+</iframe>
+
+
+
+## Properties
+
+| Property | Type   | Description |
+|:---------|:-------|:------------|
+| id       | string | Assign an id to the chart so that you can run its methods |
+| config   | object | Chart's configuration that conforms to [chartjs.org](https://www.chartjs.org/) specification |
+
+
+### Styles
+
+| Property | Type   | Description |
+|:---------|:-------|:------------|
+| width    | integer | The width property determines the horizontal size of an element, allowing control over its width dimension within the layout. |
+| height   | integer | The height property determines the vertical size of an element, allowing control over its height dimension within the layout. |
+
+
+## Methods
 
 ### addLabels
 
@@ -77,12 +200,12 @@ myChart.addLabels(["January", "February", "March"]);
 This method appends data to an existing dataset.
 
 **Parameters:**
-- data (array): An array of data points to add to the chart.
 - datasetIndex (integer): The index of the dataset to which the data should be added.
+- data (array): An array of data points to add to the chart.
 
 **Example:**
 ```javascript
-myChart.addData([10, 20, 30], 0);
+myChart.addData(0, [10, 20, 30]);
 ```
 
 ### update
@@ -91,21 +214,5 @@ This method updates the chart to reflect any changes in data, labels, or configu
 
 **Example:**
 ```javascript
-chart.update();
+myChart.update();
 ```
-
-## Properties
-
-| Property | Type   | Description |
-|:---------|:-------|:------------|
-| id       | string | Assign an id to the chart so that you can run its methods |
-| config   | object | Chart's configuration that conforms to [chartjs.org](https://www.chartjs.org/) specification |
-
-
-### Styles
-
-| Property | Type   | Description |
-|:---------|:-------|:------------|
-| width    | integer | The width property determines the horizontal size of an element, allowing control over its width dimension within the layout. |
-| height   | integer | The height property determines the vertical size of an element, allowing control over its height dimension within the layout. |
-
