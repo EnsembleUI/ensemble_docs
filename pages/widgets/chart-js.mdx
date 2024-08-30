@@ -1,9 +1,9 @@
 import { Callout } from 'nextra/components'
+import { EnsemblePreview } from '../../components/ensemble-preview'
 
 # ChartJS widget
 
 The ChartJS widget renders a chart by leveraging the open-source library [chartjs.org](https://www.chartjs.org/).
-
 
 [Test in Kitchen Sink](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/5d7b84de-3bbd-456e-aeea-98e2c9f4c3c7)
 
@@ -11,11 +11,14 @@ The ChartJS widget renders a chart by leveraging the open-source library [chartj
 
 The primary property required for ChartJs widget requires is `config`.
 
-<Callout emoji="💡">
-  Prompt ChatGPT to generate this configuration. E.g. What is the json configuration for pie chart using chartjs?
-</Callout>
+<EnsemblePreview 
+  appId="nWsD5baeykm3W772kkSw"
+  screenId="2Q5jkkDqjYMX70RiYWm5"
+  height="220px"
+/>
 
-```yaml
+
+```yaml filename="source"
 View:
   body:
     Column:
@@ -38,11 +41,9 @@ View:
               }
 ```
 
-<iframe
-  src="https://studio.ensembleui.com/preview/index.html?appId=nWsD5baeykm3W772kkSw&screenId=2Q5jkkDqjYMX70RiYWm5&devicePreview=false"
-  style={{ width: '100%', height: '220px', border: '1px solid #ccc' }}
->
-</iframe>
+<Callout emoji="💡">
+  Prompt ChatGPT to generate this configuration. E.g. What is the json configuration for pie chart using chartjs?
+</Callout>
 
 
 ## Update chart with new data points
@@ -53,8 +54,15 @@ You can append new data points to an existing chart:
 2. Use `addLabels` and `addData` to add new data points.
 3. Use `update` to redraw the chart.
 
-**Example:**
-```yaml
+
+<EnsemblePreview 
+  appId="nWsD5baeykm3W772kkSw"
+  screenId="T9EGDCUbfYlcd04MZjho"
+  height="300px"
+/>
+
+
+```yaml filename="source"
 View:
   body:
     Column:
@@ -67,7 +75,6 @@ View:
             onTap:
               executeCode:
                 body: |
-                  //@code
                   testLineChart.addLabels(['July','August','September']);
                   testLineChart.addData(0,[20,30,40]);
                   testLineChart.addData(1,[5,45,25]);
@@ -156,13 +163,6 @@ View:
               }
 
 ```
-
-<iframe
-  src="https://studio.ensembleui.com/preview/index.html?appId=nWsD5baeykm3W772kkSw&screenId=T9EGDCUbfYlcd04MZjho&devicePreview=false"
-  style={{ width: '100%', height: '300px', border: '1px solid #ccc' }}
->
-</iframe>
-
 
 
 ## Properties
