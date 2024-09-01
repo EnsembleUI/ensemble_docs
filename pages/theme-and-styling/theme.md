@@ -74,7 +74,7 @@ LocaleThemes:
   ar:
     - RTLTheme
 ```
-The (language code)[https://www.science.co.il/language/Locale-codes.php] is used to identify the language. 
+The [language code](https://www.science.co.il/language/Locale-codes.php) is used to identify the language. 
 
 ## Checking and Switching Themes in Javascript
 
