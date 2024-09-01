@@ -8,7 +8,7 @@ From color schemes to typography, widgets, and transition options, our comprehen
 
 You can find the theme on Left-Side of the panel in ensemble studio after you have selected your App.
 
-<img width="816" alt="image" src="https://github.com/user-attachments/assets/24852ef1-5627-4499-a649-abc7018b07b2">
+<img width="1440" alt="image" src="https://github.com/user-attachments/assets/ddc65832-3c49-4e2f-8339-bb399fa529f9">
 
 ## Defining one theme
 
@@ -37,8 +37,44 @@ Styles:
 
 ## Defining multiple themes
 
+Use Case: Allow your users to switch between differnt themes to personalize the look and feel of your app to their tastes. Save the theme that the user selected and automatically apply it everytime user opens the app. 
+
 You can define one or more themes for our app and switch between them dynamically. See [Kitchen Sink Example](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/theme) for a detailed example. 
 
+## Defining themes for different locales
+
+Use Case: The primary use case is to define a different `fontFamily` for each language as some font families are more optimized for particular languages . You can go much further and define entirely different themes per language as well and allow users to switch between them.
+
+You can define multiple different themes for each language.
+- Ensemble platform will automatically pick the default theme for a language based on the language of the user's device.
+- If none of the themes are marked as `default`, first theme for the language is selected.
+- If a theme is not defined for the language, the default theme from the list of themes (or the first one) is applied. 
+
+Here's how to define themes per language (also called locale) - 
+
+```yaml
+Themes:
+# this is the list of all available themes
+  - Common
+  - PrimaryTheme:
+      default: true
+  - SecondaryTheme
+  - RTLTheme:
+
+LocaleThemes:
+#this is the list of themes per locale. Note that the following themes must be present in the list of `Themes` above
+  en: #language code - https://www.science.co.il/language/Locale-codes.php is used to identify the language for the theme
+    - SecondaryTheme:
+        default: true
+    - PrimaryTheme
+  ur:
+    - RTLTheme:
+        default: true
+    - SecondaryTheme
+  ar:
+    - RTLTheme
+```
+The (language code)[https://www.science.co.il/language/Locale-codes.php] is used to identify the language. 
 
 ## Checking and Switching Themes in Javascript
 
@@ -311,9 +347,11 @@ Now let us see what properties does it have on larger level
 
 ### Widgets
 
+*All the style properties for a widget are available to you to be set as part of the theme. Following is just a sample.*
+
 | Property | Type   | Description               |
 | :------- | :----- | :------------------------ |
-| Input    | object | [see properties](#input)  |
+| Input    | object | [see properties](#input)  Applies to all form input such as DateRange, TextInput etc|
 | Button   | object | [see properties](#button) |
 
 #### Input
