@@ -45,7 +45,7 @@ You can define one or more themes for our app and switch between them dynamicall
 
 Use Case: The primary use case is to define a different `fontFamily` for each language as some font families are more optimized for particular languages . You can go much further and define entirely different themes per language as well and allow users to switch between them.
 
-You can define multiple different themes for each language.
+You can define multiple different themes for each language. This is of course optional. 
 - Ensemble platform will automatically pick the default theme for a language based on the language of the user's device.
 - If none of the themes are marked as `default`, first theme for the language is selected.
 - If a theme is not defined for the language, the default theme from the list of themes (or the first one) is applied. 
