@@ -41,7 +41,7 @@ Use Case: Allow your users to switch between differnt themes to personalize the 
 
 You can define one or more themes for our app and switch between them dynamically. See [Kitchen Sink Example](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/theme) for a detailed example. 
 
-## Defining themes for different locales
+## Defining themes for different languages
 
 Use Case: The primary use case is to define a different `fontFamily` for each language as some font families are more optimized for particular languages . You can go much further and define entirely different themes per language as well and allow users to switch between them.
 
