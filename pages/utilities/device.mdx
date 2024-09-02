@@ -144,19 +144,19 @@ For Windows devices, the following properties are available.
 
 | Property Name         | Description                                                                                                    |
 |-----------------------|----------------------------------------------------------------------------------------------------------------|
-| `computerName`        | The computer's fully-qualified DNS name, where available.                                                      |
-| `numberOfCores`       | Number of CPU cores on the local machine.                                                                       |
-| `systemMemoryInMegabytes` | The physically installed memory in the computer. This may not be the same as available memory.                |
-| `userName`            | The user name of the currently logged-in user.                                                                   |
-| `majorVersion`        | The major version number of the operating system. For example, for Windows 2000, the major version number is five. |
-| `minorVersion`        | The minor version number of the operating system. For example, for Windows 2000, the minor version number is zero. |
-| `buildNumber`         | The build number of the operating system. For example, `22000` or greater for Windows 11.                        |
-| `platformId`          | The operating system platform identifier. For Win32 on NT-based operating systems, RtlGetVersion returns the value `VER_PLATFORM_WIN32_NT`. |
-| `buildLab`            | Value of `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\BuildLab` registry key. For example: `22000.co_release.210604-1628`. |
-| `buildLabEx`          | Value of `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\BuildLabEx` registry key. For example: `22000.1.amd64fre.co_release.210604-1628`. |
-| `productId`           | Displayed as "Product ID" in Windows Settings. Value of `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\ProductId` registry key. For example: `00000-00000-0000-AAAAA`. |
-| `productName`         | Value of `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\ProductName` registry key. For example: `Windows 10 Home Single Language`. |
-| `releaseId`     | Value of the `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\ReleaseId` registry key. For example: `1903`. |
-| `deviceId`     | Displayed as "Device ID" in Windows Settings. Value of `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\SQMClient\MachineId` registry key. |
+| `windowsInfo.computerName`        | The computer's fully-qualified DNS name, where available.                                                      |
+| `windowsInfo.numberOfCores`       | Number of CPU cores on the local machine.                                                                       |
+| `windowsInfo.systemMemoryInMegabytes` | The physically installed memory in the computer. This may not be the same as available memory.                |
+| `windowsInfo.userName`            | The user name of the currently logged-in user.                                                                   |
+| `windowsInfo.majorVersion`        | The major version number of the operating system. For example, for Windows 2000, the major version number is five. |
+| `windowsInfo.minorVersion`        | The minor version number of the operating system. For example, for Windows 2000, the minor version number is zero. |
+| `windowsInfo.buildNumber`         | The build number of the operating system. For example, `22000` or greater for Windows 11.                        |
+| `windowsInfo.platformId`          | The operating system platform identifier. For Win32 on NT-based operating systems, RtlGetVersion returns the value `VER_PLATFORM_WIN32_NT`. |
+| `windowsInfo.buildLab`            | Value of `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\BuildLab` registry key. For example: `22000.co_release.210604-1628`. |
+| `windowsInfo.buildLabEx`          | Value of `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\BuildLabEx` registry key. For example: `22000.1.amd64fre.co_release.210604-1628`. |
+| `windowsInfo.productId`           | Displayed as "Product ID" in Windows Settings. Value of `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\ProductId` registry key. For example: `00000-00000-0000-AAAAA`. |
+| `windowsInfo.productName`         | Value of `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\ProductName` registry key. For example: `Windows 10 Home Single Language`. |
+| `windowsInfo.releaseId`     | Value of the `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\ReleaseId` registry key. For example: `1903`. |
+| `windowsInfo.deviceId`     | Displayed as "Device ID" in Windows Settings. Value of `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\SQMClient\MachineId` registry key. |
 
 ---
