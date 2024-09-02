@@ -24,6 +24,17 @@ Ensemble uses logical pixels, which are based on the device's screen density. Th
 | `safeAreaTop`      | Returns the height of the screen's safe area at the top (e.g., iPhone's notch) in logical pixels. This value will be 0 if it is not applicable. You can use this to avoid placing important UI elements in this safe area. |
 | `safeAreaBottom`   | Returns the height of the screen's safe area at the bottom (e.g., iPhone's home swiper) in logical pixels. This value will be 0 if it is not applicable.|
 
+## Capabilities
+
+This table outlines the capabilities related to device notifications and location tracking
+
+| Property Name           | Description                                                                                                      |
+|-------------------------|------------------------------------------------------------------------------------------------------------------|
+| `deviceToken`           | If notification is enabled, returns the latest device token that can be used to send push notifications to this device. |
+| `lastLocation.latitude` | Returns the latitude of the last known location of the device. This value will only be populated if the action `getLocation` has been used previously and the user has granted location permission to the app. |
+| `lastLocation.longitude`| Returns the longitude of the last known location of the device. This value will only be populated if the action `getLocation` has been used previously and the user has granted location permission to the app. |
+
+
 ## Platform
 Ensemble offers utilities/getters for platform-specific logic.
 
@@ -159,4 +170,3 @@ For Windows devices, the following properties are available.
 | `windowsInfo.releaseId`     | Value of the `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\ReleaseId` registry key. For example: `1903`. |
 | `windowsInfo.deviceId`     | Displayed as "Device ID" in Windows Settings. Value of `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\SQMClient\MachineId` registry key. |
 
----
