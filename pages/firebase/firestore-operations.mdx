@@ -96,6 +96,8 @@ Other than `isEqual`, Ensemble platform supports all the methods for [FieldValue
 
 All the methods are static and are called exactly the same way as you could call in js, see [this](https://firebase.google.com/docs/reference/js/v8/firebase.firestore.FieldValue) for example. 
 
+See the following paragraphs for examples of how to use `FieldValue.serverTimestamp()`
+
 ## 1. Creating a Firestore Collection
 
 To store data in Firestore, we need to create a collection. A collection in Firestore is a container for documents, 
@@ -170,11 +172,11 @@ createProject:
   data:
     proName: ${proName}
     description: ${proDes}
-    createdAt: ${(new Date()).toISOString()}
+    createdAt: ${FieldValue.serverTimestamp()}
 ```
 **Explanation**:
 - `operation: add`: Indicates that a new document will be created.
-- `data`: The fields and values for the new document.
+- `data`: The fields and values for the new document. Note how `FieldValue` is being used to tell Firestore to set the server timestamp
 
 ### Set:
 The `set` operation can create a new document if it does not exist but if the document already exists, `set` will overwrite 
@@ -194,7 +196,7 @@ setProject:
   data:
     proName: ${proName}
     description: ${proDes}
-    setAt: ${(new Date()).toISOString()}
+    setAt: ${FieldValue.serverTimestamp()}
 ```
 
 ### Update:
@@ -211,7 +213,7 @@ inputs:
   data:
     # Below files will be stored as Array of objects.
     files: [{ name: "index.js" , lines: 78 },{ name: "LMS.js" , lines: 245 }] 
-    lastUpdated: ${(new Date()).toISOString()}
+    lastUpdated: ${FieldValue.serverTimestamp()}
 ```
 
 ### Delete:
