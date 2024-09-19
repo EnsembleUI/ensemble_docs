@@ -133,7 +133,8 @@ This is the navigation bar at the bottom of the screen, typical of most iOS and 
 | iconLibrary | string            | Enables the usage of various icon libraries like `FontAwesome`, `Remix`, `Material Icons` or `custom icon` fonts within ensemble. |
 | label | string            | Defines the text displayed below the icon, providing a descriptive title or name for the menu item |
 | page | string            | The new page to navigate to on click |
-| selected | string            | Mark this item as selected. There should only be one selected item per page. |
+| selected | boolean            | Mark this item as selected. There should only be one selected item per page. |
+| visible | boolean            | Mark this item as visible. Default is `true` |
 | floating | boolean           | Mark this item as a floating icon |
 | floatingMargin | integer or string | The margin around the floating. |
 | floatingAlignment       | string            | How to align the floating in the BottomNavBar. The values are ` left``center``right ` and `none` |
@@ -190,6 +191,7 @@ BottomNavBar:
     - icon: search
       label: Search
       page: Image
+      visible: true
 
     - customItem:
         widget: CustomNavBarItemWithImage
@@ -227,7 +229,8 @@ This menu type puts the menu behind a drawer icon on the header. The drawer icon
 | iconLibrary | string | Enables the usage of various icon libraries like `FontAwesome`, `Remix`, `Material Icons` or `custom icon` fonts within ensemble. |
 | label       | string | Defines the text displayed below the icon, providing a descriptive title or name for the menu item                                |
 | page        | string | The new page to navigate to on click                                                                                              |
-| selected    | string | Mark this item as selected. There should only be one selected item per page.                                                      |
+| selected | boolean            | Mark this item as selected. There should only be one selected item per page. |
+| visible | boolean            | Mark this item as visible. Default is `true` |
 
 #### Drawer.styles
 
@@ -297,7 +300,8 @@ A fixed navigation menu to the 'start' of the screen (left for most languages, r
 | iconLibrary | string | Enables the usage of various icon libraries like `FontAwesome`, `Remix`, `Material Icons` or `custom icon` fonts within ensemble. |
 | label       | string | Defines the text displayed below the icon, providing a descriptive title or name for the menu item                                |
 | page        | string | The new page to navigate to on click                                                                                              |
-| selected    | string | Mark this item as selected. There should only be one selected item per page.                                                      |
+| selected | boolean            | Mark this item as selected. There should only be one selected item per page. |
+| visible | boolean            | Mark this item as visible. Default is `true` |
 
 #### Sidebar.styles
 
