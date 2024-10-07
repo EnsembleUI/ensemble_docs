@@ -35,6 +35,7 @@ Ensemble widgets enable you to build both simple and complex applications.
 | DataGrid      | [Link](/widgets/data-grid)        | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/c5940e18-f2c1-4318-8e68-a678a6ae7247) |
 | TabBar        | [Link](/widgets/tabbar)           | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/cebd491d-7d90-43f4-9f17-b8575de441ca) |
 | Carousel      | [Link](/widgets/carousel)         | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/2e1d88b1-f281-4c2c-9bb1-bd18016d2b8c) |
+| Collapsible      | [Link](/widgets/collapsible)         | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/yTFRepwpRQJbvRYaVpRi) |
 | Divider       | [Link](/widgets/divider)          | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/4a893a2e-5bde-400c-b974-b25b497d31a5) |
 | Spacer        | [Link](/widgets/spacer)           | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/1d7e42a9-5bbc-4b4b-9a02-8c102234ee05) |
 | Shape         | [Link](/widgets/shape)            | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/Lg2nljyD46n2hiAUlBMP)                 |
@@ -54,8 +55,8 @@ Ensemble widgets enable you to build both simple and complex applications.
 | DateRange       | Coming soon                    | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/b45c5576-ec22-4b04-832f-6dd7571dd20f) |
 | Time            | [Link](/widgets/time)          | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/yNHLPObY1wWgCpg0sgoW)                 |
 | PasswordInput   | [Link](/widgets/passwordinput) | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/218fa244-f0cd-4d17-91e6-7c099bbedede) |
-| Signature       | Coming soon                    | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/70eb8a13-e7df-4778-b7e6-57df17b032a0) |
-| WeeklyScheduler | Coming soon                    | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/244ce957-98ed-4db8-a5a7-ee587d6dfe0b) |
+| Signature       | [Link](/widgets/shape)          | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/70eb8a13-e7df-4778-b7e6-57df17b032a0) |
+| WeeklyScheduler | Coming soon                             | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/244ce957-98ed-4db8-a5a7-ee587d6dfe0b) |
 
 ### Conditional
 
