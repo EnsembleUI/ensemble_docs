@@ -1,0 +1,83 @@
+import BaseStyles from "./_snippets/base-styles.md";
+import BoxStyles from "./_snippets/box-styles.md";
+import { EnsemblePreview } from '../../components/ensemble-preview';
+
+# ToolTip Widget
+
+The `ToolTip` widget allows you to display contextual information in a small, interactive bubble that appears when users interact with a target widget (e.g., a button). The tooltip can display a message or a custom widget and provides extensive options to control its appearance, behavior, and timing.
+
+## Key Properties and Features
+
+- **Wrap Target Widgets**: The `widget` property allows you to wrap any widget (e.g., a button) in the `ToolTip` to show tooltip information when users interact with it.
+- **Message**: The tooltip can display a simple text message when triggered.
+- **Trigger Modes**: Customize how the tooltip is triggered (e.g., tap, longPress) with the `triggerMode` property.
+- **Timing Customization**: Control the delay before the tooltip appears (`waitDuration`) and how long it remains visible (`showDuration`).
+- **Positioning**: The tooltip can be displayed above or below the target widget, with adjustable vertical offsets for precise placement.
+- **Style Customization**: Customize the tooltip’s text style, background color, border, and padding.
+- **Actions on Trigger**: The `onTriggered` event allows you to run custom actions when the tooltip is triggered.
+
+<EnsemblePreview
+  appId="e24402cb-75e2-404c-866c-29e6c3dd7992"
+  screenId="zJv4JBOURECx4q0o9lFY"
+  height="700px"
+/>
+
+## Properties
+
+| Property        | Type                                | Description                                                                                                                                                           |
+| :-------------- | :---------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| message         | string                              | The text message to display inside the tooltip. Defaults to an empty string if not provided.                                                                           |
+| widget          | [Widget](/widgets)                  | The widget (e.g., a button) that the tooltip wraps around to show tooltip information upon interaction.                                                               |
+| textStyle       | [TextStyle](/widgets/types#TextStyle) | Defines the text style (font size, color, etc.) for the tooltip’s message. Defaults to system styling.                                                                |
+| verticalOffset  | double                              | The vertical distance between the tooltip and its target widget. Defaults to `0.0`.                                                                                    |
+| preferBelow     | boolean                             | If `true`, the tooltip prefers to appear below the target widget. If `false`, it prefers to appear above. Defaults to `true`.                                          |
+| waitDuration    | number                              | The amount of time to wait before showing the tooltip after it’s triggered. Defaults to `Duration(milliseconds: 0)`.                                                   |
+| showDuration    | number                              | The duration for which the tooltip is visible before automatically disappearing. Defaults to `Duration(milliseconds: 1500)`.                                           |
+| triggerMode     | string | Specifies how the tooltip is triggered. Acceptable values include `TooltipTriggerMode.tap`, `TooltipTriggerMode.longPress`. Defaults to `TooltipTriggerMode.tap`. |
+| onTriggered     | [Action](/widgets/types#Action)      | Action to be executed when the tooltip is triggered. Defaults to `null`.                                                                                              |
+
+## Methods
+
+| Method        | Description                                |
+| :------------ | :----------------------------------------- |
+| show()        | Programmatically shows the tooltip.        |
+
+## Getters
+
+| Getter        | Type     | Description                                    |
+| :------------ | :------- | :--------------------------------------------- |
+| isVisible     | boolean  | Returns `true` if the tooltip is currently visible. |
+
+## Style Properties
+
+| Property        | Type                  | Description                                                                                                                     |
+| :-------------- | :-------------------- | :------------------------------------------------------------------------------------------------------------------------------ |
+| backgroundColor | Color                 | The background color of the tooltip. Defaults to `Colors.grey[700]`.                                                             |
+| borderColor     | Color                 | The color of the tooltip’s border. Defaults to the theme’s border color if not specified.                                         |
+| borderRadius    | BorderRadius          | The radius of the tooltip’s corners. Defaults to `null` (no rounded corners).                                                    |
+| borderWidth     | double                | The width of the tooltip’s border. Defaults to the theme’s border thickness if not specified.                                     |
+| padding         | EdgeInsets            | The padding inside the tooltip between the content and the edges. Defaults to system padding based on the content.               |
+| margin          | EdgeInsets            | The margin between the tooltip and the target widget. Defaults to `null`.                                                        |
+
+## Inherited Properties from BoxController
+
+Since the `ToolTipController` extends `BoxController`, it also inherits the following properties:
+
+| Property        | Type                         | Description                                                                                                                                                   |
+| :-------------- | :--------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| width           | double                       | The width of the tooltip widget.                                                                                                                               |
+| height          | double                       | The height of the tooltip widget.                                                                                                                              |
+| margin          | EdgeInsets                   | The margin around the tooltip widget.                                                                                                                          |
+| padding         | EdgeInsets                   | The padding inside the tooltip widget.                                                                                                                         |
+| alignment       | Alignment                    | The alignment of the tooltip widget inside its parent container.                                                                                               |
+| visible         | boolean                      | Determines whether the tooltip widget is visible. Defaults to `true`.                                                                                           |
+
+## Box Styles (Inherited)
+
+This widget also inherits these styles:
+
+<BoxStyles />
+
+## Base Styles (Inherited)
+
+<BaseStyles />
