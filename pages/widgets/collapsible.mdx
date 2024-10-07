@@ -24,8 +24,8 @@ The `Collapsible` widget allows you to display a list of items in a collapsible 
 
 | Property                     | Type                                          | Description                                                                                                                                       |
 | :--------------------------- | :-------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------ |
-| items                        | List<Map>                                     | A list of items representing the sections of the collapsible. Each item can have its own header, body, and individual styles.                     |
-| isAccordion                  | boolean                                       | Determines whether only one section can be open at a time (`true`) or multiple sections can be open simultaneously (`false`). Defaults to `true`. |
+| items                        | List                                          | A list of items representing the sections of the collapsible. Each item can have its own header, body, and individual styles.                     |
+| isAccordion                  | boolean                                       | Determines whether only one section can be open at a time `true` or multiple sections can be open simultaneously `false`. Defaults to `true`. |
 | headerStyle                  | [HeaderStyleComposite](#headerstylecomposite) | Defines the style properties for the section headers.                                                                                             |
 | bodyStyle                    | [BodyStyleComposite](#bodystylecomposite)     | Defines the style properties for the section bodies.                                                                                              |
 | leftIcon                     | object                                        | Specifies an icon to display on the left of the header.                                                                                           |
@@ -60,7 +60,7 @@ The `Collapsible` widget allows you to display a list of items in a collapsible 
 
 | Getter       | Type      | Description                                               |
 | :----------- | :-------- | :-------------------------------------------------------- |
-| openSections | List<int> | Retrieves the list of currently open section indices.     |
+| openSections | List | Retrieves the list of currently open section indices.     |
 | headerStyle  | object    | Retrieves the header style properties of the collapsible. |
 | bodyStyle    | object    | Retrieves the body style properties of the collapsible.   |
 
