@@ -16,10 +16,10 @@ Here are two screenshots that show the UI with and without the 3-button navigati
 
 1. **With 3-Button Navigation Bar:**
 
-![safeAreaBottom With 3-Button Navigation ](images/tips/safeAreaBottom1.jpg)
+![safeAreaBottom With 3-Button Navigation ](../../public/images/tips/safeAreaBottom1.jpg)
 
 2. **With Swipe Navigation:**
 
-![safeAreaBottom With Swipe Navigation ](images/tips/safeAreaBottom2.jpg)
+![safeAreaBottom With Swipe Navigation ](../../public/images/tips/safeAreaBottom2.jpg)
 
 By implementing this trick, you ensure that your app’s UI remains consistent and user-friendly across devices with different navigation styles. This technique prevents layout issues such as buttons being hidden or content being overlapped.
