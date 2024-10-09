@@ -19,10 +19,10 @@ Here are two screenshots that show the UI with and without the 3-button navigati
   <table>
     <tr>
       <td style=" padding: 10px; text-align: center; vertical-align: middle; height: 200px;">
-        <img width="200" alt="With 3-Button Navigation Bar" src="../../public/images/tips/safeAreaBottom1.jpg">
+        <img width="200" alt="With 3-Button Navigation Bar" src="/images/tips/safeAreaBottom1.jpg">
       </td>
       <td style=" padding: 10px; text-align: center; vertical-align: middle; height: 200px;">
-        <img width="200" alt="With Swipe Navigation" src="../../public/images/tips/safeAreaBottom2.jpg">
+        <img width="200" alt="With Swipe Navigation" src="/images/tips/safeAreaBottom2.jpg">
       </td>
     </tr>
   </table>
