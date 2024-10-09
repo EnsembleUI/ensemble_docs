@@ -14,12 +14,21 @@ FlexColumn:
 
 Here are two screenshots that show the UI with and without the 3-button navigation bar, demonstrating how the layout adjusts dynamically.
 
-1. **With 3-Button Navigation Bar:**
 
-![safeAreaBottom With 3-Button Navigation ](../../public/images/tips/safeAreaBottom1.jpg)
+<div align="center">
+  <table style="border-collapse: collapse; border-color: transparent; width: 100%; height: 200px;">
+    <tr>
+      <td style=" padding: 10px; text-align: center; vertical-align: middle; height: 200px;">
+        <img width="200" alt="With 3-Button Navigation Bar" src="../../public/images/tips/safeAreaBottom1.jpg"><br>
+        <b>3-Button Navigation Bar</b>
+      </td>
+      <td style=" padding: 10px; text-align: center; vertical-align: middle; height: 200px;">
+        <img width="200" alt="With Swipe Navigation" src="../../public/images/tips/safeAreaBottom1.jpg"><br>
+        <b>Swipe Navigation</b>
+      </td>
+    </tr>
+  </table>
+</div>
 
-2. **With Swipe Navigation:**
-
-![safeAreaBottom With Swipe Navigation ](../../public/images/tips/safeAreaBottom2.jpg)
 
 By implementing this trick, you ensure that your app’s UI remains consistent and user-friendly across devices with different navigation styles. This technique prevents layout issues such as buttons being hidden or content being overlapped.
