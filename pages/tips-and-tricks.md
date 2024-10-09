@@ -16,7 +16,7 @@ Welcome to our Tips and Tricks page! Here, you'll find a collection of expert in
 - [HTML Widget](/tips-and-tricks/html-widget.md)
 - [Push Notification](/tips-and-tricks/push-notification.md)
 - [Using device width and height](/tips-and-tricks/using-device-dimentions.md)
-- [Using BottomSafeArea for responsive layouts](/pages/tips-and-tricks/bottom-safe-area.md)
+- [Using BottomSafeArea for responsive layouts](/tips-and-tricks/bottom-safe-area.md)
 - [Floating Button](/tips-and-tricks/floatingButton.md)
 
 Below are some common error messages and their solutions:
