@@ -24,6 +24,10 @@ View:
     Column:
       children:
         - ChartJs:
+            onTap:
+              eexecuteCode:
+                body: |
+                  console.log(event.data);
             config: |
               {
                 "type": "pie",
@@ -171,7 +175,7 @@ View:
 |:---------|:-------|:------------|
 | id       | string | Assign an id to the chart so that you can run its methods |
 | config   | object | Chart's configuration that conforms to [chartjs.org](https://www.chartjs.org/) specification |
-
+| onTap    | action | Triggers Ensemble's built-in functions or custom code execution on chart interaction, with access to data at the tap point via `event.data` based on chart type. |
 
 ### Styles
 
