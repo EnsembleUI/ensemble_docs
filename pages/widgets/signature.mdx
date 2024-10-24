@@ -40,15 +40,8 @@ The `Signature` widget allows users to capture handwritten signatures directly w
 | Property                  | Type                  | Description                                                                                                                                                   |
 | :------------------------ | :-------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | id                    | string             | Unique identifier for the widget.                                                                                                                             |
-| penColor              | [Color](/widgets/types#Color) | The color of the pen used for drawing the signature. Accepts color names, hex codes, or RGB values. Default is `"black"`.                                     |
-| penStrokeWidth        | number             | The stroke width of the pen used for drawing the signature. Must be a positive number. Default is `3.0`.                                                      |
-| backgroundColor       | [Color](/widgets/types#Color) | The background color of the signature pad. Accepts color names, hex codes, or RGB values. Default is `"#CCCCCC"`.                                             |
 | value                 | string              | The current value of the signature, encoded as a Base64 string. Can be used to retrieve or set the signature.                                                 |
 | disabled              | boolean             | If `true`, the signature pad is disabled and the user cannot draw. Default is `false`.                                                                        |
-| strokeCap             | string              | The stroke cap style for the pen. Determines how the ends of lines are drawn. Possible values are `"butt"`, `"round"`, `"square"`. Default is `"butt"`.       |
-| strokeJoin            | string              | The stroke join style for the pen. Determines how two connecting lines are joined. Possible values are `"miter"`, `"round"`, `"bevel"`. Default is `"miter"`. |
-| exportBackgroundColor | [Color](/widgets/types#Color) | The background color used when exporting the signature image. If not specified, defaults to the `backgroundColor`.                                            |
-| exportPenColor        | [Color](/widgets/types#Color) | The pen color used when exporting the signature image. If not specified, defaults to the `penColor`.                                                          |
 
 ## Events
 
@@ -90,6 +83,13 @@ These properties can be accessed to retrieve additional information or data from
 
 | Property                  | Type                  | Description                                                                                 |
 | :------------------------ | :-------------------- | :------------------------------------------------------------------------------------------ |
+| penColor              | [Color](/widgets/types#Color) | The color of the pen used for drawing the signature. Accepts color names, hex codes, or RGB values. Default is `"black"`.                                     |
+| penStrokeWidth        | number             | The stroke width of the pen used for drawing the signature. Must be a positive number. Default is `3.0`.                                                      |
+| backgroundColor       | [Color](/widgets/types#Color) | The background color of the signature pad. Accepts color names, hex codes, or RGB values. Default is `"#CCCCCC"`.                                             |
+| strokeCap             | string              | The stroke cap style for the pen. Determines how the ends of lines are drawn. Possible values are `"butt"`, `"round"`, `"square"`. Default is `"butt"`.       |
+| strokeJoin            | string              | The stroke join style for the pen. Determines how two connecting lines are joined. Possible values are `"miter"`, `"round"`, `"bevel"`. Default is `"miter"`. |
+| exportBackgroundColor | [Color](/widgets/types#Color) | The background color used when exporting the signature image. If not specified, defaults to the `backgroundColor`.                                            |
+| exportPenColor        | [Color](/widgets/types#Color) | The pen color used when exporting the signature image. If not specified, defaults to the `penColor`.                                                          |
 | boxShadow             | object              | The box shadow styling for the signature pad. See [BoxShadow](#boxshadow) properties below. |
 | clipContent           | boolean             | If `true`, clips the content inside the signature pad. Default is `false`.                  |
 | visible               | boolean             | Controls the visibility of the widget. Default is `true`.                                   |

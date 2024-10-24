@@ -9,7 +9,7 @@ API:
     uri: # the endpoint to call, e.g. https://dummyjson.com/users/1
     method: # the HTTP method, such as GET, POST, PUT, DELETE, PATCH
     parameters: # set the parameters to be passed to the API
-    manageCookies: # set to true if you want to manage cookies automatically for the API request
+    manageCookies: # Specify whether to manage cookies automatically for the request. This is only valid for native apps and will be ignored for web apps. Default is false.
     headers: # set headers such as authorization tokens
     body: # set body, in JSON or YAML, to pass data to the API
     onSuccess: # fire an action when the API returns a 2**
