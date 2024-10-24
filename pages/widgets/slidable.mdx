@@ -1,0 +1,120 @@
+# Slidable Widget
+
+The `Slidable` widget enables you to create swipeable items with customizable action panes on both sides. This widget is particularly useful for implementing swipe-to-action functionality, such as swipe-to-delete, swipe-to-edit, or any other custom actions in your application.
+
+## Key Properties and Features
+
+- **Dual Action Panes**: Support for both start (left) and end (right) action panes
+- **Customizable Actions**: Each action pane can contain multiple actions with customizable icons, labels, and colors
+- **Motion Options**: Various motion types available including scroll, stretch, behind, and drawer animations
+- **Group Management**: Group related slidables together using the `groupTag` property
+- **Directional Support**: Supports both horizontal and vertical sliding
+- **Accessibility**: Respects text direction for RTL/LTR layouts
+
+<EnsemblePreview
+  appId="e24402cb-75e2-404c-866c-29e6c3dd7992"
+  screenId="hDUEQtsqHbuLoegWoyDR"
+  height="700px"
+/>
+
+## Properties
+
+| Property           | Type              | Description                                                                                     |
+| :---------------- | :---------------- | :---------------------------------------------------------------------------------------------- |
+| groupTag          | string            | Groups related slidable widgets together for coordinated behavior                               |
+| enabled           | boolean           | Enables or disables the slidable functionality. Defaults to `true`                              |
+| closeOnScroll     | boolean           | Determines if the slidable should close when scrolling. Defaults to `true`                      |
+| direction         | Axis              | Sets the slide direction (`horizontal` or `vertical`). Defaults to `horizontal`                  |
+| dragStartBehavior | DragStartBehavior | Determines when dragging starts (`down` or `start`). Defaults to `down`                        |
+| useTextDirection  | boolean           | Respects the text direction for RTL/LTR layouts. Defaults to `true`                            |
+| startDrawer       | object            | Configuration for the start (left/top) action pane                                              |
+| endDrawer         | object            | Configuration for the end (right/bottom) action pane                                            |
+| child            | Widget            | The main content widget that will be slidable                                                   |
+
+## Drawer Configuration
+
+Each drawer (start/end) can be configured with the following properties:
+
+### Options
+
+| Property       | Type    | Description                                                                |
+| :------------ | :------ | :------------------------------------------------------------------------- |
+| extentRatio   | double  | Ratio of the screen width that the drawer can extend to. Defaults to `0.25` |
+| motion        | string  | Type of motion animation (`scroll`, `stretch`, `behind`, `drawer`)         |
+| openThreshold | double? | Threshold for when the drawer should fully open                            |
+| closeThreshold| double? | Threshold for when the drawer should close                                 |
+
+### Action Properties
+
+Each action in the drawer can have the following properties:
+
+| Property         | Type     | Description                                                          |
+| :-------------- | :------- | :------------------------------------------------------------------- |
+| icon            | IconData | The icon to display for the action                                   |
+| label           | string   | Text label for the action                                            |
+| backgroundColor | Color    | Background color of the action button. Defaults to `blue`            |
+| foregroundColor | Color    | Color of the icon and text. Defaults to `white`                      |
+| padding         | EdgeInsets| Padding around the action button. Defaults to `EdgeInsets.zero`      |
+| spacing         | double   | Space between the icon and label. Defaults to `4.0`                  |
+| autoClose       | boolean  | Whether to close the drawer after action is triggered. Defaults to `true` |
+| flex           | int      | Flex value for action width distribution. Defaults to `1`             |
+| borderRadius    | BorderRadius| Border radius of the action button. Defaults to `BorderRadius.zero`  |
+| onTap          | Action   | Callback function to execute when the action is tapped                |
+
+### Box Styles (Inherited)
+
+This widget also inherits these styles:
+
+<BoxStyles />
+
+### Base Styles (Inherited)
+
+<BaseStyles />
+
+## Example Usage
+
+```yaml
+Slidable:
+  startDrawer:
+    options:
+      extentRatio: 0.3
+      motion: scroll
+    children:
+      - icon: archive
+        label: Archive
+        backgroundColor: "#4CAF50"
+        onTap: 
+          log: "Archive tapped"
+      - icon: share
+        label: Share
+        backgroundColor: "#2196F3"
+        onTap:
+          log: "Share tapped"
+  endDrawer:
+    options:
+      extentRatio: 0.25
+      motion: drawer
+    children:
+      - icon: delete
+        label: Delete
+        backgroundColor: "#F44336"
+        onTap:
+          log: "Delete tapped"
+  child:
+    Container:
+      padding: 16
+      child:
+        Text: "Swipe me left or right"
+```
+
+## Motion Types
+
+The Slidable widget supports four types of motion animations:
+
+1. **scroll**: A basic sliding motion
+2. **stretch**: Adds a stretching effect while sliding
+3. **behind**: Reveals the actions from behind the main content
+4. **drawer**: Classic drawer-style sliding animation
+
+
+By utilizing these properties and configurations, you can create intuitive swipe-based interactions in your application using the Slidable widget.
