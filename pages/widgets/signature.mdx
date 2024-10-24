@@ -1,0 +1,118 @@
+import BaseStyles from "./_snippets/base-styles.md";
+import BoxStyles from "./_snippets/box-styles.md";
+import { EnsemblePreview } from '../../components/ensemble-preview'
+
+# Signature Widget
+
+The `Signature` widget allows users to capture handwritten signatures directly within your application. It provides a canvas where users can draw their signature using touch or mouse input. The widget is highly customizable, enabling you to adjust its appearance and behavior to suit your application's needs.
+
+## Key Properties and Features
+
+- **Pen Customization**: Adjust the pen color (`penColor`), stroke width (`penStrokeWidth`), stroke cap (`strokeCap`), and stroke join (`strokeJoin`) to customize the drawing experience.
+- **Background Customization**: Set the background color of the signature pad using `backgroundColor`.
+
+- **Value Handling**: The `value` property holds the signature data encoded as a Base64 string. This can be used to retrieve or set the signature.
+
+- **Disabling Input**: Use the `disabled` property to prevent users from drawing on the signature pad, useful for displaying a previously captured signature.
+ 
+- **Export Options**: Customize the colors used when exporting the signature image with `exportBackgroundColor` and `exportPenColor`.
+
+- **Getters**: Access additional data through getters like `isEmpty`, `getSignatureBytes`, `getSignatureSVG`, and `getSignatureJPG`.
+
+- **Events**: The `onChange` event is triggered whenever the signature pad's content changes, allowing you to react to user input.
+
+- **Methods**: The `clear()` method allows you to programmatically clear the signature pad.
+
+<EnsemblePreview 
+  appId="e24402cb-75e2-404c-866c-29e6c3dd7992"
+  screenId="70eb8a13-e7df-4778-b7e6-57df17b032a0"
+  height="700px"
+/>
+
+### Explanation of Examples
+
+- **Basic Signature Pad**: Demonstrates a simple signature pad with customized pen color and stroke width. An `onChange` event is defined to execute code whenever the signature changes.
+
+- **Signature Pad with Clear Button and Export**: Includes a signature pad with buttons to clear the signature and to save/export the signature data. The `clear()` method resets the pad. The `value` property retrieves the Base64-encoded signature data for storage or processing.
+
+## Properties
+
+| Property                  | Type                  | Description                                                                                                                                                   |
+| :------------------------ | :-------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| id                    | string             | Unique identifier for the widget.                                                                                                                             |
+| value                 | string              | The current value of the signature, encoded as a Base64 string. Can be used to retrieve or set the signature.                                                 |
+| disabled              | boolean             | If `true`, the signature pad is disabled and the user cannot draw. Default is `false`.                                                                        |
+
+## Events
+
+| Event        | Description                                                                                                                  |
+| :----------- | :--------------------------------------------------------------------------------------------------------------------------- |
+| onChange | Triggered whenever the signature pad's content changes. Use this event to execute actions or code in response to user input. |
+
+## Methods
+
+| Method      | Description                                |
+| :---------- | :----------------------------------------- |
+| clear() | Clears the signature pad programmatically. |
+
+## Getters
+
+These properties can be accessed to retrieve additional information or data from the signature widget.
+
+| Getter                | Type         | Description                                                       |
+| :-------------------- | :----------- | :---------------------------------------------------------------- |
+| isEmpty           | boolean    | Returns `true` if the signature pad is empty, `false` otherwise.  |
+| value             | string     | Retrieves the current signature data as a Base64-encoded string.  |
+| getSignatureBytes | Uint8List  | Retrieves the signature data as raw bytes (PNG format).           |
+| getSignatureSVG   | SvgPicture | Retrieves the signature as an SVG image.                          |
+| getSignatureJPG   | ui.Image   | Retrieves the signature as a `ui.Image` (for advanced use cases). |
+
+## Styles
+
+### Dimension and Positioning
+
+| Property      | Type                  | Description                                                                                                                    |
+| :------------ | :-------------------- | :----------------------------------------------------------------------------------------------------------------------------- |
+| width     | integer | The width of the signature pad. Can be a number (pixels) or a percentage string (e.g., `"100%"`).                              |
+| height    | integer  | The height of the signature pad. Can be a number (pixels) or a percentage string (e.g., `"100%"`).                             |
+| margin    | integer | The margin around the signature pad. Supports shorthand notation like `"10 5 10"`.                                             |
+| padding   | integer | The padding inside the signature pad. Supports shorthand notation like `"10 5 10"`.                                            |
+| alignment | string             | Alignment of the widget within its parent. Possible values: `"left"`, `"right"`, `"center"`, `"top"`, `"bottom"`, `"stretch"`. |
+
+### Appearance
+
+| Property                  | Type                  | Description                                                                                 |
+| :------------------------ | :-------------------- | :------------------------------------------------------------------------------------------ |
+| penColor              | [Color](/widgets/types#Color) | The color of the pen used for drawing the signature. Accepts color names, hex codes, or RGB values. Default is `"black"`.                                     |
+| penStrokeWidth        | number             | The stroke width of the pen used for drawing the signature. Must be a positive number. Default is `3.0`.                                                      |
+| backgroundColor       | [Color](/widgets/types#Color) | The background color of the signature pad. Accepts color names, hex codes, or RGB values. Default is `"#CCCCCC"`.                                             |
+| strokeCap             | string              | The stroke cap style for the pen. Determines how the ends of lines are drawn. Possible values are `"butt"`, `"round"`, `"square"`. Default is `"butt"`.       |
+| strokeJoin            | string              | The stroke join style for the pen. Determines how two connecting lines are joined. Possible values are `"miter"`, `"round"`, `"bevel"`. Default is `"miter"`. |
+| exportBackgroundColor | [Color](/widgets/types#Color) | The background color used when exporting the signature image. If not specified, defaults to the `backgroundColor`.                                            |
+| exportPenColor        | [Color](/widgets/types#Color) | The pen color used when exporting the signature image. If not specified, defaults to the `penColor`.                                                          |
+| boxShadow             | object              | The box shadow styling for the signature pad. See [BoxShadow](#boxshadow) properties below. |
+| clipContent           | boolean             | If `true`, clips the content inside the signature pad. Default is `false`.                  |
+| visible               | boolean             | Controls the visibility of the widget. Default is `true`.                                   |
+| elevation             | integer             | The elevation (shadow depth) of the widget. Accepts values from `0` to `24`.                |
+| elevationShadowColor  | [Color](/widgets/types#Color) | The color of the elevation shadow. Accepts color names, hex codes, or RGB values.           |
+| elevationBorderRadius | integer | The border radius for the elevation shadow.                                                 |
+
+### BoxShadow
+
+| Property         | Type                  | Description                                                             |
+| :--------------- | :-------------------- | :---------------------------------------------------------------------- |
+| color        | [Color](/widgets/types#Color) | The color of the shadow. Accepts color names, hex codes, or RGB values. |
+| offsetX      | integer             | The horizontal offset of the shadow.                                    |
+| offsetY      | integer             | The vertical offset of the shadow.                                      |
+| blurRadius   | integer             | The blur radius of the shadow.                                          |
+| spreadRadius | integer             | The spread radius of the shadow.                                        |
+
+### Box Styles (Inherited)
+
+This widget also inherits these styles:
+
+<BoxStyles />
+
+### Base Styles (Inherited)
+
+<BaseStyles />

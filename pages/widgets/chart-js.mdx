@@ -1,0 +1,218 @@
+import { Callout } from 'nextra/components'
+import { EnsemblePreview } from '../../components/ensemble-preview'
+
+# ChartJS widget
+
+The ChartJS widget renders a chart by leveraging the open-source library [chartjs.org](https://www.chartjs.org/).
+
+[Test in Kitchen Sink](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/5d7b84de-3bbd-456e-aeea-98e2c9f4c3c7)
+
+## Basic example
+
+The primary property required for ChartJs widget requires is `config`.
+
+<EnsemblePreview 
+  appId="nWsD5baeykm3W772kkSw"
+  screenId="2Q5jkkDqjYMX70RiYWm5"
+  height="220px"
+/>
+
+
+```yaml filename="source"
+View:
+  body:
+    Column:
+      children:
+        - ChartJs:
+            config: |
+              {
+                "type": "pie",
+                "data": {
+                  "labels": ["Red", "Blue", "Yellow"],
+                  "datasets": [{
+                    "data": [300, 50, 100],
+                    "backgroundColor": [
+                        "rgb(255, 99, 132)",
+                        "rgb(54, 162, 235)",
+                        "rgb(255, 205, 86)"
+                    ]
+                  }]
+                }
+              }
+```
+
+<Callout emoji="💡">
+  Prompt ChatGPT to generate this configuration. E.g. What is the json configuration for pie chart using chartjs?
+</Callout>
+
+
+## Update chart with new data points
+
+You can append new data points to an existing chart:
+
+1. Add an id to your chart widget.
+2. Use `addLabels` and `addData` to add new data points.
+3. Use `update` to redraw the chart.
+
+
+<EnsemblePreview 
+  appId="nWsD5baeykm3W772kkSw"
+  screenId="T9EGDCUbfYlcd04MZjho"
+  height="300px"
+/>
+
+
+```yaml filename="source"
+View:
+  body:
+    Column:
+      styles:
+        gap: 16
+        padding: 24
+      children:
+        - Button:
+            label: Add Data
+            onTap:
+              executeCode:
+                body: |
+                  testLineChart.addLabels(['July','August','September']);
+                  testLineChart.addData(0,[20,30,40]);
+                  testLineChart.addData(1,[5,45,25]);
+                  testLineChart.update();
+        - ChartJs:
+            id: testLineChart
+            styles:
+              width: ${device.width}
+            config: |
+              {
+                type: 'line',
+                data: {
+                  labels: [
+                    'January',
+                    'February',
+                    'March',
+                    'April',
+                    'May',
+                    'June'
+                  ],
+                  datasets: [
+                    {
+                      label: 'My First dataset',
+                      backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                      ],
+                      borderColor: [
+                        'rgba(255,99,132,1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                      ],
+                      borderWidth: 1,
+                      data: [0, 10, 5, 2, 20, 45],
+                      fill: 'start'
+                    },{
+                      label: 'My Second dataset',
+                      backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                      ],
+                      borderColor: [
+                        'rgba(255,99,132,1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                      ],
+                      borderWidth: 1,
+                      data: [5, 12, 7, 0, 18, 25],
+                      fill: 'start'
+                    }
+                  ]
+                },
+                options: {
+                  scales: {
+                    x: {
+                      ticks: {
+                        maxRotation: 0,
+                        minRotation: 0
+                      }
+                    }
+                  },
+                  plugins: {
+                    filler: {
+                      propagate: false,
+                    }
+                  },
+                  interaction: {
+                    intersect: false,
+                  },
+                  tension: 0.4
+                }
+              }
+
+```
+
+
+## Properties
+
+| Property | Type   | Description |
+|:---------|:-------|:------------|
+| id       | string | Assign an id to the chart so that you can run its methods |
+| config   | object | Chart's configuration that conforms to [chartjs.org](https://www.chartjs.org/) specification |
+
+
+### Styles
+
+| Property | Type   | Description |
+|:---------|:-------|:------------|
+| width    | integer | The width property determines the horizontal size of an element, allowing control over its width dimension within the layout. |
+| height   | integer | The height property determines the vertical size of an element, allowing control over its height dimension within the layout. |
+
+
+## Methods
+
+### addLabels
+
+This method adds labels to the x-axis of the chart.
+
+**Parameters:**
+- labels (array): An array of strings representing the labels for the chart.
+
+**Example:**
+```javascript
+myChart.addLabels(["January", "February", "March"]);
+```
+
+### addData
+
+This method appends data to an existing dataset.
+
+**Parameters:**
+- datasetIndex (integer): The index of the dataset to which the data should be added.
+- data (array): An array of data points to add to the chart.
+
+**Example:**
+```javascript
+myChart.addData(0, [10, 20, 30]);
+```
+
+### update
+
+This method updates the chart to reflect any changes in data, labels, or configurations.
+
+**Example:**
+```javascript
+myChart.update();
+```

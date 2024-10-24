@@ -1,11 +1,16 @@
 import BaseStyles from './_snippets/base-styles.md'
 import BoxStyles from './_snippets/box-styles.md'
+import { EnsemblePreview } from '../../components/ensemble-preview'
 
 # Carousel widget
 
 The Carousel Widget allows you to create and render carousels, enabling the presentation of multiple items in a visually engaging and interactive slideshow format within your application.
 
-[Test in Kitchen Sink](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/2e1d88b1-f281-4c2c-9bb1-bd18016d2b8c)
+<EnsemblePreview 
+  appId="e24402cb-75e2-404c-866c-29e6c3dd7992"
+  screenId="2e1d88b1-f281-4c2c-9bb1-bd18016d2b8c"
+  height="700px"
+/>
 
 ## Properties
 
@@ -29,6 +34,7 @@ The Carousel Widget allows you to create and render carousels, enabling the pres
 | trailingGap            | integer           | The space after the last item. Note that the right edge of the scroll area is still controlled by padding or margin.                                                                                                                                                                                                       |
 | singleItemWidthRatio   | number            | The screen width ratio for each carousel item (in single item mode). Value ranges from 0.0 to 1.0 for the full width. (default 1.0)                                                                                                                                                                                        |
 | multipleItemWidthRatio | number            | The screen width ratio for each carousel item (in multiple item mode). Value ranges from 0.0 to 1.0 for the full width (default 0.6)                                                                                                                                                                                       |
+| scrollType          | string            | Allows you to set the scroll physics for the carousel. Default For iOS it is `bouncing` else it is `clamping`. Possible values are `bouncing`, `clamping`, `neverScrollable`, `alwaysScrollable`.                                                                                                                                                                                      |
 | indicatorType          | string            | How the view indicator should be displayed                                                                                                                                                                                                                                                                                 |
 | indicatorPosition      | string            | Where to display the indicator if specified                                                                                                                                                                                                                                                                                |
 | indicatorWidth         | integer           | Sets the width of the carousel indicators within the Carousel                                                                                                                                                                                                                                                              |

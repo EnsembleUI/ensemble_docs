@@ -1,0 +1,172 @@
+import { EnsemblePreview } from "../../components/ensemble-preview";
+
+# Device
+
+Ensemble provides convenient access to device information and capabilities. This includes device information, such as the device model, operating system, and screen size.
+
+Access these properties/methods with the prefix `ensemble.device.*`.
+
+<EnsemblePreview
+  appId="e24402cb-75e2-404c-866c-29e6c3dd7992"
+  screenId="X4CAuRtGsjBTMnACPhd7"
+  height="700px"
+/>
+
+## Media Query
+
+Ensemble uses logical pixels, which are based on the device's screen density. This allows for a consistent user interface across different devices.
+
+### Properties
+
+| **Property Name** | **Description**                                                                                                                                                                                                                                                              |
+| :---------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `width`           | Returns the width of the device's screen in logical pixels.                                                                                                                                                                                                                  |
+| `height`          | Returns the height of the device's screen in logical pixels.                                                                                                                                                                                                                 |
+| `safeAreaTop`     | Returns the height of the screen's safe area at the top (e.g., iPhone's notch) in logical pixels. This value will be 0 if it is not applicable. You can use this to avoid placing important UI elements in this safe area.                                                   |
+| `safeAreaBottom`  | Returns the height of the screen's safe area at the bottom (e.g., iPhone's home swiper) in logical pixels. This value will be 0 if it is not applicable. For more detailed information on how to use it with example, Click [here](../tips-and-tricks/bottom-safe-area.md). |
+
+## Capabilities
+
+This table outlines the capabilities related to device notifications and location tracking
+
+| Property Name            | Description                                                                                                                                                                                                     |
+| ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `deviceToken`            | If notification is enabled, returns the latest device token that can be used to send push notifications to this device.                                                                                         |
+| `lastLocation.latitude`  | Returns the latitude of the last known location of the device. This value will only be populated if the action `getLocation` has been used previously and the user has granted location permission to the app.  |
+| `lastLocation.longitude` | Returns the longitude of the last known location of the device. This value will only be populated if the action `getLocation` has been used previously and the user has granted location permission to the app. |
+
+## Platform
+
+Ensemble offers utilities/getters for platform-specific logic.
+
+### Properties
+
+| **Property Name** | **Description**                                                                                                                |
+| :---------------- | :----------------------------------------------------------------------------------------------------------------------------- |
+| `platform`        | Returns the platform name the app is running on. Possible values are `ios`, `android`, `web`, `macos`, `windows`, and `other`. |
+| `isIOS()`         | Returns `true` if the app is running on an iOS device, otherwise `false`.                                                      |
+| `isAndroid()`     | Returns `true` if the app is running on an Android device, otherwise `false`.                                                  |
+| `isWeb()`         | Returns `true` if the app is running on a web browser, otherwise `false`.                                                      |
+| `isMacOS()`       | Returns `true` if the app is running on a macOS device, otherwise `false`.                                                     |
+| `isWindows()`     | Returns `true` if the app is running on a Windows device, otherwise `false`.                                                   |
+
+## Web
+
+When running on the Web platform, the following properties provide browser information.
+
+### Properties
+
+| **Property Name**                 | **Description**                                                                                                                                        |
+| --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `browserInfo.browserName`         | The name of the browser.                                                                                                                               |
+| `browserInfo.appCodeName`         | The internal "code" name of the current browser.                                                                                                       |
+| `browserInfo.appName`             | The official name of the browser.                                                                                                                      |
+| `browserInfo.appVersion`          | The version of the browser as a DOMString.                                                                                                             |
+| `browserInfo.deviceMemory`        | The amount of device memory in gigabytes. This value is an approximation given by rounding to the nearest power of 2 and dividing that number by 1024. |
+| `browserInfo.language`            | A DOMString representing the preferred language of the user, usually the language of the browser UI. The null value is returned when this is unknown.  |
+| `browserInfo.languages`           | An array of DOMString representing the languages known to the user, by order of preference.                                                            |
+| `browserInfo.platform`            | The version of the browser as a DOMString.                                                                                                             |
+| `browserInfo.product`             | Always returns 'Gecko', on any browser.                                                                                                                |
+| `browserInfo.productSub`          | The build number of the current browser.                                                                                                               |
+| `browserInfo.userAgent`           | The sub-version number of the current browser (e.g., "20060909").                                                                                      |
+| `browserInfo.vendor`              | The vendor name of the current browser.                                                                                                                |
+| `browserInfo.vendorSub`           | Returns the vendor version number (e.g. "6.1").                                                                                                        |
+| `browserInfo.hardwareConcurrency` | The number of logical processor cores available.                                                                                                       |
+| `browserInfo.maxTouchPoints`      | The maximum number of simultaneous touch contact points supported by the current device.                                                               |
+
+## Android
+
+For Android devices, additional specific properties are available.
+
+### Properties
+
+| **Property**                       | **Description**                                                                        |
+| ---------------------------------- | -------------------------------------------------------------------------------------- |
+| `androidInfo.versionRelease`       | The release version of the Android operating system.                                   |
+| `androidInfo.versionSdkInt`        | The API level of the Android operating system.                                         |
+| `androidInfo.versionCodename`      | The code name of the Android version.                                                  |
+| `androidInfo.versionIncremental`   | The incremental version string of the Android build.                                   |
+| `androidInfo.versionPreviewSdkInt` | The SDK version of the Android preview.                                                |
+| `androidInfo.versionSecurityPatch` | The date of the latest security patch level.                                           |
+| `androidInfo.board`                | The name of the underlying board, like "goldfish".                                     |
+| `androidInfo.bootloader`           | The system bootloader version number.                                                  |
+| `androidInfo.brand`                | The consumer-visible brand with which the product/hardware will be associated, if any. |
+| `androidInfo.device`               | The name of the industrial design.                                                     |
+| `androidInfo.display`              | A build ID string meant for displaying to the user.                                    |
+| `androidInfo.fingerprint`          | A string that uniquely identifies this build.                                          |
+| `androidInfo.hardware`             | The name of the hardware (from the kernel command line or /proc).                      |
+| `androidInfo.host`                 | The build host of the Android operating system.                                        |
+| `androidInfo.id`                   | Either a changelist number, or a label like "M4-rc20". The unique ID of the device.    |
+| `androidInfo.manufacturer`         | The manufacturer of the product/hardware.                                              |
+| `androidInfo.model`                | The end-user-visible name for the end product.                                         |
+| `androidInfo.product`              | The name of the overall product.                                                       |
+| `androidInfo.tags`                 | Comma-separated tags describing the build, like "unsigned,debug".                      |
+| `androidInfo.type`                 | The type of build, like "user" or "eng".                                               |
+| `androidInfo.isPhysicalDevice`     | `false` if the application is running in an emulator, `true` otherwise.                |
+| `androidInfo.serialNumber`         | Hardware serial number of the device, if available.                                    |
+
+## iOS
+
+For iOS devices, specific properties can be accessed.
+
+### Properties
+
+| **Property**                  | **Description**                                                                                                                                                                     |
+| ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `iosInfo.name`                | Device name. On iOS < 16 returns user-assigned device name. On iOS >= 16 returns a generic name. [More info](https://developer.apple.com/documentation/uikit/uidevice/1620015-name) |
+| `iosInfo.systemName`          | The name of the current operating system. [More info](https://developer.apple.com/documentation/uikit/uidevice/1620054-systemname)                                                  |
+| `iosInfo.systemVersion`       | The current operating system version. [More info](https://developer.apple.com/documentation/uikit/uidevice/1620043-systemversion)                                                   |
+| `iosInfo.model`               | Device model. [More info](https://developer.apple.com/documentation/uikit/uidevice/1620044-model)                                                                                   |
+| `iosInfo.localizedModel`      | Localized name of the device model. [More info](https://developer.apple.com/documentation/uikit/uidevice/1620029-localizedmodel)                                                    |
+| `iosInfo.identifierForVendor` | Unique UUID value identifying the current device. [More info](https://developer.apple.com/documentation/uikit/uidevice/1620059-identifierforvendor)                                 |
+| `iosInfo.isPhysicalDevice`    | `false` if the application is running in a simulator, `true` otherwise.                                                                                                             |
+| `iosInfo.utsnameSysname`      | Operating system name. [More info](http://pubs.opengroup.org/onlinepubs/7908799/xsh/sysutsname.h.html)                                                                              |
+| `iosInfo.utsnameNodename`     | Name of the node within an implementation-dependent communications network. [More info](http://pubs.opengroup.org/onlinepubs/7908799/xsh/sysutsname.h.html)                         |
+| `iosInfo.utsnameRelease`      | Release level. [More info](http://pubs.opengroup.org/onlinepubs/7908799/xsh/sysutsname.h.html)                                                                                      |
+| `iosInfo.utsnameVersion`      | Version level. [More info](http://pubs.opengroup.org/onlinepubs/7908799/xsh/sysutsname.h.html)                                                                                      |
+| `iosInfo.utsnameMachine`      | Hardware type (e.g., 'iPhone7,1' for iPhone 6 Plus). [More info](http://pubs.opengroup.org/onlinepubs/7908799/xsh/sysutsname.h.html)                                                |
+
+## macOS
+
+For macOS devices, the following properties are available.
+
+### Properties
+
+| **Property Name**         | **Description**                                                                                                |
+| ------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| `macOsInfo.computerName`  | Name given to the local machine.                                                                               |
+| `macOsInfo.hostName`      | Operating system type.                                                                                         |
+| `macOsInfo.arch`          | Machine CPU architecture. Note that on Apple Silicon Macs, it may return `x86_64` if the app runs via Rosetta. |
+| `macOsInfo.model`         | The model of the device.                                                                                       |
+| `macOsInfo.kernelVersion` | Machine Kernel version. Examples include `Darwin Kernel Version 15.3.0` or `Darwin Kernel Version 15.0.0`.     |
+| `macOsInfo.osRelease`     | The release version of the operating system.                                                                   |
+| `macOsInfo.majorVersion`  | The major release number, such as 10 in version 10.9.3.                                                        |
+| `macOsInfo.minorVersion`  | The minor release number, such as 9 in version 10.9.3.                                                         |
+| `macOsInfo.patchVersion`  | The update release number, such as 3 in version 10.9.3.                                                        |
+| `macOsInfo.activeCPUs`    | Number of active CPUs.                                                                                         |
+| `macOsInfo.memorySize`    | The size of the memory                                                                                         |
+| `macOsInfo.cpuFrequency`  | Device CPU frequency.                                                                                          |
+| `macOsInfo.systemGUID`    | The GUID of the system.                                                                                        |
+
+## Windows
+
+For Windows devices, the following properties are available.
+
+### Properties
+
+| Property Name                         | Description                                                                                                                                                                              |
+| ------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `windowsInfo.computerName`            | The computer's fully-qualified DNS name, where available.                                                                                                                                |
+| `windowsInfo.numberOfCores`           | Number of CPU cores on the local machine.                                                                                                                                                |
+| `windowsInfo.systemMemoryInMegabytes` | The physically installed memory in the computer. This may not be the same as available memory.                                                                                           |
+| `windowsInfo.userName`                | The user name of the currently logged-in user.                                                                                                                                           |
+| `windowsInfo.majorVersion`            | The major version number of the operating system. For example, for Windows 2000, the major version number is five.                                                                       |
+| `windowsInfo.minorVersion`            | The minor version number of the operating system. For example, for Windows 2000, the minor version number is zero.                                                                       |
+| `windowsInfo.buildNumber`             | The build number of the operating system. For example, `22000` or greater for Windows 11.                                                                                                |
+| `windowsInfo.platformId`              | The operating system platform identifier. For Win32 on NT-based operating systems, RtlGetVersion returns the value `VER_PLATFORM_WIN32_NT`.                                              |
+| `windowsInfo.buildLab`                | Value of `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\BuildLab` registry key. For example: `22000.co_release.210604-1628`.                                           |
+| `windowsInfo.buildLabEx`              | Value of `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\BuildLabEx` registry key. For example: `22000.1.amd64fre.co_release.210604-1628`.                              |
+| `windowsInfo.productId`               | Displayed as "Product ID" in Windows Settings. Value of `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\ProductId` registry key. For example: `00000-00000-0000-AAAAA`. |
+| `windowsInfo.productName`             | Value of `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\ProductName` registry key. For example: `Windows 10 Home Single Language`.                                     |
+| `windowsInfo.releaseId`               | Value of the `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\ReleaseId` registry key. For example: `1903`.                                                              |
+| `windowsInfo.deviceId`                | Displayed as "Device ID" in Windows Settings. Value of `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\SQMClient\MachineId` registry key.                                                         |

@@ -1,8 +1,14 @@
+import { EnsemblePreview } from '../../components/ensemble-preview'
+
 # Text widget
 
 Display and style text within your application.
 
-[Test in Kitchen Sink](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/c87f8b09-58e2-4c2f-99a1-cbbe9e25e9a5?propertyPanelEnabled=true&instantPreviewDisabled=false&editorV2Enabled=true)
+<EnsemblePreview 
+  appId="e24402cb-75e2-404c-866c-29e6c3dd7992"
+  screenId="c87f8b09-58e2-4c2f-99a1-cbbe9e25e9a5"
+  height="700px"
+/>
 
 ## Properties
 
@@ -63,6 +69,8 @@ Display and style text within your application.
 | fontfamily         | string            | Allows users to chose a specific font-family other than the default one.                                                                                                                                                                                                                                                                                |
 | decoration         | string            | A linear decoration to draw near the text or whether to slant the glyphs in font. `none` `lineThrough` `underline` `overline`                                                                                                                                                                                                                           |
 | decorationStyle    | string            | The style in which to paint the text decorations (e.g., dashed). `solid` `double` `dotted` `dashed` `wavy`                                                                                                                                                                                                                                              |
+| decorationColor    | [Color](#Color)                          | The color of the decoration.                                                                                                                                      |
+| decorationThickness| number                                   | The thickness of the decoration.                                                                                                                                  |
 | isItalic           | boolean           | Whether the text should be italic or not                                                                                                                                                                                                                                                                                                                |
 | lineHeightMultiple | integer           | A multiple of the fontSize to determine the line height. (e.g. 2.0 means the line height is double the height the font size occupies). Default null. (note that 1.0 is not the default depending on the font)                                                                                                                                           |
 | letterSpacing      | integer           | The amount of space (in logical pixels) to add between each letter. A negative value can be used to bring the letters closer.                                                                                                                                                                                                                           |

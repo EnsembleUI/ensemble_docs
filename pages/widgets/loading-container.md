@@ -83,7 +83,7 @@ API:
 | widget        | object | The widget to render as the content of this container. |
 | shimmerOptions  | object     | A nested object to customize the shimmer effect. Includes the following sub-properties:                         |
 
-
+#### shimmerOptions
 | Property         | Type       | Description                                                                                                     |
 | :--------------- |:-----------|:----------------------------------------------------------------------------------------------------------------|
 | gradientColors   | list       | A list of colors to be used in the shimmer effect's gradient.                                                    |
@@ -93,4 +93,5 @@ API:
 | shimmerSpeed     | int        | The speed of the shimmer animation in milliseconds.                                                             |
 | shimmerEffect    | enum     | The direction of the shimmer effect. Options are `horizontal`, `vertical`, or `diagonal`.                        |
 | padding          | double     | The padding around the shimmer effect.                                                                          |
+| tileMode          | enum     | The tileMode property in a gradient determines how the gradient repeats or extends beyond its original bounds, offering options like `clamp`, `mirror`, and `repeated` to control the visual effect. effect.                                                                          |
 ```

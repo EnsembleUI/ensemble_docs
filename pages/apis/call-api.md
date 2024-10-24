@@ -11,6 +11,7 @@ Both the `onResponse` and `onError` actions provide reference to the API respons
 | body       | String | the actual body of the response. This is where you are mostly interested in. JSON responses are automatically parsed and made available. Other content-types are available as strings.                               |
 | headers     | array | Key value pairs of http response headers                  |
 | reasonPhrase | String | Phrase that describes the statusCode. Http response statusCode is a 3 digit number and reasonPhrase describes that number. For example - reasonPhrase for statusCode between 200 and 299 (inclusive) is Successful. More [here](https://www.ibm.com/docs/en/cics-ts/5.5?topic=concepts-status-codes-reason-phrases)                                         |
+| cookies | array | A key-value map of cookies received from the API response when manageCookies is enabled                                         |
 
 ## API/invokeAPI properties
 | Property   | Type   | Description                                                                |

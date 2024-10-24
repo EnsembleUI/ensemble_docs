@@ -1,7 +1,6 @@
 # Tips and Tricks
 
-Welcome to our Tips and Tricks page! Here, you'll find a collection of expert insights and best practices to help you make the most of our platform. Discover shortcuts, time-saving techniques, and hidden features to enhance your productivity. 
-
+Welcome to our Tips and Tricks page! Here, you'll find a collection of expert insights and best practices to help you make the most of our platform. Discover shortcuts, time-saving techniques, and hidden features to enhance your productivity.
 
 - [Getting help from Ensemble team](/tips-and-tricks/getting-help)
 - [Custom BottomNavBar item styling](/tips-and-tricks/custom-navbar-items)
@@ -17,8 +16,8 @@ Welcome to our Tips and Tricks page! Here, you'll find a collection of expert in
 - [HTML Widget](/tips-and-tricks/html-widget.md)
 - [Push Notification](/tips-and-tricks/push-notification.md)
 - [Using device width and height](/tips-and-tricks/using-device-dimentions.md)
+- [Using BottomSafeArea for responsive layouts](/tips-and-tricks/bottom-safe-area.md)
 - [Floating Button](/tips-and-tricks/floatingButton.md)
-
 
 Below are some common error messages and their solutions:
 
