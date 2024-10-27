@@ -1,3 +1,7 @@
+import BaseStyles from "./_snippets/base-styles.md";
+import BoxStyles from "./_snippets/box-styles.md";
+import { EnsemblePreview } from '../../components/ensemble-preview'
+
 # Slidable Widget
 
 The `Slidable` widget enables you to create swipeable items with customizable action panes on both sides. This widget is particularly useful for implementing swipe-to-action functionality, such as swipe-to-delete, swipe-to-edit, or any other custom actions in your application.
@@ -75,31 +79,36 @@ This widget also inherits these styles:
 
 ```yaml
 Slidable:
+  styles:
+    direction: horizontal
+    closeOnScroll: true
+    DragStartBehavior: start
+    useTextDirection: true
   startDrawer:
     options:
-      extentRatio: 0.3
-      motion: scroll
+      extentRatio: 0.5
+      openThreshold: 0.25
+      motion: behind
     children:
-      - icon: archive
-        label: Archive
-        backgroundColor: "#4CAF50"
-        onTap: 
-          log: "Archive tapped"
-      - icon: share
-        label: Share
-        backgroundColor: "#2196F3"
+      - icon: star
+        backgroundColor: red
+        foregroundColor: green
+        borderRadius: 20
         onTap:
-          log: "Share tapped"
+          showToast:
+            message: Added to favorites
+      - label: Cancel
+        onTap:
+          showToast:
+            message: User deleted
   endDrawer:
-    options:
-      extentRatio: 0.25
-      motion: drawer
     children:
-      - icon: delete
-        label: Delete
-        backgroundColor: "#F44336"
+      - icon: star
+        label: Favorite
+        backgroundColor: yellow
         onTap:
-          log: "Delete tapped"
+          showToast:
+            message: Added to favorites
   child:
     Container:
       padding: 16
