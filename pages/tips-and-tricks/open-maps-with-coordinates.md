@@ -2,6 +2,8 @@
 
 This guide explains how to open map applications with specific coordinates on Android and iOS devices. The examples demonstrate how to launch Google Maps or Apple Maps, depending on the platform, and also include the ability to use dynamic coordinates input.
 
+[Test in Kitchen Sink](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/wCU2q0PQnNxmXqN4WyCV)
+
 ## Implementation Overview
 
 The feature allows users to open their default map application (Google Maps or Apple Maps) with specific coordinates by clicking an icon. Depending on the user's device (Android, iOS, or Web), the appropriate map service will be launched. Additionally, users can enter dynamic coordinates to open any location.
