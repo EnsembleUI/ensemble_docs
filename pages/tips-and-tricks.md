@@ -8,6 +8,7 @@ Welcome to our Tips and Tricks page! Here, you'll find a collection of expert in
 - [Use device's camera for updating profile picture](/tips-and-tricks/user-profile-picture)
 - [Inputs to ChartJs](/tips-and-tricks/inputs-chartjs)
 - [How to modify the BottomNavBar with custom styling and widgets](/tips-and-tricks/how-to-modify-bottom-navbar)
+- [Open Maps with Coordinates on Android and iOS](/tips-and-tricks/open-maps-with-coordinates)
 - [Using navigate Screen with BottomNavBar](/tips-and-tricks/navigateScreen-with-bottomNavBar)
 - [Dynamic color modification](/tips-and-tricks/dynamic-color-modification)
 - [Icons in bottomNavBar](/tips-and-tricks/icons-in-bottomNavBar)
