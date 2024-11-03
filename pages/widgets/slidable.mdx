@@ -11,6 +11,7 @@ The `Slidable` widget enables you to create swipeable items with customizable ac
 - **Dual Action Panes**: Support for both start (left) and end (right) action panes
 - **Customizable Actions**: Each action pane can contain multiple actions with customizable icons, labels, and colors
 - **Motion Options**: Various motion types available including scroll, stretch, behind, and drawer animations
+- **Dismissible Support**: Optional swipe-to-dismiss functionality with customizable behavior
 - **Group Management**: Group related slidables together using the `groupTag` property
 - **Directional Support**: Supports both horizontal and vertical sliding
 - **Accessibility**: Respects text direction for RTL/LTR layouts
@@ -48,6 +49,18 @@ Each drawer (start/end) can be configured with the following properties:
 | openThreshold | double? | Threshold for when the drawer should fully open                            |
 | closeThreshold| double? | Threshold for when the drawer should close                                 |
 
+### Dismissible Options
+
+Each drawer can be made dismissible with these configuration options:
+
+| Property            | Type     | Description                                                                |
+| :----------------- | :------- | :------------------------------------------------------------------------- |
+| dismissThreshold   | double   | Threshold at which dismissal is triggered. Defaults to `0.75`              |
+| dismissalDurationMs| int      | Duration of the dismiss animation in milliseconds. Defaults to `300`       |
+| resizeDurationMs   | int      | Duration of the resize animation after dismissal. Defaults to `300`        |
+| motion             | string   | Dismissal animation type (`inversedDrawer`, `drawer`, `behind`, `scroll`, `stretch`) |
+| onDismissed        | Action   | Callback function executed when the drawer is dismissed                     |
+
 ### Action Properties
 
 Each action in the drawer can have the following properties:
@@ -82,25 +95,21 @@ Slidable:
   styles:
     direction: horizontal
     closeOnScroll: true
-    DragStartBehavior: start
+    dragStartBehavior: start
     useTextDirection: true
   startDrawer:
     options:
-      extentRatio: 0.5
+      extentRatio: 0.001 # we can keep the extent ratio small so that dismissible action looks smooth
       openThreshold: 0.25
       motion: behind
-    children:
-      - icon: star
-        backgroundColor: red
-        foregroundColor: green
-        borderRadius: 20
-        onTap:
-          showToast:
-            message: Added to favorites
-      - label: Cancel
-        onTap:
-          showToast:
-            message: User deleted
+    dismissible:
+      dismissThreshold: 0.75
+      dismissalDurationMs: 300
+      resizeDurationMs: 300
+      motion: inversedDrawer
+      onDismissed:
+        showToast:
+          message: Item dismissed
   endDrawer:
     children:
       - icon: star
@@ -118,12 +127,21 @@ Slidable:
 
 ## Motion Types
 
-The Slidable widget supports four types of motion animations:
+### Drawer Motion Types
+The Slidable widget supports four types of drawer motion animations:
 
 1. **scroll**: A basic sliding motion
 2. **stretch**: Adds a stretching effect while sliding
 3. **behind**: Reveals the actions from behind the main content
 4. **drawer**: Classic drawer-style sliding animation
 
+### Dismissible Motion Types
+For dismissible drawers, five types of motion animations are available:
+
+1. **inversedDrawer**: Reversed drawer-style animation (default)
+2. **drawer**: Standard drawer animation
+3. **behind**: Reveals content from behind
+4. **scroll**: Scrolls with the gesture
+5. **stretch**: Stretches during dismissal
 
 By utilizing these properties and configurations, you can create intuitive swipe-based interactions in your application using the Slidable widget.
