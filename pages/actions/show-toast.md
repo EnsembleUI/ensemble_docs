@@ -25,7 +25,7 @@ The ShowToast enables the display of informative toast messages, providing tempo
 
 | Property    | Type    | Description                                                                                                               |
 | :---------- | :------ | :------------------------------------------------------------------------------------------------------------------------ |
-| type        | string  | Select a built-in toast style.                                                                                            |
+| type        | string  | Select a built-in toast style. One of the following - 'success', 'error', 'warning', 'info'                                                                                           |
 | dismissible | boolean | Whether to show a dismiss button (default is True)                                                                        |
 | position    | string  | Toast's position. Can be one of: top, topLeft, topRight, center, centerLeft, centerRight, bottom, bottomLeft, bottomRight |
 | duration    | integer | The number of seconds before the toast is dismissed. Minimum value is 1.                                                  |
