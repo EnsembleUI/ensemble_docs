@@ -54,7 +54,7 @@ Global: |-
   // Javascript code
   function divide(a, b) {
     if (b === 0) {
-        throw "Division by zero is not allowed"; // Custom error
+        throw new Error("Division by zero is not allowed"); // Custom error, you can just throw a string as well i.e. throw "Division by zero is not allowed";
     }
     return a / b;
   } 
