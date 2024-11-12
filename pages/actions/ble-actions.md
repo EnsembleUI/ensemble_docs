@@ -40,6 +40,8 @@ In the `ios/Runner/Info.plist` let’s add:
 
 ### Action References
 
+* Note that the event.data is exactly set of characters that the device is sending. It will be a string. If the device is sending JSON data, that will *not* be automatically converted. You will need to call `JSON.parse(event.data)` to convert it to JSON *
+
 `bluetoothInit` : Turns on the bluetooth (Android only) and Stream of on & off states of the bluetooth.
 ```yaml
 Icon:
