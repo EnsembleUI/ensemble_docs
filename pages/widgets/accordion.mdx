@@ -1,0 +1,108 @@
+import BaseStyles from "./_snippets/base-styles.md";
+import BoxStyles from "./_snippets/box-styles.md";
+import { EnsemblePreview } from "../../components/ensemble-preview";
+
+# Accordion Widget
+
+The `Accordion` widget allows you to display a list of items in an accordion-style UI, where individual sections can be expanded or collapsed. This widget is highly customizable, offering options for styling the headers and bodies, controlling the behavior of sections (whether multiple sections can be open at once), and customizing animations and icons.
+
+## Key Properties and Features
+
+- **Accordion Mode**: The `limitExpandedToOne` property determines whether only one section can be open at a time (accordion mode) or multiple sections can be open simultaneously. Defaults to `true`.
+- **Initial Opening Sequence Delay**: The `initialOpeningSequenceDelay` property allows you to add a delay (in milliseconds) before the initial opening of the sections.
+- **Section Styling**: The `headerStyle` and `bodyStyle` properties allow you to customize the appearance of the header and body sections, respectively.
+- **Icons**: You can add icons to the left and right of each section using `leftIcon` and `rightIcon`, and choose whether they flip when the section is opened or closed.
+- **Padding and Spacing**: Control padding inside sections and spacing between sections using properties like `paddingListTop`, `paddingListBottom`, `paddingListHorizontal`, `paddingBetweenOpenSections`, and `paddingBetweenClosedSections`. Default values for padding are `0.0`.
+- **Animations**: Customize the opening and closing animations of the sections with `openAndCloseAnimation` and `scaleWhenAnimating`. Both default to `true`.
+- **Scrolling**: Disable scrolling for the accordion using the `disableScrolling` property. Defaults to `false`.
+
+<EnsemblePreview
+  appId="e24402cb-75e2-404c-866c-29e6c3dd7992"
+  screenId="yTFRepwpRQJbvRYaVpRi"
+  height="700px"
+/>
+
+## Properties
+
+| Property                     | Type                                          | Description                                                                                                                                   |
+| :--------------------------- | :-------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------- |
+| items                        | List                                          | A list of items representing the sections of the accordion. Each item can have its own header, body, and individual styles.                   |
+| limitExpandedToOne           | boolean                                       | Determines whether only one section can be open at a time `true` or multiple sections can be open simultaneously `false`. Defaults to `true`. |
+| initialOpeningSequenceDelay  | int?                                          | Specifies a delay (in milliseconds) before the initial opening of the sections. Defaults to `null`.                                           |
+| headerStyle                  | [HeaderStyleComposite](#headerstylecomposite) | Defines the style properties for the section headers.                                                                                         |
+| bodyStyle                    | [BodyStyleComposite](#bodystylecomposite)     | Defines the style properties for the section bodies.                                                                                          |
+| leftIcon                     | dynamic                                       | Specifies an icon to display on the left of the header.                                                                                       |
+| rightIcon                    | dynamic                                       | Specifies an icon to display on the right of the header.                                                                                      |
+| flipLeftIconIfOpen           | bool?                                         | Determines whether the left icon should flip when the section is opened. Defaults to `null`.                                                  |
+| flipRightIconIfOpen          | bool?                                         | Determines whether the right icon should flip when the section is opened. Defaults to `true`.                                                 |
+| paddingListTop               | double                                        | Sets the padding at the top of the accordion list. Defaults to `0.0`.                                                                         |
+| paddingListBottom            | double                                        | Sets the padding at the bottom of the accordion list. Defaults to `0.0`.                                                                      |
+| paddingListHorizontal        | double                                        | Sets the horizontal padding for the entire list of sections. Defaults to `0.0`.                                                               |
+| paddingBetweenOpenSections   | double?                                       | Controls the padding between open sections. Defaults to `null`.                                                                               |
+| paddingBetweenClosedSections | double?                                       | Controls the padding between closed sections. Defaults to `null`.                                                                             |
+| disableScrolling             | bool                                          | If `true`, disables scrolling for the accordion widget. Defaults to `false`.                                                                  |
+| openAndCloseAnimation        | bool?                                         | If `true`, enables the open and close animations for sections. Defaults to `true`.                                                            |
+| scaleWhenAnimating           | bool?                                         | If `true`, the sections will scale when opening and closing as part of the animation. Defaults to `true`.                                     |
+
+## Events
+
+| Event          | Description                                                                                               |
+| :------------- | :-------------------------------------------------------------------------------------------------------- |
+| onOpenSection  | Triggered when a section is opened. You can define actions or code to be executed when a section opens.   |
+| onCloseSection | Triggered when a section is closed. Allows you to define actions or code to be executed on section close. |
+
+## Methods
+
+| Method       | Description                             |
+| :----------- | :-------------------------------------- |
+| openSection  | Opens a specific section by its index.  |
+| closeSection | Closes a specific section by its index. |
+
+## Getters
+
+| Getter       | Type   | Description                                             |
+| :----------- | :----- | :------------------------------------------------------ |
+| openSections | List   | Retrieves the list of currently open section indices.   |
+| headerStyle  | object | Retrieves the header style properties of the accordion. |
+| bodyStyle    | object | Retrieves the body style properties of the accordion.   |
+
+## HeaderStyleComposite
+
+The `HeaderStyleComposite` is a class that defines the styling options for the headers of each section in the accordion.
+
+### Properties
+
+| Property              | Type                          | Description                                                                        |
+| :-------------------- | :---------------------------- | :--------------------------------------------------------------------------------- |
+| backgroundColor       | [Color](/widgets/types#Color) | The background color of the header. Defaults to `null`.                            |
+| backgroundColorOpened | [Color](/widgets/types#Color) | The background color of the header when the section is opened. Defaults to `null`. |
+| borderColor           | [Color](/widgets/types#Color) | The border color of the header. Defaults to `null`.                                |
+| borderColorOpened     | [Color](/widgets/types#Color) | The border color of the header when the section is opened. Defaults to `null`.     |
+| borderWidth           | double?                       | The width of the header's border. Defaults to `null`.                              |
+| borderRadius          | double?                       | The radius of the header's corners. Defaults to `null`.                            |
+| padding               | EdgeInsets?                   | The padding inside the header. Defaults to `null`.                                 |
+
+## BodyStyleComposite
+
+The `BodyStyleComposite` is a class that defines the styling options for the body of each section in the accordion.
+
+### Properties
+
+| Property          | Type                          | Description                                                 |
+| :---------------- | :---------------------------- | :---------------------------------------------------------- |
+| backgroundColor   | [Color](/widgets/types#Color) | The background color of the body. Defaults to `null`.       |
+| borderColor       | [Color](/widgets/types#Color) | The border color of the body. Defaults to `null`.           |
+| borderWidth       | double?                       | The width of the body's border. Defaults to `null`.         |
+| borderRadius      | double?                       | The radius of the body's corners. Defaults to `null`.       |
+| horizontalPadding | double?                       | The horizontal padding inside the body. Defaults to `null`. |
+| verticalPadding   | double?                       | The vertical padding inside the body. Defaults to `null`.   |
+
+This widget also inherits these styles:
+
+<BoxStyles />
+
+## Base Styles (Inherited)
+
+<BaseStyles />
+
+By utilizing these properties, methods, and events, you can effectively integrate and customize the `Collapsible` widget to match your application's requirements.

@@ -1,6 +1,6 @@
 import BaseStyles from "./_snippets/base-styles.md";
 import BoxStyles from "./_snippets/box-styles.md";
-import { EnsemblePreview } from '../../components/ensemble-preview'
+import { EnsemblePreview } from "../../components/ensemble-preview";
 
 # Slidable Widget
 
@@ -24,17 +24,17 @@ The `Slidable` widget enables you to create swipeable items with customizable ac
 
 ## Properties
 
-| Property           | Type              | Description                                                                                     |
-| :---------------- | :---------------- | :---------------------------------------------------------------------------------------------- |
-| groupTag          | string            | Groups related slidable widgets together for coordinated behavior                               |
-| enabled           | boolean           | Enables or disables the slidable functionality. Defaults to `true`                              |
-| closeOnScroll     | boolean           | Determines if the slidable should close when scrolling. Defaults to `true`                      |
-| direction         | Axis              | Sets the slide direction (`horizontal` or `vertical`). Defaults to `horizontal`                  |
-| dragStartBehavior | DragStartBehavior | Determines when dragging starts (`down` or `start`). Defaults to `down`                        |
-| useTextDirection  | boolean           | Respects the text direction for RTL/LTR layouts. Defaults to `true`                            |
-| startDrawer       | object            | Configuration for the start (left/top) action pane                                              |
-| endDrawer         | object            | Configuration for the end (right/bottom) action pane                                            |
-| child            | Widget            | The main content widget that will be slidable                                                   |
+| Property          | Type              | Description                                                                     |
+| :---------------- | :---------------- | :------------------------------------------------------------------------------ |
+| groupTag          | string            | Groups related slidable widgets together for coordinated behavior               |
+| enabled           | boolean           | Enables or disables the slidable functionality. Defaults to `true`              |
+| closeOnScroll     | boolean           | Determines if the slidable should close when scrolling. Defaults to `true`      |
+| direction         | Axis              | Sets the slide direction (`horizontal` or `vertical`). Defaults to `horizontal` |
+| dragStartBehavior | DragStartBehavior | Determines when dragging starts (`down` or `start`). Defaults to `down`         |
+| useTextDirection  | boolean           | Respects the text direction for RTL/LTR layouts. Defaults to `true`             |
+| startDrawer       | object            | Configuration for the start (left/top) action pane                              |
+| endDrawer         | object            | Configuration for the end (right/bottom) action pane                            |
+| child             | Widget            | The main content widget that will be slidable                                   |
 
 ## Drawer Configuration
 
@@ -42,41 +42,41 @@ Each drawer (start/end) can be configured with the following properties:
 
 ### Options
 
-| Property       | Type    | Description                                                                |
-| :------------ | :------ | :------------------------------------------------------------------------- |
-| extentRatio   | double  | Ratio of the screen width that the drawer can extend to. Defaults to `0.25` |
-| motion        | string  | Type of motion animation (`scroll`, `stretch`, `behind`, `drawer`)         |
-| openThreshold | double? | Threshold for when the drawer should fully open                            |
-| closeThreshold| double? | Threshold for when the drawer should close                                 |
+| Property       | Type    | Description                                                                 |
+| :------------- | :------ | :-------------------------------------------------------------------------- |
+| extentRatio    | double  | Ratio of the screen width that the drawer can extend to. Defaults to `0.25` |
+| motion         | string  | Type of motion animation (`scroll`, `stretch`, `behind`, `drawer`)          |
+| openThreshold  | double? | Threshold for when the drawer should fully open                             |
+| closeThreshold | double? | Threshold for when the drawer should close                                  |
 
 ### Dismissible Options
 
 Each drawer can be made dismissible with these configuration options:
 
-| Property            | Type     | Description                                                                |
-| :----------------- | :------- | :------------------------------------------------------------------------- |
-| dismissThreshold   | double   | Threshold at which dismissal is triggered. Defaults to `0.75`              |
-| dismissalDurationMs| int      | Duration of the dismiss animation in milliseconds. Defaults to `300`       |
-| resizeDurationMs   | int      | Duration of the resize animation after dismissal. Defaults to `300`        |
-| motion             | string   | Dismissal animation type (`inversedDrawer`, `drawer`, `behind`, `scroll`, `stretch`) |
-| onDismissed        | Action   | Callback function executed when the drawer is dismissed                     |
+| Property            | Type   | Description                                                                          |
+| :------------------ | :----- | :----------------------------------------------------------------------------------- |
+| dismissThreshold    | double | Threshold at which dismissal is triggered. Defaults to `0.75`                        |
+| dismissalDurationMs | int    | Duration of the dismiss animation in milliseconds. Defaults to `300`                 |
+| resizeDurationMs    | int    | Duration of the resize animation after dismissal. Defaults to `300`                  |
+| motion              | string | Dismissal animation type (`inversedDrawer`, `drawer`, `behind`, `scroll`, `stretch`) |
+| onDismissed         | Action | Callback function executed when the drawer is dismissed                              |
 
 ### Action Properties
 
 Each action in the drawer can have the following properties:
 
-| Property         | Type     | Description                                                          |
-| :-------------- | :------- | :------------------------------------------------------------------- |
-| icon            | IconData | The icon to display for the action                                   |
-| label           | string   | Text label for the action                                            |
-| backgroundColor | Color    | Background color of the action button. Defaults to `blue`            |
-| foregroundColor | Color    | Color of the icon and text. Defaults to `white`                      |
-| padding         | EdgeInsets| Padding around the action button. Defaults to `EdgeInsets.zero`      |
-| spacing         | double   | Space between the icon and label. Defaults to `4.0`                  |
-| autoClose       | boolean  | Whether to close the drawer after action is triggered. Defaults to `true` |
-| flex           | int      | Flex value for action width distribution. Defaults to `1`             |
-| borderRadius    | BorderRadius| Border radius of the action button. Defaults to `BorderRadius.zero`  |
-| onTap          | Action   | Callback function to execute when the action is tapped                |
+| Property        | Type         | Description                                                               |
+| :-------------- | :----------- | :------------------------------------------------------------------------ |
+| icon            | IconData     | The icon to display for the action                                        |
+| label           | string       | Text label for the action                                                 |
+| backgroundColor | Color        | Background color of the action button. Defaults to `blue`                 |
+| foregroundColor | Color        | Color of the icon and text. Defaults to `white`                           |
+| padding         | EdgeInsets   | Padding around the action button. Defaults to `EdgeInsets.zero`           |
+| spacing         | double       | Space between the icon and label. Defaults to `4.0`                       |
+| autoClose       | boolean      | Whether to close the drawer after action is triggered. Defaults to `true` |
+| flex            | int          | Flex value for action width distribution. Defaults to `1`                 |
+| borderRadius    | BorderRadius | Border radius of the action button. Defaults to `BorderRadius.zero`       |
+| onTap           | Action       | Callback function to execute when the action is tapped                    |
 
 ### Box Styles (Inherited)
 
@@ -128,6 +128,7 @@ Slidable:
 ## Motion Types
 
 ### Drawer Motion Types
+
 The Slidable widget supports four types of drawer motion animations:
 
 1. **scroll**: A basic sliding motion
@@ -136,6 +137,7 @@ The Slidable widget supports four types of drawer motion animations:
 4. **drawer**: Classic drawer-style sliding animation
 
 ### Dismissible Motion Types
+
 For dismissible drawers, five types of motion animations are available:
 
 1. **inversedDrawer**: Reversed drawer-style animation (default)
