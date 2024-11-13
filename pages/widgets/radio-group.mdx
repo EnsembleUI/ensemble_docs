@@ -1,45 +1,51 @@
-import BaseStyles from './_snippets/base-styles.md'
-import BoxStyles from './_snippets/box-styles.md'
-import FormField from './_snippets/form-field.md'
+import BaseStyles from "./_snippets/base-styles.md";
+import BoxStyles from "./_snippets/box-styles.md";
+import FormField from "./_snippets/form-field.md";
+import { EnsemblePreview } from "../../components/ensemble-preview";
 
 # RadioGroup
 
 The RadioGroup widget renders a group of radios together in a few pre-determined layouts.
 
-[Test in Kitchen Sink](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/lnzZvXa2PLNV1ZkNYMsl)
+<EnsemblePreview
+  appId="e24402cb-75e2-404c-866c-29e6c3dd7992"
+  screenId="lnzZvXa2PLNV1ZkNYMsl"
+  height="700px"
+/>
 
 ## Properties
 
-| Property      | Type              | Description                                                                                               |
-| :------------ | :---------------- | :-------------------------------------------------------------------------------------------------------- |
-| items         | string[]          | A list of values for the radio buttons. These will be used for both labels and values. Either this or itemTemplate is required.                    |
-| itemTemplate  | [Item Template](#item-template)             | Template for each radio button, allowing custom labels, widgets, values, and iteration over data          |
-| selectedValue | string            | The value of the selected radio button                                                                   |
-| onChange      | Action            | Call Ensemble's built-in functions or execute code when the selection changes                             |
+| Property      | Type                            | Description                                                                                                                     |
+| :------------ | :------------------------------ | :------------------------------------------------------------------------------------------------------------------------------ |
+| items         | string[]                        | A list of values for the radio buttons. These will be used for both labels and values. Either this or itemTemplate is required. |
+| itemTemplate  | [Item Template](#item-template) | Template for each radio button, allowing custom labels, widgets, values, and iteration over data                                |
+| selectedValue | string                          | The value of the selected radio button                                                                                          |
+| onChange      | Action                          | Call Ensemble's built-in functions or execute code when the selection changes                                                   |
 
 <FormField />
 
 #### Item Template
+
 Used to iterate through a data set and render the label/value for each Radio.
 
-| Property | Type   | Description                                                        |
-| :------- | :----- | :----------------------------------------------------------------- |
-| data     | string | Bind to an array of data from an API response or a variable        |
-| name     | string | Set the name to reference as you iterate through the array of data |
-| value    | any    | The value for each radio. This should be unique within the same RadioGroup                                |
-| label    | string | The label for each radio button. Either this or labelWidget is required.                                    |
-| labelWidget | [Widget](/widgets) | A widget to use as the label for each radio button. Either this or label is required                  |
-
+| Property    | Type               | Description                                                                          |
+| :---------- | :----------------- | :----------------------------------------------------------------------------------- |
+| data        | string             | Bind to an array of data from an API response or a variable                          |
+| name        | string             | Set the name to reference as you iterate through the array of data                   |
+| value       | any                | The value for each radio. This should be unique within the same RadioGroup           |
+| label       | string             | The label for each radio button. Either this or labelWidget is required.             |
+| labelWidget | [Widget](/widgets) | A widget to use as the label for each radio button. Either this or label is required |
 
 ## Styles
-| Property                  | Type              | Description                                                                                                  |
-| :------------------------ | :---------------- | :----------------------------------------------------------------------------------------------------------- |
-| direction                 | string            | How the Radios should be laid out: vertical, horizontal, or wrap                                                                 |
-| controlPosition           | string            | Position of the radio button relative to the label: leading, trailing, or depending on the platform                              |
-| gap                       | integer           | Gap between radio buttons (applicable for vertical/horizontal direction)                                                                                    |
-| lineGap                   | integer           | Gap between lines if wrapped (applicable for wrap direction) |
-| itemGap                   | integer           | Gap between radio button and its label                                                                       |
-| activeColor               | Color             | Color when a radio button is selected                                                                        |
-| inactiveColor             | Color             | Color when a radio button is not selected                                                                    |
+
+| Property        | Type    | Description                                                                                         |
+| :-------------- | :------ | :-------------------------------------------------------------------------------------------------- |
+| direction       | string  | How the Radios should be laid out: vertical, horizontal, or wrap                                    |
+| controlPosition | string  | Position of the radio button relative to the label: leading, trailing, or depending on the platform |
+| gap             | integer | Gap between radio buttons (applicable for vertical/horizontal direction)                            |
+| lineGap         | integer | Gap between lines if wrapped (applicable for wrap direction)                                        |
+| itemGap         | integer | Gap between radio button and its label                                                              |
+| activeColor     | Color   | Color when a radio button is selected                                                               |
+| inactiveColor   | Color   | Color when a radio button is not selected                                                           |
 
 <BaseStyles />
