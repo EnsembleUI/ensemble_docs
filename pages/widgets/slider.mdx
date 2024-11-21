@@ -1,0 +1,132 @@
+import BaseStyles from "./_snippets/base-styles.md";
+import BoxStyles from "./_snippets/box-styles.md";
+import { EnsemblePreview } from '../../components/ensemble-preview'
+
+# Slider Widget
+
+The `Slider` widget provides an intuitive way for users to select a value or range of values by dragging a handle along a track. This widget is particularly useful for adjusting numeric inputs like volume, brightness, or any other adjustable parameters that fall within a continuous or discrete range.
+
+## Key Properties and Features
+
+- **Value Selection**: Intuitive dragging interface for selecting numeric values
+- **Discrete or Continuous**: Option to divide the slider into discrete steps or maintain continuous sliding
+- **Customizable Appearance**: Extensive styling options for track, thumb, tick marks, and value indicators
+- **Interactive Feedback**: Visual feedback through overlays and value indicators
+- **Accessibility**: Support for enabled/disabled states and form validation
+
+<EnsemblePreview
+  appId="e24402cb-75e2-404c-866c-29e6c3dd7992"
+  screenId="HvLk8sZ0mTmgppQbp4Zk"
+  height="700px"
+/>
+
+## Base Properties
+
+The base properties define the fundamental behavior and appearance of the slider.
+
+| Property     | Type    | Description                                                         |
+| :----------- | :------ | :------------------------------------------------------------------ |
+| id           | string  | Unique identifier for the slider                                    |
+| className    | string  | Custom class name for styling                                       |
+| label        | string  | Text label for the slider                                           |
+| labelHint    | string  | Additional hint text below the label                                |
+| required     | boolean | Whether user input is required. Defaults to `false`                 |
+| enabled      | boolean | Whether the slider is interactive. Defaults to `true`               |
+| initialValue | number  | Starting value of the slider. Defaults to `0`                       |
+| min          | number  | Minimum selectable value. Defaults to `0`                           |
+| max          | number  | Maximum selectable value. Defaults to `1`                           |
+| divisions    | integer | Number of discrete steps. If not set, the slider will be continuous |
+| styles       | object  | [See properties](#styles)                                           |
+| onChange     | Action  | Action triggered when value changes                                 |
+
+## Style Properties
+
+The Slider widget supports extensive styling through nested style objects.
+
+### Track Style
+
+Controls the appearance of the slider's track - the line along which the thumb moves.
+
+| Property              | Type   | Description                                                              |
+| :-------------------- | :----- | :----------------------------------------------------------------------- |
+| shape                 | string | Track shape (`'rectangular'` or `'circle'`). Defaults to `'rectangular'` |
+| trackHeight           | number | Height of the track. Defaults to `2.0`                                   |
+| borderRadius          | number | Track's corner radius. Defaults to `0`                                   |
+| activeColor           | Color  | Color of filled portion. Defaults to theme primary color                 |
+| inactiveColor         | Color  | Color of unfilled portion. Defaults to theme inactive color              |
+| secondaryActiveColor  | Color  | Secondary active portion color. Defaults to theme secondary color        |
+| disabledActiveColor   | Color  | Active color when disabled. Defaults to `grey.shade400`                  |
+| disabledInactiveColor | Color  | Inactive color when disabled. Defaults to `grey.shade300`                |
+
+### Thumb Style
+
+Defines the appearance of the draggable handle.
+
+| Property           | Type   | Description                                       |
+| :----------------- | :----- | :------------------------------------------------ |
+| radius             | number | Size of the thumb. Defaults to `10.0`             |
+| elevation          | number | Shadow depth when inactive. Defaults to `1.0`     |
+| pressedElevation   | number | Shadow depth when pressed. Defaults to `2.0`      |
+| thumbColor         | Color  | Main thumb color. Defaults to theme primary color |
+| disabledThumbColor | Color  | Color when disabled. Defaults to `grey.shade400`  |
+| borderWidth        | number | Width of thumb border. Defaults to `0.0`          |
+| borderColor        | Color  | Color of border                                   |
+
+### Tick Mark Style
+
+Configures the appearance of marks shown along the track when divisions are specified.
+
+| Property                 | Type    | Description                                                      |
+| :----------------------- | :------ | :--------------------------------------------------------------- |
+| shape.circle.radius      | number  | Size of circular marks. Defaults to `1.0`                        |
+| shape.rectangular.width  | number  | Width of rectangular marks. Defaults to `2.0`                    |
+| shape.rectangular.height | number  | Height of rectangular marks. Defaults to `2.0`                   |
+| showTicks                | boolean | Whether to display tick marks. Defaults to `true`                |
+| activeColor              | Color   | Color for active ticks. Defaults to `white`                      |
+| inactiveColor            | Color   | Color for inactive ticks. Defaults to `white` with `0.5` opacity |
+
+### Overlay Style
+
+Controls the visual feedback shown during interaction.
+
+| Property | Type   | Description                                       |
+| :------- | :----- | :------------------------------------------------ |
+| radius   | number | Size of interaction effect. Defaults to `24.0`    |
+| color    | Color  | Color of overlay. Defaults to theme primary color |
+| opacity  | number | Transparency of overlay. Defaults to `0.12`       |
+
+### Value Indicator Style
+
+Customizes the tooltip showing the current value.
+
+| Property   | Type      | Description                                                                                                                 |
+| :--------- | :-------- | :-------------------------------------------------------------------------------------------------------------------------- |
+| visibility | string    | When to show indicator (`'onlyForDiscrete'`, `'onlyForContinuous'`, `'always'`, `'never'`). Defaults to `'onlyForDiscrete'` |
+| shape      | string    | Indicator shape style (`'drop'`, `'paddle'`, `'rectangular'`). Defaults to `'drop'`                                         |
+| color      | Color     | Background color. Defaults to theme primary color                                                                           |
+| textStyle  | TextStyle | Text appearance. Defaults to theme text style                                                                               |
+
+### Box Styles (Inherited)
+
+This widget also inherits these styles:
+
+<BoxStyles />
+
+### Base Styles (Inherited)
+
+<BaseStyles />
+
+## Value Indicator Visibility Options
+
+- **onlyForDiscrete**: Shows only for sliders with divisions
+- **onlyForContinuous**: Shows only for continuous sliders
+- **always**: Always visible during interaction
+- **never**: Never shown
+
+## Value Indicator Shapes
+
+- **drop**: Teardrop-shaped tooltip
+- **paddle**: Paddle-shaped indicator
+- **rectangular**: Rectangular tooltip shape
+
+By utilizing these properties and configurations, you can create highly customized slider controls that match your application's design while providing intuitive value selection for users.
