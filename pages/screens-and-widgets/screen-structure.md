@@ -65,6 +65,8 @@ The View widget defines the overall structure of a page, including properties li
 | header   | object | [details](#header)                                                               |
 | body     | object | [details](#body)                                                                 |
 | onLoad   | action | Execute an Action from a set of pre-defined set of actions when the screen loads |
+| onPause  | action | Execute an action when a screen is no longer active, typically when the user navigates away from it  |
+| onResume | action | Execute an Action when a screen becomes active again after being paused or when the user navigates back to it. |
 | options  | string | Specify if this is a `regular` (default) or `modal` screen.                      |
 | styles   | object | [see properties](#viewstyles)                                                    |
 
