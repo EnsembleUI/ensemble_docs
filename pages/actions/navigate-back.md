@@ -12,9 +12,10 @@ The `navigateBack` action allows users to navigate back to the previous screen w
 
 ## Example: Navigating Back
 
-In this example, we use the `navigateScreen` action to navigate to another screen, and then use the `navigateBack` action to return to the previous screen. The `data` is used to send data back to the previous screen when navigating back.
+In this example, we use the `navigateScreen` action to navigate to another screen, and then use the `navigateBack` action to return to the originating screen. The `data` is used to send data back to the previous screen when navigating back.
 
-### Source Screen YAML
+### Originating Screen
+
 ```yaml
 View:
   styles:
@@ -33,7 +34,9 @@ View:
                   showToast:
                     message: ${event.data}
 ```
-### Navigating Screen YAML
+
+### Target Screen
+
 ```yaml
 View:
   styles:
