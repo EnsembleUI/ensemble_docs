@@ -6,13 +6,13 @@ The `navigateBack` action allows users to navigate back to the previous screen w
 
 | Property | Type   | Description                                                                                                     |
 | :------- | :----- | :-------------------------------------------------------------------------------------------------------------- |
-| payload  | object | Data object to send back to the previous screen. This allows you to pass information back when navigating back. |
+| data     | object | Data object to send back to the previous screen. This allows you to pass information back when navigating back. |
 
 ---
 
 ## Example: Navigating Back
 
-In this example, we use the `navigateScreen` action to navigate to another screen, and then use the `navigateBack` action to return to the previous screen. The `payload` is used to send a message back to the previous screen when navigating back.
+In this example, we use the `navigateScreen` action to navigate to another screen, and then use the `navigateBack` action to return to the previous screen. The `data` is used to send data back to the previous screen when navigating back.
 
 ### Source Screen YAML
 ```yaml
@@ -47,8 +47,8 @@ View:
             label: Go Back
             onTap:
               navigateBack:
-                payload:
-                  message: This is the payload
+                data:
+                  message: This is example of data passed when navigating back.
 
 ```
 ### Explanation
@@ -67,19 +67,19 @@ View:
                 message: ${event.data}
    ```
    
-2. **Trigger `navigateBack` on the New Screen:**  
-   On the demo screen, there’s a button with the label "Go Back." When this button is pressed, the `navigateBack` action is triggered, sending a payload containing a message back to the previous screen. Following is the ELD of `navigateBack Demo` screen:
+2. **Trigger `navigateBack` on the Target Screen:**  
+   On the demo screen, there’s a button with the label "Go Back." When this button is pressed, the `navigateBack` action is triggered, sending a data containing a message back to the previous screen:
    ```yaml
    - Button:
       label: Go Back
       onTap:
         navigateBack:
-          payload:
-            message: This is the payload
+           data:
+             message: This is example of data passed when navigating back.
    ```
 
-3. **Access the Payload on the Source Screen:**  
-   When the user navigates back using the `navigateBack` action, the `onNavigateBack` event is triggered on the source screen. This event gives you access to the payload sent during the `navigateBack` action via `event.data`. You can then use this data to perform actions, such as displaying a message with `showToast` or updating other UI elements on the source screen.
+3. **Access the data on the Originating Screen:**  
+   When the user navigates back using the `navigateBack` action, the `onNavigateBack` event is triggered on the source screen. This event gives you access to the data sent during the `navigateBack` action via `event.data`. You can then use this data to perform actions, such as displaying a message with `showToast` or updating other UI elements on the source screen.
    
    ```yaml
      - Button:
