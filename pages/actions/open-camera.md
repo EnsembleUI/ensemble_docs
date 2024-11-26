@@ -181,6 +181,20 @@ API:
     method: POST
 ```
 
+You can clear previous camera results while recapturing using `cameraId.clear()`
+
+```yaml
+- Button:
+    label: Clear Previous Result and Capture
+    onTap:
+      executeCode:
+        body: |
+          captureLatest.clear()
+        onComplete:
+          openCamera:
+            id: captureLatest
+```
+
 
 
 To learn more about openCamera functionalities, test it out here in [Ensemble Kitchen Sink](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/USuOaOZApSgzE2uVrqlv) app.
