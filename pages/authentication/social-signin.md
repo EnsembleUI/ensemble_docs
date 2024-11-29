@@ -133,3 +133,28 @@ API:
     parameters:
       token: ${token}
 ```
+## Add Custom Widget to Google Sign-In Button
+
+**NOTE:**       This property only works for native applications (Android and iOS), on web it will not replace default Google Sign-In Button.
+
+Ensemble allows you to replace the default `SignInWithGoogle` Widget UI with your own custom widget. By using the widget property within the `SignInWithGoogle` Widget, you can specify any widget to display in place of the default button. This feature enables full customization of the UI, while maintaining the same behavior for signing in and handling events.
+
+### How to Use the widget Property: ###
+The `widget` property can be used inside the `SignInWithGoogle` Widget to define a custom widget. If this property is set, it will replace the default Google Sign-In button with the provided widget.
+
+### Example: ###
+```yaml
+SignInWithGoogle:
+  onSignedIn:
+    showToast:
+      message: ${auth.user.email}
+  onError:
+    showToast:
+      message: Something went wrong
+  widget:
+    IconButton:
+      icon:
+        name: google
+        library: fontAwesome
+        color: red
+```
