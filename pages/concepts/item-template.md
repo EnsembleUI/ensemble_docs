@@ -9,6 +9,7 @@ When developing UI, it is common to display lists of items, and Ensemble simplif
 | data     | array              | Bind to an array of data from an API response or a variable                                                                                                    |
 | name     | string             | Variable name referencing each item in the array. Name it as per your use case (e.g. 'person', 'item' ..)                                                      |
 | template | [Widget](/widgets) | Define the child widget to render for each item in the array. Within this widget you can bind to the item using the `name` syntax (e.g. `${person.firstName}`) |
+| indexId  | string              | (optional) Default: index. The property that will be assigned the current index of the data array while looping through it |
 
 Different containers may expose additional properties to further customize the rendering of the children, but they will always have the `data` and `name`.
 
@@ -96,3 +97,5 @@ API:
 ```
 The output will look something like this:
 <img src="/images/screenshots/item-template-2.png" alt="Screenshot" width="450">
+
+Here's an [example](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/yWM8nLePITT8IpCZLMNe) of how to use `indexId` property to access the current index of the data array.
