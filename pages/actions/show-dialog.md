@@ -4,19 +4,20 @@ showDialog action triggers the display of a modal dialog box within the app, pre
 
 ### Properties
 
-| Property        | Type   | Description                                                                     |
-| :-------------- | :----- | :------------------------------------------------------------------------------ |
-| widget          | widget | Return an inline widget or specify a custom widget's name to use in the dialog. |
-| options         | object | [see properties](#propertiesoptions)                                            |
-| onDialogDismiss | action | Execute an Action when the dialog is dismissed.                                 |
+| Property        | Type    | Description                                                                                            |
+| :-------------- | :------ | :----------------------------------------------------------------------------------------------------- |
+| widget          | widget  | Return an inline widget or specify a custom widget's name to use in the dialog.                        |
+| options         | object  | [see properties](#propertiesoptions)                                                                   |
+| dismissible     | boolean | This property denotes whether the dialog can be dismissed by tapping outside of it. Default is `true`. |
+| onDialogDismiss | action  | Execute an Action when the dialog is dismissed.                                                        |
 
 #### properties.options
 
-| Property        | Type   | Description                                                                     |
-| :-------------- | :----- | :------------------------------------------------------------------------------ |
-| minWidth         | integer | |
-| maxWidth         | integer | |
-| minHeight        | integer | |
+| Property         | Type    | Description                                                                                                                                                                           |
+| :--------------- | :------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| minWidth         | integer |                                                                                                                                                                                       |
+| maxWidth         | integer |                                                                                                                                                                                       |
+| minHeight        | integer |                                                                                                                                                                                       |
 | horizontalOffset | number  | Offset the dialog's position horizontally, with -1.0 for the screen's left and 1.0 for the screen's right. (default is 0 for centering horizontally) minimum `-1.0` and maximum `1.0` |
 | verticalOffset   | number  | Offset the dialog's position vertically, with -1.0 for the screen's top and 1.0 for the screen's bottom. (default is 0 for centering vertically) minimum `-1.0` and maximum `1.0`     |
 | style            | string  | Render the dialog with a default style. You can also specify 'none' and control your own styles in your widget. `default` `none`                                                      |
@@ -164,4 +165,42 @@ MyCustomDialog:
 **Explanation**
 
 - In the code for showDialog we are passing an input `name` with value `Peter` which can be seen clearly in the output.
+
+**Example with Controlled dismissible property**
+
+We can use `dismissble` property to control whether the dialog can be dismissble while tapping outside of it or not. If `dismissble` is `false`, dialog will not dismiss on tapping outside of it and vice verca. Default `dismissble`state of dialog is true. If you don't specify the property then the dialog will be dismissble.  
+
+```yaml
+View:
+  header:
+    title: Dialog
+  body:
+    Column:
+      styles:
+        padding: 24
+        gap: 16
+      children:
+        - Button:
+            label: Show undismissible dialog
+            onTap:
+              showDialog:
+                dismissible: false
+                body:
+                  Text:
+                    text: This is undismissible dialog
+        - Button:
+            label: Show Undismissble dialog (Custom dismiss implementation )
+            onTap:
+              showDialog:
+                dismissible: false
+                body:
+                  Column:
+                    children:
+                      - Text:
+                          text: This is undismissible dialog
+                      - Button:
+                          label: Dismiss
+                          onTap:
+                            dismissDialog:
+```
 
