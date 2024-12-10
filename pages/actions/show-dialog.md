@@ -8,6 +8,7 @@ showDialog action triggers the display of a modal dialog box within the app, pre
 | :-------------- | :----- | :------------------------------------------------------------------------------ |
 | widget          | widget | Return an inline widget or specify a custom widget's name to use in the dialog. |
 | options         | object | [see properties](#propertiesoptions)                                            |
+| dismissible         | boolean | This property denotes whether the dialog can be dismissed by tapping outside of it. Default is `true`.                                           |
 | onDialogDismiss | action | Execute an Action when the dialog is dismissed.                                 |
 
 #### properties.options
