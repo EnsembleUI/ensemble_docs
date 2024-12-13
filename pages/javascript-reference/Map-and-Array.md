@@ -38,12 +38,93 @@ var result = Object.entries({a: 1, b: 2, c: 3});
 // result: [['a', 1], ['b', 2], ['c', 3]]
 ```
 
-### Object.getOwnPropertyNames(value)
-See Object.getOwnPropertyNames(value) in javascript. Returns an array of all properties (including non-enumerable properties except for those which use Symbol) found directly in a given object.
+### hasOwnProperty(value, key)
+
+Checks if the provided key exists as an own property of the object.
+
 Example - 
 ```js
-var result = Object.getOwnPropertyNames({a: 1, b: 2, c: 3});
+var obj = { a: 1, b: 2 };
+var result = hasOwnProperty(obj, 'a'); 
+// result: true
+```
+
+### getPropertyNames(value)
+
+Retrieves an array of all enumerable property names (keys) of the object.
+
+Example - 
+```js
+var obj = { a: 1, b: 2, c: 3 };
+var result = getPropertyNames(obj);
 // result: ['a', 'b', 'c']
+```
+
+### toString(value)
+
+Converts the value to a string representation.
+
+Example - 
+
+```js
+var obj = { a: 1, b: 2 };
+var result = toString(obj);
+// result: '[object Object]'
+```
+
+### toJSON(value)
+
+Converts the value into a JSON string. Works with objects, arrays, or other types.
+
+Example - 
+```js
+var obj = { a: 1, b: 2 };
+var result = toJSON(obj);
+// result: '{"a":1,"b":2}'
+```
+
+### defineProperty(value, key, property)
+
+Defines a new property on the object or updates an existing one. If the value is not an object, this function does nothing.
+
+Example - 
+```js
+var obj = { a: 1 };
+var result = defineProperty(obj, 'b', 2);
+// result: { a: 1, b: 2 }
+```
+
+### deleteProperty(value, key)
+
+Deletes the specified property from the object. If the key does not exist, it does nothing.
+
+Example - 
+```js
+var obj = { a: 1, b: 2 };
+var result = deleteProperty(obj, 'b');
+// result: { a: 1 }
+```
+
+### has(value, key)
+
+Checks if the specified key exists in the object. Works like hasOwnProperty.
+
+Example - 
+```js
+var obj = { a: 1, b: 2 };
+var result = has(obj, 'b');
+// result: true
+```
+
+### propertyIsEnumerable(value, key)
+
+Checks if the given property key is enumerable in the object.
+
+Example - 
+```js
+var obj = { a: 1, b: 2 };
+var result = propertyIsEnumerable(obj, 'a');
+// result: true
 ```
 
 ## Instance Methods
