@@ -53,6 +53,7 @@ __NOTE:__ *onTap* property works only for native apps (iOS and Android) and web 
 | elevationShadowColor         | integer or string | The shadow color for the elevation, which can be represented in different formats. It can be specified as a number, a predefined color name, or a hexadecimal value starting with '0x'. `transparent` `black` `blue` `white` `red` `grey` `teal` `amber` `pink` `purple` `yellow` `green` `brown` `cyan` `indigo` `lime` `orange` |
 | elevationBorderRadius        | string or integer | The border radius of the widget.This can be specified using CSS-like notation with 1 to 4 integers. Minimum value: 0.                                                                                                                                                                                                             |
 | visible                      | boolean           | Toggle a widget visibility on/off. Note that an invisible widget will not occupy UI space, unless the visibilityTransitionDuration is specified.                                                                                                                                                                                  |
+| opacity                      | double                                        | Adjusts the opacity of the widget. Values range from 0 (fully transparent) to 1 (opaque). Default is `1`.                                                                                                                 |
 
 ### styles.backgroundGradient
 
