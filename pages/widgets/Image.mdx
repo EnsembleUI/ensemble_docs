@@ -1,17 +1,22 @@
+import { EnsemblePreview } from "../../components/ensemble-preview";
+
 # Image widget
 
 The Image Widget allows you to render images from a URL or [local assets](/extending-ensemble/local-assets). 
 
 You can manage your assets using Ensemble Studio. [See how](/assets)
 
-[Test in Kitchen Sink](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/7c7a3ffe-68ef-4e99-b9d1-4b5cee166233)
-
+<EnsemblePreview
+  appId="e24402cb-75e2-404c-866c-29e6c3dd7992"
+  screenId="7c7a3ffe-68ef-4e99-b9d1-4b5cee166233"
+  height="700px"
+/>
 
 ## Properties
 
 | Property | Type   | Description |
 | :------- | :----- | :---------- |
-| source   | string | URL to or asset name of the image. If the URL is used, it is highly recommended that the dimensions is set (either with width/height or other means) to prevent the UI jerkiness while loading. |
+| source   | string | URL to or asset name of the image or an inline SVG string starting with '<svg'. If the URL is used, it is highly recommended that the dimensions is set (either with width/height or other means) to prevent the UI jerkiness while loading. |
 | onTap    | action | Call Ensemble's built-in functions or execute code |
 | onTapHaptic | enum | The type of haptic to perform when image is pressed. It should be one of heavyImpact, mediumImpact, lightImpact, selectionClick, and vibrate |
 | styles   | object | [See properties](#styles) |
