@@ -43,6 +43,9 @@
   "authentication": {
     "title": "Authentication"
   },
+  "moengage": {
+    "title": "MoEngage"
+  },
   "deep-link": {
     "title": "Deep linking"
   },
