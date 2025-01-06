@@ -351,6 +351,79 @@ buildscript {
 ```
 
 #### iOS Configuration
-Te be added.
 
 
+**1.** Update `AppDelegate.swift`:
+```swift
+import UIKit
+import Flutter
+// import GoogleMaps
+import flutter_local_notifications
+
+// Add below Moenage Dependencies
+import moengage_flutter_ios
+import MoEngageSDK
+import MoEngageInApps
+import MoEngageMessaging
+
+
+@main
+@objc class AppDelegate: FlutterAppDelegate {
+  static let methodChannelName: String = "com.ensembleui.host.platform"
+  var methodChannel: FlutterMethodChannel?
+    
+  override func application(
+    _ application: UIApplication,
+    didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
+  ) -> Bool {
+    let controller : FlutterViewController = window?.rootViewController as! FlutterViewController
+    methodChannel =  FlutterMethodChannel(name: AppDelegate.methodChannelName, binaryMessenger: controller.binaryMessenger)
+//     GMSServices.provideAPIKey("AIzaSyD8vwvoaEPEgYemp1EkIETetJMvyS4Ptqk")
+    FlutterLocalNotificationsPlugin.setPluginRegistrantCallback { (registry) in
+                GeneratedPluginRegistrant.register(with: registry) }
+
+    if #available(iOS 10.0, *) {
+      UNUserNotificationCenter.current().delegate = self as UNUserNotificationCenterDelegate
+    }
+
+    // Add below 6 lines for moengage implementatino
+    let yourWorkspaceID = "1SZEGT6AYEZE0XANA7IKYPL8"
+    let sdkConfig = MoEngageSDKConfig(withAppID: yourWorkspaceID)
+    sdkConfig.appGroupID = "group.com.alphadevs.MoEngage.NotificationServices"
+    sdkConfig.consoleLogConfig = MoEngageConsoleLogConfig(isLoggingEnabled: true, loglevel: .verbose)
+
+    MoEngageSDKCore.sharedInstance.enableAllLogs()
+    MoEngageInitializer.sharedInstance.initializeDefaultInstance(sdkConfig, launchOptions: launchOptions)
+
+    
+    GeneratedPluginRegistrant.register(with: self)
+    return super.application(application, didFinishLaunchingWithOptions: launchOptions)
+  }
+    
+  override func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+    // Calling flutter method "urlOpened" from iOS
+    methodChannel?.invokeMethod("urlOpened", arguments: url.absoluteString)
+    return true
+  }
+
+    // Add below 4 functions for moenage
+    override func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        MoEngageSDKMessaging.sharedInstance.setPushToken(deviceToken)
+    }
+
+    override func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.alert, .sound])
+    }
+
+    override func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        MoEngageSDKMessaging.sharedInstance.userNotificationCenter(center, didReceive: response)
+        completionHandler()
+    }
+
+    
+    override func application(_ application: UIApplication, willContinueUserActivityWithType userActivityType: String) -> Bool {
+        print("Opening Universal link", userActivityType)
+        return false
+    }
+}
+```
