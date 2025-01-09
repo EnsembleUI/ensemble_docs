@@ -29,8 +29,22 @@ The API supports different content types for request bodies:
 1. **JSON (Default)**
    - If no Content-Type is specified, the body is sent as JSON
    - Content-Type: application/json
+   - By default, the Flutter framework sends the content-type header as `application/json; charset=utf-8` for json content. The presence of `charset=utf-8` while perfectly fine can cause issues for some servers. In order to make sure `charset=utf-8` is not appended to the header, set the `content-type` header as a header in your API. `Content-Type: application/json`
+  
+Example with URL-encoded form data:
 
-2. **URL Encoded Form Data**
+```yaml
+API:
+  loginUser:
+    uri: https://api.example.com/login
+    method: POST
+    headers:
+      #application/json is the default content-type. You can optionally specify the Content-Type header to make sure framework sends the header as `Content-Type: application/json`. When not specified, header will be sent as `Content-Type: application/json; charset=utf-8`
+      Content-Type: application/json
+    body: ${json}
+```
+
+3. **URL Encoded Form Data**
    - Set Content-Type: application/x-www-form-urlencoded
    - Body will be automatically encoded in URL-encoded format
 
