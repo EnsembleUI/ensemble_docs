@@ -59,4 +59,4 @@ View:
 
 
 
-complete example [here](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/mvFbwP5K5yvAqTlncTga?propertyPanelEnabled=true&instantPreviewDisabled=false&editorV2Enabled=true)
+complete example [here](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/C3zALhZvHQHyFISY9Yvo)
