@@ -8,7 +8,7 @@ Using the native sharing capabilities of the device to provide users with the ab
 | :--------- | :----- | :----------------------------------------------------------------------------------------- |
 | title         | string | Optional title (e.g. email's title)     |
 | text          | string | Text and/or URL to share                                                        |
-| files         | Files | Files list to share                                        |
+| files         | string | Binded files from sources like camera or picker. e.g ${filePicker.files}, ${camerId.files}                                        |
 
 **Example**
 
