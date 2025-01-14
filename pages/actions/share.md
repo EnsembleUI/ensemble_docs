@@ -6,9 +6,9 @@ Using the native sharing capabilities of the device to provide users with the ab
 
 | Property   | Type   | Description                                                                                |
 | :--------- | :----- | :----------------------------------------------------------------------------------------- |
-| title         | string | The title of your share sheet      |
-| text          | string | The text you want to share                                                        |
-| files         | Files | The list of files you want to share                                        |
+| title         | string | Optional title (e.g. email's title)     |
+| text          | string | Text and/or URL to share                                                        |
+| files         | Files | Files list to share                                        |
 
 **Example**
 
