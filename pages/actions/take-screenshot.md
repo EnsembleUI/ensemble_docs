@@ -5,9 +5,9 @@ takeScreenshot action allows you to capture a screenshot of read-only widgets us
 
 | Property   | Type   | Description                                                                                |
 | :--------- | :----- | :----------------------------------------------------------------------------------------- |
-| widgetId   | string | The ID of the widget to capture a screenshot of.          |
-| onComplete | action | Execute another Action upon successfully taking screenshot.                                     |
-| onError    | action | Execute an Action when taking screenshot fails with error(s)                                        |
+| widgetId   | string | The ID of the target widget to be captured as a screenshot.          |
+| onSuccess  | action | Action to be excecuted on successful screenshot capture.                                     |
+| onError    | action | Action to be excecuted on error during screenshot capture.|
 
 
 **Example**
