@@ -38,6 +38,10 @@ After tapping “Share Files” in the example and selecting files, the ShareAct
                 files: ${filePicker.files}
                 text: I selected this file
 ```
-
+### Share Sheet Screenshot
+<div style="display: flex; flex-direction: column; align-items: center; margin-top: 10px;">
+  <img src="/images/actions/sharesheetiphone.png" style="text-align: center;" alt="Output Screenshot" width="250"/>
+  <p>Clicking the "Open Share Sheet" will open share sheet to share the provided text or files</p>
+</div>
 
 complete example [here](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/Dnv8CceAHCHlEpS61DEE)
