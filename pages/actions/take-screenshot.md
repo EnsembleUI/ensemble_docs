@@ -9,10 +9,20 @@ takeScreenshot action allows you to capture a screenshot of read-only widgets us
 | onSuccess  | action | Action to be excecuted on successful screenshot capture.                                     |
 | onError    | action | Action to be excecuted on error during screenshot capture.|
 
+### Event Data
+
+When the `onSuccess` action is executed, the following data is available under `event.data`:
+
+- **imageBytes**: Provides bytes of the screenshot.
+- **size**: Provides total size of image in bytes, e.g. if screenshot has size of 1KB then `size` will return 1024.
+- **dimensions**: Provides dimentions of the image as `dimensions.width` and `dimensions.height`
+
+When the `onError` action is executed, the following data is available under `event.data`:
+
+- **error**: Error message describing the issue.
+- 
 
 **Example**
-
-
 
 ```yaml
 View:
