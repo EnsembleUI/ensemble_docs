@@ -11,7 +11,7 @@ Global Scripts are ideal for situations where you need:
 - **Data Storage:** Store pre-defined data like user details, color palettes, or API endpoints in a Global Script for consistent use throughout your app. This simplifies updates and avoids code duplication.
 - **Custom Logic:** Scripts allow you to Implement complex logic, manipulate data, perform calculations, and interact with external services and APIs.
 
-## How to Create a Script
+## Create a Script
 In Ensemble Studio, navigate to your app and select `Scripts` from the left menu. Click the button `Create new script` present at the top right corner of the studio.
 
 ![add language](/images/scripts/create-script.png)
@@ -22,13 +22,13 @@ Now open the script file and you can use standard JavaScript syntax to define va
 
 > Ensemble currently supports JavaScript syntax up to ES5.
 
-## How to Import the script
+## Import the script
 In the YAML code for your screen or widget, use the `Import` section to reference the script file. For example:
 ```yaml
 Import:
   - Common
 ```
-## How to Use the Script
+## Use the Script
 The code example shows how to access variables and functions defined in the Global Script from your screen's YAML code.
 ```yaml
 Import:
