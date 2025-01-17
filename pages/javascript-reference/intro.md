@@ -115,7 +115,7 @@ For example.
         inputs:
           doc_type: ${getPeople.body.users[this.selectedItemIndex]}
     styles: {expanded: true }
-    item-template:
+    itemTemplate:
       data: ${getPeople.body.users}
       name: users
       template:
