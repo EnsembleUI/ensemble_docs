@@ -21,7 +21,7 @@ Applicable on iOS/Android only. Opens the app settings page where the user can m
 | display             | Android                 | Open the display settings |
 | hotspot             | Android                 | Open the Hotspot settings |
 | internalStorage     | Android                 | Open the internal storage settings |
-| location            | Android                 | Open the location settings |
+| location            | Android, iOS                 | Open the location settings |
 | lockAndPassword     | Android                 | Open the Lock And Password settings |
 | nfc                 | Android                 | Open the NFC settings |
 | notification        | Android, iOS 16+        | Open the notification settings |
