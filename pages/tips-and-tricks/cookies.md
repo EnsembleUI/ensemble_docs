@@ -6,17 +6,17 @@ Cookies usage in the EnsembleUI WebView is designed to enhance functionality, es
 ```yaml
     WebView:
         # Setting cookies for the WebView (only works for native applications)
-        cookies: ${cookiesArray}
+        cookies: ${cookiesArray} #assumes cookiesArray has been defined as a js variable elsewhere
 
         # Taking cookies from the set-cookies header directly (only works for native applications)
-        cookieHeader: ${cookieString}
+        cookieHeader: ${cookieString} #assumes cookiesString has been defined as a js variable elsewhere
         
         id: webview
         uri: https://ensembleui.com/
         styles:
             height: 400
 ```
-
+See [Webview in Kitchen Sink](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/22c8d57d-a906-4d11-873d-161fd6c56c0a) for the full example
 ### Cookies Setting
 The `cookies` property allows you to set cookies directly for the WebView. The cookies are defined in the `cookiesArray` variable in the Global section.
 The `cookieHeader` property takes cookies from the set-cookies header directly. The cookies are specified in the `cookieString` variable in the Global section.
