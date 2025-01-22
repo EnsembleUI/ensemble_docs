@@ -35,7 +35,7 @@
     "title": "App Settings"
   },
   "firebase": {
-    "title": "Firebase" 
+    "title": "Firebase"
   },
   "translations": {
     "title": "Translations (i18n)"
@@ -101,6 +101,9 @@
   },
   "tips-and-tricks": {
     "title": "Tips & Tricks"
+  },
+  "desktop-app": {
+    "title": "Desktop App"
   },
   "about": {
     "title": "About ↗",
