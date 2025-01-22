@@ -1,4 +1,4 @@
-# Ensemble Web Studio Documentation
+# Ensemble Web Studio Desktop App
 
 ## Installation & Setup
 
@@ -11,6 +11,11 @@ You can install Ensemble Web Studio directly using the appropriate installer for
    ```
 2. Run the downloaded `.exe` file
 3. Launch Ensemble Web Studio
+4. **Note:** Microsoft Defender SmartScreen may display a warning
+Step 1: You will see a "Windows protected your PC" message.
+Step 2: Click "More info" text to reveal additional options.
+Step 3: Click "Run anyway" button to proceed with the installation.
+Once confirmed, the application will open.
 
 ### macOS
 1. Download the macOS package [here](https://firebasestorage.googleapis.com/v0/b/ensemble-web-studio.appspot.com/o/desktop_app%2F0_1_0%2Fensemble-web-studio-darwin-arm64-0.1.0.zip?alt=media):
