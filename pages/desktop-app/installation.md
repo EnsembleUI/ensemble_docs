@@ -9,7 +9,7 @@
 
 
 ### Windows
-1. Download the Windows installer [here](https://firebasestorage.googleapis.com/v0/b/ensemble-web-studio.appspot.com/o/desktop_app%2Fensemble-web-studio-0.1.0.Setup.exe?alt=media):
+1. Download the Windows installer [here](https://firebasestorage.googleapis.com/v0/b/ensemble-web-studio.appspot.com/o/desktop_app%2Fensemble-web-studio-0.1.0%20Setup.exe?alt=media):
 
 2. Run the downloaded `.exe` file
 3. Launch Ensemble Web Studio
