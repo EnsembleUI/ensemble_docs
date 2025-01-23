@@ -1,14 +1,16 @@
-# Ensemble Web Studio Desktop App
+# Ensemble Studio Desktop App
+
+## When to use the desktop app
+
+1. If you wish to use your own git to store your app definition - this allows you to create branches and pull requests.
+2. If you wish to work offline and without internet connection
 
 ## Installation & Setup
 
-You can install Ensemble Web Studio directly using the appropriate installer for your operating system:
 
 ### Windows
-1. Download the Windows installer [here](https://firebasestorage.googleapis.com/v0/b/ensemble-web-studio.appspot.com/o/desktop_app%2F0_1_0%2Fensemble-web-studio-0.1.0.Setup.exe?alt=media):
-   ```
-   https://firebasestorage.googleapis.com/v0/b/ensemble-web-studio.appspot.com/o/desktop_app%2F0_1_0%2Fensemble-web-studio-0.1.0.Setup.exe?alt=media
-   ```
+1. Download the Windows installer [here](https://firebasestorage.googleapis.com/v0/b/ensemble-web-studio.appspot.com/o/desktop_app%2Fensemble-web-studio-0.1.0.Setup.exe?alt=media):
+
 2. Run the downloaded `.exe` file
 3. Launch Ensemble Web Studio
 4. **Note:** Microsoft Defender SmartScreen may display a warning
@@ -18,10 +20,7 @@ Step 3: Click "Run anyway" button to proceed with the installation.
 Once confirmed, the application will open.
 
 ### macOS
-1. Download the macOS package [here](https://firebasestorage.googleapis.com/v0/b/ensemble-web-studio.appspot.com/o/desktop_app%2F0_1_0%2Fensemble-web-studio-darwin-arm64-0.1.0.zip?alt=media):
-   ```
-   https://firebasestorage.googleapis.com/v0/b/ensemble-web-studio.appspot.com/o/desktop_app%2F0_1_0%2Fensemble-web-studio-darwin-arm64-0.1.0.zip?alt=media
-   ```
+1. Download the macOS package [here](https://firebasestorage.googleapis.com/v0/b/ensemble-web-studio.appspot.com/o/desktop_app%2Fensemble-web-studio-darwin-arm64-0.1.0.zip?alt=media):
 2. Extract the downloaded `.zip` file
 3. Move the application to your Applications folder
 4. **Note:** Until signing and notarizing is configured, you need to clear extended attributes for the app before launching it for the first time. Run the following command in the terminal:
@@ -29,7 +28,7 @@ Once confirmed, the application will open.
    xattr -c <path_to_ensemble_app>
    ```
    Replace <path_to_ensemble_app> with the full path to the Ensemble Web Studio application. *This step is only required during the initial launch.*
-5. Launch Ensemble Web Studio
+5. Launch Ensemble Studio
 
 ## Environment Modes
 
@@ -42,7 +41,7 @@ Development mode connects to the cloud environment:
 - Files are stored in Firebase
 - Requires internet connection
 - Changes are synchronized with other collaborators
-- Suitable for team collaboration
+- Suitable for real-time collaboration
 
 ### Local Mode
 
@@ -51,6 +50,7 @@ Local mode allows you to work completely offline with files stored on your local
 - Files are stored in your system's user directory
 - No internet connection required
 - Changes are saved locally
+- Connect the local folder to a git provider to create branches and pull requests
 - Perfect for offline development or testing
 
 Local files location by operating system:
