@@ -119,7 +119,9 @@ Inside the directory where you cloned Ensemble Starter, open `/ios/Runner/Info.p
                 <!-- Reversed Client Id, required for when using Google Sign In -->
                 <string> URL SCHEME GOES HERE </string>
                 <!-- iOS App Id, required when using firebase phone auth -->
-                <string> APP ID GOES HERE </sting>
+                <!-- e.g app-1-702752068720-ios-4634f0f9d0e0748a7b10b5 -->
+                <!-- You can get this from firebase console -->
+                <string> Firebase iOS APP ID GOES HERE </sting>
             </array>
         </dict>
     </array>
