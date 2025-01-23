@@ -68,6 +68,13 @@
   "host-on-your-server": {
     "title": "Host on your server"
   },
+  "--DesktopApp": {
+    "type": "separator",
+    "title": "Studio desktop app"
+  },
+  "desktop-app/installation": {
+    "title": "Desktop App"
+  },
   "--References": {
     "type": "separator",
     "title": "References"
@@ -101,9 +108,6 @@
   },
   "tips-and-tricks": {
     "title": "Tips & Tricks"
-  },
-  "desktop-app": {
-    "title": "Desktop App"
   },
   "about": {
     "title": "About ↗",
