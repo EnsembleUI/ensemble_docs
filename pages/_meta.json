@@ -5,6 +5,9 @@
     "display": "hidden"
   },
   "training-videos": "Training videos",
+  "desktop-app": {
+    "title": "Desktop App"
+  },
   "--Build": {
     "type": "separator",
     "title": "Build your app"
@@ -71,9 +74,6 @@
   "--DesktopApp": {
     "type": "separator",
     "title": "Studio desktop app"
-  },
-  "desktop-app/installation": {
-    "title": "Desktop App"
   },
   "--References": {
     "type": "separator",
