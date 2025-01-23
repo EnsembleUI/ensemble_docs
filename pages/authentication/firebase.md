@@ -24,6 +24,10 @@ Login to your Firebase account and navigate to your project in order to complete
 
 Go to the Authentication section of your Firebase project, and enable Authentication. After that, enable Google as the sign-in method.
 
+#### Enable Sign in with Phone
+
+If you want to enable phone authentication, you will need to enable Phone as the sign-in method. You can also add phone numbers to the list of test numbers for your project.
+
 #### Add iOS app
 
 Under project settings, add iOS app to your Firebase project. As you go through the steps, you will download a file named `GoogleService-Info.plist` . We will use details from this file later on.
@@ -112,7 +116,10 @@ Inside the directory where you cloned Ensemble Starter, open `/ios/Runner/Info.p
             <string>Editor</string>
             <key>CFBundleURLSchemes</key>
             <array>
+                <!-- Reversed Client Id, required for when using Google Sign In -->
                 <string> URL SCHEME GOES HERE </string>
+                <!-- iOS App Id, required when using firebase phone auth -->
+                <string> APP ID GOES HERE </sting>
             </array>
         </dict>
     </array>
@@ -147,8 +154,11 @@ Inside the directory where you cloned Ensemble Starter, open `/lib/generated/ens
 
 ## 5. Add a Sign in screen
 
-Now that your app is set up to use Firebase, add a new screen in the studio with following definition. Ensemble currently provides `SignInWithGoogle` and `SignInWithApple`. Set the provider `property` to `firebase`.
+Now that your app is set up to use Firebase, add a new screen in the studio with following definition.
 
+### Firebase Social Sign In
+
+For Social Sign In, Ensemble currently provides `SignInWithGoogle` and `SignInWithApple`. Set the provider `property` to `firebase`.
 
 ```yaml
 View:
@@ -176,6 +186,59 @@ Depending on your need, assign actions to `onSignedIn` and `onError` properties 
               showToast:
                 message: Something went wrong
 ```
+
+### Firebase Phone Auth
+
+If you need firebase phone auth, you can use these actions
+
+`sendVerificationCode` - to send the verification code to the phone number
+
+```yaml
+sendVerificationCode:
+  provider: firebase
+  method: phone
+  phoneNumber: "+1-----------" (required if type is phone)
+  onSuccess:
+      // to go to the next screen for otp, it should provide the verification id and resend token
+      // e.g event.data.verificationId, event.data.resendToken
+    onError:
+      // handle error state
+```
+
+`validateVerificationCode` - to validate the code sent to the phone number
+
+```yaml
+validateVerificationCode:
+   provider: firebase
+   method: phone
+   code:  // otp from the `ConfirmationInput` widget
+   verificationId: // verification id from  `sendVerificationCode` action
+   onSuccess:
+      // return the authenticated user and idToken
+      // e.g event.data.user.id, event.data.idToken 
+   onError:
+      // handle the error state
+   onVerificationFailure:
+      // handle the verification failure
+```
+
+`resendVerificationCode` - to resend the code if resend token is available
+
+```yaml
+resendVerificationCode:
+   provider: firebase
+   method: phone
+   phoneNumber: ${phoneNumber} (required if type is phone)
+   resendToken: ${resendToken}
+   onSuccess:
+      // return the verificationId and resendToken
+  onError:
+     // handle error state
+```
+
+Note: If resend token is not available, you can use `sendVerificationCode` to get the updated token.
+
+[Kitchen Sink - Firebase Phone Auth](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/A7JOo1uZTYoYVwOUA76c)
 
 ---
 
