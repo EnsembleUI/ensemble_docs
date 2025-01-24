@@ -71,10 +71,6 @@
   "host-on-your-server": {
     "title": "Host on your server"
   },
-  "--DesktopApp": {
-    "type": "separator",
-    "title": "Studio desktop app"
-  },
   "--References": {
     "type": "separator",
     "title": "References"
