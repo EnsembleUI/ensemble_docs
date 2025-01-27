@@ -71,7 +71,7 @@ To work with an app locally:
 1. Launch the desktop application
 2. Click on the `...` menu button on the app card you want to work with
 3. Select "Pull App" from the context menu
-4. Select the directory to pull the app locally and click the `Pull` Button
+4. Select the target directory and click the `Pull` Button
 5. Wait for the pull to complete
 
 ### Pushing Local Changes to Cloud
