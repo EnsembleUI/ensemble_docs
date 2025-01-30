@@ -13,12 +13,11 @@ API:
     headers: # set headers such as authorization tokens
     body: # set body, in JSON or YAML, to pass data to the API
     onSuccess: # fire an action when the API returns a 2**
-    onError:  # fire an action when the API returns a 4**
+    onError: # fire an action when the API returns a 4**
 
   # add more APIs as you need
   mySecondApi:
 ```
-
 
 ## GET call without authentication
 
@@ -44,7 +43,6 @@ API:
       Authorization: "Bearer <<add token here>>"
 ```
 
-
 ## GET call with API key
 
 Some API providers would issue keys to their customers. Typically, the API provider would require the key to be passed a parameter. Check with API provider documentation on what the name of this parameter is. Here, we use `apiKey` as an example.
@@ -58,6 +56,15 @@ API:
       apiKey: "<<add key here>>"
 ```
 
+## SSL Configuration
+
+When defining APIs, you can configure SSL certificate handling through environment variables and secrets:
+
+| Property                | Location             | Description                                                                                                                                                                             |
+| ----------------------- | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ssl_pinning_enabled     | Environment Variable | Controls whether SSL certificate pinning is required. When `true`, the app will only trust connections with certificates matching the provided certificate. Not available for web apps. |
+| bypass_ssl_pinning      | Environment Variable | When set to `true`, bypasses all SSL certificate verification. This should only be used in development environments and never in production.                                            |
+| ssl_pinning_certificate | Secrets              | Base64 encoded certificate used for SSL pinning. This certificate is only used when `ssl_pinning_enabled` is `true`. The app will only trust servers presenting this certificate.       |
 
 ## POST call with data
 
@@ -70,7 +77,7 @@ API:
       - productTitle
     uri: https://dummyjson.com/products/add
     method: POST
-    body: 
-      title: '${productTitle}'  # example of a dynamic data that is set based on the inputs
+    body:
+      title: "${productTitle}" # example of a dynamic data that is set based on the inputs
       source: MyApp # example of a static data that is always passed
 ```
