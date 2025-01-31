@@ -14,6 +14,7 @@ This section serves as a reference point for the key elements you'll encounter w
 - [Global](#global): Elements or functionalities accessible across all screens in your app.
 
 Below is the overview of the basic components being arranged on the screen.
+
 <p align="center">
 <img src="/images/view-structure.png" alt="Page Skeleton" height="70%" width="70%">
 </p>
@@ -25,7 +26,6 @@ The ViewGroup widget allows you to group multiple Views together and organize th
 ### Example
 
 Let's look at an example with a `Bottom Navigation Bar` menu type.
-
 
 ```yaml
 ViewGroup:
@@ -48,6 +48,7 @@ ViewGroup:
 ```
 
 ##### Output
+
 <p align="center">
 <img src="/images/page_structure_1.png" style="border-radius:8px;" alt="BottomNavBar" height="500"/>
 </p>
@@ -60,26 +61,26 @@ The View widget defines the overall structure of a page, including properties li
 
 #### Properties
 
-| Property | Type   | Description                                                                      |
-| :------- | :----- | :------------------------------------------------------------------------------- |
-| header   | object | [details](#header)                                                               |
-| body     | object | [details](#body)                                                                 |
-| onLoad   | action | Execute an Action from a set of pre-defined set of actions when the screen loads |
-| onPause  | action | Execute an Action when this screen is no longer active. This happens when another screen navigates on top of this screen, or when the App (Native only) is no longer in the foreground. |
+| Property | Type   | Description                                                                                                                                                                                              |
+| :------- | :----- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| header   | object | [details](#header)                                                                                                                                                                                       |
+| body     | object | [details](#body)                                                                                                                                                                                         |
+| onLoad   | action | Execute an Action from a set of pre-defined set of actions when the screen loads                                                                                                                         |
+| onPause  | action | Execute an Action when this screen is no longer active. This happens when another screen navigates on top of this screen, or when the App (Native only) is no longer in the foreground.                  |
 | onResume | action | Execute an Action when this screen becomes active again from the inactive state. This happens when navigating back from another screen, or when the App (Native only) is brought back to the foreground. |
-| options  | string | Specify if this is a `regular` (default) or `modal` screen.                      |
-| styles   | object | [see properties](#viewstyles)                                                    |
+| options  | string | Specify if this is a `regular` (default) or `modal` screen.                                                                                                                                              |
+| styles   | object | [see properties](#viewstyles)                                                                                                                                                                            |
 
 #### View.styles
 
-| Property | Type | Description |
-| :------- |:-----|:------------|
+| Property               | Type                                              | Description                                                                                                                                                                                                                                                                                                                          |
+| :--------------------- | :------------------------------------------------ | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | backgroundColor        | [Color](/widgets/types#color)                     | Background color for the screen starting with '0xFF' for full opacity e.g 0xFFCCCCCC. It can be specified as a number, a predefined color name, or a hexadecimal value starting with '0x'. `transparent` `black` `blue` `white` `red` `grey` `teal` `amber` `pink` `purple` `yellow` `green` `brown` `cyan` `indigo` `lime` `orange` |
-| backgroundImage        | [BackgroundImage](/widgets/types#backgroundimage) | Background image of the View. |
-| useSafeArea            | boolean                                                    | Applicable only when we don't have a header. If true, insert paddings around the body content to account for the devices' Safe Area (e.g. iPhone notch). Default is false.|
-| scrollableView         | boolean                                                    | Specify if the content of this screen is scrollable with a global scrollbar. Using this also allows you to customize the scrolling experience of the header. |
-| showNavigationIcon     | boolean                                                    | For a screen with header, the App will automatically show the Menu, Back, or Close icon (for the modal screen) before the title. On the modal screen without the header, the Close icon will be shown. Set this flag to false if you wish to hide the icons and handle the navigation yourself.                                              |
-| navigationIconPosition | string                                                     | On modal screen without a header, you can position the close button at the `start` or `end` of the screen. For left-to-right languages like English, start is on the left and end is on the right. This property has no effect on a screen with header.                                                                              |
+| backgroundImage        | [BackgroundImage](/widgets/types#backgroundimage) | Background image of the View.                                                                                                                                                                                                                                                                                                        |
+| useSafeArea            | boolean                                           | Applicable only when we don't have a header. If true, insert paddings around the body content to account for the devices' Safe Area (e.g. iPhone notch). Default is false.                                                                                                                                                           |
+| scrollableView         | boolean                                           | Specify if the content of this screen is scrollable with a global scrollbar. Using this also allows you to customize the scrolling experience of the header.                                                                                                                                                                         |
+| showNavigationIcon     | boolean                                           | For a screen with header, the App will automatically show the Menu, Back, or Close icon (for the modal screen) before the title. On the modal screen without the header, the Close icon will be shown. Set this flag to false if you wish to hide the icons and handle the navigation yourself.                                      |
+| navigationIconPosition | string                                            | On modal screen without a header, you can position the close button at the `start` or `end` of the screen. For left-to-right languages like English, start is on the left and end is on the right. This property has no effect on a screen with header.                                                                              |
 
 ## Header
 
@@ -91,25 +92,26 @@ The header contains the Safe Area (e.g. iPhone notch) and by default has the bac
 
 #### Properties
 
-| Property | Type | Description |
-| :------- |:-----|:------------|
-| titleText          | string                               | The title for the screen |
-| titleWidget        | [Widget](/widgets) | Render this widget as the screen title |
-| styles             | object                               | [see properties](#headerstyles) |
+| Property           | Type               | Description                                                                                                                                                                                                                           |
+| :----------------- | :----------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| titleText          | string             | The title for the screen                                                                                                                                                                                                              |
+| titleWidget        | [Widget](/widgets) | Render this widget as the screen title                                                                                                                                                                                                |
+| styles             | object             | [see properties](#headerstyles)                                                                                                                                                                                                       |
 | flexibleBackground | [Widget](/widgets) | This widget (typically used as an background image) acts as the header's background, with the title bar and the bottom widget overlaid on top. On non-scrollable screen, its dimensions is dictated by the header's width and height. |
 
 #### Header.styles
 
-| Property | Type | Description |
-| :------- |:-----|:------------|
+| Property          | Type                          | Description                                                                                                                                                                                                                                                                                                                                                                    |
+| :---------------- | :---------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | backgroundColor   | [Color](/widgets/types#color) | By default the background color uses the theme's 'primary' color. You can override the header's background color here. It can be specified as a number, a predefined color name, or a hexadecimal value starting with '0x'. `transparent` `black` `blue` `white` `red` `grey` `teal` `amber` `pink` `purple` `yellow` `green` `brown` `cyan` `indigo` `lime` `orange`          |
 | color             | [Color](/widgets/types#color) | By default the navigation icon, title, and action icons uses the theme's 'onPrimary' color. You can override their colors here. It can be specified as a number, a predefined color name, or a hexadecimal value starting with '0x'. `transparent` `black` `blue` `white` `red` `grey` `teal` `amber` `pink` `purple` `yellow` `green` `brown` `cyan` `indigo` `lime` `orange` |
-| elevation         | integer                                | Raise the header on its z-coordinates relative to the body. This effectively creates a drop shadow on the header's bottom edge. Minimum value: 0, Maximum value: 24 |
+| elevation         | integer                       | Raise the header on its z-coordinates relative to the body. This effectively creates a drop shadow on the header's bottom edge. Minimum value: 0, Maximum value: 24                                                                                                                                                                                                            |
 | shadowColor       | [Color](/widgets/types#color) | If elevation is non-zero, this will override the drop shadow color of the header's bottom edge, starting with '0xFF' for full opacity. `transparent` `black` `blue` `white` `red` `grey` `teal` `amber` `pink` `purple` `yellow` `green` `brown` `cyan` `indigo` `lime` `orange`                                                                                               |
-| centerTitle       | boolean                                | Whether to align the title in the title bar's center horizontally (default: true) |
-| titleBarHeight    | integer                                | For consistency, the header's title bar has the default fixed height of 56 regardless of its content. You may adjust its height here. Minimum value is `0` |
-| flexibleMinHeight | integer                                | Applicable only if scrollableView is enabled. This attribute effectively sets the header's min height on scrolling (header's height will varies between the flexibleMinHeight and flexibleMaxHeight). Note that this attribute will be ignored if smaller than the titleBarHeight                                                                                              |
-| flexibleMaxHeight | integer                                | Applicable only if scrollableView is enabled. This attribute effectively sets the header's max height on scrolling (header's height will varies between the flexibleMinHeight and flexibleMaxHeight). This attribute will be ignored if smaller than the flexibleMinHeight                                                                                                     |
+| centerTitle       | boolean                       | Whether to align the title in the title bar's center horizontally (default: true)                                                                                                                                                                                                                                                                                              |
+| titleBarHeight    | integer                       | For consistency, the header's title bar has the default fixed height of 56 regardless of its content. You may adjust its height here. Minimum value is `0`                                                                                                                                                                                                                     |
+| flexibleMinHeight | integer                       | Applicable only if scrollableView is enabled. This attribute effectively sets the header's min height on scrolling (header's height will varies between the flexibleMinHeight and flexibleMaxHeight). Note that this attribute will be ignored if smaller than the titleBarHeight                                                                                              |
+| flexibleMaxHeight | integer                       | Applicable only if scrollableView is enabled. This attribute effectively sets the header's max height on scrolling (header's height will varies between the flexibleMinHeight and flexibleMaxHeight). This attribute will be ignored if smaller than the flexibleMinHeight                                                                                                     |
+
 > Note: When the entire View is specified as scrollable, flexible background's height can vary in height (hence flexible) on scroll with a parallax effect.
 
 ## Menu
@@ -129,39 +131,38 @@ This is the navigation bar at the bottom of the screen, typical of most iOS and 
 
 #### BottomNavBar.items
 
-| Property | Type | Description |
-| :------- |:-----|:------------|
-| icon | string            | Icon name from ` Material Icons``Font Awesome``Remix ` or `custom font icons`. |
-| iconLibrary | string            | Enables the usage of various icon libraries like `FontAwesome`, `Remix`, `Material Icons` or `custom icon` fonts within ensemble. |
-| label | string            | Defines the text displayed below the icon, providing a descriptive title or name for the menu item |
-| page | string            | The new page to navigate to on click |
-| selected | boolean            | Mark this item as selected. There should only be one selected item per page. |
-| visible | boolean            | Mark this item as visible. Default is `true` |
-| floating | boolean           | Mark this item as a floating icon |
-| floatingMargin | integer or string | The margin around the floating. |
-| floatingAlignment       | string            | How to align the floating in the BottomNavBar. The values are ` left``center``right ` and `none` |
-| color | [Color](/widgets/types#color) | Unselected icon color, starting with '0xFF' for full opacity e.g 0xFFCCCCCC. It can be specified as a number, a predefined color name, or a hexadecimal value starting with '0x'. `transparent` `black` `blue` `white` `red` `grey` `teal` `amber` `pink` `purple` `yellow` `green` `brown` `cyan` `indigo` `lime` `orange` |
+| Property                | Type                          | Description                                                                                                                                                                                                                                                                                                                          |
+| :---------------------- | :---------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| icon                    | string                        | Icon name from ` Material Icons``Font Awesome``Remix ` or `custom font icons`.                                                                                                                                                                                                                                                       |
+| iconLibrary             | string                        | Enables the usage of various icon libraries like `FontAwesome`, `Remix`, `Material Icons` or `custom icon` fonts within ensemble.                                                                                                                                                                                                    |
+| label                   | string                        | Defines the text displayed below the icon, providing a descriptive title or name for the menu item                                                                                                                                                                                                                                   |
+| page                    | string                        | The new page to navigate to on click                                                                                                                                                                                                                                                                                                 |
+| selected                | boolean                       | Mark this item as selected. There should only be one selected item per page.                                                                                                                                                                                                                                                         |
+| visible                 | boolean                       | Mark this item as visible. Default is `true`                                                                                                                                                                                                                                                                                         |
+| floating                | boolean                       | Mark this item as a floating icon                                                                                                                                                                                                                                                                                                    |
+| floatingMargin          | integer or string             | The margin around the floating.                                                                                                                                                                                                                                                                                                      |
+| floatingAlignment       | string                        | How to align the floating in the BottomNavBar. The values are ` left``center``right ` and `none`                                                                                                                                                                                                                                     |
+| color                   | [Color](/widgets/types#color) | Unselected icon color, starting with '0xFF' for full opacity e.g 0xFFCCCCCC. It can be specified as a number, a predefined color name, or a hexadecimal value starting with '0x'. `transparent` `black` `blue` `white` `red` `grey` `teal` `amber` `pink` `purple` `yellow` `green` `brown` `cyan` `indigo` `lime` `orange`          |
 | selectedColor           | [Color](/widgets/types#color) | Selected icon color, starting with '0xFF' for full opacity e.g 0xFFCCCCCC. It can be specified as a number, a predefined color name, or a hexadecimal value starting with '0x'. `transparent` `black` `blue` `white` `red` `grey` `teal` `amber` `pink` `purple` `yellow` `green` `brown` `cyan` `indigo` `lime` `orange`            |
 | backgroundColor         | [Color](/widgets/types#color) | Background color of the box. which can be represented in different formats. It can be specified as a number, a predefined color name, or a hexadecimal value starting with '0x'. `transparent` `black` `blue` `white` `red` `grey` `teal` `amber` `pink` `purple` `yellow` `green` `brown` `cyan` `indigo` `lime` `orange`           |
 | floatingBackgroundColor | [Color](/widgets/types#color) | Floating item background color, starting with '0xFF' for full opacity e.g 0xFFCCCCCC. It can be specified as a number, a predefined color name, or a hexadecimal value starting with '0x'. `transparent` `black` `blue` `white` `red` `grey` `teal` `amber` `pink` `purple` `yellow` `green` `brown` `cyan` `indigo` `lime` `orange` |
-| floatingIconColor       | [Color](/widgets/types#color) | Floating item icon color, starting with '0xFF' for full opacity e.g 0xFFCCCCCC. It can be specified as a number, a predefined color name, or a hexadecimal value starting with '0x'. `transparent` `black` `blue` `white` `red` `grey` `teal` `amber` `pink` `purple` `yellow` `green` `brown` `cyan` `indigo` `lime` `orange` |
-| customItem              | object            | Allows user to use custom widgets for two states `selected` and `UnSelected`. |
+| floatingIconColor       | [Color](/widgets/types#color) | Floating item icon color, starting with '0xFF' for full opacity e.g 0xFFCCCCCC. It can be specified as a number, a predefined color name, or a hexadecimal value starting with '0x'. `transparent` `black` `blue` `white` `red` `grey` `teal` `amber` `pink` `purple` `yellow` `green` `brown` `cyan` `indigo` `lime` `orange`       |
+| customItem              | object                        | Allows user to use custom widgets for two states `selected` and `UnSelected`.                                                                                                                                                                                                                                                        |
 
 ##### BottomNavBar.items.customItem
 
-| Property       | Type   | Description                                            |
-| :------------- | :----- | :----------------------------------------------------- |
+| Property       | Type               | Description                                            |
+| :------------- | :----------------- | :----------------------------------------------------- |
 | widget         | [Widget](/widgets) | Custom bottom navigation item for the unselected state |
 | selectedWidget | [Widget](/widgets) | Custom bottom navigation item for the selected state   |
 
 #### BottomNavBar.styles
 
-| Property | Type | Description |
-| :------- |:-----|:------------|
+| Property        | Type                          | Description                                                                                                                                                                                                                                                                                                                |
+| :-------------- | :---------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | backgroundColor | [Color](/widgets/types#color) | Background color of the box. which can be represented in different formats. It can be specified as a number, a predefined color name, or a hexadecimal value starting with '0x'. `transparent` `black` `blue` `white` `red` `grey` `teal` `amber` `pink` `purple` `yellow` `green` `brown` `cyan` `indigo` `lime` `orange` |
 
 #### Example
-
 
 ```yaml
 BottomNavBar:
@@ -201,7 +202,6 @@ BottomNavBar:
       page: WeeklyScheduler
 ```
 
-
 This sippet has example for how user can utilize
 
 1. Custom widgets as items for the menu
@@ -209,65 +209,129 @@ This sippet has example for how user can utilize
 
 > To get hands-on experience with BottomNavBar, check the live example on [Ensemble Studio](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/aa634599-cd5d-411c-a4b6-1163f3b5c558).
 
-
 ### Drawer
 
-This menu type puts the menu behind a drawer icon on the header. The drawer icon will be positioned to the 'start' of the header (left for most languages, right for RTL languages).
+This menu type puts the menu behind a drawer icon on the header. The drawer icon will be positioned to the 'start' of the header (left for most languages, right for RTL languages). The drawer can be controlled programmatically using the `openDrawer` and `closeDrawer` actions.
 
 #### Drawer.Properties
 
-| Property | Type             | Description                                                    |
-| :------- | :--------------- | :------------------------------------------------------------- |
-| header   | widget           | The header widget for the menu                                 |
-| footer   | widget           | The footer widget for the menu                                 |
-| items    | array of objects | List of menu items (minimum 2). [see properties](#draweritems) |
-| styles   | object           | [see properties](#drawerstyles)                                |
+| Property | Type             | Description                                               |
+| :------- | :--------------- | :-------------------------------------------------------- |
+| header   | widget           | Custom widget to be displayed at the top of the drawer    |
+| footer   | widget           | Custom widget to be displayed at the bottom of the drawer |
+| items    | array of objects | List of menu items. [see properties](#draweritems)        |
+| styles   | object           | [see properties](#drawerstyles)                           |
 
 #### Drawer.items
 
-| Property    | Type   | Description                                                                                                                       |
-| :---------- | :----- | :-------------------------------------------------------------------------------------------------------------------------------- |
-| icon        | string | Icon name from ` Material Icons``Font Awesome``Remix ` or `custom font icons`.                                                    |
-| iconLibrary | string | Enables the usage of various icon libraries like `FontAwesome`, `Remix`, `Material Icons` or `custom icon` fonts within ensemble. |
-| label       | string | Defines the text displayed below the icon, providing a descriptive title or name for the menu item                                |
-| page        | string | The new page to navigate to on click                                                                                              |
-| selected | boolean            | Mark this item as selected. There should only be one selected item per page. |
-| visible | boolean            | Mark this item as visible. Default is `true` |
+| Property     | Type    | Description                                                                                             |
+| :----------- | :------ | :------------------------------------------------------------------------------------------------------ |
+| icon         | string  | Icon name from `Material Icons`, `Font Awesome`, `Remix` or custom font icons                           |
+| activeIcon   | string  | Icon to display when the item is selected. Falls back to `icon` if not specified                        |
+| iconLibrary  | string  | Specify icon library: `FontAwesome`, `Remix`, `Material Icons` or custom icon fonts                     |
+| label        | string  | Text displayed next to the icon                                                                         |
+| page         | string  | The page to navigate to when clicked                                                                    |
+| selected     | boolean | Mark this item as selected. Only one item should be selected per page                                   |
+| visible      | boolean | Whether the item should be shown. Default is `true`                                                     |
+| isClickable  | boolean | Whether the item can be interacted with. Useful for section headers. Default is `true`                  |
+| switchScreen | boolean | Whether to navigate to the specified page when clicked. Default is `true`                               |
+| onTap        | action  | Custom action to execute when item is tapped. Executes before page navigation if `switchScreen` is true |
+| customItem   | object  | Allows using custom widgets for menu items. [see properties](#draweritemscustomitem)                    |
+
+#### Drawer.items.customItem
+
+| Property       | Type   | Description                               |
+| :------------- | :----- | :---------------------------------------- |
+| widget         | widget | Custom drawer item for the normal state   |
+| selectedWidget | widget | Custom drawer item for the selected state |
 
 #### Drawer.styles
 
-| Property | Type | Description |
-| :------- |:-----|:------------|
+| Property        | Type              | Description                                                                                                                                                                                                                                                                                                                |
+| :-------------- | :---------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | backgroundColor | integer or string | Background color of the box. which can be represented in different formats. It can be specified as a number, a predefined color name, or a hexadecimal value starting with '0x'. `transparent` `black` `blue` `white` `red` `grey` `teal` `amber` `pink` `purple` `yellow` `green` `brown` `cyan` `indigo` `lime` `orange` |
 
 #### Example
 
-It is a basic usage example for the Drawer menu.
-
-
 ```yaml
 View:
-  title: Drawer menu
+  header:
+    title: Drawer Example
+    leadingWidget:
+      Icon:
+        name: menu
+        onTap:
+          openDrawer:
   menu:
     Drawer:
-      items:
-        - label: Home
-          icon: home
-          page: Home
-        - label: Button
-          icon: input
-          page: Button
+      styles:
+        backgroundColor: white
+      header:
+        Column:
+          styles:
+            height: 200
+            padding: 16
+            backgroundColor: "#1a1f2b"
+          children:
+            - Text:
+                text: "User Name"
+                styles:
+                  textStyle:
+                    color: white
+                    fontSize: 24
+      footer:
+        Column:
+          styles:
+            padding: 16
+            backgroundColor: "#1a1f2b"
+          children:
+            - Text:
+                text: "App Version 1.0.0"
+                styles:
+                  textStyle:
+                    color: grey
 
-  Column:
-    styles: { gap: 16, padding: 24, scrollable: true }
-    children:
-      - Markdown:
-          text: |
-            This page includes menu displayed as drawer
+      items:
+        # Section header (non-clickable)
+        - label: "Main Menu"
+          isClickable: false
+
+        # Regular menu item
+        - label: "Home"
+          icon: home
+          page: home
+
+        # Custom menu item
+        - customItem:
+            widget: CustomDrawerItem
+          page: settings
+
+        # Item with custom action
+        - label: "Share App"
+          icon: share
+          switchScreen: false
+          onTap:
+            closeDrawer:
 ```
 
 
+You can program either drawer using these actions:
+- `openDrawer`: Opens the drawer programmatically
+- `closeDrawer`: Closes the currently open drawer
+
+The drawer can be opened/closed from any widget's `onTap` or other action handlers:
+
+```yaml
+Button:
+  label: Open Menu
+  onTap:
+    openDrawer:
+```
+
+> Note: Only one drawer (either Drawer or EndDrawer) can be open at a time. If both drawer types are configured, the app-level drawer takes precedence over screen-level drawers.
+
 ##### Output
+
 <p align="center">
 <img src="/images/build/image-2.png" alt="Page Skeleton" height="70%" width="70%">
 <img src="/images/build/image-1.png" alt="Page Skeleton" height="70%" width="70%">
@@ -277,7 +341,7 @@ View:
 
 ### End Drawer
 
-Similar to Drawer but the drawer icon will be positioned to the 'end' of the header (right for most languages, left for RTL languages). You can check its properties [here](#drawerproperties). 
+Similar to Drawer but the drawer icon will be positioned to the 'end' of the header (right for most languages, left for RTL languages). You can check its properties [here](#drawerproperties).
 
 > To get hands-on experience with End Drawer, check the live example on [Ensemble Studio](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/YIcCi9aXiGJKftQRNi34#)
 
@@ -296,14 +360,14 @@ A fixed navigation menu to the 'start' of the screen (left for most languages, r
 
 #### Sidebar.items
 
-| Property    | Type   | Description                                                                                                                       |
-| :---------- | :----- | :-------------------------------------------------------------------------------------------------------------------------------- |
-| icon        | string | Icon name from ` Material Icons``Font Awesome``Remix ` or `custom font icons`.                                                    |
-| iconLibrary | string | Enables the usage of various icon libraries like `FontAwesome`, `Remix`, `Material Icons` or `custom icon` fonts within ensemble. |
-| label       | string | Defines the text displayed below the icon, providing a descriptive title or name for the menu item                                |
-| page        | string | The new page to navigate to on click                                                                                              |
-| selected | boolean            | Mark this item as selected. There should only be one selected item per page. |
-| visible | boolean            | Mark this item as visible. Default is `true` |
+| Property    | Type    | Description                                                                                                                       |
+| :---------- | :------ | :-------------------------------------------------------------------------------------------------------------------------------- |
+| icon        | string  | Icon name from ` Material Icons``Font Awesome``Remix ` or `custom font icons`.                                                    |
+| iconLibrary | string  | Enables the usage of various icon libraries like `FontAwesome`, `Remix`, `Material Icons` or `custom icon` fonts within ensemble. |
+| label       | string  | Defines the text displayed below the icon, providing a descriptive title or name for the menu item                                |
+| page        | string  | The new page to navigate to on click                                                                                              |
+| selected    | boolean | Mark this item as selected. There should only be one selected item per page.                                                      |
+| visible     | boolean | Mark this item as visible. Default is `true`                                                                                      |
 
 #### Sidebar.styles
 
@@ -319,7 +383,6 @@ A fixed navigation menu to the 'start' of the screen (left for most languages, r
 #### Example
 
 An example on how to use Sidebar menu.
-
 
 ```yaml
 View:
@@ -343,13 +406,12 @@ View:
 ```
 
 ##### Output
+
 <p align="center">
 <img src="/images/build/image-3.png" alt="Page Skeleton" height="70%" width="70%">
 </p>
 
-
 > To get hands-on experience with Sidebar, check the live example on [Ensemble Studio](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/QZyoRkHHrHEAkGJMwoNU#)
-
 
 ## Body
 
@@ -414,6 +476,7 @@ Global: |-
 **Output**
 
 The output can be checked in the logs for browser
+
 <p align="center">
 <img src="/images/build/image-6.png" alt="Page Skeleton" height="70%" width="70%">
 </p>
@@ -468,8 +531,8 @@ menu:
         - NearbyFood
 ```
 
-
 #### Output
+
 <p align="center">
 <img src="/images/build/image-4.png" alt="Page Skeleton" height="70%" width="70%">
 </p>
