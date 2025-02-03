@@ -131,7 +131,17 @@ Use the `GoogleService-Info.plist` that you downloaded during step 1, and copy t
 
 ---
 
-## 4. Enable Auth service in Ensemble code
+## 4. [Web Only] Add Authorized domains
+
+Add authorized domains to your Firebase project. This is required for web apps to work with Firebase.
+
+Go to Firebase console, navigate to your project, and under Authentication, go to Settings. Add your domain to the list of authorized domains.
+
+<img src="/images/firebase/firebase-authorized-domains.png" alt="firebase authorized domains" style="max-width: 900px;">
+
+---
+
+## 5. Enable Auth service in Ensemble code
 
 By default, Ensemble does not include the authentication module to avoid installing unnecessary packages. Here, we uncomment a few lines of code to get the necessary packages.
 
@@ -154,7 +164,7 @@ Inside the directory where you cloned Ensemble Starter, open `/lib/generated/ens
 
 ---
 
-## 5. Add a Sign in screen
+## 6. Add a Sign in screen
 
 Now that your app is set up to use Firebase, add a new screen in the studio with following definition.
 
@@ -244,7 +254,7 @@ Note: If resend token is not available, you can use `sendVerificationCode` to ge
 
 ---
 
-## 6. Build and run the app
+## 7. Build and run the app
 
 * Review `/ensemble/ensemble.properties`. Update the appId as needed - this is your app's bundle ID in the format of . e.g. `com.ensembleui.myfirstapp` (all lowercase, no special characters).
 * Run `flutter pub upgrade`. Run this occasionally when the Ensemble framework has been updated.
