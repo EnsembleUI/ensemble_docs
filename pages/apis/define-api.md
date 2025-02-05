@@ -56,16 +56,6 @@ API:
       apiKey: "<<add key here>>"
 ```
 
-## SSL Configuration
-
-When defining APIs, you can configure SSL certificate handling through environment variables and secrets:
-
-| Property                | Location             | Description                                                                                                                                                                             |
-| ----------------------- | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ssl_pinning_enabled     | Environment Variable | Controls whether SSL certificate pinning is required. When `true`, the app will only trust connections with certificates matching the provided certificate. Not available for web apps. |
-| bypass_ssl_pinning      | Environment Variable | When set to `true`, bypasses all SSL certificate verification. This should only be used in development environments and never in production.                                            |
-| ssl_pinning_certificate | Secrets              | Base64 encoded certificate used for SSL pinning. This certificate is only used when `ssl_pinning_enabled` is `true`. The app will only trust servers presenting this certificate.       |
-
 ## POST call with data
 
 Typically you use POST calls with a body to pass data from the frontend to the backend. You can specify the body of the API, and use inputs to pass them dynamically.

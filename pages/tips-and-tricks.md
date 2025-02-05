@@ -19,6 +19,7 @@ Welcome to our Tips and Tricks page! Here, you'll find a collection of expert in
 - [Using device width and height](/tips-and-tricks/using-device-dimentions.md)
 - [Using BottomSafeArea for responsive layouts](/tips-and-tricks/bottom-safe-area.md)
 - [Floating Button](/tips-and-tricks/floatingButton.md)
+- [Securing API calls with SSL Configuration](/apis/api-ssl-configuration.md)
 
 Below are some common error messages and their solutions:
 
