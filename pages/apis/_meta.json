@@ -14,5 +14,8 @@
     },
     "api-on-error": {
         "title": "Handle errors"
+    },
+    "api-ssl-configuration": {
+        "title": "SSL Configuration"
     }
 }
