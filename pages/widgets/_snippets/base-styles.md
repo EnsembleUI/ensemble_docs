@@ -13,5 +13,13 @@ This widget also inherits these base styles:
 | stackPositionLeft | integer | The distance that the child's left edge from the left of the stack. This is applicable only for Stack's children. |
 | stackPositionRight | integer | The distance that the child's right edge from the right of the stack. This is applicable only for Stack's children. |
 | captureWebPointer | boolean | Applicable for Web only. When overlaying widgets on top of certain HTML container (e.g., Maps), the mouse click is captured by the HTML container, causing issue interacting with the widget. Use this to capture and maintain the mouse pointer on your widget. |
-| tooltipMessage | string | The text message to be displayed in the tooltip when the widget is interacted with. |
-| tooltipStyle | object | Configuration object for customizing the tooltip's appearance and behavior. Contains the following properties: `textStyle`, `verticalOffset`, `preferBelow`, `waitDuration`, `showDuration`, `triggerMode`, `backgroundColor`, `borderRadius`, `padding`, `margin`, `borderColor`, `borderWidth`, `onTriggered`. |
+| tooltip | object | Configuration object for customizing the tooltip [properties](#Tooltip Properties). |
+
+#### Tooltip Properties
+| Property | Type | Description |
+|----------|------|-------------|
+| message | string | The text message displayed in the tooltip |
+| onTriggered | function | Callback triggered when the tooltip is shown |
+| styles | object | Contains the following properties: `textStyle`, `verticalOffset`, `preferBelow`, `waitDuration`, `showDuration`, `triggerMode`, `backgroundColor`, `borderRadius`, `padding`, `margin`, `borderColor`, `borderWidth`. |
+
+
