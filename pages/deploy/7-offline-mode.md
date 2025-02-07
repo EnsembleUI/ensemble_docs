@@ -48,7 +48,7 @@ The downloaded app will already have the following structure:
 │   ├── appConfig.json
 │   ├── secrets.json
 ├── theme.yaml
-├── .manifest.json   # Required for widgets and scripts to work correctly
+├── .manifest.json
 ```
 
 
