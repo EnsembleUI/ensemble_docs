@@ -13,12 +13,11 @@ API:
     headers: # set headers such as authorization tokens
     body: # set body, in JSON or YAML, to pass data to the API
     onSuccess: # fire an action when the API returns a 2**
-    onError:  # fire an action when the API returns a 4**
+    onError: # fire an action when the API returns a 4**
 
   # add more APIs as you need
   mySecondApi:
 ```
-
 
 ## GET call without authentication
 
@@ -44,7 +43,6 @@ API:
       Authorization: "Bearer <<add token here>>"
 ```
 
-
 ## GET call with API key
 
 Some API providers would issue keys to their customers. Typically, the API provider would require the key to be passed a parameter. Check with API provider documentation on what the name of this parameter is. Here, we use `apiKey` as an example.
@@ -58,7 +56,6 @@ API:
       apiKey: "<<add key here>>"
 ```
 
-
 ## POST call with data
 
 Typically you use POST calls with a body to pass data from the frontend to the backend. You can specify the body of the API, and use inputs to pass them dynamically.
@@ -70,7 +67,7 @@ API:
       - productTitle
     uri: https://dummyjson.com/products/add
     method: POST
-    body: 
-      title: '${productTitle}'  # example of a dynamic data that is set based on the inputs
+    body:
+      title: "${productTitle}" # example of a dynamic data that is set based on the inputs
       source: MyApp # example of a static data that is always passed
 ```
