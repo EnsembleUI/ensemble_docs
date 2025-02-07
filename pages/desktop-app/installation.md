@@ -88,15 +88,17 @@ When working in local mode, files are organized as follows:
 
 ```
 <project-path>/
-├── asset/
-├── screen/
-├── internal_widget/
-├── internal_script/
-├── theme/
-├── i18n/
+├── assets/
+├── fonts/
+├── scripts/
+├── widgets/
+├── screens/
+├── translations/
 ├── config/
-├── secrets/
-└── font/
+│   ├── appConfig.json
+│   ├── secrets.json
+├── theme.yaml
+├── .manifest.json
 ```
 
 Key location:

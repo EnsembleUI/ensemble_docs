@@ -17,22 +17,7 @@ This name will not be customer-facing.
 
 ## Step 2. Copy your app artifacts  
 
-To work in local mode, you can obtain your app artifacts from either **Ensemble Studio** or the **Desktop app**. Once obtained, copy and paste the downloaded folders into the `/ensemble/apps` folder you created.  
-
-The downloaded app will already have the following structure:  
-
-```
-<project-path>/
-├── asset/
-├── screen/
-├── internal_widget/
-├── internal_script/
-├── theme/
-├── i18n/
-├── config/
-├── secrets/
-└── font/
-```
+To work in local mode, you can obtain your app artifacts from either **Ensemble Studio** or the **Desktop app**. 
 #### Option 1: Downloading Artifacts from Ensemble Studio  
 
 1. Open **Ensemble Studio**.  
@@ -47,13 +32,31 @@ The downloaded app will already have the following structure:
 To obtain local artifacts from the Desktop app, pull the app directly into the `/ensemble/apps` folder in your local directory where you cloned the Ensemble Starter.
 
 Follow this [guide](/desktop-app/installation#pulling-from-cloud-to-local) to pull the app from the Desktop app.
+Once obtained, copy and paste the downloaded folders into the `/ensemble/apps` folder you created.  
+
+The downloaded app will already have the following structure:  
+
+```
+<project-path>/
+├── assets/
+├── fonts/
+├── scripts/
+├── widgets/
+├── screens/
+├── translations/
+├── config/
+│   ├── appConfig.json
+│   ├── secrets.json
+├── theme.yaml
+├── .manifest.json
+```
 
 
 ## Step 4. Update your app to read the definitions locally
 
-In your local directory where you cloned Ensemble Starter, open `/ensemble/ensemble-config.yaml` file with your desired code or text editor.
+In your local directory where you cloned Ensemble Starter, open `/ensemble/ensemble-config.yaml` file with your desired code or text editor and make the following updates:
 
-At the top, set the `from` property to `local`:
+- At the top, set `from: local` under `definitions`:
 
 ```yaml
 definitions:
@@ -61,7 +64,7 @@ definitions:
   from: local
 ```
 
-Then set the `appId` and `appHome` properties under `local`
+- Then set the `appId` and `appHome` properties under `local`
 
 ```yaml
   local:
@@ -69,32 +72,32 @@ Then set the `appId` and `appHome` properties under `local`
     appId: myApp   # this is the name of the folder you created in step 1
     appHome: MyHomeScreen # this is the name of the screens that should be rendered first when your app id launched
 ```
+- Under `i18n` update the `path` to match your app’s name `ensemble/apps/yourAppName/translations`.
+```yaml
+    i18n:
+      # Directory where all the translation files (e.g. en.yaml, es.yaml) reside.
+      # Translation will be disabled without the path.
+      path: ensemble/apps/helloApp/translations/
+```
 ## Step 5. Update starter `pubspec.yaml`
-Once you've placed your app artifacts into the `/ensemble/apps` folder, update the `pubspec.yaml` file in your starter project to include the paths for the assets.  
-
-Add the following under the `assets` section:  
+Add the necessary paths under `flutter -> assets` to ensure your app loads all required files and folders correctly:  
 
 ```yaml
 flutter:
   assets:
-    - ensemble/apps/<your-app-name>/
-    - ensemble/apps/<your-app-name>/screen/
-    - ensemble/apps/<your-app-name>/internal_widget/
-    - ensemble/apps/<your-app-name>/internal_script/
-    - ensemble/apps/<your-app-name>/asset/
-    - ensemble/apps/<your-app-name>/i18n/
-    - ensemble/apps/<your-app-name>/theme/
-    - ensemble/apps/<your-app-name>/config/appConfig.json
-    - ensemble/apps/<your-app-name>/secret/secrets.json
-    - ensemble/apps/<your-app-name>/.manifest.json
-```
+    # list all your Apps directories here. It's a Flutter requirement
+    - ensemble/apps/`<your-app-name>`/
+    - ensemble/apps/`<your-app-name>`/screens/
+    - ensemble/apps/`<your-app-name>`/widgets/
+    - ensemble/apps/`<your-app-name>`/scripts/
+    - ensemble/apps/`<your-app-name>`/assets/
+    - ensemble/apps/`<your-app-name>`/translations/
 
-### Important Note:  
-You only need to include the folders or files in the `pubspec.yaml` file that are present in your app. For example:  
-- If your app does not include a **theme**, do not add the `ensemble/apps/<your-app-name>/theme/` path.  
-- Similarly, omit paths for any other folders or files that are not part of your app.  
+    # # config folder contains appConfig.json and secrets.json
+    - ensemble/apps/`<your-app-name>`/config/
+  ```
+  NOTE: Only add the existing paths under assets and replace `<your-app-name>` with the name of you app folder. 
 
-This ensures that your app is properly configured and avoids unnecessary references to non-existent assets. Replace `<your-app-name>` with the actual name of your app folder.  
 ## 5. Rebuild your app
 
 Now you can follow the steps for iOS or Android to run the app locally or build and upload your app to the respective app stores.
