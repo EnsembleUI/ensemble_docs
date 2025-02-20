@@ -6,11 +6,7 @@ Ensemble provides convenient access to device information and capabilities. This
 
 Access these properties/methods with the prefix `ensemble.device.*`.
 
-<EnsemblePreview
-  appId="e24402cb-75e2-404c-866c-29e6c3dd7992"
-  screenId="X4CAuRtGsjBTMnACPhd7"
-  height="700px"
-/>
+<EnsemblePreview appId="e24402cb-75e2-404c-866c-29e6c3dd7992" screenId="X4CAuRtGsjBTMnACPhd7" height="700px" />
 
 ## Media Query
 
@@ -18,12 +14,15 @@ Ensemble uses logical pixels, which are based on the device's screen density. Th
 
 ### Properties
 
-| **Property Name** | **Description**                                                                                                                                                                                                                                                              |
-| :---------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `width`           | Returns the width of the device's screen in logical pixels.                                                                                                                                                                                                                  |
-| `height`          | Returns the height of the device's screen in logical pixels.                                                                                                                                                                                                                 |
-| `safeAreaTop`     | Returns the height of the screen's safe area at the top (e.g., iPhone's notch) in logical pixels. This value will be 0 if it is not applicable. You can use this to avoid placing important UI elements in this safe area.                                                   |
+| **Property Name** | **Description**                                                                                                                                                                                                                                                             |
+| :---------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `width`           | Returns the width of the device's screen in logical pixels.                                                                                                                                                                                                                 |
+| `height`          | Returns the height of the device's screen in logical pixels.                                                                                                                                                                                                                |
+| `orientation`     | Returns the current orientation of the device's screen. Updates automatically when device orientation changes.                                                                                                                                                              |
+| `safeAreaTop`     | Returns the height of the screen's safe area at the top (e.g., iPhone's notch) in logical pixels. This value will be 0 if it is not applicable. You can use this to avoid placing important UI elements in this safe area.                                                  |
 | `safeAreaBottom`  | Returns the height of the screen's safe area at the bottom (e.g., iPhone's home swiper) in logical pixels. This value will be 0 if it is not applicable. For more detailed information on how to use it with example, Click [here](../tips-and-tricks/bottom-safe-area.md). |
+
+Note: The device properties will automatically update when changes occur, such as screen rotation or size changes. Your UI will reflect these changes in real-time.
 
 ## Capabilities
 
