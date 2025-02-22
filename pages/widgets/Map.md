@@ -165,6 +165,8 @@ API:
 
 | Property     | Type   | Description                                                                                                                                        |
 | :----------- | :----- | :------------------------------------------------------------------------------------------------------------------------------------------------- |
+| fixedMarker   | boolean | Keeps the marker fixed at the center of the map while allowing users to move the map around it. This is useful for selecting a location on the map and get the precise coordinates when users move the map around. |
+| draggableMarker | boolean | Allows users to drag the marker around the map. |
 | styles       | object | [See properties](#styles)                                                                                                                          |
 | onCameraMove | action | Execute an Action when the map's bound has changed. The bound data is available using `event.data.bounds.<southwest/northeast>.<lat/lng>`.         |
 | onMapCreated | action | Execute an Action when the map's initial state has been rendered. Note that this may not mean the location and markers (if any) are available yet. |
