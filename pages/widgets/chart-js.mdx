@@ -7,6 +7,10 @@ The ChartJS widget renders a chart by leveraging the open-source library [chartj
 
 [Test in Kitchen Sink](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/5d7b84de-3bbd-456e-aeea-98e2c9f4c3c7)
 
+<Callout emoji="💡">
+  To modify an existing chart's data points, whether appending or replacing data, you need to use the chart methods. Binding the chart to storage or an API response only renders the chart once. Subsequent rendering of chart data happens through update method. See below for examples.
+</Callout>
+
 ## Basic example
 
 The primary property required for ChartJs widget requires is `config`.
@@ -48,6 +52,226 @@ View:
 <Callout emoji="💡">
   Prompt ChatGPT to generate this configuration. E.g. What is the json configuration for pie chart using chartjs?
 </Callout>
+
+
+## Replace chart's data with new data
+
+You can change the entire data of a chart using `setData` method:
+
+1. Add an id to your chart widget.
+2. Use `setData` replace data.
+3. Use `update` to redraw the chart.
+
+
+<EnsemblePreview 
+  appId="nWsD5baeykm3W772kkSw"
+  screenId="aT5if4PR0g9Vt20B2ymD"
+  height="400px"
+/>
+
+```yaml filename="source"
+View:
+
+  body:
+    Column:
+      styles:
+        padding: 100 0
+        gap: 16
+        crossAxis: center
+      children:
+        - Text:
+            text: Energy Sources
+            styles:
+              textStyle:
+                fontSize: 20
+        - ToggleButton:
+            styles:
+              spacing: 10
+              runSpacing: 10
+              color: black
+              selectedColor: white
+              backgroundColor: white
+              selectedBackgroundColor: green
+              selectedBorderColor: blue
+              borderColor: green
+            items:
+              - Your home
+              - Others
+            value: "Your home"
+            onChange: |
+              if (this.value == "Your home") {
+                energySourceChart.setData(0, [60,10,20,10]);
+                energySourceChart.update();
+                centerText.text = "60%";
+              } else {
+                energySourceChart.setData(0, [20,40,50,20]);
+                energySourceChart.update();
+                centerText.text = "10%";
+              }
+
+        - Stack:
+            styles: 
+              alignChildren: center
+            children:
+              - ChartJs:
+                  styles: 
+                    width: ${ device.width }
+                    height: ${ device.width }
+                  id: energySourceChart
+                  config: ${ setEnergyChartConfig([60,10,20,10])}
+              - Column:
+                  styles: { crossAxis: center, mainAxis: center }
+                  children:
+                    - Text:
+                        text: Green energy
+                        styles:
+                          textStyle:
+                            color: 0xff969BA1
+                            fontSize: 12
+                    - Text:
+                        id: centerText
+                        text: 60%
+                        styles:
+                          textStyle:
+                            fontSize: 32
+                          textAlign: end
+            
+
+Global: |-
+
+  function setEnergyChartConfig (data) {
+    return ({
+      "type": 'doughnut',
+      "data": {
+        "labels": ["Green", "Coal", "Gas", "Oil"],
+        "datasets": [{
+          "data": data,
+          "backgroundColor": ['#4BC22F','#474747','#FFBE0A', '#6933FF'],
+          "hoverOffset": 30,
+          "borderWidth": 0
+        }]
+      },
+      "options": {
+        "responsive" : true,
+        "aspectRatio": 1,
+        "cutout": 80 ,
+        "plugins": {
+          "legend": {
+            "display": false
+          },
+          "tooltip": {
+            "enabled": true,
+            "position": "nearest"
+          },
+          "labelInsideCircumference": {
+            "font": {
+              "size": '11',
+              "weight": 'normal'
+            },
+            "color": '#000',
+            "space": 40, // Space between label and circumference
+            "labelPadding": 10, // Padding on the left and right of the label inside the box
+            "boxHeight": 30, // Height of the label box
+            "borderRadius": 4, // Border radius for the label box
+            "iconOffset": 15 // Horizontal offset for the icon inside the box,
+          }
+        },
+        "layout": {
+          "padding": 80
+        }
+      },
+      "plugins": [{
+      "id": 'labelInsideCircumference',
+      "beforeDraw": function (chart) {
+        var labels = chart.data.datasets[0].data;
+        var colors = chart.data.datasets[0].backgroundColor;
+        var ctx = chart.ctx;
+        var width = chart.width;
+        var height = chart.height;
+        var labelConfig = chart.options.plugins.labelInsideCircumference;
+
+        ctx.restore();
+        ctx.font = labelConfig.font.size + 'px ' + labelConfig.font.weight;
+        ctx.fillStyle = labelConfig.color;
+        ctx.textBaseline = 'middle';
+
+        var total = chart.config.data.datasets[0].data.reduce(function (acc, val) {
+          return acc + val;
+        }, 0);
+        var startAngle = -0.54 * Math.PI;
+        var endAngle = startAngle;
+
+        // unicodes for the icons
+        var iconUnicodes = ['🍃', '🪨', '🔥', '🛢️'];
+        var text = ["Green", "Coal", "Gas", "Oil"];
+
+        for (var i = 0; i < labels.length; i++) {
+          var angle = (chart.data.datasets[0].data[i] / total) * (2 * Math.PI);
+          endAngle += angle;
+          
+          var x = width / 2 + Math.cos((startAngle + endAngle) / 2) * (width / 2 - labelConfig.space);
+          var y = height / 2 + Math.sin((startAngle + endAngle) / 2) * (height / 2 - labelConfig.space);
+
+          var label = text[i] + "  " + labels[i].toString() +"%";
+          var labelWidth = ctx.measureText(label).width;
+          var icon = iconUnicodes[i];
+          var iconWidth = ctx.measureText(icon).width;
+          
+          var contentWidth = labelWidth + iconWidth + labelConfig.labelPadding * 2; // Icon width + label width + padding
+          var boxWidth = Math.max(contentWidth, 70); // Ensure a minimum box width
+
+          var boxHeight = labelConfig.boxHeight;
+          var borderRadius = labelConfig.borderRadius;
+
+          // Set label color to match area color
+          ctx.fillStyle = colors[i];
+
+          // Calculate box position
+          var boxX = x - boxWidth / 2;
+          var boxY = y - boxHeight / 2;
+
+          // Draw label box
+          ctx.beginPath();
+          ctx.moveTo(boxX + borderRadius, boxY);
+          ctx.lineTo(boxX + boxWidth - borderRadius, boxY);
+          ctx.quadraticCurveTo(boxX + boxWidth, boxY, boxX + boxWidth, boxY + borderRadius);
+          ctx.lineTo(boxX + boxWidth, boxY + boxHeight - borderRadius);
+          ctx.quadraticCurveTo(boxX + boxWidth, boxY + boxHeight, boxX + boxWidth - borderRadius, boxY + boxHeight);
+          ctx.lineTo(boxX + borderRadius, boxY + boxHeight);
+          ctx.quadraticCurveTo(boxX, boxY + boxHeight, boxX, boxY + boxHeight - borderRadius);
+          ctx.lineTo(boxX, boxY + borderRadius);
+          ctx.quadraticCurveTo(boxX, boxY, boxX + borderRadius, boxY);
+          ctx.closePath();
+          ctx.fillStyle = '#fff';
+          ctx.strokeStyle = "#fff";
+          ctx.lineWidth = 1;
+          ctx.fill();
+          ctx.stroke();
+
+          // Draw icon
+          ctx.font = '13px';
+          ctx.fillStyle = '#9DAEC1';
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'middle';
+          ctx.fillText(icon, x - (labelWidth + labelConfig.labelPadding) / 3, y);
+
+          // Draw label text
+          ctx.font = '15px';
+          ctx.fillStyle = "black";
+          ctx.fillText(label, x + (iconWidth + labelConfig.labelPadding) / 2, y);
+          
+          ctx.canvas.style.zIndex = 100;
+          startAngle = endAngle;
+        }
+
+        ctx.save();
+      }
+    }]
+    });
+  }
+
+```
+
 
 
 ## Update chart with new data points
@@ -187,9 +411,24 @@ View:
 
 ## Methods
 
+### setData
+
+This method replaces the data of the chart. Existing data are removed. You must call the `update` method after using `setData` to re-render the chart.
+
+If you intend to append data, use `addData` and `addLabels` method.
+
+**Parameters:**
+- datasetIndex (integer): The index of the dataset to which the data should be added.
+- data (array): An array of data points to add to the chart.
+
+**Example:**
+```javascript
+myChart.setData(0, [60, 10, 20, 10]);
+```
+
 ### addLabels
 
-This method adds labels to the x-axis of the chart.
+This method appends labels to the x-axis of the chart.
 
 **Parameters:**
 - labels (array): An array of strings representing the labels for the chart.
