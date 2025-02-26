@@ -111,9 +111,16 @@ The header contains the Safe Area (e.g. iPhone notch) and by default has the bac
 | titleBarHeight    | integer                       | For consistency, the header's title bar has the default fixed height of 56 regardless of its content. You may adjust its height here. Minimum value is `0`                                                                                                                                                                                                                     |
 | flexibleMinHeight | integer                       | Applicable only if scrollableView is enabled. This attribute effectively sets the header's min height on scrolling (header's height will varies between the flexibleMinHeight and flexibleMaxHeight). Note that this attribute will be ignored if smaller than the titleBarHeight                                                                                              |
 | flexibleMaxHeight | integer                       | Applicable only if scrollableView is enabled. This attribute effectively sets the header's max height on scrolling (header's height will varies between the flexibleMinHeight and flexibleMaxHeight). This attribute will be ignored if smaller than the flexibleMinHeight                                                                                                     |
-
+| animation         | object                        |  [see properties](#header.styles.animation)                                                 |
 > Note: When the entire View is specified as scrollable, flexible background's height can vary in height (hence flexible) on scroll with a parallax effect.
 
+#### Header.styles.animation
+
+| Property          | Type                          | Description                                                                                                                                                                                                                                                                                                                                                                    |
+| :---------------- | :---------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| enabled           | boolean                       | Animation `enabled` or `disabled`.                                                                                     |
+| duration          | integer                       | Specify time in milliseconds `ms` for which animation must play.                                                       |
+| Curve             | Curve                         | Specify animation curve like `easeIn` or `easeOut` etc.                                                                |
 ## Menu
 
 Ensemble provides support for five menu types that offer extensive customization options, including the ability to add custom items which are indeed `custom widgets`. These menu types allow users to meet their unique design needs or client requirements. Below, you will find detailed information about each menu type, including the supported properties, styles, and illustrative examples for better understanding.
