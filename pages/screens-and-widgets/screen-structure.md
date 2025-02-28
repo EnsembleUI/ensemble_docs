@@ -121,7 +121,7 @@ The header contains the Safe Area (e.g. iPhone notch) and by default has the bac
 | :---------------- | :---------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | enabled           | boolean                       | Animation behaviour `true` or `false`.                                           |
 | duration          | integer                       | Specify time in `milliseconds` for which animation must play.                    |
-| curve             | curve                         | Specify animation curve like `easeIn` or `easeOut` etc.                          |
+| curve             | string                        | Specify animation curve like `easeIn` `easeOut` or `linear`.                     |
 ## Menu
 
 Ensemble provides support for five menu types that offer extensive customization options, including the ability to add custom items which are indeed `custom widgets`. These menu types allow users to meet their unique design needs or client requirements. Below, you will find detailed information about each menu type, including the supported properties, styles, and illustrative examples for better understanding.
