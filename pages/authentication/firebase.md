@@ -234,6 +234,20 @@ validateVerificationCode:
       // handle the verification failure
 ```
 
+`signInWithCustomToken` - to sign in an authenticated user from the backend server in the Firebase console
+
+```yaml
+signInWithCustomToken:
+   idToken: // Token id from  `signInWithServerAPI` action
+   onSuccess:
+      // return the authenticated user and idToken
+      // e.g event.data.user.id, event.data.idToken 
+   onError:
+      // handle the error state
+   onVerificationFailure:
+      // handle the verification failure
+```
+
 `resendVerificationCode` - to resend the code if resend token is available
 
 ```yaml
