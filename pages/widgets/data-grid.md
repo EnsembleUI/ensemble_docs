@@ -18,6 +18,8 @@ The DataGrid Widget enables the seamless rendering of data grids, facilitating t
 | dividerThickness | integer | Determines the thickness or width of dividers in the DataGrid widget.                |
 | DataColumns      | array   | List of data columns                                                                 |
 | sorting          | object  | Sort the data columns in ascending or descending order. [See properties](#styles)    | 
+| thumbThickness   | double  | Set thickness of scrollbar. Default value is `10.0`.                                  |
+| scrollbarBehaviour| enum   | Scrollbar behaviour `static` or `fade` when grid is not intereacted with. Default is `fade`. |
 
 ### sorting
 
