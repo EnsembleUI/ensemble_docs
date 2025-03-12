@@ -234,20 +234,6 @@ validateVerificationCode:
       // handle the verification failure
 ```
 
-`signInWithCustomToken` - to sign in an authenticated user from the backend server in the Firebase console
-
-```yaml
-signInWithCustomToken:
-   idToken: // Token id from  `signInWithServerAPI` action
-   onSuccess:
-      // return the authenticated user and idToken
-      // e.g event.data.user.id, event.data.idToken 
-   onError:
-      // handle the error state
-   onVerificationFailure:
-      // handle the verification failure
-```
-
 `resendVerificationCode` - to resend the code if resend token is available
 
 ```yaml
@@ -267,7 +253,23 @@ Note: If resend token is not available, you can use `sendVerificationCode` to ge
 [Kitchen Sink - Firebase Phone Auth](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/A7JOo1uZTYoYVwOUA76c)
 
 ---
+### Firebase Sign In with Custom jwt Token
 
+Authenticate users in Firebase using a custom `jwtToken` minted by the backend with Firebase Admin SDK, enabling access to secure Cloud Functions.
+
+`signInWithCustomToken` - to pass token to firebase console
+
+```yaml
+signInWithCustomToken:
+   idToken: // Token id from  `signInWithServerAPI` action
+   onSuccess:
+      // return the authenticated user and idToken
+      // e.g event.data.user.id, event.data.idToken 
+   onError:
+      // handle the error state
+   onVerificationFailure:
+      // handle the verification failure
+```
 ## 7. Build and run the app
 
 * Review `/ensemble/ensemble.properties`. Update the appId as needed - this is your app's bundle ID in the format of . e.g. `com.ensembleui.myfirstapp` (all lowercase, no special characters).
