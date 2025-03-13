@@ -19,3 +19,7 @@ To use a different port, run `pnpm next dev -p <port_number>`.
 ## Deployment & hosting
 
 This site is hosted on Vercel, and updated automatically when the main branch is updated.
+
+> [!IMPORTANT]  
+> Make sure to add new file's reference in the `_meta.json` file of the respective directory to make it appear in the sidebar and for the search to work properly.
+> This also help `merge-docs.py` script to merge the docs properly.
