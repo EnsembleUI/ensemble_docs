@@ -1,4 +1,4 @@
-# Actions: getPhoneContacts & getPhoneContactPhoto
+# getPhoneContacts
 
 The `PhoneContacts` view is designed to retrieve and display phone contacts from Android and iOS physical devices or simulators. It includes a warning note, a button to fetch contacts, and a list view to display individual contact details.
 
@@ -33,6 +33,10 @@ The `onSuccess` and `onError` callbacks for the "Get Phone Contacts" button. In 
             contact: ${contact}
 ```
 The `ListView` component displaying a list of contacts (ensemble.storage.contacts). It uses the `UserContact` custom widget template for each item in the list.
+
+---
+
+# getPhoneContactPhoto
 
 ```yaml
 UserContact:

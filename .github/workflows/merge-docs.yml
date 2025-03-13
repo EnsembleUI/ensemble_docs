@@ -1,0 +1,38 @@
+name: Merge Docs
+
+on: pull_request
+
+jobs:
+  update-docs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.PAT_TOKEN }}
+          fetch-depth: 0
+          persist-credentials: true
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Run merge script
+        run: |
+          python merge-docs.py
+
+      - name: Commit and push updated docs if there are changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git checkout -B "${{ github.head_ref }}"
+          # Check if there are changes
+          if [ -n "$(git status --porcelain)" ]; then
+            echo "Changes detected. Committing updated docs..."
+            git add README.md
+            git commit -m "Update merged docs via GitHub Action"
+            git push --set-upstream origin "${{ github.head_ref }}"
+          else
+            echo "No changes to commit."
+          fi

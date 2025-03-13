@@ -1,0 +1,35 @@
+{
+  "1-prepare-app": {
+    "title": "Prepare App"
+  },
+  "2-social-signin": {
+    "title": "Social Sign-In"
+  },
+  "3-ios-appstore": {
+    "title": "iOS App Store"
+  },
+  "3-oauth-services": {
+    "title": "OAuth Services"
+  },
+  "4-android-device": {
+    "title": "Android Device"
+  },
+  "5-android-play-store": {
+    "title": "Android Play Store"
+  },
+  "6-prepare-for-production": {
+    "title": "Prepare for Production"
+  },
+  "7-offline-mode": {
+    "title": "Offline Mode"
+  },
+  "8-google-play-api-key": {
+    "title": "Google Play API Key"
+  },
+  "9-appstore-connect-api-key": {
+    "title": "App Store Connect API Key"
+  },
+  "10-firebase-app-distribution": {
+    "title": "Firebase App Distribution"
+  }
+}

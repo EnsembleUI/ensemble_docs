@@ -93,5 +93,4 @@ API:
 | shimmerSpeed     | int        | The speed of the shimmer animation in milliseconds.                                                             |
 | shimmerEffect    | enum     | The direction of the shimmer effect. Options are `horizontal`, `vertical`, or `diagonal`.                        |
 | padding          | double     | The padding around the shimmer effect.                                                                          |
-| tileMode          | enum     | The tileMode property in a gradient determines how the gradient repeats or extends beyond its original bounds, offering options like `clamp`, `mirror`, and `repeated` to control the visual effect. effect.                                                                          |
-```
+| tileMode          | enum     | The tileMode property in a gradient determines how the gradient repeats or extends beyond its original bounds, offering options like `clamp`, `mirror`, and `repeated` to control the visual effect.                                                                          |

@@ -1,0 +1,11 @@
+{
+  "Intro": {
+    "title": "Intro"
+  },
+  "mutations": {
+    "title": "Mutations"
+  },
+  "queries": {
+    "title": "Queries"
+  }
+}
