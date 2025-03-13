@@ -1,21 +1,35 @@
 {
-
-    "api-overview": {
-      "title": "Overview"
-    },
-    "define-api": {
-        "title": "Define APIs"
-    },
-    "call-api": {
-        "title": "Invoke API calls"
-    },
-    "access-api-response": {
-        "title": "Access API response"
-    },
-    "api-on-error": {
-        "title": "Handle errors"
-    },
-    "api-ssl-configuration": {
-        "title": "SSL Configuration"
-    }
+  "api-overview": {
+    "title": "Overview"
+  },
+  "define-api": {
+    "title": "Define APIs"
+  },
+  "call-api": {
+    "title": "Invoke API calls"
+  },
+  "access-api-response": {
+    "title": "Access API Response"
+  },
+  "api-on-error": {
+    "title": "Handle errors"
+  },
+  "api-item-templates": {
+    "title": "API Item Templates"
+  },
+  "use-mock-api-response": {
+    "title": "Use Mock API Response"
+  },
+  "chaining-apis": {
+    "title": "Chaining APIs"
+  },
+  "api-ssl-configuration": {
+    "title": "API SSL Configuration"
+  },
+  "graphql": {
+    "title": "GraphQL"
+  },
+  "websocket": {
+    "title": "WebSocket"
+  }
 }

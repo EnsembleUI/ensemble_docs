@@ -19,12 +19,13 @@ jobs:
 
       - name: Run merge script
         run: |
-          python merge_mdx.py
+          python merge-docs.py
 
       - name: Commit and push updated docs if there are changes
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
+          git checkout ${{ github.head_ref }}
           # Check if there are changes
           if [ -n "$(git status --porcelain)" ]; then
             echo "Changes detected. Committing updated docs..."

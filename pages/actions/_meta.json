@@ -1,0 +1,146 @@
+{
+  "authenticate-by-biometric": {
+    "title": "Authenticate by Biometric"
+  },
+  "ble-actions": {
+    "title": "BLE Actions"
+  },
+  "call-external-method": {
+    "title": "Call External Method"
+  },
+  "check-permission": {
+    "title": "Check Permission"
+  },
+  "close-all-dialogs": {
+    "title": "Close All Dialogs"
+  },
+  "connect-wallet": {
+    "title": "Connect Wallet"
+  },
+  "copy-to-clipboard": {
+    "title": "Copy to Clipboard"
+  },
+  "device-security": {
+    "title": "Device Security"
+  },
+  "directory": {
+    "title": "Directory"
+  },
+  "dispatch-event": {
+    "title": "Dispatch Event"
+  },
+  "execute-action-group": {
+    "title": "Execute Action Group"
+  },
+  "execute-code": {
+    "title": "Execute Code"
+  },
+  "execute-condition": {
+    "title": "Execute Condition"
+  },
+  "get-location": {
+    "title": "Get Location"
+  },
+  "get-network-info": {
+    "title": "Get Network Info"
+  },
+  "get-phone-contacts": {
+    "title": "Get Phone Contacts"
+  },
+  "invoke-API": {
+    "title": "Invoke API"
+  },
+  "invoke-haptic": {
+    "title": "Invoke Haptic"
+  },
+  "log-events": {
+    "title": "Log Events"
+  },
+  "navigate-back": {
+    "title": "Navigate Back"
+  },
+  "navigate-modal-screen": {
+    "title": "Navigate Modal Screen"
+  },
+  "navigate-screen": {
+    "title": "Navigate Screen"
+  },
+  "navigate-view-group": {
+    "title": "Navigate View Group"
+  },
+  "notification": {
+    "title": "Notification"
+  },
+  "on-navigate-back": {
+    "title": "On Navigate Back"
+  },
+  "open-app-settings": {
+    "title": "Open App Settings"
+  },
+  "open-camera": {
+    "title": "Open Camera"
+  },
+  "open-plaid-link": {
+    "title": "Open Plaid Link"
+  },
+  "open-url": {
+    "title": "Open URL"
+  },
+  "pause-audio": {
+    "title": "Pause Audio"
+  },
+  "pick-files": {
+    "title": "Pick Files"
+  },
+  "play-audio": {
+    "title": "Play Audio"
+  },
+  "pull-to-refresh": {
+    "title": "Pull to Refresh"
+  },
+  "rate-app": {
+    "title": "Rate App"
+  },
+  "request-notification-access": {
+    "title": "Request Notification Access"
+  },
+  "resume-audio": {
+    "title": "Resume Audio"
+  },
+  "save-file": {
+    "title": "Save File"
+  },
+  "seek-audio": {
+    "title": "Seek Audio"
+  },
+  "share": {
+    "title": "Share"
+  },
+  "show-bottom-modal": {
+    "title": "Show Bottom Modal"
+  },
+  "show-dialog": {
+    "title": "Show Dialog"
+  },
+  "show-notification": {
+    "title": "Show Notification"
+  },
+  "show-toast": {
+    "title": "Show Toast"
+  },
+  "start-timer": {
+    "title": "Start Timer"
+  },
+  "stop-audio": {
+    "title": "Stop Audio"
+  },
+  "stop-timer": {
+    "title": "Stop Timer"
+  },
+  "take-screenshot": {
+    "title": "Take Screenshot"
+  },
+  "upload-files": {
+    "title": "Upload Files"
+  }
+}
