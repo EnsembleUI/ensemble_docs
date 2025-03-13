@@ -33,7 +33,6 @@ Ensemble provides a browser-based IDE, [Ensemble Studio](https://studio.ensemble
   - [Ensemble Screen Structure](#ensemble-screen-structure)
   - [Layouts](#layouts)
   - [Widgets Directory](#widgets-directory)
-- [events-and-actions](#events-and-actions)
 - [Script with JavaScript](#script-with-javascript)
 - **Apis**
   - [Interact with APIs](#interact-with-apis)
@@ -1036,8 +1035,6 @@ Ensemble widgets enable you to build both simple and complex applications.
 | ------------------ | ---------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
 | Progress indicator | [Link](/widgets/progressindicator) | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/c2c248f2-a289-40d3-acd5-65a1a7f3c5a2) |
 | Toast message      | [Link](/actions/show-toast)        | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/9a576805-019a-4bd3-953f-3c623fbfb905) |
-
----
 
 ---
 
@@ -8041,8 +8038,7 @@ API:
 | shimmerSpeed     | int        | The speed of the shimmer animation in milliseconds.                                                             |
 | shimmerEffect    | enum     | The direction of the shimmer effect. Options are `horizontal`, `vertical`, or `diagonal`.                        |
 | padding          | double     | The padding around the shimmer effect.                                                                          |
-| tileMode          | enum     | The tileMode property in a gradient determines how the gradient repeats or extends beyond its original bounds, offering options like `clamp`, `mirror`, and `repeated` to control the visual effect. effect.                                                                          |
-```
+| tileMode          | enum     | The tileMode property in a gradient determines how the gradient repeats or extends beyond its original bounds, offering options like `clamp`, `mirror`, and `repeated` to control the visual effect.                                                                          |
 
 ---
 
@@ -16682,6 +16678,8 @@ console.log(JSON.stringify({ x: 5, y: 6 }));
 ```
 
 ---
+
+# JsonPath
 
 TBD
 
