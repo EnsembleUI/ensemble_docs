@@ -8,6 +8,27 @@ def slugify(text):
     text = re.sub(r'-+', '-', text)
     return text
 
+def to_sentence_case(s):
+    """
+    Convert a hyphenated or lower-case string into sentence-case.
+    For example, "desktop-app" becomes "Desktop App" and
+    "screens-and-widgets" becomes "Screens and Widgets".
+    """
+    s = s.replace('-', ' ')
+    words = s.split()
+    if not words:
+        return s
+    minor_words = {"and", "or", "the", "of", "in", "a", "an"}
+    # Capitalize first word fully
+    result = [words[0].capitalize()]
+    for word in words[1:]:
+        # Lowercase minor words, capitalize others
+        if word.lower() in minor_words:
+            result.append(word.lower())
+        else:
+            result.append(word.capitalize())
+    return " ".join(result)
+
 def get_first_heading(file_path):
     """Extract the first markdown heading from a file, skipping YAML frontmatter."""
     heading_text = None
@@ -106,8 +127,9 @@ def generate_toc(nodes, depth=0):
     toc_lines = []
     indent = "  " * depth
     for node in nodes:
+        # For directories (groups), convert title to sentence-case.
         if "children" in node:
-            title = node["title"]
+            title = to_sentence_case(node["title"])
             if node.get("index_path"):
                 anchor_text = node.get("heading", title)
                 anchor = slugify(anchor_text) if anchor_text else ""
@@ -117,7 +139,7 @@ def generate_toc(nodes, depth=0):
             if node["children"]:
                 toc_lines += generate_toc(node["children"], depth+1)
         else:
-            title = node["title"]
+            title = node["title"]  # For files, assume title is already correct.
             anchor_text = node.get("heading", title)
             anchor = slugify(anchor_text) if anchor_text else ""
             toc_lines.append(f"{indent}- [{title}](#{anchor})")
