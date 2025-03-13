@@ -7,9 +7,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
           persist-credentials: true
 
       - name: Set up Python
@@ -25,7 +26,7 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git checkout ${{ github.head_ref }}
+          git checkout -B "${{ github.head_ref }}"
           # Check if there are changes
           if [ -n "$(git status --porcelain)" ]; then
             echo "Changes detected. Committing updated docs..."
