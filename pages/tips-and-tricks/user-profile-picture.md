@@ -5,6 +5,7 @@ This guide shows the typical interaction for updating a user's profile picture i
 Here's the experience we'll work toward:
 
 <div style="position: relative; height: 640px; width: 280px"><iframe src="https://demo.arcade.software/YDZArv16EF5lLUvVjTeb?embed" title="Arcade Flow (Wed Jan 03 2024)" frameborder="0" loading="lazy" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;color-scheme: light;"></iframe>
+</div>
 
 ## 1. Display user image with an icon
 
@@ -81,6 +82,7 @@ The Stack widget renders each child on top of the previous one. By setting `styl
 When user taps the profile image, we want to display a bottom sheet with two buttons:
 
 <div style="position: relative; height: 500px; width: 280px"><iframe src="https://demo.arcade.software/klblt8altkrLUAxoGEhi?embed" title="studio.ensembleui.com/preview/index.html?appId=nWsD5baeykm3W772kkSw&amp;screenId=P2v4AOS8w3DXfUauqi0Q&amp;showAction=false&amp;devicePreview=true&amp;instantPreview=true" frameborder="0" loading="lazy" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;color-scheme: light;"></iframe>
+</div>
 
 To achieve the above, first wrap the Stack widget inside a Column widget so we can add an onTop to the Column. onTap, we use `showBottomModal` action to open a bottom sheet:
 

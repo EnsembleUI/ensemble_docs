@@ -19,10 +19,8 @@ def to_sentence_case(s):
     if not words:
         return s
     minor_words = {"and", "or", "the", "of", "in", "a", "an"}
-    # Capitalize first word fully
     result = [words[0].capitalize()]
     for word in words[1:]:
-        # Lowercase minor words, capitalize others
         if word.lower() in minor_words:
             result.append(word.lower())
         else:
@@ -64,10 +62,11 @@ def resolve_entry_path(dir_path, name):
             return candidate
     return None
 
-def process_dir(dir_path, skip_index=False):
+def process_dir(dir_path, skip_index=True):
     """
     Recursively traverse a docs directory following _meta.json for order and grouping.
     Returns a list of nodes that represent pages or groups.
+    Here, any file whose basename is "index.md" or "index.mdx" is skipped.
     """
     meta_file = os.path.join(dir_path, "_meta.json")
     entries = []
@@ -87,11 +86,12 @@ def process_dir(dir_path, skip_index=False):
         if resolved is None:
             continue
 
-        # Skip the training-videos file
+        # Skip the training-videos file.
         base = os.path.basename(resolved).lower()
         if base in ("training-videos.md", "training-videos.mdx"):
             continue
 
+        # For files: skip index files.
         if os.path.isfile(resolved):
             if skip_index and base in ("index.md", "index.mdx"):
                 continue
@@ -107,43 +107,13 @@ def process_dir(dir_path, skip_index=False):
                 "heading": heading_text
             })
         elif os.path.isdir(resolved):
+            # For directories, always skip the index file inside by passing skip_index=True
             group_title = title if isinstance(title, str) else name
-            sub_nodes = process_dir(resolved, skip_index=False)
-            index_node = next((child for child in sub_nodes 
-                               if "path" in child and os.path.basename(child["path"]).lower() in ("index.md", "index.mdx")), None)
-            if index_node:
-                sub_nodes.remove(index_node)
-            group_node = {"title": group_title, "children": sub_nodes}
-            if index_node:
-                group_node["index_path"] = index_node["path"]
-                group_node["heading"] = index_node.get("heading", group_title)
-            else:
-                group_node["heading"] = group_title
+            sub_nodes = process_dir(resolved, skip_index=True)
+            # Do not process any index file here; simply set the group heading.
+            group_node = {"title": group_title, "children": sub_nodes, "heading": group_title}
             nodes.append(group_node)
     return nodes
-
-def generate_toc(nodes, depth=0):
-    """Generate a nested markdown list for the Table of Contents."""
-    toc_lines = []
-    indent = "  " * depth
-    for node in nodes:
-        # For directories (groups), convert title to sentence-case.
-        if "children" in node:
-            title = to_sentence_case(node["title"])
-            if node.get("index_path"):
-                anchor_text = node.get("heading", title)
-                anchor = slugify(anchor_text) if anchor_text else ""
-                toc_lines.append(f"{indent}- [{title}](#{anchor})")
-            else:
-                toc_lines.append(f"{indent}- **{title}**")
-            if node["children"]:
-                toc_lines += generate_toc(node["children"], depth+1)
-        else:
-            title = node["title"]  # For files, assume title is already correct.
-            anchor_text = node.get("heading", title)
-            anchor = slugify(anchor_text) if anchor_text else ""
-            toc_lines.append(f"{indent}- [{title}](#{anchor})")
-    return toc_lines
 
 def clean_content(lines):
     """
@@ -151,17 +121,12 @@ def clean_content(lines):
       - Removing MDX import/export lines.
       - Converting MDX Callout blocks into Markdown note blocks.
       - Removing other MDX component blocks.
-      - Fixing markdown and HTML image paths (inserting 'public/' before /images/).
     """
     cleaned = []
     in_code_block = False
     in_callout_block = False
     in_component_block = False
     component_start_pattern = re.compile(r'^\s*<([A-Z][\w]+)')
-    # Regex for markdown images: ![alt](/images/...
-    md_image_pattern = re.compile(r'(!\[[^\]]*\]\()(/images/)', re.IGNORECASE)
-    # Regex for HTML image tags: <img ... src="/images/...
-    html_img_pattern = re.compile(r'(<img\s+[^>]*src=["\'])(/images/)', re.IGNORECASE)
     
     for line in lines:
         if line.strip().startswith("```"):
@@ -202,11 +167,6 @@ def clean_content(lines):
             if comp_match:
                 in_component_block = True
                 continue
-
-            # Fix markdown image paths.
-            line = md_image_pattern.sub(r'\1/public/images/', line)
-            # Fix HTML image paths.
-            line = html_img_pattern.sub(r'\1public/images/', line)
             
         cleaned.append(line)
     return cleaned
@@ -215,21 +175,12 @@ def collect_content(nodes, level=1):
     """
     Collect the content of all pages in the nodes, including sections.
     For each file (leaf node), append a separator '---' at the end.
-    For group nodes without an index file, do not add an extra heading.
+    For group nodes, do not add an extra heading.
     """
     lines = []
     for node in nodes:
         if "children" in node:
-            if node.get("index_path"):
-                with open(node["index_path"], 'r', encoding='utf-8') as f:
-                    raw = f.read().splitlines()
-                section_intro = clean_content(raw)
-                lines += section_intro
-                if section_intro and section_intro[-1] != "":
-                    lines.append("")
-                # Add separator after index file of a section.
-                lines.append("---")
-                lines.append("")
+            # We simply process the children; we no longer add the group's index file.
             lines += collect_content(node["children"], level+1)
         else:
             with open(node["path"], 'r', encoding='utf-8') as f:
@@ -247,10 +198,10 @@ def collect_content(nodes, level=1):
 repo_root = os.getcwd()
 pages_dir = os.path.join(repo_root, "pages")
 
-# Process the pages directory.
+# Process the pages directory (always skipping index files).
 structure = process_dir(pages_dir, skip_index=True)
 
-# Read the root index.mdx content to place it at the beginning.
+# Ignore the root index file completely.
 def resolve_entry_path_custom(dir_path, name):
     """Helper to resolve an index entry from the given dir."""
     for candidate in [name, name + ".md", name + ".mdx"]:
@@ -259,27 +210,8 @@ def resolve_entry_path_custom(dir_path, name):
             return path
     return None
 
-index_path = resolve_entry_path_custom(pages_dir, "index")
-index_lines = []
-if index_path and os.path.isfile(index_path):
-    with open(index_path, 'r', encoding='utf-8') as f:
-        raw_index = f.read().splitlines()
-    index_lines = clean_content(raw_index)
-
 # Assemble the final README content.
 output_lines = []
-if index_lines:
-    output_lines += index_lines
-    if output_lines and output_lines[-1] != "":
-        output_lines.append("")
-# Generate the Table of Contents from the sidebar structure.
-toc = generate_toc(structure)
-if toc:
-    output_lines.append("## Table of Contents")
-    output_lines.append("")
-    output_lines += toc
-    output_lines.append("")
-# Append the remaining content in the defined order.
 output_lines += collect_content(structure)
 
 # Write the merged content to README.md.
