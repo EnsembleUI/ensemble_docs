@@ -4,7 +4,7 @@ Composite widgets are a powerful concept in Ensemble where multiple smaller widg
 
 Composite widgets can be composed of any combination of basic UI elements such as buttons, text fields, labels, etc., allowing app developers to create complex UI components without having to recreate the same layout and functionality multiple times.
 
-#### Benefits of Composite Widgets
+## Benefits of Composite Widgets
 
 1. **Reusability**: Composite widgets can be reused across different parts of an app or even across multiple apps, reducing duplication of code and effort.
 2. **Modularity**: By breaking down UI components into smaller widgets, developers can build more modular and maintainable app definitions.
