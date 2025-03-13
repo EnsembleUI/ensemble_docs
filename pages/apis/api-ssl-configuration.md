@@ -5,6 +5,7 @@ SSL (Secure Sockets Layer) configuration in Ensemble allows you to secure your A
 ## Available Configuration Options
 
 ### ssl_pinning_enabled
+
 - **Type:** Environment Variable
 - **Purpose:** Controls whether SSL certificate pinning is active
 - **Behavior:** When set to 'true', the app will only trust connections with certificates matching the provided certificate
@@ -12,6 +13,7 @@ SSL (Secure Sockets Layer) configuration in Ensemble allows you to secure your A
 - **Default:** false
 
 ### ssl_pinning_certificate
+
 - **Type:** Secret
 - **Purpose:** Provides the certificate for SSL pinning verification
 - **Format:** Must be Base64 encoded
@@ -19,6 +21,7 @@ SSL (Secure Sockets Layer) configuration in Ensemble allows you to secure your A
 - **Dependencies:** Requires `ssl_pinning_enabled` to be 'true'
 
 ### bypass_ssl_pinning
+
 - **Type:** Environment Variable
 - **Purpose:** Allows bypassing SSL certificate verification
 - **Warning:** Should only be used in development environments, never in production

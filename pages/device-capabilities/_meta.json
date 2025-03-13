@@ -1,0 +1,53 @@
+{
+  "check-permission": {
+    "title": "Check Permission"
+  },
+  "get-location": {
+    "title": "Get Location"
+  },
+  "get-phone-contacts": {
+    "title": "Get Phone Contacts"
+  },
+  "invoke-API": {
+    "title": "Invoke API"
+  },
+  "invoke-haptic": {
+    "title": "Invoke Haptic"
+  },
+  "navigate-back": {
+    "title": "Navigate Back"
+  },
+  "navigate-modal-screen": {
+    "title": "Navigate Modal Screen"
+  },
+  "navigate-screen": {
+    "title": "Navigate Screen"
+  },
+  "notification": {
+    "title": "Notification"
+  },
+  "open-camera": {
+    "title": "Open Camera"
+  },
+  "pick-files": {
+    "title": "Pick Files"
+  },
+  "rate-app": {
+    "title": "Rate App"
+  },
+  "request-notification-access": {
+    "title": "Request Notification Access"
+  },
+  "share": {
+    "title": "Share"
+  },
+  "show-dialog": {
+    "title": "Show Dialog"
+  },
+  "show-notification": {
+    "title": "Show Notification"
+  },
+  "upload-files": {
+    "title": "Upload Files"
+  }
+}
