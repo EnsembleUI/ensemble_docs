@@ -1,5 +1,180 @@
 {
-    "icon2": {
-        "display": "hidden"
-    }
+  "accordion": {
+    "title": "Accordion"
+  },
+  "avatar": {
+    "title": "Avatar"
+  },
+  "button": {
+    "title": "Button"
+  },
+  "calendar": {
+    "title": "Calendar"
+  },
+  "carousel": {
+    "title": "Carousel"
+  },
+  "chart-js": {
+    "title": "Chart JS"
+  },
+  "checkbox": {
+    "title": "Checkbox"
+  },
+  "column": {
+    "title": "Column"
+  },
+  "conditional": {
+    "title": "Conditional"
+  },
+  "confirmation-input": {
+    "title": "Confirmation Input"
+  },
+  "data-grid": {
+    "title": "Data Grid"
+  },
+  "date": {
+    "title": "Date"
+  },
+  "divider": {
+    "title": "Divider"
+  },
+  "dropdown": {
+    "title": "Dropdown"
+  },
+  "fitted-column": {
+    "title": "Fitted Column"
+  },
+  "fitted-row": {
+    "title": "Fitted Row"
+  },
+  "flex-column": {
+    "title": "Flex Column"
+  },
+  "flex-row": {
+    "title": "Flex Row"
+  },
+  "flex": {
+    "title": "Flex"
+  },
+  "flow": {
+    "title": "Flow"
+  },
+  "form": {
+    "title": "Form"
+  },
+  "gridview": {
+    "title": "Grid View"
+  },
+  "html": {
+    "title": "HTML"
+  },
+  "Icon": {
+    "title": "Icon"
+  },
+  "icon2": {
+    "title": "Icon 2",
+    "display": "hidden"
+  },
+  "Image": {
+    "title": "Image"
+  },
+  "inline-time-picker": {
+    "title": "Inline Time Picker"
+  },
+  "listview": {
+    "title": "List View"
+  },
+  "loading-container": {
+    "title": "Loading Container"
+  },
+  "lottie": {
+    "title": "Lottie"
+  },
+  "Map": {
+    "title": "Map"
+  },
+  "markdown": {
+    "title": "Markdown"
+  },
+  "multi-child-layouts": {
+    "title": "Multi Child Layouts"
+  },
+  "passwordinput": {
+    "title": "Password Input"
+  },
+  "profile-image": {
+    "title": "Profile Image"
+  },
+  "progress-indicator": {
+    "title": "Progress Indicator"
+  },
+  "qrcode-scanner": {
+    "title": "QR Code Scanner"
+  },
+  "qrcode": {
+    "title": "QR Code"
+  },
+  "radio-button": {
+    "title": "Radio Button"
+  },
+  "radio-group": {
+    "title": "Radio Group"
+  },
+  "rating-widget": {
+    "title": "Rating Widget"
+  },
+  "row": {
+    "title": "Row"
+  },
+  "shape": {
+    "title": "Shape"
+  },
+  "signature": {
+    "title": "Signature"
+  },
+  "slidable": {
+    "title": "Slidable"
+  },
+  "slider": {
+    "title": "Slider"
+  },
+  "spacer": {
+    "title": "Spacer"
+  },
+  "stack": {
+    "title": "Stack"
+  },
+  "staggered-grid": {
+    "title": "Staggered Grid"
+  },
+  "switch": {
+    "title": "Switch"
+  },
+  "tabbar": {
+    "title": "Tab Bar"
+  },
+  "text-input": {
+    "title": "Text Input"
+  },
+  "text": {
+    "title": "Text"
+  },
+  "time": {
+    "title": "Time"
+  },
+  "triple-state-switch": {
+    "title": "Triple State Switch"
+  },
+  "types": {
+    "title": "Types"
+  },
+  "video": {
+    "title": "Video"
+  },
+  "webview": {
+    "title": "WebView"
+  },
+  "youtube": {
+    "title": "YouTube"
+  }
 }
