@@ -1,40 +1,14 @@
-# Welcome to Ensemble
-
-## What is Ensemble?
-
-Ensemble is a platform where you can build, publish, and iterate native and web apps without leaving your browser.
-
-With Ensemble, you create apps by defining them using a declarative language. Think of it as configuring your app, instead of coding it. Ensemble apps are rendered at runtime by interpreting this declerative definition. This architecture means that:
-
-1. Ensemble apps are native to each platform: iOS, Android, and web.
-2. Ensemble apps can be updated instantly because the app definitions are pushed to clients. You can use Ensemble's cloud service, or use your own server.
-3. Ensemble apps always leverage the latest front-end technologies (Flutter for iOS and Android, React for web) so that you don't have to worry about tech-debt incured by using these technologies.
-
-![architecture](/public/images/architecture.png)
-
-## How do I build my app?
-
-Ensemble provides a browser-based IDE, [Ensemble Studio](https://studio.ensembleui.com), where you can build, test, and publish your apps all from the browser. You can instantly preview your Ensemble apps on iOS and Anrdoid devices using [Ensemble preview app](/test/preview-app). Once ready to publish, Ensemble automatically push your apps to Apple AppStore and Google PlayStore. For web, you can download a web build and host it on any service.
-
-## Need help?
-
-[Chat with us on Discord](https://discord.gg/cEHkJTmn75)
-
-[Join our office hours](https://discord.gg/eJrUWhnRHS?event=1218554330765066310)
-
-[Drop us an email](mailto:hello@ensembleui.com)
-
 ## Table of Contents
 
 - [Studio overview](#studio-overview)
-- **Desktop App**
+- [Desktop App](#desktop-app)
   - [Ensemble Studio Desktop App](#ensemble-studio-desktop-app)
-- **Screens and Widgets**
+- [Screens and Widgets](#screens-and-widgets)
   - [Ensemble Screen Structure](#ensemble-screen-structure)
   - [Layouts](#layouts)
   - [Widgets Directory](#widgets-directory)
 - [Script with JavaScript](#script-with-javascript)
-- **Apis**
+- [Apis](#apis)
   - [Interact with APIs](#interact-with-apis)
   - [Define APIs](#define-apis)
   - [Invoking APIs, aka calling APIs](#invoking-apis-aka-calling-apis)
@@ -46,7 +20,7 @@ Ensemble provides a browser-based IDE, [Ensemble Studio](https://studio.ensemble
   - [SSL Configuration](#ssl-configuration)
   - [GraphQL](#graphql)
   - [Using WebSockets](#using-websockets)
-- **Theme and Styling**
+- [Theme and Styling](#theme-and-styling)
   - [Theme](#theme)
   - [Animations in EnsembleUI](#animations-in-ensembleui)
   - [Using Custom Fonts](#using-custom-fonts)
@@ -55,32 +29,32 @@ Ensemble provides a browser-based IDE, [Ensemble Studio](https://studio.ensemble
 - [Assets (images, videos, etc.)](#assets-images-videos-etc)
 - [Persistent Local Storage](#persistent-local-storage)
 - [App Settings](#app-settings)
-- **Firebase**
+- [Firebase](#firebase)
   - [Configuration of Firebase Project with Ensemble App](#configuration-of-firebase-project-with-ensemble-app)
   - [Calling Cloud Firestore APIs](#calling-cloud-firestore-apis)
 - [Translations](#translations)
-- **Authentication**
+- [Authentication](#authentication)
   - [Authentication](#authentication)
   - [Social Sign In](#social-sign-in)
   - [Setting up Authentication with Firebase](#setting-up-authentication-with-firebase)
   - [Setting up Authentication with Auth0](#setting-up-authentication-with-auth0)
-- **Moengage**
+- [Moengage](#moengage)
   - [MoEngage Integration](#moengage-integration)
-- **Deep Link**
+- [Deep Link](#deep-link)
   - [Setup Deeplink](#setup-deeplink)
   - [Setup Deferred Deeplink](#setup-deferred-deeplink)
-- **Extending Ensemble**
+- [Extending Ensemble](#extending-ensemble)
   - [Embed Flutter screen in an Ensemble app](#embed-flutter-screen-in-an-ensemble-app)
   - [Using local assets](#using-local-assets)
-- **Concepts**
+- [Concepts](#concepts)
   - [Understanding Widget Sizing](#understanding-widget-sizing)
   - [Item Template](#item-template)
   - [Data Binding](#data-binding)
   - [Screen Lifecycle](#screen-lifecycle)
   - [Custom Widgets](#custom-widgets)
-- **Test**
+- [Test](#test)
   - [Preview your app](#preview-your-app)
-- **Deploy**
+- [Deploy](#deploy)
   - [Preparing your App for deployment](#preparing-your-app-for-deployment)
   - [Configure Social Sign In for Deployment](#configure-social-sign-in-for-deployment)
   - [Deploy to iOS TestFlight](#deploy-to-ios-testflight)
@@ -93,7 +67,7 @@ Ensemble provides a browser-based IDE, [Ensemble Studio](https://studio.ensemble
   - [Guide: Generating API Key for App Store Connect](#guide-generating-api-key-for-app-store-connect)
   - [Guide: Generating a Firebase Service Account for App Distribution](#guide-generating-a-firebase-service-account-for-app-distribution)
 - [Host and serve your app definition on your own server](#host-and-serve-your-app-definition-on-your-own-server)
-- **Widgets**
+- [Widgets](#widgets)
   - [Accordion Widget](#accordion-widget)
   - [Avatar widget](#avatar-widget)
   - [Button widget](#button-widget)
@@ -154,7 +128,7 @@ Ensemble provides a browser-based IDE, [Ensemble Studio](https://studio.ensemble
   - [WebView widget](#webview-widget)
   - [Youtube](#youtube)
 - [Composite Widgets](#composite-widgets)
-- **Actions**
+- [Actions](#actions)
   - [authenticateByBiometric](#authenticatebybiometric)
   - [BLE Client](#ble-client)
   - [callExternalMethod](#callexternalmethod)
@@ -201,10 +175,10 @@ Ensemble provides a browser-based IDE, [Ensemble Studio](https://studio.ensemble
   - [stopTimer](#stoptimer)
   - [takeScreenshot](#takescreenshot)
   - [uploadFiles](#uploadfiles)
-- **Utilities**
+- [Utilities](#utilities)
   - [Formatter](#formatter)
   - [Device](#device)
-- **Device Capabilities**
+- [Device Capabilities](#device-capabilities)
   - [checkPermission](#checkpermission)
   - [getLocation](#getlocation)
   - [getPhoneContacts](#getphonecontacts)
@@ -222,7 +196,7 @@ Ensemble provides a browser-based IDE, [Ensemble Studio](https://studio.ensemble
   - [showDialog](#showdialog)
   - [showNotification](#shownotification)
   - [uploadFiles](#uploadfiles)
-- **Javascript Reference**
+- [Javascript Reference](#javascript-reference)
   - [Add logic using JavaScript](#add-logic-using-javascript)
   - [JavaScript Date](#javascript-date)
   - [Ensemble Objects and their properties](#ensemble-objects-and-their-properties)
@@ -236,7 +210,7 @@ Ensemble provides a browser-based IDE, [Ensemble Studio](https://studio.ensemble
   - [Number Functions](#number-functions)
   - [String Functions](#string-functions)
 - [AppInfo object](#appinfo-object)
-- **Tips and Tricks**
+- [Tips and Tricks](#tips-and-tricks)
   - [Getting help from Ensemble team](#getting-help-from-ensemble-team)
   - [Custom BottomNavBar item styling](#custom-bottomnavbar-item-styling)
   - [Building responsive UIs](#building-responsive-uis)
@@ -405,7 +379,7 @@ This section serves as a reference point for the key elements you'll encounter w
 Below is the overview of the basic components being arranged on the screen.
 
 <p align="center">
-<img src="public/images/view-structure.png" alt="Page Skeleton" height="70%" width="70%">
+<img src="/images/view-structure.png" alt="Page Skeleton" height="70%" width="70%">
 </p>
 
 ## View Group
@@ -439,7 +413,7 @@ ViewGroup:
 ##### Output
 
 <p align="center">
-<img src="public/images/page_structure_1.png" style="border-radius:8px;" alt="BottomNavBar" height="500"/>
+<img src="/images/page_structure_1.png" style="border-radius:8px;" alt="BottomNavBar" height="500"/>
 </p>
 
 > To get hands-on experience with View Group, check the live example on [Ensemble Studio](https://studio.ensembleui.com/app/3vEZBIhDyYnIQo6BLN2O/screen/Wewvp6ZUyb0PBwkTAltQ?propertyPanelEnabled=true&instantPreviewDisabled=false)
@@ -730,8 +704,8 @@ Button:
 ##### Output
 
 <p align="center">
-<img src="public/images/build/image-2.png" alt="Page Skeleton" height="70%" width="70%">
-<img src="public/images/build/image-1.png" alt="Page Skeleton" height="70%" width="70%">
+<img src="/images/build/image-2.png" alt="Page Skeleton" height="70%" width="70%">
+<img src="/images/build/image-1.png" alt="Page Skeleton" height="70%" width="70%">
 </p>
 
 > To get hands-on experience with Drawer, check the live example on [Ensemble Studio](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/0073ebe9-6b0b-4ebf-9e8b-72a93a1275df#)
@@ -805,7 +779,7 @@ View:
 ##### Output
 
 <p align="center">
-<img src="public/images/build/image-3.png" alt="Page Skeleton" height="70%" width="70%">
+<img src="/images/build/image-3.png" alt="Page Skeleton" height="70%" width="70%">
 </p>
 
 > To get hands-on experience with Sidebar, check the live example on [Ensemble Studio](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/QZyoRkHHrHEAkGJMwoNU#)
@@ -875,7 +849,7 @@ Global: |-
 The output can be checked in the logs for browser
 
 <p align="center">
-<img src="public/images/build/image-6.png" alt="Page Skeleton" height="70%" width="70%">
+<img src="/images/build/image-6.png" alt="Page Skeleton" height="70%" width="70%">
 </p>
 
 ## Putting it together
@@ -931,7 +905,7 @@ menu:
 #### Output
 
 <p align="center">
-<img src="public/images/build/image-4.png" alt="Page Skeleton" height="70%" width="70%">
+<img src="/images/build/image-4.png" alt="Page Skeleton" height="70%" width="70%">
 </p>
 
 > To get hands-on experience with a complete Application, check [Ensemble Studio](https://studio.ensembleui.com/app/iM58Wgr7bgzTxEi7rV40/screen/cYMnCfhOya8Vq1QG6aCC?propertyPanelEnabled=true&instantPreviewDisabled=false)
@@ -1054,11 +1028,11 @@ Global Scripts are ideal for situations where you need:
 ## Create a Script
 In Ensemble Studio, navigate to your app and select `Scripts` from the left menu. Click the button `Create new script` present at the top right corner of the studio.
 
-![add language](/public/images/scripts/create-script.png)
+![add language](/images/scripts/create-script.png)
 
 Now open the script file and you can use standard JavaScript syntax to define variables and functions and then save the file.
 
-![add language](/public/images/scripts/Add-script-content.png)
+![add language](/images/scripts/Add-script-content.png)
 
 > Ensemble currently supports JavaScript syntax up to ES5.
 
@@ -2526,11 +2500,11 @@ You can manage the assets required by your app within Ensemble Studio. These are
 
 Navigate to your app inside Ensemble Studio. Select Assets from the left menu. Click on Add assets and upload your file.
 
-![add language](/public/images/app-assets/assets_landing.png)
+![add language](/images/app-assets/assets_landing.png)
 
 ## Reference an assets
 
-![add language](/public/images/app-assets/assets_example.png)
+![add language](/images/app-assets/assets_example.png)
 
 1. Click on the `...` icon of the asset.
 2. Select `Copy path`.
@@ -2651,7 +2625,7 @@ API:
 
 Your app may require using sensitive values for managing access to remote data. Ensemble supports configuring development secrets easily and securely during runtime, and the ability to inject separate production secrets when deploying.
 
-<img src="public/images/secrets_config.png" alt="Add Secret" style="border: solid 1px lightgrey" />
+<img src="/images/secrets_config.png" alt="Add Secret" style="border: solid 1px lightgrey" />
 
 Only application owners and editors can add or change secret values due to their sensitive nature.
 
@@ -2659,7 +2633,7 @@ Only application owners and editors can add or change secret values due to their
 
 Any screens can reference the variable with `${secrets.key_name}`. Here we are simply displaying the secret value in a text field.
 
-<img src="public/images/secrets_usage.png" alt="Use Secret" style="border: solid 1px lightgrey" />
+<img src="/images/secrets_usage.png" alt="Use Secret" style="border: solid 1px lightgrey" />
 
 ### Inject production secrets for deployment
 
@@ -2686,7 +2660,7 @@ Before we start configuration, ensure that we have the following in place:
 
 Firebase supports integration with various app platforms. Here's a breakdown for each platform:
 
-![All Apps](/public/images/firebase/addApp.png)
+![All Apps](/images/firebase/addApp.png)
 #### Android
 
 - Click the Android icon(looks like a little robot) to start the setup.
@@ -2717,7 +2691,7 @@ Firebase supports integration with various app platforms. Here's a breakdown for
 - Click "Register app" to complete this step.
 - Firebase will provide on-screen instructions where we will find a portion with the name `firebaseConfig` in code given. Copy that portion and save it in a file with the rest configuration files.
 
-![All Apps](/public/images/firebase/allApps.png)
+![All Apps](/images/firebase/allApps.png)
 
 ## 2. Configure Ensemble app
 Now that we've registered our app with Firebase and downloaded the configuration files, 
@@ -2751,7 +2725,7 @@ acts as a translator between our app and Firebase, providing the necessary infor
 ```
 After we have replaced the placeholder hashtags (#) in our configuration file, it will look like this:
 
-![Configuration File](/public/images/firebase/configfile.png)
+![Configuration File](/images/firebase/configfile.png)
 
 #### Update Environmental Variables
 
@@ -2759,7 +2733,7 @@ Within our Ensemble application, navigate to the settings section and look for t
 - `api_providers`: Set the value of this variable to `firestore`. This tells our app to use Firebase Firestore as a data provider.
 - `firestore_config`: This is where you'll paste the complete configuration file we created earlier, including the replaced values from our downloaded configuration files.
 
-![Environment Variables](/public/images/firebase/envVari.png)
+![Environment Variables](/images/firebase/envVari.png)
 
 By following these steps, we'll successfully establish a connection between your Ensemble app and Firebase.
 
@@ -3091,13 +3065,13 @@ In Ensemble Studio, navigate to your app and select Translations from the left m
 > The first language you add is set as the default. You can update the default language when you add more by clicking the `...` menu on the language.
 
 
-![add language](/public/images/translations/add-language.png)
+![add language](/images/translations/add-language.png)
 
 ## Add language content
 
 Language content is created in YAML. Add key/value pairs for each text.
 
-![add language](/public/images/translations/add-language-content.png)
+![add language](/images/translations/add-language-content.png)
 
 #### Organize the content
 
@@ -3132,7 +3106,7 @@ When refrencing translations, prepend `r@` before the key assigned to the text:
 
 Use the 🌎 icon on top of the preview to select a language. The preview updates and shows the UI in the selected language.
 
-![add language](/public/images/translations/test-language.png)
+![add language](/images/translations/test-language.png)
 
 
 ## Setting language in app code
@@ -3488,7 +3462,7 @@ To get these details, use the `GoogleService-Info.plist` and  `google-services.
 
 Here's an example of the outcome.
 
-<img src="public/images/firebase/firebase-account-details.png" alt="firebase account details" style="max-width: 900px;">
+<img src="/images/firebase/firebase-account-details.png" alt="firebase account details" style="max-width: 900px;">
 
 
 #### Add sign-in providers to Ensemble app
@@ -3507,7 +3481,7 @@ In the same file, `ensemble-config.yaml` , under `services` add the following.
 Here's an example of the outcome.
 
 
-<img src="public/images/firebase/firebase-provider-details.png" alt="firebase provider details" style="max-width: 900px;">
+<img src="/images/firebase/firebase-provider-details.png" alt="firebase provider details" style="max-width: 900px;">
 
 
 ---
@@ -3545,7 +3519,7 @@ Add authorized domains to your Firebase project. This is required for web apps t
 
 Go to Firebase console, navigate to your project, and under Authentication, go to Settings. Add your domain to the list of authorized domains.
 
-<img src="public/images/firebase/firebase-authorized-domains.png" alt="firebase authorized domains" style="max-width: 900px;">
+<img src="/images/firebase/firebase-authorized-domains.png" alt="firebase authorized domains" style="max-width: 900px;">
 
 ---
 
@@ -4531,12 +4505,12 @@ Environment variables can be used for many purposes. You define them in your App
 ### Define the environment variables
 
 Navigate to your App's setting and add an environment variable.
-<img src="public/images/env_config.png" alt="Add Environment Variable" style="border: solid 1px lightgrey" />
+<img src="/images/env_config.png" alt="Add Environment Variable" style="border: solid 1px lightgrey" />
 
 ### Using the environment variables
 
 Any screens can reference the variable with `${env.variable_name}`. Here we prefix the image with the `imageBaseUrl`.
-<img src="public/images/env_usage.png" alt="Add Environment Variable" style="border: solid 1px lightgrey" />
+<img src="/images/env_usage.png" alt="Add Environment Variable" style="border: solid 1px lightgrey" />
 
 ### Override environment variables to load images locally
 
@@ -4633,7 +4607,7 @@ Column:
         text: Hello ${name}
 ```
 The output will look something like this:
-<img src="public/images/screenshots/item-template-1.png" alt="Screenshot" width="450">
+<img src="/images/screenshots/item-template-1.png" alt="Screenshot" width="450">
 
 ### Binding to API data
 In a real-world scenario, you would bind to data from an API response. Below is the shorten JSON payload from hitting "https://randomuser.me/api/?results=5". We'll be using this to render our UI.
@@ -4702,7 +4676,7 @@ API:
     url: https://randomuser.me/api/?results=5
 ```
 The output will look something like this:
-<img src="public/images/screenshots/item-template-2.png" alt="Screenshot" width="450">
+<img src="/images/screenshots/item-template-2.png" alt="Screenshot" width="450">
 
 Here's an [example](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/yWM8nLePITT8IpCZLMNe) of how to use `indexId` property to access the current index of the data array.
 
@@ -4715,7 +4689,7 @@ The syntax for binding is `${bindingSource}`, and can be used anywhere a text or
 
 ### Binding to an editable widget
 Ensemble makes it easy to listen for changes to any widget's properties. In the example below, we defined a TextInput and give it an id "myInput". We then created a readonly Text and bind its text property to the TextInput, prefixed with "You entered". As you are making changes to the TextInput and the focus leaves, TextInput will dispatch its changes to all listeners, causing the readonly Text to re-render its content.
-<img src="public/images/screenshots/binding-1.png" alt="Screenshot">
+<img src="/images/screenshots/binding-1.png" alt="Screenshot">
 
 (to be updated ...)
 
@@ -4773,7 +4747,7 @@ First, download Ensemble Preview app by scanning this QR Code:
 
 <div style="width:150px; height:150px">
 
-![QR code for Ensemble Preview](/public/images/app-qr.png)
+![QR code for Ensemble Preview](/images/app-qr.png)
 
 </div>
 
@@ -4847,17 +4821,17 @@ On Google's API Console, create your OAuth client ID for each platform (i.e. iOS
 
 For `iOS`, enter the bundle ID of your App.
 
-<img src="public/images/signin-google-ios.png" alt="Google iOS client ID" style="border: solid 1px lightgrey; max-width: 900px" />
+<img src="/images/signin-google-ios.png" alt="Google iOS client ID" style="border: solid 1px lightgrey; max-width: 900px" />
 
 For `Android`, use Web Application type (don't use Android type). You can leave Authorized Origins and Redirect URIs blank.
 
-<img src="public/images/signin-google-android.png" alt="Google Android client ID" style="border: solid 1px lightgrey; max-width: 900px" />
+<img src="/images/signin-google-android.png" alt="Google Android client ID" style="border: solid 1px lightgrey; max-width: 900px" />
 
 For `Web`, use Web Application type. 
 - Authorized Origins should be your domain (e.g. https://mycompany.com). You can also use localhost while in development (e.g. http://localhost:3000).
 - Redirect URIs can be empty.
 
-<img src="public/images/signin-google-web.png" alt="webclient ID" style="border: solid 1px lightgrey; max-width: 900px" />
+<img src="/images/signin-google-web.png" alt="webclient ID" style="border: solid 1px lightgrey; max-width: 900px" />
 
 Using a code or text editor, open `/ensemble/ensemble-config.yaml` and enter these credentials.
 
@@ -4943,11 +4917,11 @@ Note: we are showing here how to deploy your app to Apple TestFlight. Please fol
 If this is a brand-new app, you first need to register a unique Bundle ID and a unique App Name with Apple.
 1. [Register the Bundle ID](https://developer.apple.com/account/resources/identifiers/bundleId/add/bundle) `e.g. com.mycompany.appname`. This is important and cannot be changed later on. You'll also need this ID later in this document.
 
-<img src="public/images/deploy/deploy_ios_0.png" alt="Add Bundle ID" style="border: solid 1px lightgrey" />
+<img src="/images/deploy/deploy_ios_0.png" alt="Add Bundle ID" style="border: solid 1px lightgrey" />
 
 2. [Create a New App](https://appstoreconnect.apple.com/apps) using a unique App Name and this Bundle ID. The App Name is how your app will eventually be searchable and appear in the App Store. 
 
-<img src="public/images/deploy/deploy_ios_1.png" alt="Add App" style="border: solid 1px lightgrey" />
+<img src="/images/deploy/deploy_ios_1.png" alt="Add App" style="border: solid 1px lightgrey" />
 
 #### Preparing Ensemble for uploading
 * Make sure you completed the [Preparing your App](/deploy/1-prepare-app.md) step, including following the starter repo's README instruction to configure and run your App.
@@ -4955,16 +4929,16 @@ If this is a brand-new app, you first need to register a unique Bundle ID and a 
 * Under `ios` folder, open `Runner.xcworkspace` with [XCode](https://developer.apple.com/xcode/).
   * Select the Team (Apple Account) used to create the App and Bundle ID. You may need to log in to your Apple Developer Account under XCode > Preferences > Accounts.
   * Under `Signing & Capabilities`, ensure the `Bundle Identifier` matches exactly your Bundle ID above.
-  <img src="public/images/deploy/deploy_ios_2.png" alt="Update App configs" style="border: solid 1px lightgrey" />
+  <img src="/images/deploy/deploy_ios_2.png" alt="Update App configs" style="border: solid 1px lightgrey" />
 
   * Under `Info`, find the `Bundle display name` key and update its value to your desire name (e.g. My First App). This is the name that shows up once your App has been installed. This doesn't have to exactly match your App Name, and can be shorter so its name is not cut off under the App icon.
-  <img src="public/images/deploy/deploy_ios_3.png" alt="Add App" style="border: solid 1px lightgrey" />
+  <img src="/images/deploy/deploy_ios_3.png" alt="Add App" style="border: solid 1px lightgrey" />
 
 * Run `flutter build ipa --no-tree-shake-icons`. This will create the ipa file at /build/ios/ipa/my_first_app.ipa.
 * Download Apple’s [Transporter](https://apps.apple.com/us/app/transporter/id1450874784?mt=12) and login with the same Apple account. Drop the ipa file into the Transporter App then click Deliver.
   * This may take 5-10 minutes AFTER upload completes before the build shows up under `Your App Name > TestFlight` tab, plus another 10-15 minutes to complete processing.
 * Click to manage Apple's app compliance by answering the questions.
-  <img src="public/images/deploy/deploy_ios_4.png" alt="Update App configs" style="border: solid 1px lightgrey" />
+  <img src="/images/deploy/deploy_ios_4.png" alt="Update App configs" style="border: solid 1px lightgrey" />
 * You can now invite your team members to install your App under `Internal Testing`. Each person can download the app via TestFlight. 
 
 ---
@@ -5272,7 +5246,7 @@ In your local directory where you cloned Ensemble Starter, navigate to `/ensembl
 
 This name will not be customer-facing.
 
-<img src="public/images/local_app_folder.png" alt="Local app folder" height="500"/>
+<img src="/images/local_app_folder.png" alt="Local app folder" height="500"/>
 
 ## Step 2. Copy your app artifacts  
 
@@ -5384,7 +5358,7 @@ This guide outlines the steps to generate a Google Play Console API Key, enablin
 3. **Access APIs & Services:**
     - Select `APIs & Services` from Quick Access. If not visible, use the search bar in the top center.
 
-![Google Cloud Console Home screen](/public/images/deploy/b88f2d9e-8959-4c03-aa3d-b30b3aac56da.png)
+![Google Cloud Console Home screen](/images/deploy/b88f2d9e-8959-4c03-aa3d-b30b3aac56da.png)
 
 4. **Navigate to Credentials:**
     - In the left panel, click on `Credentials`.
@@ -5394,13 +5368,13 @@ This guide outlines the steps to generate a Google Play Console API Key, enablin
     - Provide a name for the service account (memorable for identification).
     - Click `Create and Continue`.
 
-![Add Credentials](/public/images/deploy/2f64dff5-5657-40dd-9461-e79eb5ccb6aa.png)
+![Add Credentials](/images/deploy/2f64dff5-5657-40dd-9461-e79eb5ccb6aa.png)
 
 6. **Define Role:**
     - Choose the role as `Service Account User`.
     - Click `Done` to create the API Key.
 
-![Select adequate role](/public/images/deploy/81cb60a6-acac-41d4-b18b-53faceaa2bd6.png)
+![Select adequate role](/images/deploy/81cb60a6-acac-41d4-b18b-53faceaa2bd6.png)
 
 7. **Copy Email Address:**
     - Copy the email address of the created key (will be needed later).
@@ -5408,14 +5382,14 @@ This guide outlines the steps to generate a Google Play Console API Key, enablin
 8. **Manage Key:**
     - Click on the edit icon in the Action row, select `Manage Key`.
 
-![Manage Key](/public/images/deploy/da4986fe-311c-4080-87cc-240b119fbce2.png)
+![Manage Key](/images/deploy/da4986fe-311c-4080-87cc-240b119fbce2.png)
 
 9. **Generate JSON Key File:**
     - In the `Keys` tab, click on `Add Key`, then `Create new key`.
     - Choose `JSON` and click `Create`.
     - Save the downloaded `.json` file securely.
 
-![Download json key](/public/images/deploy/0cede178-01ac-4fe8-841d-25e59067f9ec.png)
+![Download json key](/images/deploy/0cede178-01ac-4fe8-841d-25e59067f9ec.png)
 
 **Note:** This key needs to be linked to Google Play Console before use.
 
@@ -5425,18 +5399,18 @@ This guide outlines the steps to generate a Google Play Console API Key, enablin
 11. **Invite New Users:**
     - Click on `Invite New Users` and paste the email address saved in step 7.
 
-![Invite new user](/public/images/deploy/bd4df269-e351-4dad-a82d-acb45bc99801.png)
+![Invite new user](/images/deploy/bd4df269-e351-4dad-a82d-acb45bc99801.png)
 
 12. **Set App Permissions:**
     - In the App Permissions tab, select the apps for direct upload using the build system.
 
-![App Permissions](/public/images/deploy/e2294e7f-01e2-4223-a378-9851fc34b1fe.png)
+![App Permissions](/images/deploy/e2294e7f-01e2-4223-a378-9851fc34b1fe.png)
 
 13. **Configure Account Permissions:**
     - In the `Account Permissions` tab, check relevant options under `App Access` and `Releases`.
 
-![Account permissions 1](/public/images/deploy/41ae9244-7dd3-4ba5-b7bf-26068bd85ac7.png)
-![Account permissions 2](/public/images/deploy/5fd3b828-cfd9-4be8-9b21-54125c38a09e.png)
+![Account permissions 1](/images/deploy/41ae9244-7dd3-4ba5-b7bf-26068bd85ac7.png)
+![Account permissions 2](/images/deploy/5fd3b828-cfd9-4be8-9b21-54125c38a09e.png)
 
 14. **Send Invite:**
     - Click on `Invite User`, then `Send Invite` to link the generated key with the apps successfully.
@@ -5470,13 +5444,13 @@ This guide provides step-by-step instructions on generating an API key for App S
 5. **Generate a New API Key:**
    - Click on the `+` button.
   
-![Keys section](/public/images/deploy/a1622af9-6bc4-44e8-9d40-01ecaa802e38.png)
+![Keys section](/images/deploy/a1622af9-6bc4-44e8-9d40-01ecaa802e38.png)
 
 6. **Fill in the Details:**
    - Provide a name for your API key. It will be useful to identify your key later on.
    - Choose `App Manager` in the access part of the dialog.
 
-![API Key form](/public/images/deploy/63059213-709b-4686-84ab-7293398951e1.png)
+![API Key form](/images/deploy/63059213-709b-4686-84ab-7293398951e1.png)
 
 7. **Generate the Key:**
    - Click on the `Generate` button to create the API key.
@@ -5485,7 +5459,7 @@ This guide provides step-by-step instructions on generating an API key for App S
    - There will be a `Download` button for the newly generated key. Download the `.p8` file which is the API key.
    - Safely store the key file, as it cannot be downloaded again.
 
-![Download the generated API Key](/public/images/deploy/4998013e-c189-4289-97b9-e4a6fb61038a.png)
+![Download the generated API Key](/images/deploy/4998013e-c189-4289-97b9-e4a6fb61038a.png)
 
 9. **Copy Key ID and Issuer ID:**
    - Copy the `Key ID` for the generated key. Also, copy the `Issuer Id` at the top.
@@ -5518,7 +5492,7 @@ This guide outlines the steps to generate a Firebase Service Account with the ne
 - Select the **Service accounts** tab
 - Click the **X service accounts** button to open the Google Cloud Platform interface.
 
-![Firebase Service Accounts Button](/public/images/deploy/firebase_service_accounts_button.png)
+![Firebase Service Accounts Button](/images/deploy/firebase_service_accounts_button.png)
 
 ---
 
@@ -5529,7 +5503,7 @@ This guide outlines the steps to generate a Firebase Service Account with the ne
 - In the Google Cloud Platform, navigate to the **Service Accounts** section.
 - Click the **Create Service Account** button.
 
-![Create Service Account Button](/public/images/deploy/service-account.png)
+![Create Service Account Button](/images/deploy/service-account.png)
 
 #### b. Fill in Service Account Details
 
@@ -5546,7 +5520,7 @@ This guide outlines the steps to generate a Firebase Service Account with the ne
 - In the list of service accounts, find the one you just created.
 - Click the menu in the **Actions** column and select **Manage keys**.
 
-![Manage Keys Button](/public/images/deploy/google_cloud_three.png)
+![Manage Keys Button](/images/deploy/google_cloud_three.png)
 
 #### b. Create a New Key
 
@@ -5554,7 +5528,7 @@ This guide outlines the steps to generate a Firebase Service Account with the ne
 - Select **JSON** as the key type and click **Create**.
 - Download the JSON key file and save it in a secure location.
 
-![Download JSON Button](/public/images/deploy/google_cloud_four.png)
+![Download JSON Button](/images/deploy/google_cloud_four.png)
 
 ---
 
@@ -8222,7 +8196,7 @@ API:
       };
 
 ```
-<img src="public/images/screenshots/map-2.png" alt="Screenshot" width="450">
+<img src="/images/screenshots/map-2.png" alt="Screenshot" width="450">
 
 ### Using Images
 You can use images as markers by providing a URL or local asset. To further fine-tune the marker dimension, use `resizedWidth` or `resizedHeight`, but avoid using both to maintain the aspect ratio.
@@ -8290,7 +8264,7 @@ API:
         }]
       };
 ```
-<img src="public/images/screenshots/map-3.png" alt="Screenshot" width="450">
+<img src="/images/screenshots/map-3.png" alt="Screenshot" width="450">
 
 ## Properties
 
@@ -9831,92 +9805,6 @@ Users can set the playback rate and volume using the provided text input fields:
 ```
 
 Note: The YouTube feature is compatible with Native iOS and Android applications.
-
----
-
-# Composite Widgets
-
-Composite widgets are a powerful concept in Ensemble where multiple smaller widgets are combined to create a more complex and reusable widget.
-
-Composite widgets can be composed of any combination of basic UI elements such as buttons, text fields, labels, etc., allowing app developers to create complex UI components without having to recreate the same layout and functionality multiple times.
-
-## Benefits of Composite Widgets
-
-1. **Reusability**: Composite widgets can be reused across different parts of an app or even across multiple apps, reducing duplication of code and effort.
-2. **Modularity**: By breaking down UI components into smaller widgets, developers can build more modular and maintainable app definitions.
-3. **Customization**: Composite widgets allow for easy customization through inputs, enabling app developers to adapt the widget's behavior and appearance to suit different use cases.
-
-## How to use them
-
-When using a composite widget, 
-
-1. prefix the widget name with `ensemble`
-2. pass required inputs
-3. further customize the widget with optional parameters
-
-```yaml
-View:
-  body:
-    Column:
-      children:
-        - ensemble.RatingStars:
-            inputs: 
-              rating: 3
-              size: 24
-              starColor: white
-              starBackgroundColor: red
-              starGaps: 8
-              starPadding: 8
-              starBorderRadius: 40
-```
-
-## Directory of composite widgets
-
-| Name | Kitchen sink example | Output |
-| ---- | -------------------- | ------ |
-| HorizontalProgressBar | [link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/rlWyrWZrkb6JhxoACptf) | ![HorizontalProgressBar](/public/images/composite-widgets/HorizontalProgressBar.png) |
-| ImageThumbnailCarousel | [link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/gRexsL9GfS9k6rLswMck) | ![ImageThumbnailCarousel](/public/images/composite-widgets/ImageThumbnailCarousel.png) |
-| ProfileImageWithIndicator | [link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/xCU7BvaYzK20NsEuqyNB) | ![ProfileImageWithIndicator](/public/images/composite-widgets/ProfileImageWithIndicator.png) |
-| RatingStars | [link](https://studio.ensembleui.com/app/8PghcmhtGkWiWffmhDDl/widget/pn4g23nRuQ5D8AsN1qtp) | ![RatingStars](/public/images/composite-widgets/RatingStars.png) |
-
-
-## Contributing to Composite Widgets
-
-Contributions from the community can greatly enhance the functionality and versatility of composite widgets. Here's how you can contribute:
-
-**1. Create your widget**
-
-Create an app and follow these guidelines to create your proposed composite widget.
-
-- In Studio, navigate to widgets tab of your app and create a new widget.
-- Your widget should take inputs allowing app developers to customize the widget. Required inputs should be kept to items that without them, the widget cannot be rendered. Styling of the widget should be configurable by using optional inputs. For instance, background of a Column can be made optional.
-
-  ```yaml
-    Widget:
-      inputs:
-        - bgColor # this is optional and defaults to white
-      body:
-        Column:
-          styles:
-            backgroundColor: '${ bgColor ? bgColor : "white" }'
-  ```
-
-- Avoid setting width and height specially on container widgets such as rows and columns.
-- Your widget should be self contained and not rely on definitions outside the widget such as API definitions and storage.
-
-
-**2. Create a screen documenting the widget**
-
-Within the same app, create a screen to outline inputs and several example usages. See [this example](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/rlWyrWZrkb6JhxoACptf) for reference.
-
-**3. Share your widget on Builder Support**
-
-Join Ensemble [Discord server](https://dsc.gg/ensembleui), and post a new topic in [Builder Support channel](https://discord.com/channels/1031982848485359626/1088664937288699992) with a link to your app.
-
-Make sure to make your app public so that reviewers can access it.
-
-
-![Make app public](/public/images/make-app-public.jpg)
 
 ---
 
@@ -12801,9 +12689,9 @@ When user clicks on button browser pop-up asks for permission and as you allow i
 
 **Output**
 
-![Alt text](/public/images/actions/image-.png)
+![Alt text](/images/actions/image-.png)
 
-![Alt text](/public/images/actions/image--2.png)
+![Alt text](/images/actions/image--2.png)
 
 ---
 
@@ -13060,7 +12948,7 @@ The share action is triggered when the "Open Share Sheet" button is tapped. It t
 ```
 **Share Sheet Screenshot**
 <div style="display: flex; flex-direction: column; align-items: center; margin-top: 10px;">
-  <img src="public/images/actions/sharesheetiphone.png" style="text-align: center;" alt="Output Screenshot" width="250"/>
+  <img src="/images/actions/sharesheetiphone.png" style="text-align: center;" alt="Output Screenshot" width="250"/>
   <p>Clicking the "Open Share Sheet" will open share sheet to share the provided text and title</p>
 </div>
 
@@ -15357,9 +15245,9 @@ When user clicks on button browser pop-up asks for permission and as you allow i
 
 **Output**
 
-![Alt text](/public/images/actions/image-.png)
+![Alt text](/images/actions/image-.png)
 
-![Alt text](/public/images/actions/image--2.png)
+![Alt text](/images/actions/image--2.png)
 
 ---
 
@@ -15492,9 +15380,9 @@ Try complete example [here](https://studio.ensembleui.com/app/e24402cb-75e2-404c
 
 **Output**
 
-![Alt text](/public/images/actions/image--4.png)
+![Alt text](/images/actions/image--4.png)
 
-![Alt text](/public/images/actions/image--5.png)
+![Alt text](/images/actions/image--5.png)
 
 **Example with inputs**
 
@@ -15557,9 +15445,9 @@ MyCustomDialog:
 
 **Output**
 
-![Alt text](/public/images/actions/image--1.png)
+![Alt text](/images/actions/image--1.png)
 
-![Alt text](/public/images/actions/image--3.png)
+![Alt text](/images/actions/image--3.png)
 
 ---
 
@@ -17930,7 +17818,7 @@ Add your question [Builder Support channel](https://discord.com/channels/1031982
 Make sure to provide us with details. If you have an existing screen, share a link to your screen in Ensemble Studio. To allow others to access it, make your app public. You can undo this after your issue is resolved.
 
 
-![Make app public](/public/images/make-app-public.jpg)
+![Make app public](/images/make-app-public.jpg)
 
 ---
 
@@ -18005,7 +17893,7 @@ GridView:
 # https://studio.ensembleui.com/app/nWsD5baeykm3W772kkSw/screen/WS6fad3K96prUBXM4Hde
 ```
 
-![Flex](/public/images/responsive-grid.png)
+![Flex](/images/responsive-grid.png)
 
 ## 3. Wrap content with Flow widget
 
@@ -18023,7 +17911,7 @@ Flow:
 # https://studio.ensembleui.com/app/nWsD5baeykm3W772kkSw/screen/YbsqXNaXL5kpxKavlGKQ    
 ```
 
-![Flow](/public/images/responsive-flow.png)
+![Flow](/images/responsive-flow.png)
 
 ## 4. Toggle between horizontal and vertical layouts with Flex widget
 
@@ -18039,7 +17927,7 @@ Flex:
 
 ```
 
-![Flex](/public/images/responsive-flex.png)
+![Flex](/images/responsive-flex.png)
 
 ---
 
@@ -18050,6 +17938,7 @@ This guide shows the typical interaction for updating a user's profile picture i
 Here's the experience we'll work toward:
 
 <div style="position: relative; height: 640px; width: 280px"><iframe src="https://demo.arcade.software/YDZArv16EF5lLUvVjTeb?embed" title="Arcade Flow (Wed Jan 03 2024)" frameborder="0" loading="lazy" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;color-scheme: light;"></iframe>
+</div>
 
 ## 1. Display user image with an icon
 
@@ -18090,7 +17979,7 @@ To display an icon on top of the avatar, we use a the Stack widget and pass thes
 
 The Stack widget renders each child on top of the previous one. By setting `styles.alignChildren` to `bottomRight`, we can achive the following:
 
-<img src="public/images/profile-photo-1.png">
+<img src="/images/profile-photo-1.png">
 
 
 ```yaml
@@ -18126,6 +18015,7 @@ The Stack widget renders each child on top of the previous one. By setting `styl
 When user taps the profile image, we want to display a bottom sheet with two buttons:
 
 <div style="position: relative; height: 500px; width: 280px"><iframe src="https://demo.arcade.software/klblt8altkrLUAxoGEhi?embed" title="studio.ensembleui.com/preview/index.html?appId=nWsD5baeykm3W772kkSw&amp;screenId=P2v4AOS8w3DXfUauqi0Q&amp;showAction=false&amp;devicePreview=true&amp;instantPreview=true" frameborder="0" loading="lazy" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;color-scheme: light;"></iframe>
+</div>
 
 To achieve the above, first wrap the Stack widget inside a Column widget so we can add an onTop to the Column. onTap, we use `showBottomModal` action to open a bottom sheet:
 
@@ -18343,7 +18233,7 @@ Spendings:
 
 **Output**
 
-![Alt text](/public/images/tips/image-8.png)
+![Alt text](/images/tips/image-8.png)
 
 
 #### Explanation
@@ -18522,7 +18412,7 @@ View:
 #### Action Output Screenshot:
 
 <div style="display: flex; flex-direction: column; align-items: center; margin-top: 10px;">
-<img src="public/images/tips/google_map.jpg" style="text-align: center;" alt="Output Screenshot" width="250"/>
+<img src="/images/tips/google_map.jpg" style="text-align: center;" alt="Output Screenshot" width="250"/>
   <p>Clicking the icon will open Google Maps with the provided coordinates and label.</p>
 </div>
 
@@ -18566,7 +18456,7 @@ View:
 #### Action Output Screenshot:
 
 <div style="display: flex; flex-direction: column; align-items: center; margin-top: 10px;">
-  <img src="public/images/tips/apple_maps.png" style="text-align: center;" alt="Output Screenshot" width="250"/>
+  <img src="/images/tips/apple_maps.png" style="text-align: center;" alt="Output Screenshot" width="250"/>
   <p>Clicking the icon will open Apple Maps with the provided coordinates and label.</p>
 </div>
 
@@ -18621,11 +18511,11 @@ View:
 #### Action Output Screenshot:
 <div style="display: flex; align-items: center; justify-content: center; margin-top: 10px; gap: 20px ">
     <div style="display: flex; flex-direction: column; align-items: center;">
-      <img src="public/images/tips/dynamic_google_map.jpg" style="text-align: center;" alt="Output Screenshot" width="250"/>
+      <img src="/images/tips/dynamic_google_map.jpg" style="text-align: center;" alt="Output Screenshot" width="250"/>
       <p>Output on Android</p>
     </div>
     <div style="display: flex; flex-direction: column; align-items: center;">
-      <img src="public/images/tips/dynamic_apple_map.png" style="text-align: center;" alt="Output Screenshot" width="250"/>
+      <img src="/images/tips/dynamic_apple_map.png" style="text-align: center;" alt="Output Screenshot" width="250"/>
       <p>Output on Iphone</p>
     </div>
 </div>
@@ -18784,9 +18674,9 @@ ViewGroup:
               userId: "${ensemble.storage.userAccount != null ? ensemble.storage.userAccount.id : ''}"
 ```
 
-![Alt text](/public/images/tips/image-9.png)
+![Alt text](/images/tips/image-9.png)
 
-![Alt text](/public/images/tips/image-10.png)
+![Alt text](/images/tips/image-10.png)
 
 ---
 
@@ -19195,10 +19085,10 @@ Here are two screenshots that show the UI with and without the 3-button navigati
   <table>
     <tr>
       <td style=" padding: 10px; text-align: center; vertical-align: middle; height: 200px;">
-        <img width="200" alt="With 3-Button Navigation Bar" src="public/images/tips/safeAreaBottom1.jpg">
+        <img width="200" alt="With 3-Button Navigation Bar" src="/images/tips/safeAreaBottom1.jpg">
       </td>
       <td style=" padding: 10px; text-align: center; vertical-align: middle; height: 200px;">
-        <img width="200" alt="With Swipe Navigation" src="public/images/tips/safeAreaBottom2.jpg">
+        <img width="200" alt="With Swipe Navigation" src="/images/tips/safeAreaBottom2.jpg">
       </td>
     </tr>
   </table>
