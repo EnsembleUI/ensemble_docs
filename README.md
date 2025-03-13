@@ -27,15 +27,15 @@ Ensemble provides a browser-based IDE, [Ensemble Studio](https://studio.ensemble
 ## Table of Contents
 
 - [Studio overview](#studio-overview)
-- **desktop-app**
+- **Desktop App**
   - [Ensemble Studio Desktop App](#ensemble-studio-desktop-app)
-- **screens-and-widgets**
+- **Screens and Widgets**
   - [Ensemble Screen Structure](#ensemble-screen-structure)
   - [Layouts](#layouts)
   - [Widgets Directory](#widgets-directory)
 - [events-and-actions](#events-and-actions)
 - [Script with JavaScript](#script-with-javascript)
-- **apis**
+- **Apis**
   - [Interact with APIs](#interact-with-apis)
   - [Define APIs](#define-apis)
   - [Invoking APIs, aka calling APIs](#invoking-apis-aka-calling-apis)
@@ -47,7 +47,7 @@ Ensemble provides a browser-based IDE, [Ensemble Studio](https://studio.ensemble
   - [SSL Configuration](#ssl-configuration)
   - [GraphQL](#graphql)
   - [Using WebSockets](#using-websockets)
-- **theme-and-styling**
+- **Theme and Styling**
   - [Theme](#theme)
   - [Animations in EnsembleUI](#animations-in-ensembleui)
   - [Using Custom Fonts](#using-custom-fonts)
@@ -56,32 +56,32 @@ Ensemble provides a browser-based IDE, [Ensemble Studio](https://studio.ensemble
 - [Assets (images, videos, etc.)](#assets-images-videos-etc)
 - [Persistent Local Storage](#persistent-local-storage)
 - [App Settings](#app-settings)
-- **firebase**
+- **Firebase**
   - [Configuration of Firebase Project with Ensemble App](#configuration-of-firebase-project-with-ensemble-app)
   - [Calling Cloud Firestore APIs](#calling-cloud-firestore-apis)
 - [Translations](#translations)
-- **authentication**
+- **Authentication**
   - [Authentication](#authentication)
   - [Social Sign In](#social-sign-in)
   - [Setting up Authentication with Firebase](#setting-up-authentication-with-firebase)
   - [Setting up Authentication with Auth0](#setting-up-authentication-with-auth0)
-- **moengage**
+- **Moengage**
   - [MoEngage Integration](#moengage-integration)
-- **deep-link**
+- **Deep Link**
   - [Setup Deeplink](#setup-deeplink)
   - [Setup Deferred Deeplink](#setup-deferred-deeplink)
-- **extending-ensemble**
+- **Extending Ensemble**
   - [Embed Flutter screen in an Ensemble app](#embed-flutter-screen-in-an-ensemble-app)
   - [Using local assets](#using-local-assets)
-- **concepts**
+- **Concepts**
   - [Understanding Widget Sizing](#understanding-widget-sizing)
   - [Item Template](#item-template)
   - [Data Binding](#data-binding)
   - [Screen Lifecycle](#screen-lifecycle)
   - [Custom Widgets](#custom-widgets)
-- **test**
+- **Test**
   - [Preview your app](#preview-your-app)
-- **deploy**
+- **Deploy**
   - [Preparing your App for deployment](#preparing-your-app-for-deployment)
   - [Configure Social Sign In for Deployment](#configure-social-sign-in-for-deployment)
   - [Deploy to iOS TestFlight](#deploy-to-ios-testflight)
@@ -94,7 +94,7 @@ Ensemble provides a browser-based IDE, [Ensemble Studio](https://studio.ensemble
   - [Guide: Generating API Key for App Store Connect](#guide-generating-api-key-for-app-store-connect)
   - [Guide: Generating a Firebase Service Account for App Distribution](#guide-generating-a-firebase-service-account-for-app-distribution)
 - [Host and serve your app definition on your own server](#host-and-serve-your-app-definition-on-your-own-server)
-- **widgets**
+- **Widgets**
   - [Accordion Widget](#accordion-widget)
   - [Avatar widget](#avatar-widget)
   - [Button widget](#button-widget)
@@ -154,8 +154,8 @@ Ensemble provides a browser-based IDE, [Ensemble Studio](https://studio.ensemble
   - [Video widget](#video-widget)
   - [WebView widget](#webview-widget)
   - [Youtube](#youtube)
-- [composite-widgets](#composite-widgets)
-- **actions**
+- [Composite Widgets](#composite-widgets)
+- **Actions**
   - [authenticateByBiometric](#authenticatebybiometric)
   - [BLE Client](#ble-client)
   - [callExternalMethod](#callexternalmethod)
@@ -202,10 +202,10 @@ Ensemble provides a browser-based IDE, [Ensemble Studio](https://studio.ensemble
   - [stopTimer](#stoptimer)
   - [takeScreenshot](#takescreenshot)
   - [uploadFiles](#uploadfiles)
-- **utilities**
+- **Utilities**
   - [Formatter](#formatter)
   - [Device](#device)
-- **device-capabilities**
+- **Device Capabilities**
   - [checkPermission](#checkpermission)
   - [getLocation](#getlocation)
   - [getPhoneContacts](#getphonecontacts)
@@ -223,7 +223,7 @@ Ensemble provides a browser-based IDE, [Ensemble Studio](https://studio.ensemble
   - [showDialog](#showdialog)
   - [showNotification](#shownotification)
   - [uploadFiles](#uploadfiles)
-- **javascript-reference**
+- **Javascript Reference**
   - [Add logic using JavaScript](#add-logic-using-javascript)
   - [JavaScript Date](#javascript-date)
   - [Ensemble Objects and their properties](#ensemble-objects-and-their-properties)
@@ -237,7 +237,7 @@ Ensemble provides a browser-based IDE, [Ensemble Studio](https://studio.ensemble
   - [Number Functions](#number-functions)
   - [String Functions](#string-functions)
 - [AppInfo object](#appinfo-object)
-- **tips-and-tricks**
+- **Tips and Tricks**
   - [Getting help from Ensemble team](#getting-help-from-ensemble-team)
   - [Custom BottomNavBar item styling](#custom-bottomnavbar-item-styling)
   - [Building responsive UIs](#building-responsive-uis)
