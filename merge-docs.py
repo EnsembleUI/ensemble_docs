@@ -115,26 +115,6 @@ def process_dir(dir_path, skip_index=True):
             nodes.append(group_node)
     return nodes
 
-def generate_toc(nodes, depth=0):
-    """Generate a nested markdown list for the Table of Contents.
-    Folder names are converted into sentence-case.
-    """
-    toc_lines = []
-    indent = "  " * depth
-    for node in nodes:
-        if "children" in node:
-            title = to_sentence_case(node["title"])
-            # If the group had an index, we would link it; now we simply show the folder name.
-            toc_lines.append(f"{indent}- [{title}](#{slugify(title)})")
-            if node["children"]:
-                toc_lines += generate_toc(node["children"], depth+1)
-        else:
-            title = node["title"]
-            anchor_text = node.get("heading", title)
-            anchor = slugify(anchor_text) if anchor_text else ""
-            toc_lines.append(f"{indent}- [{title}](#{anchor})")
-    return toc_lines
-
 def clean_content(lines):
     """
     Clean the content lines by:
@@ -230,21 +210,8 @@ def resolve_entry_path_custom(dir_path, name):
             return path
     return None
 
-index_path = resolve_entry_path_custom(pages_dir, "index")
-index_lines = []
-# We do not include the root index file in the final output.
-
 # Assemble the final README content.
 output_lines = []
-# Do not add index_lines since we ignore index.
-# Generate the Table of Contents from the sidebar structure.
-toc = generate_toc(structure)
-if toc:
-    output_lines.append("## Table of Contents")
-    output_lines.append("")
-    output_lines += toc
-    output_lines.append("")
-# Append the remaining content in the defined order.
 output_lines += collect_content(structure)
 
 # Write the merged content to README.md.
