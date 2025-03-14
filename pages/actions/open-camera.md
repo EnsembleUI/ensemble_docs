@@ -4,13 +4,15 @@
 
 ### Properties
 
-| Property   | Type   | Description                                                                        |
-| :--------- | :----- | :--------------------------------------------------------------------------------- |
-| id         | string | Give the camera an ID, allows you to bind to its result. e.g. ${cameraId.files...} |
-| onComplete | action | Execute an Action after completing capturing media                                 |
-| onClose    | action | Execute an Action on camera close                                                  |
-| onCapture  | action | Execute an Action on each capture                                                  |
-| options    | object | different options to chose for `openCamera` action. [see properties](#)            |
+| Property      | Type   | Description                                                                        |
+| :---------    | :----- | :--------------------------------------------------------------------------------- |
+| id            | string | Give the camera an ID, allows you to bind to its result. e.g. ${cameraId.files...} |
+| onComplete    | action | Execute an Action after completing capturing media                                 |
+| onClose       | action | Execute an Action on camera close                                                  |
+| onCapture     | action | Execute an Action on each capture                                                  |
+| options       | object | different options to chose for `openCamera` action. [see properties](#)            |
+| overlayWidget | widget | Custom overlay Widget to display over camera.                                      |
+| loadingWidget | widget | Custom widget to show for loading indicator in camera.                             |
 
 #### properties.options
 
@@ -34,6 +36,7 @@
 | assistAngle             | object  | Show assist message whenever angle goes below minAngle or above minAngle. [see properties](#values-for-optionsassistangle)     |
 | assistSpeed             | object  | Show assist message whenever camera is moving faster than maxSpeed. [see properties](#values-for-optionsassistspeed)           |
 | autoCaptureInterval     | integer | If set any number n, on each n interval camera will capture                                                                    |
+| captureOverlay          | boolean | If set picture will be cropped according to overlay widget                                                                     |
 
 ##### Values for options.assistAngle
 
@@ -148,6 +151,38 @@ View:
             assistSpeedMessage: Please try to speed below 10 km/hr.
 ```
 
+
+
+`openCamera` also comes with custom overlay widget
+
+- captureOverlay, crop image according to overlay widget.
+- height/width, required to specify the crop area of widget.
+
+
+
+```yaml
+- Button:
+    label: Camera with overlay widget.
+    onTap:
+      openCamera:
+        options:
+          captureOverlay: true
+        
+        loadingWidget:
+          Progress:
+            display: circular
+            id: loading
+            visible: false 
+        
+        overlayWidget:
+          Column:
+            styles:
+              height: 170
+              width: 260
+            children:
+              - Image:
+                  source: https://i.imgur.com/rEYx444.png
+```
 
 
 You can capture and upload to specified API
