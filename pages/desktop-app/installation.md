@@ -24,14 +24,7 @@ Once confirmed, the application will open.
 1. Download the macOS package [here](https://firebasestorage.googleapis.com/v0/b/ensemble-web-studio.appspot.com/o/desktop_app%2Fensemble-web-studio-darwin-arm64-0.1.0.zip?alt=media):
 2. Extract the downloaded `.zip` file
 3. Move the application to your Applications folder
-4. **Note:** Until signing and notarizing is configured, you need to clear extended attributes for the app before launching it for the first time. Run the following command in the terminal:
-
-   ```bash
-   xattr -c <path_to_ensemble_app>
-   ```
-
-   Replace <path_to_ensemble_app> with the full path to the Ensemble Web Studio application. *This step is only required during the initial launch.*
-5. Launch Ensemble Studio
+4. Launch Ensemble Studio
 
 ## Environment Modes
 
