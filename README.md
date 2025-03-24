@@ -12159,9 +12159,9 @@ Applicable on iOS/Android only. Opens the app settings page where the user can m
 | imageResolution           | string  | use this to set image resolution `low`, `medium`, `high`                                                                                          |
 | defaultFlashMode          | string  | use this to set initial flash mode `off`, `auto`, `always`                                                                                        |
 | performanceMode           | string  | Use this to set your preferred performance mode. `accurate`, `fast`                                                                               |
-| accuracyConfig            | object  | Use this to set accuracy config for face detection. Accuracy config is only supported on web. [see properties](#values-for-optionsaccuracyconfig) |
+| accuracyConfig            | object  | Use this to set accuracy config for face detection. Accuracy config is only supported on web. [see properties](#values-for-optionsfacedetectionaccuracyconfig) |
 
-##### Values for options.accuracyConfig
+##### Values for options.faceDetection.accuracyConfig
 
 > [Note]
 > Accuracy config is only supported on web.
