@@ -294,14 +294,7 @@ Once confirmed, the application will open.
 1. Download the macOS package [here](https://firebasestorage.googleapis.com/v0/b/ensemble-web-studio.appspot.com/o/desktop_app%2Fensemble-web-studio-darwin-arm64-0.1.0.zip?alt=media):
 2. Extract the downloaded `.zip` file
 3. Move the application to your Applications folder
-4. **Note:** Until signing and notarizing is configured, you need to clear extended attributes for the app before launching it for the first time. Run the following command in the terminal:
-
-   ```bash
-   xattr -c <path_to_ensemble_app>
-   ```
-
-   Replace <path_to_ensemble_app> with the full path to the Ensemble Web Studio application. *This step is only required during the initial launch.*
-5. Launch Ensemble Studio
+4. Launch Ensemble Studio
 
 ## Environment Modes
 
@@ -12173,22 +12166,22 @@ Applicable on iOS/Android only. Opens the app settings page where the user can m
 > [Note]
 > Accuracy config is only supported on web.
 
-| Property                   | Type   | Description                   |
-| :------------------------- | :----- | :---------------------------- |
-| detectionThreshold         | number | Detection threshold.          |
-| intersectionRatioThreshold | number | Intersection ratio threshold. |
-| extraHeightFactor          | number | Extra height factor.          |
-| inputSize                  | number | Input size.                   |
-| landmarkRatio              | number | Landmark ratio.               |
-| frameMargin                | number | Frame margin.                 |
-| tiltAngleThreshold         | number | Tilt angle threshold.         |
-| horizontalCenterTolerance  | number | Horizontal center tolerance.  |
-| earThreshold               | number | Ear threshold.                |
-| minFaceWidthRatio          | number | Minimum face width ratio.     |
-| maxFaceWidthRatio          | number | Maximum face width ratio.     |
-| qualityPassThreshold       | number | Quality pass threshold.       |
-| yawLowerThreshold          | number | Yaw lower threshold.          |
-| yawUpperThreshold          | number | Yaw upper threshold.          |
+| Property                   | Type   | Description                                                                  |
+| :------------------------- | :----- | :--------------------------------------------------------------------------- |
+| detectionThreshold         | number | Minimum confidence score required to consider a face detection valid.        |
+| intersectionRatioThreshold | number | Minimum allowed overlap ratio between the detected face and expected region. |
+| extraHeightFactor          | number | Additional height factor added to the face bounding box.                     |
+| inputSize                  | number | Size of the input image used for face detection.                             |
+| landmarkRatio              | number | Minimum acceptable alignment accuracy for facial landmarks.                  |
+| frameMargin                | number | Margin ratio to ensure face is not too close to frame edges.                 |
+| tiltAngleThreshold         | number | Maximum allowed tilt angle of the detected face (in degrees).                |
+| horizontalCenterTolerance  | number | Allowed tolerance for how centered the face must be horizontally.            |
+| earThreshold               | number | Minimum Eye Aspect Ratio (EAR) to detect open eyes.                          |
+| minFaceWidthRatio          | number | Minimum ratio of face width relative to the frame.                           |
+| maxFaceWidthRatio          | number | Maximum ratio of face width relative to the frame.                           |
+| qualityPassThreshold       | number | Minimum quality score required for a face to pass detection.                 |
+| yawLowerThreshold          | number | Lower bound of acceptable yaw (left-right head rotation) ratio.              |
+| yawUpperThreshold          | number | Upper bound of acceptable yaw (left-right head rotation) ratio.              |
 
 
 **Usage Examples**
