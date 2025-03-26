@@ -9,7 +9,7 @@
 
 ### Windows
 
-1. Download the Windows installer [here](https://firebasestorage.googleapis.com/v0/b/ensemble-web-studio.appspot.com/o/desktop_app%2Fensemble-web-studio-0.1.0%20Setup.exe?alt=media):
+1. Download the Windows installer [here](https://storage.googleapis.com/ensemble-web-studio.appspot.com/desktop_app/latest/win32/x64/ensemble-web-studio-x64.exe):
 
 2. Run the downloaded `.exe` file
 3. Launch Ensemble Web Studio
@@ -19,10 +19,10 @@ Step 2: Click "More info" text to reveal additional options.
 Step 3: Click "Run anyway" button to proceed with the installation.
 Once confirmed, the application will open.
 
-### MacOS
+### macOS
 
-1. Download the macOS package [here](https://firebasestorage.googleapis.com/v0/b/ensemble-web-studio.appspot.com/o/desktop_app%2Fensemble-web-studio-darwin-arm64-0.1.0.zip?alt=media):
-2. Extract the downloaded `.zip` file
+1. Download the macOS package [here](https://storage.googleapis.com/ensemble-web-studio.appspot.com/desktop_app/latest/darwin/arm64/ensemble-web-studio-arm64.dmg):
+2. Run the downloaded `.dmg` file
 3. Move the application to your Applications folder
 4. Launch Ensemble Studio
 
