@@ -373,7 +373,7 @@ When working in local mode, files are organized as follows:
 
 Key location:
 
-- `metadata.json`: App configuration and settings
+- `manifest.json`: App configuration and settings
 
 ## Additional Resources
 
