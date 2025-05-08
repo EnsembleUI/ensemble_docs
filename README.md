@@ -237,6 +237,7 @@ Ensemble provides a browser-based IDE, [Ensemble Studio](https://studio.ensemble
   - [Number Functions](#number-functions)
   - [String Functions](#string-functions)
 - [AppInfo object](#appinfo-object)
+- [Device object](#device-object)
 - **Tips and Tricks**
   - [Getting help from Ensemble team](#getting-help-from-ensemble-team)
   - [Custom BottomNavBar item styling](#custom-bottomnavbar-item-styling)
@@ -12050,39 +12051,88 @@ notifications action provides a comprehensive and customizable solution for mana
 ---
 
 # openAppSettings
+
 Applicable on iOS/Android only. Opens the app settings page where the user can manage app permissions and settings. If `target` (optional) is provided and supported on the current running platform, it will open the specific setting page, otherwise the "Settings" screen will be opened.
 
 **Inputs**:
 
-`target (optional)`: the specific setting screen (see below) to open.
+`target (optional)`: the specific setting screen (see below) to open. Defaults to "settings" if not specified.
 
 ### Properties
-| Target | Supported Platforms | Description |
-| ------ | ------------------- | ----------- |
-| accessibility       | Android                 | Open the accessibility settings |
-| alarm               | Android                 | Open the alarm settings |
-| apn                 | Android                 | Open the APN settings |
-| appLocale           | Android 13+             | Open the app language settings. This setting is only available on Android 13+ |
-| batteryOptimization | Android                 | Open the Battery Optimization settings |
-| bluetooth           | Android                 | Open the Bluetooth settings |
-| dataRoaming         | Android                 | Open the Data Roaming settings |
-| date                | Android                 | Open the date settings |
-| developer           | Android                 | Open the Developer settings |
-| device              | Android                 | Open the device settings |
-| display             | Android                 | Open the display settings |
-| hotspot             | Android                 | Open the Hotspot settings |
-| internalStorage     | Android                 | Open the internal storage settings |
-| location            | Android, iOS                 | Open the location settings |
-| lockAndPassword     | Android                 | Open the Lock And Password settings |
-| nfc                 | Android                 | Open the NFC settings |
-| notification        | Android, iOS 16+        | Open the notification settings |
-| security            | Android                 | Open the security settings |
-| settings            | Android, iOS            | Open the app settings |
-| sound               | Android                 | Open the audio settings |
-| subscriptions       | iOS 15+                 | Open the subscription settings |
-| vpn                 | Android                 | Open the VPN settings |
-| wifi                | Android                 | Open the wifi settings |
-| wireless            | Android                 | Open the wireless settings |
+
+| Target                           | Supported Platforms | Description                                                   |
+| -------------------------------- | ------------------- | ------------------------------------------------------------- |
+| settings                         | Android, iOS        | Open the main settings page                                   |
+| accessibility                    | Android, iOS        | Open the accessibility settings                               |
+| bluetooth                        | Android, iOS        | Open the Bluetooth settings                                   |
+| date                             | Android, iOS        | Open the date and time settings                               |
+| display                          | Android, iOS        | Open the display settings                                     |
+| location                         | Android, iOS        | Open the location settings                                    |
+| sound                            | Android, iOS        | Open the sound/audio settings                                 |
+| wifi                             | Android, iOS        | Open the WiFi settings                                        |
+| security                         | Android, iOS        | Open the security settings                                    |
+| hotspot                          | Android, iOS        | Open the personal hotspot settings                            |
+| appSettings                      | Android, iOS        | Open the app-specific settings                                |
+| notification                     | Android, iOS 16+    | Open the notification settings                                |
+| apn                              | Android             | Open the APN (Access Point Name) settings                     |
+| batteryOptimization              | Android             | Open the Battery Optimization settings                        |
+| dataRoaming                      | Android             | Open the Data Roaming settings                                |
+| developer                        | Android             | Open the Developer options                                    |
+| device                           | Android             | Open the device information settings                          |
+| internalStorage                  | Android             | Open the internal storage settings                            |
+| lockAndPassword                  | Android             | Open the lock screen and password settings                    |
+| nfc                              | Android             | Open the NFC settings                                         |
+| memoryCard                       | Android             | Open the memory card settings                                 |
+| addAccount                       | Android             | Open the add account screen                                   |
+| airplaneMode                     | Android             | Open the airplane mode settings                               |
+| applicationDetails               | Android             | Open the application details screen                           |
+| applicationNotification          | Android             | Open the application notification settings                    |
+| applicationSettings              | Android             | Open the application settings                                 |
+| applicationWriteSettings         | Android             | Open the application write settings                           |
+| batterySaver                     | Android             | Open the battery saver settings                               |
+| captioning                       | Android             | Open the captioning settings                                  |
+| cast                             | Android             | Open the cast settings                                        |
+| dataUsage                        | Android             | Open the data usage settings                                  |
+| appNotificationBubble            | Android             | Open the app notification bubble settings                     |
+| appNotification                  | Android             | Open the app notification settings                            |
+| search                           | Android             | Open the search settings                                      |
+| biometricEnroll                  | Android             | Open the biometric enrollment screen                          |
+| hardwareKeyboard                 | Android             | Open the hardware keyboard settings                           |
+| home                             | Android             | Open the home screen settings                                 |
+| ignoreBackgroundDataRestrictions | Android             | Open the background data restriction settings                 |
+| inputMethod                      | Android             | Open the input method settings                                |
+| inputMethodSubtype               | Android             | Open the input method subtype settings                        |
+| locale                           | Android             | Open the locale settings                                      |
+| manageAllApplications            | Android             | Open the manage all applications screen                       |
+| manageApplication                | Android             | Open the manage application screen                            |
+| manageDefaultApps                | Android             | Open the manage default apps screen                           |
+| manageExternalSources            | Android             | Open the manage external sources screen                       |
+| manageOverlay                    | Android             | Open the manage overlay settings                              |
+| vpn                              | Android             | Open the VPN settings                                         |
+| wireless                         | Android             | Open the wireless settings                                    |
+| icloud                           | iOS                 | Open the iCloud settings                                      |
+| privacy                          | iOS                 | Open the privacy settings                                     |
+| cellular                         | iOS                 | Open the cellular settings                                    |
+| siri                             | iOS                 | Open the Siri settings                                        |
+| photos                           | iOS                 | Open the photos and camera settings                           |
+| keyboard                         | iOS                 | Open the keyboard settings                                    |
+| general                          | iOS                 | Open the general settings                                     |
+| about                            | iOS                 | Open the about device screen                                  |
+| accountSettings                  | iOS                 | Open the account settings                                     |
+| autoLock                         | iOS                 | Open the auto-lock settings                                   |
+| battery                          | iOS                 | Open the battery settings                                     |
+| dictionary                       | iOS                 | Open the dictionary settings                                  |
+| facetime                         | iOS                 | Open the FaceTime settings                                    |
+| healthKit                        | iOS                 | Open the HealthKit settings                                   |
+| music                            | iOS                 | Open the music settings                                       |
+| keyboards                        | iOS                 | Open the keyboards settings (for managing multiple keyboards) |
+| languageAndRegion                | iOS                 | Open the language and region settings                         |
+| phone                            | iOS                 | Open the phone settings                                       |
+| profilesAndDeviceManagement      | iOS                 | Open the profiles and device management screen                |
+| softwareUpdate                   | iOS                 | Open the software update screen                               |
+| storageAndBackup                 | iOS                 | Open the storage and backup settings                          |
+| wallpapers                       | iOS                 | Open the wallpapers settings                                  |
+| subscriptions                    | iOS 15+             | Open the subscription settings                                |
 
 ---
 
@@ -18117,6 +18167,62 @@ View:
             text: "${appInfo.version}"
         - Text:
             text: "${appInfo.buildNumber}"
+```
+
+---
+
+# Device object
+
+You have access to the following properties of the device.
+
+## device.platform
+
+Returns the device platform, such as `web`, `ios`, `android`, `windows`, and `mac`.
+
+```yaml
+View:
+  body:
+    Text:
+      text: ${device.platform}
+```
+
+
+## device.width and device.height
+
+Returns the device width and height as integers.
+
+```yaml
+View:
+  body:
+    Text:
+      text: Current device is ${device.height} by ${device.width}
+```
+
+## Safe area
+
+A safe area defines the area within a view that isn’t covered by a navigation bar, tab bar, toolbar, etc. Safe areas are essential for avoiding a device’s interactive and display features, like the Dynamic Island on iPhone. 
+
+[See Apple Guidelines](https://developer.apple.com/design/human-interface-guidelines/layout)
+
+[Android Guidelines](https://developer.android.com/develop/ui/views/layout/display-cutout)
+
+It is only relevant if your view does not have a `header` and uses `useSafeAra: false`.
+
+
+```yaml
+View:
+  styles:
+    useSafeArea: false
+
+  body:
+    Column:
+      styles:
+        padding: 40
+      children:
+        - Text:
+            text: Size of top area used by device is ${device.safeAreaTop}
+        - Text:
+            text: Size of bottom area used by device is ${device.safeAreaBottom}
 ```
 
 ---
