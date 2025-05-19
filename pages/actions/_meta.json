@@ -11,6 +11,12 @@
   "check-permission": {
     "title": "Check Permission"
   },
+  "clear-keychain": {
+    "title": "Clear Keychain"
+  },
+  "clear-secure-storage": {
+    "title": "Clear Secure Storage"
+  },
   "close-all-dialogs": {
     "title": "Close All Dialogs"
   },
@@ -46,6 +52,9 @@
   },
   "get-phone-contacts": {
     "title": "Get Phone Contacts"
+  },
+  "get-secure-storage": {
+    "title": "Get Secure Storage"
   },
   "invoke-API": {
     "title": "Invoke API"
@@ -101,6 +110,9 @@
   "rate-app": {
     "title": "Rate App"
   },
+  "read-keychain": {
+    "title": "Read Keychain"
+  },
   "request-notification-access": {
     "title": "Request Notification Access"
   },
@@ -110,8 +122,14 @@
   "save-file": {
     "title": "Save File"
   },
+  "save-keychain": {
+    "title": "Save Keychain"
+  },
   "seek-audio": {
     "title": "Seek Audio"
+  },
+  "set-secure-storage": {
+    "title": "Set Secure Storage"
   },
   "share": {
     "title": "Share"
