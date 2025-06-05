@@ -3670,14 +3670,16 @@ Authenticate users in Firebase using a custom `jwtToken` minted by the backend w
 
 ```yaml
 signInWithCustomToken:
-   idToken: // Token id from  `signInWithServerAPI` action
-   onSuccess:
+   token: // Token id from  `signInWithServerAPI` action
+   onAuthenticated:
       // return the authenticated user and idToken
       // e.g event.data.user.id, event.data.idToken 
+      // if user doesn't exists (uuid doesn't match any existing user)
+      // it'll create anonymous one 
+      // otherwise return authenticated user
    onError:
       // handle the error state
-   onVerificationFailure:
-      // handle the verification failure
+      // Errors can be invalidToken, NullToken etc
 ```
 ## 7. Build and run the app
 
@@ -9462,7 +9464,7 @@ The TextInput Widget enables the rendering of interactive text input fields, all
 | obscureText             | boolean                                        | whether we should obscure the typed-in text (e.g Social Security)                                                                                                                                                                 |
 | obscureToggle           | boolean                                        | enable the toggling between plain and obscure text.        |                
 | readOnly                | boolean                                        | When it is true, the text cannot be modified by any shortcut or keyboard operation.                 |
-| selectable              | boolean                                        | Setting this to true will enable features such as long-pressing the TextField to select text and show the cut/copy/paste menu, and tapping to move the text caret text.                                                                                                                                                                                |
+| selectable              | boolean                                        | Default: true. Setting this to true will enable features such as long-pressing the TextField to select text and show the cut/copy/paste menu, and tapping to move the text caret text. Setting it to false would disable copy and paste behavior. See [this](https://api.flutter.dev/flutter/material/TextField/enableInteractiveSelection.html)                                                                                                                                                                                |
 | toolbarDone             | boolean                                        | Display the toolbar with done button on top of the keyboard. (defaults to False)                                                                                                                                                  |
 | textStyle               | object                                         | An opaque object that determines the size, color, and decoration of text. Similar properties as hintStyle [see properties](#hintstyles)                                                                                           |
 | mask                    | string                                         | It formats the input by a given mask. Ex: +# (###) ###-##-##. detailed examples can be seen in [Kitchen Sink](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/abc081b1-bcb4-4db6-ae55-7987cb6c418e) |
