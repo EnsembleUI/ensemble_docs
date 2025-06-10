@@ -261,14 +261,16 @@ Authenticate users in Firebase using a custom `jwtToken` minted by the backend w
 
 ```yaml
 signInWithCustomToken:
-   idToken: // Token id from  `signInWithServerAPI` action
-   onSuccess:
+   token: // Token id from  `signInWithServerAPI` action
+   onAuthenticated:
       // return the authenticated user and idToken
       // e.g event.data.user.id, event.data.idToken 
+      // if user doesn't exists (uuid doesn't match any existing user)
+      // it'll create anonymous one 
+      // otherwise return authenticated user
    onError:
       // handle the error state
-   onVerificationFailure:
-      // handle the verification failure
+      // Errors can be invalidToken, NullToken etc
 ```
 ## 7. Build and run the app
 
