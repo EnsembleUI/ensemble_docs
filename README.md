@@ -4354,7 +4354,7 @@ If you're developing locally without using Ensemble Studio build system, follow 
      );
      ```
 
-## Usage Guide
+## Example Actions
 
 ### Core Operations
 
