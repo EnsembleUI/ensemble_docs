@@ -45,6 +45,9 @@
   "moengage": {
     "title": "MoEngage"
   },
+  "adobe-analytics": {
+    "title": "Adobe Analytics"
+  },
   "deep-link": {
     "title": "Deep linking"
   },
