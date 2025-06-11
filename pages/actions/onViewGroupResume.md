@@ -1,6 +1,6 @@
 # Action: onViewGroupResume
 
-The `onViewGroupResume` action allows users to navigate back to the viewGroup within the app’s navigation stack. It removes the current screen from the navigation history, so when the user navigates back, the ViewGroup reappears. This action is useful when working with all type of menus.
+The `onViewGroupResume` action allows users to execute actions when navigate back to the viewGroup within the app’s navigation stack. when the user navigates back, the ViewGroup reappears and action specified under `onViewGroupResume` is executed. This action is useful when working with all type of menus.
 
 ### Properties
 
