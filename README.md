@@ -66,6 +66,7 @@ Ensemble provides a browser-based IDE, [Ensemble Studio](https://studio.ensemble
   - [Setting up Authentication with Auth0](#setting-up-authentication-with-auth0)
 - **Moengage**
   - [MoEngage Integration](#moengage-integration)
+- [Adobe Analytics](#adobe-analytics)
 - **Deep Link**
   - [Setup Deeplink](#setup-deeplink)
   - [Setup Deferred Deeplink](#setup-deferred-deeplink)
@@ -4284,6 +4285,251 @@ import MoEngageMessaging
         return false
     }
 }
+```
+
+---
+
+
+# Adobe Analytics
+
+Adobe Analytics is a powerful analytics solution that provides real-time analytics and detailed segmentation capabilities. Ensemble provides native integration with Adobe Analytics offering:
+- Real-time analytics tracking
+- User identity management
+- Consent management
+- User profile management
+- Adobe Assurance integration
+- Edge network support
+
+## Prerequisites
+
+1. You have created an Adobe Experience Platform project
+2. You have created an app on Ensemble Studio
+3. You have [Flutter](https://docs.flutter.dev/get-started/install) installed on your machine
+4. You have a Simulator for testing
+
+## Adobe Experience Platform Setup
+
+The following setup on Adobe Experience Platform is required regardless of whether you're enabling Adobe Analytics through Ensemble Studio or local development.
+
+1. Get Adobe Experience Platform Configuration:
+     - Navigate to Adobe Experience Platform → Data Collection → Mobile Properties
+     - Create a new mobile property or select an existing one
+     - Copy your configuration details including:
+       - App ID
+       - Client ID
+
+2. Configure Edge Network:
+     - Set up your Edge Network configuration
+     - Configure your datastreams
+     - Set up your schema and datasets
+
+## Enable Adobe Analytics
+
+### In Ensemble Studio
+
+If you're using Ensemble Studio for building your application, follow these steps to enable Adobe Analytics.
+
+1. Navigate to Build & Deploy → Build Settings
+2. Enable Adobe Analytics toggle in the Modules section
+3. Enter Configuration Details:
+     - Adobe Experience Platform App ID
+
+### In Local Project
+
+If you're developing locally without using Ensemble Studio build system, follow these configuration steps.
+
+1. Update `ensemble_modules.dart`:
+   - Uncomment the Adobe Analytics import:
+     ```dart
+     import 'package:ensemble_adobe_analytics/adobe_analytics.dart';
+     ```
+   - Set `useAdobeAnalytics` to `true`:
+     ```dart
+     useAdobeAnalytics: true,
+     ```
+   - Initialize Adobe Analytics with your App ID:
+     ```dart
+     GetIt.I.registerSingleton<AdobeAnalyticsModule>(
+       AdobeAnalyticsImpl(appId: "YOUR_APP_ID")
+     );
+     ```
+
+## Usage Guide
+
+### Core Operations
+
+#### Track Action (User Interactions)
+
+Track event actions that occur in your application.
+
+```yaml
+logEvent:
+  name: trackButtonClick
+  provider: adobe
+  operation: trackAction
+  parameters:
+    eventName: 'button_click'
+    eventType: 'button_click'
+    eventSource: 'mobile_app'
+    eventCategory: 'button_click'
+    eventAction: 'button_click'
+    eventLabel: 'button_click'
+```
+
+#### Track State (Page Views)
+
+Track states that represent screens or views in your application.
+
+```yaml
+logEvent:
+  name: trackScreenView
+  provider: adobe
+  operation: trackState
+  parameters:
+    eventName: 'screen_view'
+    eventType: 'screen_view'
+    eventSource: 'mobile_app'
+```
+
+#### Edge Operations
+
+Send an Experience event to Adobe Experience Platform Edge Network.
+
+```yaml
+logEvent:
+  name: trackXdmEvent
+  provider: adobe
+  operation: sendEvent
+  parameters:
+    xdmData:
+      eventType: 'commerce.productViews'
+      commerce:
+        productViews:
+          value: 1
+    data:
+      customField: 'customValue'
+      userSegment:
+        - 'segment1'
+        - 'segment2'
+    datastreamIdOverride: <your_datastream_id>
+```
+
+### Identity Management
+
+#### Get Experience Cloud ID
+
+Retrieve the Experience Cloud ID (ECID) that was generated when the app was initially launched.
+
+```yaml
+logEvent:
+  name: getExperienceCloudId
+  provider: adobe
+  operation: getExperienceCloudId
+```
+
+#### Get All Identities
+
+Get all identities in the Identity for Edge Network extension.
+
+```yaml
+logEvent:
+  name: getIdentities
+  provider: adobe
+  operation: getIdentities
+```
+
+#### Update Identities
+
+Update the currently known identities within the SDK.
+
+```yaml
+logEvent:
+  name: updateIdentities
+  provider: adobe
+  operation: updateIdentities
+  parameters:
+    identities:
+      CustomNamespace:
+        - id: 'test-custom-id'
+          authenticatedState: 'authenticated'
+          primary: true
+      CustomNamespace2:
+        - id: 'test-custom-id-2'
+          authenticatedState: 'authenticated'
+          primary: false
+```
+
+### Consent Management
+
+#### Get Current Consents
+
+Retrieve the current consent preferences stored in the Consent extension.
+
+```yaml
+logEvent:
+  name: getConsents
+  provider: adobe
+  operation: getConsents
+```
+
+#### Update Consent
+
+Merge the existing consents with the given consents.
+
+```yaml
+logEvent:
+  name: updateConsent
+  provider: adobe
+  operation: updateConsent
+  parameters:
+    allowed: true  # or false
+```
+
+### User Profile Management
+
+#### Get User Attributes
+
+Get user profile attributes which match the provided keys.
+
+```yaml
+logEvent:
+  name: getUserAttributes
+  provider: adobe
+  operation: getUserAttributes
+  parameters:
+    attributes:
+      - 'firstName'
+      - 'lastName'
+      - 'email'
+```
+
+#### Update User Attributes
+
+Set multiple user profile attributes.
+
+```yaml
+logEvent:
+  name: updateUserAttributes
+  provider: adobe
+  operation: updateUserAttributes
+  parameters:
+    attributeMap:
+      firstName: 'John'
+      lastName: 'Doe'
+      email: 'john.doe@example.com'
+```
+
+### Adobe Assurance
+
+Configure Adobe Assurance for debugging and validation.
+
+```yaml
+logEvent:
+  name: setupAssurance
+  provider: adobe
+  operation: setupAssurance
+  parameters:
+    url: <your_assurance_url>
 ```
 
 ---
