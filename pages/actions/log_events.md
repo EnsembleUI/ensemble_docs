@@ -156,8 +156,12 @@ Adobe Analytics provider enables comprehensive analytics tracking, user identity
 | Operation | Description | Required Properties |
 |:----------|:------------|:-------------------|
 | getExperienceCloudId | Retrieves the Experience Cloud ID (ECID). | None |
+| getUrlVariables | Returns the identifiers in a URL's query parameters for consumption in hybrid mobile applications. | None |
 | getIdentities | Gets all identities in the Identity for Edge Network extension. | None |
 | updateIdentities | Updates the currently known identities within the SDK. | parameters (Object with identities) |
+| removeIdentity | Removes the identity from the stored client-side IdentityMap. | parameters (Object with item and namespace) |
+| resetIdentities | Clears all identities stored in the Identity extension and generates a new Experience Cloud ID (ECID). | None |
+| setAdvertisingIdentifier | Sets or removes the advertising identifier in the XDM Identity Map. | parameters (Object with advertisingIdentifier) |
 
 ### Consent Management Operations
 
