@@ -14,6 +14,8 @@ The ListView Widget enables the rendering of lists with dynamic and scrollable c
 | onItemTapHaptic | enum | The type of haptic to perform when item is pressed. It should be one of heavyImpact, mediumImpact, lightImpact, selectionClick, and vibrate |
 | selectedItemIndex | integer | Selecting a ListView item gives the index of selected item                                                                                                              |
 | onSwipeToRefresh  | action  | Enable swipe to refresh. This will trigger onRefresh action if enabled                                                                                                  |
+| nestedScroll  | boolean  | Enable ScrollView synchronization with ListView if enabled.                                                                                                 |
+| shrinkWrap  | boolean  | ListView will be scrollable even inside ScrollView but with it's own scrollController if enabled.                                                                                                 |
 | styles            | object  | [See properties](#styles)                                                                                                                                               |
 
 ### item-template
