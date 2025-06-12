@@ -112,7 +112,7 @@ The header contains the Safe Area (e.g. iPhone notch) and by default has the bac
 | flexibleMinHeight | integer                       | Applicable only if scrollableView is enabled. This attribute effectively sets the header's min height on scrolling (header's height will varies between the flexibleMinHeight and flexibleMaxHeight). Note that this attribute will be ignored if smaller than the titleBarHeight                                                                                              |
 | flexibleMaxHeight | integer                       | Applicable only if scrollableView is enabled. This attribute effectively sets the header's max height on scrolling (header's height will varies between the flexibleMinHeight and flexibleMaxHeight). This attribute will be ignored if smaller than the flexibleMinHeight                                                                                                     |
 | animation         | object                        |  [see properties](#headerstylesanimation)                                                                                                          |
-| scrollBehaviour   | enum                          |  Specify if header stays `pinned` or goes up `floating`, when page is scrolled up.                                                                                                                                               |
+| scrollMode   | enum                          |  Specify if header stays `pinned` or goes up `floating`, when page is scrolled up.                                                                                                                                               |
 > Note: When the entire View is specified as scrollable, flexible background's height can vary in height (hence flexible) on scroll with a parallax effect.
 
 #### Header.styles.animation
@@ -122,6 +122,7 @@ The header contains the Safe Area (e.g. iPhone notch) and by default has the bac
 | enabled           | boolean                       | Animation behaviour `true` or `false`.                                           |
 | duration          | integer                       | Specify time in `milliseconds` for which animation must play.                    |
 | curve             | string                        | Specify animation curve like `easeIn` `easeOut` or `linear`.                     |
+| animationType             | enum                        | Specify animation type that'll play when scrolled such as `fade` or `drop`. default value: `drop`.                    |
 ## Menu
 
 Ensemble provides support for five menu types that offer extensive customization options, including the ability to add custom items which are indeed `custom widgets`. These menu types allow users to meet their unique design needs or client requirements. Below, you will find detailed information about each menu type, including the supported properties, styles, and illustrative examples for better understanding.
