@@ -1,11 +1,11 @@
 # logEvent
 
-logEvent action allows you to track analytics events and user interactions using either Firebase Analytics or MoEngage.
+logEvent action allows you to track analytics events and user interactions using Firebase Analytics, MoEngage, or Adobe Analytics.
 
 ## Properties
 | Property | Type | Description | Default |
 |:---------|:-----|:------------|:--------|
-| provider | String | Analytics provider ("firebase" or "moengage") | "firebase" |
+| provider | String | Analytics provider ("firebase", "moengage", "adobe") | "firebase" |
 | operation | String | Operation to perform (see provider-specific operations) | "logEvent" |
 | name | String | Name of the event to track (required for Firebase and MoEngage trackEvent) | - |
 | parameters | Object | Additional parameters for events | {} |
@@ -138,3 +138,47 @@ logEvent:
   provider: moengage
   operation: showInApp
 ```
+
+## Adobe Analytics Provider
+
+Adobe Analytics provider enables comprehensive analytics tracking, user identity management, consent management, and user profile management.
+
+### Core Operations
+
+| Operation | Description | Required Properties |
+|:----------|:------------|:-------------------|
+| trackAction | Tracks user interactions and events. | name (String), parameters (Object with event details) |
+| trackState | Tracks page views and screen states. | name (String), parameters (Object with state details) |
+| sendEvent | Sends an Experience event to Adobe Experience Platform Edge Network. | name (String), parameters (Object with xdmData) |
+
+### Identity Management Operations
+
+| Operation | Description | Required Properties |
+|:----------|:------------|:-------------------|
+| getExperienceCloudId | Retrieves the Experience Cloud ID (ECID). | None |
+| getIdentities | Gets all identities in the Identity for Edge Network extension. | None |
+| updateIdentities | Updates the currently known identities within the SDK. | parameters (Object with identities) |
+
+### Consent Management Operations
+
+| Operation | Description | Required Properties |
+|:----------|:------------|:-------------------|
+| getConsents | Retrieves current consent preferences. | None |
+| updateConsent | Merges existing consents with given consents. | parameters (Object with allowed boolean) |
+| setDefaultConsent | Sets default consent for the SDK. | parameters (Object with allowed boolean) |
+
+### User Profile Operations
+
+| Operation | Description | Required Properties |
+|:----------|:------------|:-------------------|
+| getUserAttributes | Gets user profile attributes matching provided keys. | parameters (Object with attributes array) |
+| updateUserAttributes | Sets multiple user profile attributes. | parameters (Object with attributeMap) |
+| removeUserAttributes | Removes user profile attributes matching provided keys. | parameters (Object with attributes array) |
+
+### Adobe Assurance Operations
+
+| Operation | Description | Required Properties |
+|:----------|:------------|:-------------------|
+| setupAssurance | Configures Adobe Assurance for debugging. | parameters (Object with url) |
+
+For detailed examples of Adobe Analytics operations, see the [Adobe Analytics documentation](../adobe-analytics.mdx).
