@@ -85,16 +85,24 @@ def get_description_content(file_path):
         return " ".join(description_lines) if description_lines else None
 
 def get_full_content(file_path):
-    """Extract the full content from a file, skipping YAML frontmatter."""
+    """Extract the full content from a file, skipping YAML frontmatter and first heading."""
     with open(file_path, 'r', encoding='utf-8') as f:
         content_lines = []
         in_frontmatter = False
+        first_heading_skipped = False
+        
         for line in f:
             if line.strip().startswith("---"):
                 in_frontmatter = not in_frontmatter
                 continue
             if in_frontmatter:
                 continue
+            
+            # Skip the first heading (starts with #)
+            if not first_heading_skipped and line.strip().startswith("#"):
+                first_heading_skipped = True
+                continue
+                
             content_lines.append(line.rstrip())
     
     # Join and clean up the content
@@ -216,7 +224,7 @@ def generate_toc(nodes, depth=0):
     return toc_lines
 
 def generate_llms_toc(nodes, base_url="https://docs.ensembleui.com"):
-    """Generate table of contents in llms.txt format (Cursor style)."""
+    """Generate table of contents in llms.txt format."""
     lines = []
     
     for node in nodes:
@@ -304,7 +312,7 @@ def get_url_path(file_path):
     return url_path
 
 def generate_full_docs(pages, base_url="https://docs.ensembleui.com"):
-    """Generate full documentation content in llms-full.txt format (Cursor style)."""
+    """Generate full documentation content in llms-full.txt format."""
     content_blocks = []
     
     for page in pages:
@@ -317,8 +325,8 @@ def generate_full_docs(pages, base_url="https://docs.ensembleui.com"):
         # Get full content
         full_content = get_full_content(file_path)
         
-        # Format as Cursor does: # Title \n Source: URL \n Content
-        block = f"# {title}\nSource: {url}\n{full_content}"
+        # Format as does: # Title \n Source: URL \n Content
+        block = f"# {title}\nSource: {url}\n\n{full_content}\n"
         content_blocks.append(block)
     
     return content_blocks
@@ -497,7 +505,7 @@ toc_lines.append("")
 toc_content = generate_llms_toc(structure)
 toc_lines.extend(toc_content)
 
-# Add optional section at the end (like Cursor does)
+# Add optional section at the end
 toc_lines.append("")
 toc_lines.append("## Optional")
 toc_lines.append("")
