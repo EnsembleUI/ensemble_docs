@@ -53,6 +53,27 @@
     "api-ssl-configuration": {
       "title": "Securing API Calls with SSL Configuration | Tips and Tricks"
     },
+    "avatar": {
+      "title": "Avatar Widget Usage | Tips and Tricks"
+    },
+    "cookies": {
+      "title": "Working with Cookies | Tips and Tricks"
+    },
+    "custom-progress-dialog-close-on-an-event": {
+      "title": "Custom Progress Dialog Close on Event | Tips and Tricks"
+    },
+    "general_primary_color-theme": {
+      "title": "General Primary Color Theme | Tips and Tricks"
+    },
+    "icon-with-label": {
+      "title": "Icon with Label | Tips and Tricks"
+    },
+    "profile-picture-item": {
+      "title": "Profile Picture Item | Tips and Tricks"
+    },
+    "specifying-icons": {
+      "title": "Specifying Icons | Tips and Tricks"
+    },
     "no-bounded-width": {
       "title": "Widget Requires a Width | Error"
     },

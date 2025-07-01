@@ -1,6 +1,9 @@
 name: Merge Docs
 
-on: pull_request
+on:
+  push:
+    branches:
+      - main
 
 jobs:
   update-docs:
@@ -20,7 +23,7 @@ jobs:
 
       - name: Run merge script
         run: |
-          python merge-docs.py
+          python scripts/merge-docs.py
 
       - name: Commit and push updated docs if there are changes
         run: |
