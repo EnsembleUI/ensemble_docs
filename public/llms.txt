@@ -244,3 +244,6 @@ Ensemble is a platform where you can build, publish, and iterate native and web 
 
 - [Website](https://ensembleui.com/)
 - [Ensemble Studio](https://studio.ensembleui.com/)
+- [Chat with us on Discord](https://discord.gg/cEHkJTmn75)
+- [Join our office hours](https://discord.gg/eJrUWhnRHS?event=1218554330765066310)
+- [Drop us an email](mailto:hello@ensembleui.com)
