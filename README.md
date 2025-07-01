@@ -10,11 +10,11 @@ With Ensemble, you create apps by defining them using a declarative language. Th
 2. Ensemble apps can be updated instantly because the app definitions are pushed to clients. You can use Ensemble's cloud service, or use your own server.
 3. Ensemble apps always leverage the latest front-end technologies (Flutter for iOS and Android, React for web) so that you don't have to worry about tech-debt incured by using these technologies.
 
-![architecture](/public/images/architecture.png)
+![architecture](public/images/architecture.png)
 
 ## How do I build my app?
 
-Ensemble provides a browser-based IDE, [Ensemble Studio](https://studio.ensembleui.com), where you can build, test, and publish your apps all from the browser. You can instantly preview your Ensemble apps on iOS and Anrdoid devices using [Ensemble preview app](/test/preview-app). Once ready to publish, Ensemble automatically push your apps to Apple AppStore and Google PlayStore. For web, you can download a web build and host it on any service.
+Ensemble provides a browser-based IDE, [Ensemble Studio](https://studio.ensembleui.com), where you can build, test, and publish your apps all from the browser. You can instantly preview your Ensemble apps on iOS and Anrdoid devices using [Ensemble preview app](/pages/test/preview-app). Once ready to publish, Ensemble automatically push your apps to Apple AppStore and Google PlayStore. For web, you can download a web build and host it on any service.
 
 ## Need help?
 
@@ -403,7 +403,7 @@ For more information or support, join the [Discord community](https://discord.gg
 
 # Ensemble Screen Structure
 
-Ensemble apps are built using a collection of screens, along with reusable components like [widgets](/screens-and-widgets/widgets), [scripts](/javascript-reference/global-scripts), [assets](/assets), etc. This guide explores the core structure of an Ensemble screen and the elements that make it up.
+Ensemble apps are built using a collection of screens, along with reusable components like [widgets](/pages/screens-and-widgets/widgets), [scripts](/pages/javascript-reference/global-scripts), [assets](/pages/assets), etc. This guide explores the core structure of an Ensemble screen and the elements that make it up.
 
 **Key Components of Screen:**
 This section serves as a reference point for the key elements you'll encounter while creating a screen on Ensemble:
@@ -478,8 +478,8 @@ The View widget defines the overall structure of a page, including properties li
 
 | Property               | Type                                              | Description                                                                                                                                                                                                                                                                                                                          |
 | :--------------------- | :------------------------------------------------ | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| backgroundColor        | [Color](/widgets/types#color)                     | Background color for the screen starting with '0xFF' for full opacity e.g 0xFFCCCCCC. It can be specified as a number, a predefined color name, or a hexadecimal value starting with '0x'. `transparent` `black` `blue` `white` `red` `grey` `teal` `amber` `pink` `purple` `yellow` `green` `brown` `cyan` `indigo` `lime` `orange` |
-| backgroundImage        | [BackgroundImage](/widgets/types#backgroundimage) | Background image of the View.                                                                                                                                                                                                                                                                                                        |
+| backgroundColor        | [Color](/pages/widgets/types#color)                     | Background color for the screen starting with '0xFF' for full opacity e.g 0xFFCCCCCC. It can be specified as a number, a predefined color name, or a hexadecimal value starting with '0x'. `transparent` `black` `blue` `white` `red` `grey` `teal` `amber` `pink` `purple` `yellow` `green` `brown` `cyan` `indigo` `lime` `orange` |
+| backgroundImage        | [BackgroundImage](/pages/widgets/types#backgroundimage) | Background image of the View.                                                                                                                                                                                                                                                                                                        |
 | useSafeArea            | boolean                                           | Applicable only when we don't have a header. If true, insert paddings around the body content to account for the devices' Safe Area (e.g. iPhone notch). Default is false.                                                                                                                                                           |
 | scrollableView         | boolean                                           | Specify if the content of this screen is scrollable with a global scrollbar. Using this also allows you to customize the scrolling experience of the header.                                                                                                                                                                         |
 | showNavigationIcon     | boolean                                           | For a screen with header, the App will automatically show the Menu, Back, or Close icon (for the modal screen) before the title. On the modal screen without the header, the Close icon will be shown. Set this flag to false if you wish to hide the icons and handle the navigation yourself.                                      |
@@ -498,18 +498,18 @@ The header contains the Safe Area (e.g. iPhone notch) and by default has the bac
 | Property           | Type               | Description                                                                                                                                                                                                                           |
 | :----------------- | :----------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | titleText          | string             | The title for the screen                                                                                                                                                                                                              |
-| titleWidget        | [Widget](/widgets) | Render this widget as the screen title                                                                                                                                                                                                |
+| titleWidget        | [Widget](/pages/widgets) | Render this widget as the screen title                                                                                                                                                                                                |
 | styles             | object             | [see properties](#headerstyles)                                                                                                                                                                                                       |
-| flexibleBackground | [Widget](/widgets) | This widget (typically used as an background image) acts as the header's background, with the title bar and the bottom widget overlaid on top. On non-scrollable screen, its dimensions is dictated by the header's width and height. |
+| flexibleBackground | [Widget](/pages/widgets) | This widget (typically used as an background image) acts as the header's background, with the title bar and the bottom widget overlaid on top. On non-scrollable screen, its dimensions is dictated by the header's width and height. |
 
 #### Header.styles
 
 | Property          | Type                          | Description                                                                                                                                                                                                                                                                                                                                                                    |
 | :---------------- | :---------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| backgroundColor   | [Color](/widgets/types#color) | By default the background color uses the theme's 'primary' color. You can override the header's background color here. It can be specified as a number, a predefined color name, or a hexadecimal value starting with '0x'. `transparent` `black` `blue` `white` `red` `grey` `teal` `amber` `pink` `purple` `yellow` `green` `brown` `cyan` `indigo` `lime` `orange`          |
-| color             | [Color](/widgets/types#color) | By default the navigation icon, title, and action icons uses the theme's 'onPrimary' color. You can override their colors here. It can be specified as a number, a predefined color name, or a hexadecimal value starting with '0x'. `transparent` `black` `blue` `white` `red` `grey` `teal` `amber` `pink` `purple` `yellow` `green` `brown` `cyan` `indigo` `lime` `orange` |
+| backgroundColor   | [Color](/pages/widgets/types#color) | By default the background color uses the theme's 'primary' color. You can override the header's background color here. It can be specified as a number, a predefined color name, or a hexadecimal value starting with '0x'. `transparent` `black` `blue` `white` `red` `grey` `teal` `amber` `pink` `purple` `yellow` `green` `brown` `cyan` `indigo` `lime` `orange`          |
+| color             | [Color](/pages/widgets/types#color) | By default the navigation icon, title, and action icons uses the theme's 'onPrimary' color. You can override their colors here. It can be specified as a number, a predefined color name, or a hexadecimal value starting with '0x'. `transparent` `black` `blue` `white` `red` `grey` `teal` `amber` `pink` `purple` `yellow` `green` `brown` `cyan` `indigo` `lime` `orange` |
 | elevation         | integer                       | Raise the header on its z-coordinates relative to the body. This effectively creates a drop shadow on the header's bottom edge. Minimum value: 0, Maximum value: 24                                                                                                                                                                                                            |
-| shadowColor       | [Color](/widgets/types#color) | If elevation is non-zero, this will override the drop shadow color of the header's bottom edge, starting with '0xFF' for full opacity. `transparent` `black` `blue` `white` `red` `grey` `teal` `amber` `pink` `purple` `yellow` `green` `brown` `cyan` `indigo` `lime` `orange`                                                                                               |
+| shadowColor       | [Color](/pages/widgets/types#color) | If elevation is non-zero, this will override the drop shadow color of the header's bottom edge, starting with '0xFF' for full opacity. `transparent` `black` `blue` `white` `red` `grey` `teal` `amber` `pink` `purple` `yellow` `green` `brown` `cyan` `indigo` `lime` `orange`                                                                                               |
 | centerTitle       | boolean                       | Whether to align the title in the title bar's center horizontally (default: true)                                                                                                                                                                                                                                                                                              |
 | titleBarHeight    | integer                       | For consistency, the header's title bar has the default fixed height of 56 regardless of its content. You may adjust its height here. Minimum value is `0`                                                                                                                                                                                                                     |
 | flexibleMinHeight | integer                       | Applicable only if scrollableView is enabled. This attribute effectively sets the header's min height on scrolling (header's height will varies between the flexibleMinHeight and flexibleMaxHeight). Note that this attribute will be ignored if smaller than the titleBarHeight                                                                                              |
@@ -554,25 +554,25 @@ This is the navigation bar at the bottom of the screen, typical of most iOS and 
 | floating                | boolean                       | Mark this item as a floating icon                                                                                                                                                                                                                                                                                                    |
 | floatingMargin          | integer or string             | The margin around the floating.                                                                                                                                                                                                                                                                                                      |
 | floatingAlignment       | string                        | How to align the floating in the BottomNavBar. The values are ` left``center``right ` and `none`                                                                                                                                                                                                                                     |
-| color                   | [Color](/widgets/types#color) | Unselected icon color, starting with '0xFF' for full opacity e.g 0xFFCCCCCC. It can be specified as a number, a predefined color name, or a hexadecimal value starting with '0x'. `transparent` `black` `blue` `white` `red` `grey` `teal` `amber` `pink` `purple` `yellow` `green` `brown` `cyan` `indigo` `lime` `orange`          |
-| selectedColor           | [Color](/widgets/types#color) | Selected icon color, starting with '0xFF' for full opacity e.g 0xFFCCCCCC. It can be specified as a number, a predefined color name, or a hexadecimal value starting with '0x'. `transparent` `black` `blue` `white` `red` `grey` `teal` `amber` `pink` `purple` `yellow` `green` `brown` `cyan` `indigo` `lime` `orange`            |
-| backgroundColor         | [Color](/widgets/types#color) | Background color of the box. which can be represented in different formats. It can be specified as a number, a predefined color name, or a hexadecimal value starting with '0x'. `transparent` `black` `blue` `white` `red` `grey` `teal` `amber` `pink` `purple` `yellow` `green` `brown` `cyan` `indigo` `lime` `orange`           |
-| floatingBackgroundColor | [Color](/widgets/types#color) | Floating item background color, starting with '0xFF' for full opacity e.g 0xFFCCCCCC. It can be specified as a number, a predefined color name, or a hexadecimal value starting with '0x'. `transparent` `black` `blue` `white` `red` `grey` `teal` `amber` `pink` `purple` `yellow` `green` `brown` `cyan` `indigo` `lime` `orange` |
-| floatingIconColor       | [Color](/widgets/types#color) | Floating item icon color, starting with '0xFF' for full opacity e.g 0xFFCCCCCC. It can be specified as a number, a predefined color name, or a hexadecimal value starting with '0x'. `transparent` `black` `blue` `white` `red` `grey` `teal` `amber` `pink` `purple` `yellow` `green` `brown` `cyan` `indigo` `lime` `orange`       |
+| color                   | [Color](/pages/widgets/types#color) | Unselected icon color, starting with '0xFF' for full opacity e.g 0xFFCCCCCC. It can be specified as a number, a predefined color name, or a hexadecimal value starting with '0x'. `transparent` `black` `blue` `white` `red` `grey` `teal` `amber` `pink` `purple` `yellow` `green` `brown` `cyan` `indigo` `lime` `orange`          |
+| selectedColor           | [Color](/pages/widgets/types#color) | Selected icon color, starting with '0xFF' for full opacity e.g 0xFFCCCCCC. It can be specified as a number, a predefined color name, or a hexadecimal value starting with '0x'. `transparent` `black` `blue` `white` `red` `grey` `teal` `amber` `pink` `purple` `yellow` `green` `brown` `cyan` `indigo` `lime` `orange`            |
+| backgroundColor         | [Color](/pages/widgets/types#color) | Background color of the box. which can be represented in different formats. It can be specified as a number, a predefined color name, or a hexadecimal value starting with '0x'. `transparent` `black` `blue` `white` `red` `grey` `teal` `amber` `pink` `purple` `yellow` `green` `brown` `cyan` `indigo` `lime` `orange`           |
+| floatingBackgroundColor | [Color](/pages/widgets/types#color) | Floating item background color, starting with '0xFF' for full opacity e.g 0xFFCCCCCC. It can be specified as a number, a predefined color name, or a hexadecimal value starting with '0x'. `transparent` `black` `blue` `white` `red` `grey` `teal` `amber` `pink` `purple` `yellow` `green` `brown` `cyan` `indigo` `lime` `orange` |
+| floatingIconColor       | [Color](/pages/widgets/types#color) | Floating item icon color, starting with '0xFF' for full opacity e.g 0xFFCCCCCC. It can be specified as a number, a predefined color name, or a hexadecimal value starting with '0x'. `transparent` `black` `blue` `white` `red` `grey` `teal` `amber` `pink` `purple` `yellow` `green` `brown` `cyan` `indigo` `lime` `orange`       |
 | customItem              | object                        | Allows user to use custom widgets for two states `selected` and `UnSelected`.                                                                                                                                                                                                                                                        |
 
 ##### BottomNavBar.items.customItem
 
 | Property       | Type               | Description                                            |
 | :------------- | :----------------- | :----------------------------------------------------- |
-| widget         | [Widget](/widgets) | Custom bottom navigation item for the unselected state |
-| selectedWidget | [Widget](/widgets) | Custom bottom navigation item for the selected state   |
+| widget         | [Widget](/pages/widgets) | Custom bottom navigation item for the unselected state |
+| selectedWidget | [Widget](/pages/widgets) | Custom bottom navigation item for the selected state   |
 
 #### BottomNavBar.styles
 
 | Property        | Type                          | Description                                                                                                                                                                                                                                                                                                                |
 | :-------------- | :---------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| backgroundColor | [Color](/widgets/types#color) | Background color of the box. which can be represented in different formats. It can be specified as a number, a predefined color name, or a hexadecimal value starting with '0x'. `transparent` `black` `blue` `white` `red` `grey` `teal` `amber` `pink` `purple` `yellow` `green` `brown` `cyan` `indigo` `lime` `orange` |
+| backgroundColor | [Color](/pages/widgets/types#color) | Background color of the box. which can be represented in different formats. It can be specified as a number, a predefined color name, or a hexadecimal value starting with '0x'. `transparent` `black` `blue` `white` `red` `grey` `teal` `amber` `pink` `purple` `yellow` `green` `brown` `cyan` `indigo` `lime` `orange` |
 
 #### Example
 
@@ -845,7 +845,7 @@ API provides a convenient way to interact with external services or data sources
 | onError    | Action | The action to handle errors                                                     |
 | inputs     | Array  | The input values                                                                |
 
-> To learn about API's in detail, click [here](/actions/invoke-API)
+> To learn about API's in detail, click [here](/pages/actions/invoke-API)
 
 ## Global
 
@@ -959,21 +959,21 @@ Ensemble layouts are themselves widgets that contain other widgets. Here is a co
 
 | Widget       | Documentation  | Kitchen sink example    |
 | ------------ | -------------- | ----------------------- |
-| Column       | [Link](/widgets/column)        | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/90a8e4df-5eab-4473-ba10-2ecffc9596b0) |
-| FittedColumn | [Link](/widgets/fitted-column) | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/hRFxxoaBePQaLfmoBiIb)  |
-| Row          | [Link](/widgets/row)           | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/4bd0d453-c243-429d-a562-93cbc9db38e3) |
-| FittedRow    | [Link](/widgets/fitted-row)    | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/fvSONumk7npuTDmIWwis) |
-| Flex         | [Link](/widgets/flex)          | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/R3KgxV3UPWb4TjoiPI0U) |
-| Flow         | [Link](/widgets/flow)          | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/3e901fb8-a0e8-4f52-979b-7f5f2547e650) |
-| ListView     | [Link](/widgets/listview)      | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/w0Wmu9ZMP4csk7IELSx3) |
-| GridView     | [Link](/widgets/gridview)      | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/DX5j2WVQFabmxD9FCD5h) |
-| StaggeredGrid | [Link](/widgets/staggeredgrid.md) | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/a9iIs4wvgqDOhU4rN6GR) |
-| Stack        | [Link](/widgets/stack)         | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/572ecf3b-b9f2-46f4-960f-ff438e5fa1dc) |
-| DataGrid     | [Link](/widgets/data-grid)      | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/c5940e18-f2c1-4318-8e68-a678a6ae7247) |
-| TabBar       | [Link](/widgets/tabbar)        | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/cebd491d-7d90-43f4-9f17-b8575de441ca) |
-| Carousel     | [Link](/widgets/carousel)      | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/2e1d88b1-f281-4c2c-9bb1-bd18016d2b8c) |
-| Divider      | [Link](/widgets/divider)       | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/4a893a2e-5bde-400c-b974-b25b497d31a5) |
-| Spacer       | [Link](/widgets/spacer)        | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/1d7e42a9-5bbc-4b4b-9a02-8c102234ee05)   |
+| Column       | [Link](/pages/widgets/column)        | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/90a8e4df-5eab-4473-ba10-2ecffc9596b0) |
+| FittedColumn | [Link](/pages/widgets/fitted-column) | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/hRFxxoaBePQaLfmoBiIb)  |
+| Row          | [Link](/pages/widgets/row)           | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/4bd0d453-c243-429d-a562-93cbc9db38e3) |
+| FittedRow    | [Link](/pages/widgets/fitted-row)    | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/fvSONumk7npuTDmIWwis) |
+| Flex         | [Link](/pages/widgets/flex)          | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/R3KgxV3UPWb4TjoiPI0U) |
+| Flow         | [Link](/pages/widgets/flow)          | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/3e901fb8-a0e8-4f52-979b-7f5f2547e650) |
+| ListView     | [Link](/pages/widgets/listview)      | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/w0Wmu9ZMP4csk7IELSx3) |
+| GridView     | [Link](/pages/widgets/gridview)      | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/DX5j2WVQFabmxD9FCD5h) |
+| StaggeredGrid | [Link](/pages/widgets/staggeredgrid.md) | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/a9iIs4wvgqDOhU4rN6GR) |
+| Stack        | [Link](/pages/widgets/stack)         | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/572ecf3b-b9f2-46f4-960f-ff438e5fa1dc) |
+| DataGrid     | [Link](/pages/widgets/data-grid)      | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/c5940e18-f2c1-4318-8e68-a678a6ae7247) |
+| TabBar       | [Link](/pages/widgets/tabbar)        | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/cebd491d-7d90-43f4-9f17-b8575de441ca) |
+| Carousel     | [Link](/pages/widgets/carousel)      | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/2e1d88b1-f281-4c2c-9bb1-bd18016d2b8c) |
+| Divider      | [Link](/pages/widgets/divider)       | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/4a893a2e-5bde-400c-b974-b25b497d31a5) |
+| Spacer       | [Link](/pages/widgets/spacer)        | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/1d7e42a9-5bbc-4b4b-9a02-8c102234ee05)   |
 
 ---
 
@@ -981,7 +981,7 @@ Ensemble layouts are themselves widgets that contain other widgets. Here is a co
 
 Ensemble provides two primary mechanism for navigating between screens:
 
-1. App menu, i.e. the nav bar, as [described here](/screens-and-widgets/screen-structure#menu)
+1. App menu, i.e. the nav bar, as [described here](/pages/screens-and-widgets/screen-structure#menu)
 2. Navigation actions, which we will cover here.
 
 ## The navigation stack
@@ -991,15 +991,15 @@ The navigation stack keeps track of the screens as they are pushed and popped of
 For example, your app could have a home screen, that navigates to listing screen. From the listing user can navigate to a detail screen. When you navigate to a new screen, that screen is pushed onto the top of the stack.
 
 
-![navigation stack](/public/images/navigation/nav-navigation-stack.jpg)
+![navigation stack](public/images/navigation/nav-navigation-stack.jpg)
 
 When you navigate back, the topmost screen is popped off the stack, and the previous screen becomes visible Navigation stack follows the Last In, First Out (LIFO) principle, meaning the last screen that was navigated to is the first one to be navigated away from when the user presses the back button.
 
-![navigation stack](/public/images/navigation/nav-navigation-stack-pop.jpg)
+![navigation stack](public/images/navigation/nav-navigation-stack-pop.jpg)
 
 ## Navigate Screen action
 
-[navigateScreen reference](/actions/navigate-screen)
+[navigateScreen reference](/pages/actions/navigate-screen)
 
 Use `navigateScreen` action when navigating to a screen. This action will push the target screen on top of the current screen. You can pass inputs to the target screen when performing this action:
 
@@ -1013,7 +1013,7 @@ Use `navigateScreen` action when navigating to a screen. This action will push t
           productId: ${product.id}
 ```
 
-![navigation stack](/public/images/navigation/nav-navigateScreen.jpg)
+![navigation stack](public/images/navigation/nav-navigateScreen.jpg)
 
 
 Optionally, you can set `onNavigateBack` property to perform an action when user goes back to previous screen.
@@ -1046,16 +1046,16 @@ In use cases where you do not want to allow user to go back to the previous scre
               clearAllScreens: true
 ```
 
-![navigation stack](/public/images/navigation/nav-navigateBack-clearAllScreens.jpg)
+![navigation stack](public/images/navigation/nav-navigateBack-clearAllScreens.jpg)
 
 
 ## Navigate back action
 
-[navigateBack reference](/actions/navigate-back)
+[navigateBack reference](/pages/actions/navigate-back)
 
 Use `navigateBack` to pop the current screen and go the previous screen in the stack. This is the same action that would be preformed when user taps the built-in back button.
 
-![navigation stack](/public/images/navigation/nav-navigateBack.jpg)
+![navigation stack](public/images/navigation/nav-navigateBack.jpg)
 
 ---
 
@@ -1067,71 +1067,71 @@ Ensemble widgets enable you to build both simple and complex applications.
 
 | Widget           | Documentation             | Kitchen sink example                                                                                                       |
 | ---------------- | ------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| Text             | [Link](/widgets/text)     | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/c87f8b09-58e2-4c2f-99a1-cbbe9e25e9a5) |
-| Image            | [Link](/widgets/Image)    | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/7c7a3ffe-68ef-4e99-b9d1-4b5cee166233) |
-| Icon             | [Link](/widgets/Icon)     | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/e7c686f5-b8a2-4670-9e6e-8fdb0fea768e) |
-| Avatar           | [Link](/widgets/avatar)   | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/kJ9eqI5BPL30IwjnEDdJ)                 |
-| Map              | [Link](/widgets/Map)      | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/36e52d1a-39c5-4a6b-b064-2be6cfe3cf7b) |
-| QRCode           | [Link](/widgets/qrcode)   | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/f4921ba2-9f3d-4c33-8848-4df29a5e7a4d) |
-| Video            | [Link](/widgets/video)    | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/fce92bbb-af8e-403d-bf2d-c10926cc89a0) |
-| Lottie animation | [Link](/widgets/lottie)   | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/576f3004-83e6-429d-b256-628d85e05f7f) |
-| Markdown         | [Link](/widgets/markdown) | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/6b6d9c3d-359b-4768-99a5-3f087a64387c) |
-| HTML             | [Link](/widgets/html)     | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/ZhTBody9YozadVvTlhW0)                 |
-| Webview          | [Link](/widgets/webview)  | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/22c8d57d-a906-4d11-873d-161fd6c56c0a) |
+| Text             | [Link](/pages/widgets/text)     | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/c87f8b09-58e2-4c2f-99a1-cbbe9e25e9a5) |
+| Image            | [Link](/pages/widgets/Image)    | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/7c7a3ffe-68ef-4e99-b9d1-4b5cee166233) |
+| Icon             | [Link](/pages/widgets/Icon)     | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/e7c686f5-b8a2-4670-9e6e-8fdb0fea768e) |
+| Avatar           | [Link](/pages/widgets/avatar)   | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/kJ9eqI5BPL30IwjnEDdJ)                 |
+| Map              | [Link](/pages/widgets/Map)      | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/36e52d1a-39c5-4a6b-b064-2be6cfe3cf7b) |
+| QRCode           | [Link](/pages/widgets/qrcode)   | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/f4921ba2-9f3d-4c33-8848-4df29a5e7a4d) |
+| Video            | [Link](/pages/widgets/video)    | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/fce92bbb-af8e-403d-bf2d-c10926cc89a0) |
+| Lottie animation | [Link](/pages/widgets/lottie)   | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/576f3004-83e6-429d-b256-628d85e05f7f) |
+| Markdown         | [Link](/pages/widgets/markdown) | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/6b6d9c3d-359b-4768-99a5-3f087a64387c) |
+| HTML             | [Link](/pages/widgets/html)     | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/ZhTBody9YozadVvTlhW0)                 |
+| Webview          | [Link](/pages/widgets/webview)  | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/22c8d57d-a906-4d11-873d-161fd6c56c0a) |
 
 ### Layout
 
 | Widget        | Documentation                     | Kitchen sink example                                                                                                       |
 | ------------- | --------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| Column        | [Link](/widgets/column)           | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/90a8e4df-5eab-4473-ba10-2ecffc9596b0) |
-| FittedColumn  | [Link](/widgets/fitted-column)    | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/hRFxxoaBePQaLfmoBiIb)                 |
-| Row           | [Link](/widgets/row)              | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/4bd0d453-c243-429d-a562-93cbc9db38e3) |
-| FittedRow     | [Link](/widgets/fitted-row)       | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/fvSONumk7npuTDmIWwis)                 |
-| Flex          | [Link](/widgets/flex)             | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/R3KgxV3UPWb4TjoiPI0U)                 |
-| Flow          | [Link](/widgets/flow)             | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/3e901fb8-a0e8-4f52-979b-7f5f2547e650) |
-| ListView      | [Link](/widgets/listview)         | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/w0Wmu9ZMP4csk7IELSx3)                 |
-| GridView      | [Link](/widgets/gridview)         | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/DX5j2WVQFabmxD9FCD5h)                 |
-| StaggeredGrid | [Link](/widgets/staggeredgrid.md) | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/a9iIs4wvgqDOhU4rN6GR)                 |
-| Stack         | [Link](/widgets/stack)            | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/572ecf3b-b9f2-46f4-960f-ff438e5fa1dc) |
-| DataGrid      | [Link](/widgets/data-grid)        | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/c5940e18-f2c1-4318-8e68-a678a6ae7247) |
-| TabBar        | [Link](/widgets/tabbar)           | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/cebd491d-7d90-43f4-9f17-b8575de441ca) |
-| Carousel      | [Link](/widgets/carousel)         | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/2e1d88b1-f281-4c2c-9bb1-bd18016d2b8c) |
-| Collapsible      | [Link](/widgets/collapsible)         | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/yTFRepwpRQJbvRYaVpRi) |
-| Divider       | [Link](/widgets/divider)          | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/4a893a2e-5bde-400c-b974-b25b497d31a5) |
-| Spacer        | [Link](/widgets/spacer)           | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/1d7e42a9-5bbc-4b4b-9a02-8c102234ee05) |
-| Shape         | [Link](/widgets/shape)            | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/Lg2nljyD46n2hiAUlBMP)                 |
-| Slidable   | [Link](/widgets/slidable) | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/hDUEQtsqHbuLoegWoyDR) |
+| Column        | [Link](/pages/widgets/column)           | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/90a8e4df-5eab-4473-ba10-2ecffc9596b0) |
+| FittedColumn  | [Link](/pages/widgets/fitted-column)    | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/hRFxxoaBePQaLfmoBiIb)                 |
+| Row           | [Link](/pages/widgets/row)              | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/4bd0d453-c243-429d-a562-93cbc9db38e3) |
+| FittedRow     | [Link](/pages/widgets/fitted-row)       | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/fvSONumk7npuTDmIWwis)                 |
+| Flex          | [Link](/pages/widgets/flex)             | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/R3KgxV3UPWb4TjoiPI0U)                 |
+| Flow          | [Link](/pages/widgets/flow)             | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/3e901fb8-a0e8-4f52-979b-7f5f2547e650) |
+| ListView      | [Link](/pages/widgets/listview)         | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/w0Wmu9ZMP4csk7IELSx3)                 |
+| GridView      | [Link](/pages/widgets/gridview)         | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/DX5j2WVQFabmxD9FCD5h)                 |
+| StaggeredGrid | [Link](/pages/widgets/staggeredgrid.md) | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/a9iIs4wvgqDOhU4rN6GR)                 |
+| Stack         | [Link](/pages/widgets/stack)            | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/572ecf3b-b9f2-46f4-960f-ff438e5fa1dc) |
+| DataGrid      | [Link](/pages/widgets/data-grid)        | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/c5940e18-f2c1-4318-8e68-a678a6ae7247) |
+| TabBar        | [Link](/pages/widgets/tabbar)           | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/cebd491d-7d90-43f4-9f17-b8575de441ca) |
+| Carousel      | [Link](/pages/widgets/carousel)         | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/2e1d88b1-f281-4c2c-9bb1-bd18016d2b8c) |
+| Collapsible      | [Link](/pages/widgets/collapsible)         | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/yTFRepwpRQJbvRYaVpRi) |
+| Divider       | [Link](/pages/widgets/divider)          | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/4a893a2e-5bde-400c-b974-b25b497d31a5) |
+| Spacer        | [Link](/pages/widgets/spacer)           | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/1d7e42a9-5bbc-4b4b-9a02-8c102234ee05) |
+| Shape         | [Link](/pages/widgets/shape)            | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/Lg2nljyD46n2hiAUlBMP)                 |
+| Slidable   | [Link](/pages/widgets/slidable) | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/hDUEQtsqHbuLoegWoyDR) |
 
 ### Forms and inputs
 
 | Widget          | Documentation                  | Kitchen sink example                                                                                                       |
 | --------------- | ------------------------------ | -------------------------------------------------------------------------------------------------------------------------- |
-| Form            | [Link](/widgets/form)          | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/3107baf6-dfc3-42cd-b617-61c37b31f31e) |
-| TextInput       | [Link](/widgets/textinput)     | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/abc081b1-bcb4-4db6-ae55-7987cb6c418e) |
-| Button          | [Link](/widgets/button)        | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/09c1087b-f9ee-4a8c-9286-e0e881184c07) |
-| Dropdown        | [Link](/widgets/dropdown)      | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/fb8d28a2-834e-40a9-8419-155272fb0191) |
+| Form            | [Link](/pages/widgets/form)          | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/3107baf6-dfc3-42cd-b617-61c37b31f31e) |
+| TextInput       | [Link](/pages/widgets/textinput)     | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/abc081b1-bcb4-4db6-ae55-7987cb6c418e) |
+| Button          | [Link](/pages/widgets/button)        | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/09c1087b-f9ee-4a8c-9286-e0e881184c07) |
+| Dropdown        | [Link](/pages/widgets/dropdown)      | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/fb8d28a2-834e-40a9-8419-155272fb0191) |
 | AutoComplete    | Coming soon                    | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/3tBTU9CUTu0IegpytNYa)                 |
-| Checkbox        | [Link](/widgets/checkbox)      | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/21f43d9b-db21-40fe-9c2f-806267e6c412) |
-| Switch          | [Link](/widgets/switch)        | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/3f4ba37a-0e6a-46a1-9b78-e4e04c84937d) |
-| Date            | [Link](/widgets/date)          | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/e7zOy8oX5dxQU7kD5IO4)                 |
+| Checkbox        | [Link](/pages/widgets/checkbox)      | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/21f43d9b-db21-40fe-9c2f-806267e6c412) |
+| Switch          | [Link](/pages/widgets/switch)        | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/3f4ba37a-0e6a-46a1-9b78-e4e04c84937d) |
+| Date            | [Link](/pages/widgets/date)          | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/e7zOy8oX5dxQU7kD5IO4)                 |
 | DateRange       | Coming soon                    | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/b45c5576-ec22-4b04-832f-6dd7571dd20f) |
-| Time            | [Link](/widgets/time)          | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/yNHLPObY1wWgCpg0sgoW)                 |
-| PasswordInput   | [Link](/widgets/passwordinput) | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/218fa244-f0cd-4d17-91e6-7c099bbedede) |
-| Signature       | [Link](/widgets/signature)          | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/70eb8a13-e7df-4778-b7e6-57df17b032a0) |
+| Time            | [Link](/pages/widgets/time)          | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/yNHLPObY1wWgCpg0sgoW)                 |
+| PasswordInput   | [Link](/pages/widgets/passwordinput) | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/218fa244-f0cd-4d17-91e6-7c099bbedede) |
+| Signature       | [Link](/pages/widgets/signature)          | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/70eb8a13-e7df-4778-b7e6-57df17b032a0) |
 | WeeklyScheduler | Coming soon                             | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/244ce957-98ed-4db8-a5a7-ee587d6dfe0b) |
 
 ### Conditional
 
 | Widget      | Documentation                | Kitchen sink example                                                                                                                                                                   |
 | ----------- | ---------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Conditional | [link](/widgets/conditional) | [link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/XljPegGrdieyKjy16URC?propertyPanelEnabled=true&instantPreviewDisabled=false&editorV2Enabled=true) |
+| Conditional | [link](/pages/widgets/conditional) | [link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/XljPegGrdieyKjy16URC?propertyPanelEnabled=true&instantPreviewDisabled=false&editorV2Enabled=true) |
 
 ### Feedback
 
 | Widget             | Documentation                      | Kitchen sink example                                                                                                       |
 | ------------------ | ---------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| Progress indicator | [Link](/widgets/progressindicator) | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/c2c248f2-a289-40d3-acd5-65a1a7f3c5a2) |
-| Toast message      | [Link](/actions/show-toast)        | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/9a576805-019a-4bd3-953f-3c623fbfb905) |
+| Progress indicator | [Link](/pages/widgets/progressindicator) | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/c2c248f2-a289-40d3-acd5-65a1a7f3c5a2) |
+| Toast message      | [Link](/pages/actions/show-toast)        | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/9a576805-019a-4bd3-953f-3c623fbfb905) |
 
 ---
 
@@ -1151,11 +1151,11 @@ Global Scripts are ideal for situations where you need:
 ## Create a Script
 In Ensemble Studio, navigate to your app and select `Scripts` from the left menu. Click the button `Create new script` present at the top right corner of the studio.
 
-![add language](/public/images/scripts/create-script.png)
+![add language](public/images/scripts/create-script.png)
 
 Now open the script file and you can use standard JavaScript syntax to define variables and functions and then save the file.
 
-![add language](/public/images/scripts/Add-script-content.png)
+![add language](public/images/scripts/Add-script-content.png)
 
 > Ensemble currently supports JavaScript syntax up to ES5.
 
@@ -2378,7 +2378,7 @@ Now let us see what properties does it have on larger level
 
 | Property  | Type    | Description                                                                                                                                                                                                                                                                                                     |
 | :-------- | :------ | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| type      | string  | Kind of transition types. Can read more about it [here](/theme-and-styling/animations). Possible values are `fade`,`rightToLeft`,`leftToRight`,`topToBottom`,`bottomToTop`,`scale`,`rotate`,`size`,`rightToLeftWithFade`,`leftToRightWithFade`,`leftToRightPop`,`rightToLeftPop`,`topToBottomPop`,`bottomToTopPop` |
+| type      | string  | Kind of transition types. Can read more about it [here](/pages/theme-and-styling/animations). Possible values are `fade`,`rightToLeft`,`leftToRight`,`topToBottom`,`bottomToTop`,`scale`,`rotate`,`size`,`rightToLeftWithFade`,`leftToRightWithFade`,`leftToRightPop`,`rightToLeftPop`,`topToBottomPop`,`bottomToTopPop` |
 | alignment | string  | The alignment of the widget relative to its parent. `topLeft`, `topCenter`, `topRight`, `centerLeft`, `center`, `centerRight`, `bottomLeft`, `bottomCenter`, `bottomRight`                                                                                                                                      |
 | duration  | integer | The duration in `ms ( millisecond )` for which the transition animation happens.                                                                                                                                                                                                                                |
 
@@ -2497,21 +2497,21 @@ In many user interfaces, buttons come with a default splash effect, providing in
 Following are the list of widgets that support Splash Feedback
 | Widget       | Documentation  | Kitchen sink example    |
 | ------------ | -------------- | ----------------------- |
-| Column       | [Link](/widgets/column)        | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/90a8e4df-5eab-4473-ba10-2ecffc9596b0) |
-| FittedColumn | [Link](/widgets/fitted-column) | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/hRFxxoaBePQaLfmoBiIb)  |
-| Row          | [Link](/widgets/row)           | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/4bd0d453-c243-429d-a562-93cbc9db38e3) |
-| FittedRow    | [Link](/widgets/fitted-row)    | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/fvSONumk7npuTDmIWwis) |
-| Flex         | [Link](/widgets/flex)          | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/R3KgxV3UPWb4TjoiPI0U) |
-| Stack        | [Link](/widgets/stack)         | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/572ecf3b-b9f2-46f4-960f-ff438e5fa1dc) |
-<!-- | Flow         | [Link](/widgets/flow)          | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/3e901fb8-a0e8-4f52-979b-7f5f2547e650) | -->
-<!-- | ListView     | [Link](/widgets/listview)      | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/w0Wmu9ZMP4csk7IELSx3) |
-| GridView     | [Link](/widgets/gridview)      | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/DX5j2WVQFabmxD9FCD5h) |
-| StaggeredGrid | [Link](/widgets/staggeredgrid.md) | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/a9iIs4wvgqDOhU4rN6GR) | -->
-<!-- | DataGrid     | [Link](/widgets/data-grid)      | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/c5940e18-f2c1-4318-8e68-a678a6ae7247) |
-| TabBar       | [Link](/widgets/tabbar)        | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/cebd491d-7d90-43f4-9f17-b8575de441ca) |
-| Carousel     | [Link](/widgets/carousel)      | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/2e1d88b1-f281-4c2c-9bb1-bd18016d2b8c) |
-| Divider      | [Link](/widgets/divider)       | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/4a893a2e-5bde-400c-b974-b25b497d31a5) |
-| Spacer       | [Link](/widgets/spacer)        | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/1d7e42a9-5bbc-4b4b-9a02-8c102234ee05)   | -->
+| Column       | [Link](/pages/widgets/column)        | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/90a8e4df-5eab-4473-ba10-2ecffc9596b0) |
+| FittedColumn | [Link](/pages/widgets/fitted-column) | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/hRFxxoaBePQaLfmoBiIb)  |
+| Row          | [Link](/pages/widgets/row)           | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/4bd0d453-c243-429d-a562-93cbc9db38e3) |
+| FittedRow    | [Link](/pages/widgets/fitted-row)    | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/fvSONumk7npuTDmIWwis) |
+| Flex         | [Link](/pages/widgets/flex)          | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/R3KgxV3UPWb4TjoiPI0U) |
+| Stack        | [Link](/pages/widgets/stack)         | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/572ecf3b-b9f2-46f4-960f-ff438e5fa1dc) |
+<!-- | Flow         | [Link](/pages/widgets/flow)          | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/3e901fb8-a0e8-4f52-979b-7f5f2547e650) | -->
+<!-- | ListView     | [Link](/pages/widgets/listview)      | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/w0Wmu9ZMP4csk7IELSx3) |
+| GridView     | [Link](/pages/widgets/gridview)      | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/DX5j2WVQFabmxD9FCD5h) |
+| StaggeredGrid | [Link](/pages/widgets/staggeredgrid.md) | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/a9iIs4wvgqDOhU4rN6GR) | -->
+<!-- | DataGrid     | [Link](/pages/widgets/data-grid)      | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/c5940e18-f2c1-4318-8e68-a678a6ae7247) |
+| TabBar       | [Link](/pages/widgets/tabbar)        | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/cebd491d-7d90-43f4-9f17-b8575de441ca) |
+| Carousel     | [Link](/pages/widgets/carousel)      | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/2e1d88b1-f281-4c2c-9bb1-bd18016d2b8c) |
+| Divider      | [Link](/pages/widgets/divider)       | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/4a893a2e-5bde-400c-b974-b25b497d31a5) |
+| Spacer       | [Link](/pages/widgets/spacer)        | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/1d7e42a9-5bbc-4b4b-9a02-8c102234ee05)   | -->
 
 
 
@@ -2613,7 +2613,7 @@ You can manage the assets required by your app within Ensemble Studio. These are
 - image files (PNGs, JPEGs, SVGs, etc.)
 - video files
 - audio files
-- JSON source for [Lottie widget](/widgets/lottie)
+- JSON source for [Lottie widget](/pages/widgets/lottie)
 
 > [!NOTE]
 > When you build and deploy your app, these assets are included in your built output. These assets are loaded instantly in iOS and Android apps instead of downloading them over the network. This approach avoides any delay in displaying the assets.
@@ -2623,11 +2623,11 @@ You can manage the assets required by your app within Ensemble Studio. These are
 
 Navigate to your app inside Ensemble Studio. Select Assets from the left menu. Click on Add assets and upload your file.
 
-![add language](/public/images/app-assets/assets_landing.png)
+![add language](public/images/app-assets/assets_landing.png)
 
 ## Reference an assets
 
-![add language](/public/images/app-assets/assets_example.png)
+![add language](public/images/app-assets/assets_example.png)
 
 1. Click on the `...` icon of the asset.
 2. Select `Copy path`.
@@ -2783,7 +2783,7 @@ Before we start configuration, ensure that we have the following in place:
 
 Firebase supports integration with various app platforms. Here's a breakdown for each platform:
 
-![All Apps](/public/images/firebase/addApp.png)
+![All Apps](public/images/firebase/addApp.png)
 #### Android
 
 - Click the Android icon(looks like a little robot) to start the setup.
@@ -2814,7 +2814,7 @@ Firebase supports integration with various app platforms. Here's a breakdown for
 - Click "Register app" to complete this step.
 - Firebase will provide on-screen instructions where we will find a portion with the name `firebaseConfig` in code given. Copy that portion and save it in a file with the rest configuration files.
 
-![All Apps](/public/images/firebase/allApps.png)
+![All Apps](public/images/firebase/allApps.png)
 
 ## 2. Configure Ensemble app
 Now that we've registered our app with Firebase and downloaded the configuration files, 
@@ -2848,7 +2848,7 @@ acts as a translator between our app and Firebase, providing the necessary infor
 ```
 After we have replaced the placeholder hashtags (#) in our configuration file, it will look like this:
 
-![Configuration File](/public/images/firebase/configfile.png)
+![Configuration File](public/images/firebase/configfile.png)
 
 #### Update Environmental Variables
 
@@ -2856,7 +2856,7 @@ Within our Ensemble application, navigate to the settings section and look for t
 - `api_providers`: Set the value of this variable to `firestore`. This tells our app to use Firebase Firestore as a data provider.
 - `firestore_config`: This is where you'll paste the complete configuration file we created earlier, including the replaced values from our downloaded configuration files.
 
-![Environment Variables](/public/images/firebase/envVari.png)
+![Environment Variables](public/images/firebase/envVari.png)
 
 By following these steps, we'll successfully establish a connection between your Ensemble app and Firebase.
 
@@ -3188,13 +3188,13 @@ In Ensemble Studio, navigate to your app and select Translations from the left m
 > The first language you add is set as the default. You can update the default language when you add more by clicking the `...` menu on the language.
 
 
-![add language](/public/images/translations/add-language.png)
+![add language](public/images/translations/add-language.png)
 
 ## Add language content
 
 Language content is created in YAML. Add key/value pairs for each text.
 
-![add language](/public/images/translations/add-language-content.png)
+![add language](public/images/translations/add-language-content.png)
 
 #### Organize the content
 
@@ -3229,7 +3229,7 @@ When refrencing translations, prepend `r@` before the key assigned to the text:
 
 Use the 🌎 icon on top of the preview to select a language. The preview updates and shows the UI in the selected language.
 
-![add language](/public/images/translations/test-language.png)
+![add language](public/images/translations/test-language.png)
 
 
 ## Setting language in app code
@@ -3334,16 +3334,16 @@ Column:
 ```
 
 ## Implementation
-- For Sign in with Google locally or with your server, go to [Social Sign In](/authentication/social-signin).
-- To use Firebase instead of your server, go to [Firebase](/authentication/firebase).
-- For Sign in with Auth0, go to [Auth0](/authentication/auth0).
+- For Sign in with Google locally or with your server, go to [Social Sign In](/pages/authentication/social-signin).
+- To use Firebase instead of your server, go to [Firebase](/pages/authentication/firebase).
+- For Sign in with Auth0, go to [Auth0](/pages/authentication/auth0).
 
 ---
 
 # Social Sign In
 
 Ensemble supports Social Sign in with Google and Apple. This guide will specifically target the **Sign in with Google** flow.
-For each service, we support three different mechanism for managing the signed-in users: [Client-side](#client-side), with your [Server](#Server-side), or with [Firebase](/authentication/firebase).
+For each service, we support three different mechanism for managing the signed-in users: [Client-side](#client-side), with your [Server](#Server-side), or with [Firebase](/pages/authentication/firebase).
 
 <video width="70%"  controls>
   <source src="/images/signin-client.mov" type="video/mp4">
@@ -5000,7 +5000,7 @@ Any screens can reference the variable with `${env.variable_name}`. Here we pref
 
 ### Override environment variables to load images locally
 
-When building Production app (see [Preparing your App](/deploy/1-prepare-app), you can load this image locally instead of via URL.
+When building Production app (see [Preparing your App](/pages/deploy/1-prepare-app), you can load this image locally instead of via URL.
 
 - Add the assets under folder `<Ensemble Starter>/ensemble/assets/`.
 - Open `<Ensemble Starter>/ensemble/ensemble-config.yaml` and add a matching environment variable that you defined on Ensemble Studio. Leave the value empty (if all your assets are directly under /ensemble/assets).
@@ -5074,7 +5074,7 @@ When developing UI, it is common to display lists of items, and Ensemble simplif
 | -------- |--------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | data     | array              | Bind to an array of data from an API response or a variable                                                                                                    |
 | name     | string             | Variable name referencing each item in the array. Name it as per your use case (e.g. 'person', 'item' ..)                                                      |
-| template | [Widget](/widgets) | Define the child widget to render for each item in the array. Within this widget you can bind to the item using the `name` syntax (e.g. `${person.firstName}`) |
+| template | [Widget](/pages/widgets) | Define the child widget to render for each item in the array. Within this widget you can bind to the item using the `name` syntax (e.g. `${person.firstName}`) |
 | indexId  | string              | (optional) Default: index. The property that will be assigned the current index of the data array while looping through it |
 
 Different containers may expose additional properties to further customize the rendering of the children, but they will always have the `data` and `name`.
@@ -5233,7 +5233,7 @@ First, download Ensemble Preview app by scanning this QR Code:
 
 <div style="width:150px; height:150px">
 
-![QR code for Ensemble Preview](/public/images/app-qr.png)
+![QR code for Ensemble Preview](public/images/app-qr.png)
 
 </div>
 
@@ -5479,7 +5479,7 @@ If this is a brand-new app, you first need to register a unique Bundle ID and a 
 <img src="public/images/deploy/deploy_ios_1.png" alt="Add App" style="border: solid 1px lightgrey" />
 
 #### Preparing Ensemble for uploading
-* Make sure you completed the [Preparing your App](/deploy/1-prepare-app.md) step, including following the starter repo's README instruction to configure and run your App.
+* Make sure you completed the [Preparing your App](/pages/deploy/1-prepare-app.md) step, including following the starter repo's README instruction to configure and run your App.
 * Navigate to the app folder (e.g. my_first_app).
 * Under `ios` folder, open `Runner.xcworkspace` with [XCode](https://developer.apple.com/xcode/).
   * Select the Team (Apple Account) used to create the App and Bundle ID. You may need to log in to your Apple Developer Account under XCode > Preferences > Accounts.
@@ -5637,7 +5637,7 @@ Once the OAuth service successfully authenticates the user and redirect back to 
 
 # Deploy to Android devices
 
-* Make sure you completed the [Preparing your App](/deploy/1-prepare-app.md) step, then navigate to the folder created (e.g. my_first_app).
+* Make sure you completed the [Preparing your App](/pages/deploy/1-prepare-app.md) step, then navigate to the folder created (e.g. my_first_app).
 * Run `flutter create --platforms=android .` (note the period at the end)
 * Run `flutter build apk --no-tree-shake-icons` to build the APKs (destination is /build/app/outputs/flutter-apk/).
 * Connect your Android device to your computer, then run `adb install build/app/outputs/flutter-apk/app-release.apk`.
@@ -5655,7 +5655,7 @@ Once the OAuth service successfully authenticates the user and redirect back to 
 # Deploy to Android Play Store
 
 ## Pre-requisites
-* Make sure you completed the [Preparing your App](/deploy/1-prepare-app.md) step, then navigate to the folder created (e.g. my_first_app).
+* Make sure you completed the [Preparing your App](/pages/deploy/1-prepare-app.md) step, then navigate to the folder created (e.g. my_first_app).
 * Sign your Android app's release version. The below is a demonstration and maybe out-of-date. Please follow Android's latest documentation for up-to-date information.
   * Generate a release key using Java's keytool 
     * Run `keytool -genkey -v -keystore ~/<file_name>.jks -keyalg RSA -keysize 2048 -validity 10000 -alias <key>`
@@ -5792,7 +5792,7 @@ You can embed your app definition in your build output so that your app works wi
 
 ## Prerequisites
 
-* You have completed the [Prepare your app for deployment step](/deploy/1-prepare-app).
+* You have completed the [Prepare your app for deployment step](/pages/deploy/1-prepare-app).
 * You have a text or code editor on your machine. We recommend [VS Code](https://code.visualstudio.com/).
 
 ## Step 1. Create a folder for your app
@@ -5819,7 +5819,7 @@ To work in local mode, you can obtain your app artifacts from either **Ensemble 
 
 To obtain local artifacts from the Desktop app, pull the app directly into the `/ensemble/apps` folder in your local directory where you cloned the Ensemble Starter.
 
-Follow this [guide](/desktop-app/installation#pulling-from-cloud-to-local) to pull the app from the Desktop app.
+Follow this [guide](/pages/desktop-app/installation#pulling-from-cloud-to-local) to pull the app from the Desktop app.
 Once obtained, copy and paste the downloaded folders into the `/ensemble/apps` folder you created.  
 
 The downloaded app will already have the following structure:  
@@ -5913,7 +5913,7 @@ This guide outlines the steps to generate a Google Play Console API Key, enablin
 3. **Access APIs & Services:**
     - Select `APIs & Services` from Quick Access. If not visible, use the search bar in the top center.
 
-![Google Cloud Console Home screen](/public/images/deploy/b88f2d9e-8959-4c03-aa3d-b30b3aac56da.png)
+![Google Cloud Console Home screen](public/images/deploy/b88f2d9e-8959-4c03-aa3d-b30b3aac56da.png)
 
 4. **Navigate to Credentials:**
     - In the left panel, click on `Credentials`.
@@ -5923,13 +5923,13 @@ This guide outlines the steps to generate a Google Play Console API Key, enablin
     - Provide a name for the service account (memorable for identification).
     - Click `Create and Continue`.
 
-![Add Credentials](/public/images/deploy/2f64dff5-5657-40dd-9461-e79eb5ccb6aa.png)
+![Add Credentials](public/images/deploy/2f64dff5-5657-40dd-9461-e79eb5ccb6aa.png)
 
 6. **Define Role:**
     - Choose the role as `Service Account User`.
     - Click `Done` to create the API Key.
 
-![Select adequate role](/public/images/deploy/81cb60a6-acac-41d4-b18b-53faceaa2bd6.png)
+![Select adequate role](public/images/deploy/81cb60a6-acac-41d4-b18b-53faceaa2bd6.png)
 
 7. **Copy Email Address:**
     - Copy the email address of the created key (will be needed later).
@@ -5937,14 +5937,14 @@ This guide outlines the steps to generate a Google Play Console API Key, enablin
 8. **Manage Key:**
     - Click on the edit icon in the Action row, select `Manage Key`.
 
-![Manage Key](/public/images/deploy/da4986fe-311c-4080-87cc-240b119fbce2.png)
+![Manage Key](public/images/deploy/da4986fe-311c-4080-87cc-240b119fbce2.png)
 
 9. **Generate JSON Key File:**
     - In the `Keys` tab, click on `Add Key`, then `Create new key`.
     - Choose `JSON` and click `Create`.
     - Save the downloaded `.json` file securely.
 
-![Download json key](/public/images/deploy/0cede178-01ac-4fe8-841d-25e59067f9ec.png)
+![Download json key](public/images/deploy/0cede178-01ac-4fe8-841d-25e59067f9ec.png)
 
 **Note:** This key needs to be linked to Google Play Console before use.
 
@@ -5954,18 +5954,18 @@ This guide outlines the steps to generate a Google Play Console API Key, enablin
 11. **Invite New Users:**
     - Click on `Invite New Users` and paste the email address saved in step 7.
 
-![Invite new user](/public/images/deploy/bd4df269-e351-4dad-a82d-acb45bc99801.png)
+![Invite new user](public/images/deploy/bd4df269-e351-4dad-a82d-acb45bc99801.png)
 
 12. **Set App Permissions:**
     - In the App Permissions tab, select the apps for direct upload using the build system.
 
-![App Permissions](/public/images/deploy/e2294e7f-01e2-4223-a378-9851fc34b1fe.png)
+![App Permissions](public/images/deploy/e2294e7f-01e2-4223-a378-9851fc34b1fe.png)
 
 13. **Configure Account Permissions:**
     - In the `Account Permissions` tab, check relevant options under `App Access` and `Releases`.
 
-![Account permissions 1](/public/images/deploy/41ae9244-7dd3-4ba5-b7bf-26068bd85ac7.png)
-![Account permissions 2](/public/images/deploy/5fd3b828-cfd9-4be8-9b21-54125c38a09e.png)
+![Account permissions 1](public/images/deploy/41ae9244-7dd3-4ba5-b7bf-26068bd85ac7.png)
+![Account permissions 2](public/images/deploy/5fd3b828-cfd9-4be8-9b21-54125c38a09e.png)
 
 14. **Send Invite:**
     - Click on `Invite User`, then `Send Invite` to link the generated key with the apps successfully.
@@ -5999,13 +5999,13 @@ This guide provides step-by-step instructions on generating an API key for App S
 5. **Generate a New API Key:**
    - Click on the `+` button.
   
-![Keys section](/public/images/deploy/a1622af9-6bc4-44e8-9d40-01ecaa802e38.png)
+![Keys section](public/images/deploy/a1622af9-6bc4-44e8-9d40-01ecaa802e38.png)
 
 6. **Fill in the Details:**
    - Provide a name for your API key. It will be useful to identify your key later on.
    - Choose `App Manager` in the access part of the dialog.
 
-![API Key form](/public/images/deploy/63059213-709b-4686-84ab-7293398951e1.png)
+![API Key form](public/images/deploy/63059213-709b-4686-84ab-7293398951e1.png)
 
 7. **Generate the Key:**
    - Click on the `Generate` button to create the API key.
@@ -6014,7 +6014,7 @@ This guide provides step-by-step instructions on generating an API key for App S
    - There will be a `Download` button for the newly generated key. Download the `.p8` file which is the API key.
    - Safely store the key file, as it cannot be downloaded again.
 
-![Download the generated API Key](/public/images/deploy/4998013e-c189-4289-97b9-e4a6fb61038a.png)
+![Download the generated API Key](public/images/deploy/4998013e-c189-4289-97b9-e4a6fb61038a.png)
 
 9. **Copy Key ID and Issuer ID:**
    - Copy the `Key ID` for the generated key. Also, copy the `Issuer Id` at the top.
@@ -6047,7 +6047,7 @@ This guide outlines the steps to generate a Firebase Service Account with the ne
 - Select the **Service accounts** tab
 - Click the **X service accounts** button to open the Google Cloud Platform interface.
 
-![Firebase Service Accounts Button](/public/images/deploy/firebase_service_accounts_button.png)
+![Firebase Service Accounts Button](public/images/deploy/firebase_service_accounts_button.png)
 
 ---
 
@@ -6058,7 +6058,7 @@ This guide outlines the steps to generate a Firebase Service Account with the ne
 - In the Google Cloud Platform, navigate to the **Service Accounts** section.
 - Click the **Create Service Account** button.
 
-![Create Service Account Button](/public/images/deploy/service-account.png)
+![Create Service Account Button](public/images/deploy/service-account.png)
 
 #### b. Fill in Service Account Details
 
@@ -6075,7 +6075,7 @@ This guide outlines the steps to generate a Firebase Service Account with the ne
 - In the list of service accounts, find the one you just created.
 - Click the menu in the **Actions** column and select **Manage keys**.
 
-![Manage Keys Button](/public/images/deploy/google_cloud_three.png)
+![Manage Keys Button](public/images/deploy/google_cloud_three.png)
 
 #### b. Create a New Key
 
@@ -6083,7 +6083,7 @@ This guide outlines the steps to generate a Firebase Service Account with the ne
 - Select **JSON** as the key type and click **Create**.
 - Download the JSON key file and save it in a secure location.
 
-![Download JSON Button](/public/images/deploy/google_cloud_four.png)
+![Download JSON Button](public/images/deploy/google_cloud_four.png)
 
 ---
 
@@ -6209,7 +6209,7 @@ A control that can execute an action on tap or click.
 | label        | string  | The button label                                                                                                    |
 | enabled      | boolean | Enables or disables the interactivity and input functionality of the widget                                         |
 | submitForm   | boolean | If the button is inside a Form and upon on tap, it will execute the form's onSubmit action if this property is TRUE |
-| onTap        | [action](/actions/directory.md)  | Call Ensemble's built-in functions or execute code                                         |
+| onTap        | [action](/pages/actions/directory.md)  | Call Ensemble's built-in functions or execute code                                         |
 | onTapHaptic | enum | The type of haptic to perform when button is pressed. It should be one of heavyImpact, mediumImpact, lightImpact, selectionClick, and vibrate     |
 | endingIcon   | object  | Icon placed behind the label, according to device text alignment                                                    |
 | startingIcon | object  | Icon placed in front of the label, according to device text alignment                                               |
@@ -6220,7 +6220,7 @@ A control that can execute an action on tap or click.
 | Property     | Type    | Description                                                                                                         |
 | :----------- | :------ | :------------------------------------------------------------------------------------------------------------------ |
 | outline      | boolean | Whether the button should have an outline border instead of filled background |
-| color        | [integer or string](/widgets/types#Color) | Set the color for the button label starting with '0xFF' for full opacity. `transparent`, `black`, `blue`, `white`, `red`, `grey`, `teal`, `amber`, `pink`, `purple`, `yellow`, `green`, `brown`, `cyan`, `indigo`, `lime`, `orange` |
+| color        | [integer or string](/pages/widgets/types#Color) | Set the color for the button label starting with '0xFF' for full opacity. `transparent`, `black`, `blue`, `white`, `red`, `grey`, `teal`, `amber`, `pink`, `purple`, `yellow`, `green`, `brown`, `cyan`, `indigo`, `lime`, `orange` |
 | labelStyle   | object | An object that determines the size, color, and decoration of text |
 
 ### Box Styles (Inherited)
@@ -6702,7 +6702,7 @@ The Checkbox widget allows the rendering of checkbox input elements, enabling us
 | required     | boolean | Whether the field is required                                                                                                                                                                            |
 | enabled      | boolean | Enables or disables the interactivity and input functionality of the widget                                                                                                                              |
 | icon         | object  | [See properties](#icon)                                                                                                                                                                                  |
-| onChange     | [action](/actions/directory.md)  | Call Ensemble's built-in functions or execute code when the input changes. Note for free-form text input, this event only dispatches if the text changes AND the focus is lost (e.g. clicking on button) |
+| onChange     | [action](/pages/actions/directory.md)  | Call Ensemble's built-in functions or execute code when the input changes. Note for free-form text input, this event only dispatches if the text changes AND the focus is lost (e.g. clicking on button) |
 | value        | boolean  | true if checkbox is checked else otherwise                                                                                                                                                                |
 | autoComplete | boolean | Enable the Input search suggestion option                                                                                                                                                                |
 | items        | array   | List of values, or Objects with value/label pairs                                                                                                                                                        |
@@ -6803,7 +6803,7 @@ If you wish to stretch all the children to the same specified width, add `crossA
 | scrollable                   | boolean                                                    | Set to true so content can scroll vertically as needed                                                                                                                                                                                                                                                                            |
 | autoFit                      | boolean                                                    | Explicitly make the column's width as wide as the largest child, but only if our column's parent does not already assign a width. This attribute is useful for sizing children who don't have a width (e.g Divider)                                                                                                               |
 | borderRadius                 | string or integer                                          | The border radius of the widget.This can be specified using CSS-like notation with 1 to 4 integers. Minimum value: 0.                                                                                                                                                                                                             |
-| borderColor                  | [Color](/widgets/types#Color)                     | Sets the border color, starting with '0xFF' for full opacity. `transparent` `black` `blue` `white` `red` `grey` `teal` `amber` `pink` `purple` `yellow` `green` `brown` `cyan` `indigo` `lime` `orange`                                                                                                                           |
+| borderColor                  | [Color](/pages/widgets/types#Color)                     | Sets the border color, starting with '0xFF' for full opacity. `transparent` `black` `blue` `white` `red` `grey` `teal` `amber` `pink` `purple` `yellow` `green` `brown` `cyan` `indigo` `lime` `orange`                                                                                                                           |
 | borderWidth                  | integer                                                    | Thickness of the border. Minimum value should be 0.                                                                                                                                                                                                                                                                               |
 | shadowColor                  | integer or string                                          | Sets the box shadow color starting with '0xFF' for full opacity. `transparent` `black` `blue` `white` `red` `grey` `teal` `amber` `pink` `purple` `yellow` `green` `brown` `cyan` `indigo` `lime` `orange`                                                                                                                        |
 | shadowOffset                 | array                                                      | The values in array define the horizontal and vertical offset of the shadow. Example: if the shadowOffset is set to [2, 4], the shadow will be offset by 2 pixels horizontally and 4 pixels vertically from its original position.                                                                                                |
@@ -6818,13 +6818,13 @@ If you wish to stretch all the children to the same specified width, add `crossA
 | padding                      | string or integer                                          | Padding with CSS-style value                                                                                                                                                                                                                                                                                                      |
 | width                        | integer                                                    | The width property determines the horizontal size of an element, allowing control over its width dimension within the layout.                                                                                                                                                                                                     |
 | height                       | integer                                                    | The height property determines the vertical size of an element, allowing control over its height dimension within the layout.                                                                                                                                                                                                     |
-| backgroundImage              | [BackgroundImage](/widgets/types#BackgroundImage) | Background image of the box.                                                                                                                                                                                                                                                                                                      |
-| backgroundGradient           | [Gradient](/widgets/types#Gradient)                                                      | Background gradient of the box                                                                                                                                                                                                                                                                                                    |
-| backgroundColor              | [Color](/widgets/types#Color)                     | Background color of the box. which can be represented in different formats. It can be specified as a number, a predefined color name, or a hexadecimal value starting with '0x'. `transparent` `black` `blue` `white` `red` `grey` `teal` `amber` `pink` `purple` `yellow` `green` `brown` `cyan` `indigo` `lime` `orange`        |
+| backgroundImage              | [BackgroundImage](/pages/widgets/types#BackgroundImage) | Background image of the box.                                                                                                                                                                                                                                                                                                      |
+| backgroundGradient           | [Gradient](/pages/widgets/types#Gradient)                                                      | Background gradient of the box                                                                                                                                                                                                                                                                                                    |
+| backgroundColor              | [Color](/pages/widgets/types#Color)                     | Background color of the box. which can be represented in different formats. It can be specified as a number, a predefined color name, or a hexadecimal value starting with '0x'. `transparent` `black` `blue` `white` `red` `grey` `teal` `amber` `pink` `purple` `yellow` `green` `brown` `cyan` `indigo` `lime` `orange`        |
 | expanded                     | boolean                                                    | If the parent is a Row or Column, this flag will stretch this widget in the appropriate direction. (e.g. stretch horizontally for parent of type Row)                                                                                                                                                                             |
 | visibilityTransitionDuration | number                                                     | Specify the duration in seconds when a widget animates between visible and not visible state. Note that setting this value will cause the widget to still occupy the UI space even when it is not visible.                                                                                                                        |
 | elevation                    | integer                                                    | The z-coordinate at which to place this material relative to its parent. A non-zero value will show a shadow, with its size relative to the elevation value. Minimum value: 0, Maximum value: 24                                                                                                                                  |
-| elevationShadowColor         | [Color](/widgets/types#Color)                     | The shadow color for the elevation, which can be represented in different formats. It can be specified as a number, a predefined color name, or a hexadecimal value starting with '0x'. `transparent` `black` `blue` `white` `red` `grey` `teal` `amber` `pink` `purple` `yellow` `green` `brown` `cyan` `indigo` `lime` `orange` |
+| elevationShadowColor         | [Color](/pages/widgets/types#Color)                     | The shadow color for the elevation, which can be represented in different formats. It can be specified as a number, a predefined color name, or a hexadecimal value starting with '0x'. `transparent` `black` `blue` `white` `red` `grey` `teal` `amber` `pink` `purple` `yellow` `green` `brown` `cyan` `indigo` `lime` `orange` |
 | elevationBorderRadius        | string or integer                                          | The border radius of the widget.This can be specified using CSS-like notation with 1 to 4 integers. Minimum value: 0.                                                                                                                                                                                                             |
 | alignment                    | string                                                     | The alignment of the widget relative to its parent. `topLeft`, `topCenter`, `topRight`, `centerLeft`, `center`, `centerRight`, `bottomLeft`, `bottomCenter`, `bottomRight`                                                                                                                                                        |
 | visible                      | boolean                                                    | Toggle a widget visibility on/off. Note that an invisible widget will not occupy UI space, unless the visibilityTransitionDuration is specified.                                                                                                                                                                                  |
@@ -7157,7 +7157,7 @@ The DropDown Widget enables the rendering of dropdown menus, providing users wit
 | maxWidth     | integer                                        | The max width of this Input widget (default 700). while min vlaue can be `0` and maximum can be `5000`                                                                                                   |
 | label        | string                                         | Label for your widget                                                                                                                                                                                    |
 | labelHint    | string                                         | Hint text on your label                                                                                                                                                                                  |
-| labelStyle   | [TextStyle](/widgets/types#TextStyle) | Styling for the label                                                                                                                                                                                    |
+| labelStyle   | [TextStyle](/pages/widgets/types#TextStyle) | Styling for the label                                                                                                                                                                                    |
 | hintText     | string                                         | Hint text explaining your widget                                                                                                                                                                         |
 | required     | boolean                                        | Whether the field is required                                                                                                                                                                            |
 | enabled      | boolean                                        | Enables or disables the interactivity and input functionality of the widget                                                                                                                              |
@@ -7204,7 +7204,7 @@ The DropDown Widget enables the rendering of dropdown menus, providing users wit
 | borderColor                  | integer or string | Sets the border color, starting with '0xFF' for full opacity. `transparent` `black` `blue` `white` `red` `grey` `teal` `amber` `pink` `purple` `yellow` `green` `brown` `cyan` `indigo` `lime` `orange`                                                                                                                                       |
 | borderWidth                  | integer           | Thickness of the border. Minimum value should be 0.                                                                                                                                                                                                                                                                                           |
 | expanded                     | boolean           | If the parent is a Row or Column, this flag will stretch this widget in the appropriate direction. (e.g stretch horizontally for parent of type Row)                                                                                                                                                                                          |
-| textStyle   | [TextStyle](/widgets/types#TextStyle) | Styling for the selected text |
+| textStyle   | [TextStyle](/pages/widgets/types#TextStyle) | Styling for the selected text |
 | dropdownBackgroundColor | integer or string | Sets the background color of the panel with the list of options that appears when the dropdown is open, starting with '0xFF' for full opacity. `transparent` `black` `blue` `white` `red` `grey` `teal` `amber` `pink` `purple` `yellow` `green` `brown` `cyan` `indigo` `lime` `orange` |
 | dropdownOffsetX | integer | X-axis offset from the dropdown field of the panel with the list of options that appears when the dropdown or autocomplete is open |
 | dropdownOffsetY | integer | Y-axis offset from the dropdown field of the panel with the list of options that appears when the dropdown or autocomplete is open |
@@ -7225,7 +7225,7 @@ The DropDown Widget enables the rendering of dropdown menus, providing users wit
 ---
 
 # FittedColumn (deprecated)
-This widget is deprecated. Please use [FlexColumn](/widgets/flex-column.md) instead.
+This widget is deprecated. Please use [FlexColumn](/pages/widgets/flex-column.md) instead.
 
 Stretch to fit the parent (the parent is required to have a predetermined height), then distribute the vertical spaces evenly among its children. You can override the space distribution via 'childrenFits' attribute.
 
@@ -7314,7 +7314,7 @@ Stretch to fit the parent (the parent is required to have a predetermined height
 ---
 
 # FittedRow (deprecated)
-This widget is deprecated. Please use [FlexRow](/widgets/flex-row.md) instead.
+This widget is deprecated. Please use [FlexRow](/pages/widgets/flex-row.md) instead.
 
 Stretch to fit the parent (the parent is required to have a predetermined width), then distribute the horizontal spaces evenly among its children. You can override the space distribution via 'childrenFits' attribute.
 
@@ -7478,8 +7478,8 @@ FlexColumn:
 ```
 
 ## Related
-- See [FlexRow](/widgets/flex-row) for a similar layout in the horizontal direction.
-- See [Column](/widgets/column) for a more generic and scrollable container for laying out children vertically.
+- See [FlexRow](/pages/widgets/flex-row) for a similar layout in the horizontal direction.
+- See [Column](/pages/widgets/column) for a more generic and scrollable container for laying out children vertically.
 
 ## Reference
 #### Properties
@@ -7506,11 +7506,11 @@ FlexColumn:
 | clipContent                     | boolean                                                    | Whether to clip the widget's content. Useful for preventing overflow.                                                                  |
 | boxShadow                       | BoxShadow                                                  | Shadow properties for the widget.                                                                                                      |
 | borderRadius                    | BorderRadius                                               | The radius of the widget's corners.                                                                                                    |
-| borderColor                     | [Color](/widgets/types#Color)                     | The color of the widget's border.                                                                                                      |
+| borderColor                     | [Color](/pages/widgets/types#Color)                     | The color of the widget's border.                                                                                                      |
 | borderWidth                     | integer                                                    | The width of the widget's border, in logical pixels.                                                                                   |
-| backgroundColor                 | [Color](/widgets/types#Color)                     | The widget's background color.                                                                                                         |
-| backgroundImage                 | [BackgroundImage](/widgets/types#BackgroundImage) | Overlay an image on the background of this widget                                                                                      |
-| backgroundGradient              | [Gradient](/widgets/types#Gradient)               | Background gradient of the box                                                                                                         |
+| backgroundColor                 | [Color](/pages/widgets/types#Color)                     | The widget's background color.                                                                                                         |
+| backgroundImage                 | [BackgroundImage](/pages/widgets/types#BackgroundImage) | Overlay an image on the background of this widget                                                                                      |
+| backgroundGradient              | [Gradient](/pages/widgets/types#Gradient)               | Background gradient of the box                                                                                                         |
 | padding                         | Padding                                                    | Padding inside the widget, affecting its child widgets.                                                                                |
 | margin                          | Margin                                                     | Margin outside the widget, affecting its position relative to others.                                                                  |
 | flex                            | integer                                                    | Applicable only inside FlexRow or FlexColumn. Determines the space allocated to this widget relative to its siblings.                  |
@@ -7519,7 +7519,7 @@ FlexColumn:
 | visibilityTransitionDuration    | number                                                     | The duration in seconds for a widget to animate between visible and invisible states.                                                  |
 | opacity                      | double                                        | Adjusts the opacity of the widget. Values range from 0 (fully transparent) to 1 (opaque). Default is `1`.                                                                                                                 |
 | elevation                       | integer                                                    | The z-coordinate at which to place this widget relative to its parent. This affects the size of the shadow displayed.                  |
-| elevationShadowColor            | [Color](/widgets/types#Color)                     | The shadow color for the elevation.                                                                                                    |
+| elevationShadowColor            | [Color](/pages/widgets/types#Color)                     | The shadow color for the elevation.                                                                                                    |
 | elevationBorderRadius           | BorderRadius                                               | Should match the widget's `borderRadius` if set, to ensure the shadow properly matches the widget's border radius.                     |
 | alignment                       | Alignment                                                  | Aligns this widget relative to its parent.                                                                                             |
 | enableSplashFeedback                      | boolean                                                    | Toggles splash effect feedback for the widget when        `true`.                                                                                                            |
@@ -7619,8 +7619,8 @@ FlexRow:
 ```
 
 ## Related
-- See [FlexColumn](/widgets/flex-column) for a similar layout in the vertical direction.
-- See [Row](/widgets/column) for a more generic and scrollable container for laying out children horizontally.
+- See [FlexColumn](/pages/widgets/flex-column) for a similar layout in the vertical direction.
+- See [Row](/pages/widgets/column) for a more generic and scrollable container for laying out children horizontally.
 
 ## Reference
 #### Properties
@@ -7647,11 +7647,11 @@ FlexRow:
 | clipContent                     | boolean                                                    | Whether to clip the widget's content. Useful for preventing overflow.                                                                  |
 | boxShadow                       | BoxShadow                                                  | Shadow properties for the widget.                                                                                                      |
 | borderRadius                    | BorderRadius                                               | The radius of the widget's corners.                                                                                                    |
-| borderColor                     | [Color](/widgets/types#Color)                     | The color of the widget's border.                                                                                                      |
+| borderColor                     | [Color](/pages/widgets/types#Color)                     | The color of the widget's border.                                                                                                      |
 | borderWidth                     | integer                                                    | The width of the widget's border, in logical pixels.                                                                                   |
-| backgroundColor                 | [Color](/widgets/types#Color)                     | The widget's background color.                                                                                                         |
-| backgroundImage                 | [BackgroundImage](/widgets/types#BackgroundImage) | Overlay an image on the background of this widget                                                                                      |
-| backgroundGradient              | [Gradient](/widgets/types#Gradient)               | Background gradient of the box                                                                                                         |
+| backgroundColor                 | [Color](/pages/widgets/types#Color)                     | The widget's background color.                                                                                                         |
+| backgroundImage                 | [BackgroundImage](/pages/widgets/types#BackgroundImage) | Overlay an image on the background of this widget                                                                                      |
+| backgroundGradient              | [Gradient](/pages/widgets/types#Gradient)               | Background gradient of the box                                                                                                         |
 | padding                         | Padding                                                    | Padding inside the widget, affecting its child widgets.                                                                                |
 | margin                          | Margin                                                     | Margin outside the widget, affecting its position relative to others.                                                                  |
 | flex                            | integer                                                    | Applicable only inside FlexRow or flexRow. Determines the space allocated to this widget relative to its siblings.                  |
@@ -7660,7 +7660,7 @@ FlexRow:
 | visibilityTransitionDuration    | number                                                     | The duration in seconds for a widget to animate between visible and invisible states.                                                  |
 | opacity                      | double                                        | Adjusts the opacity of the widget. Values range from 0 (fully transparent) to 1 (opaque). Default is `1`.                                                                                                                 |
 | elevation                       | integer                                                    | The z-coordinate at which to place this widget relative to its parent. This affects the size of the shadow displayed.                  |
-| elevationShadowColor            | [Color](/widgets/types#Color)                     | The shadow color for the elevation.                                                                                                    |
+| elevationShadowColor            | [Color](/pages/widgets/types#Color)                     | The shadow color for the elevation.                                                                                                    |
 | elevationBorderRadius           | BorderRadius                                               | Should match the widget's `borderRadius` if set, to ensure the shadow properly matches the widget's border radius.                     |
 | alignment                       | Alignment                                                  | Aligns this widget relative to its parent.                                                                                             |
 | enableSplashFeedback                      | boolean                                                    | Toggles splash effect feedback for the widget when        `true`.                                                                                                            |
@@ -7957,7 +7957,7 @@ View:
 | labelPosition | string                                         | Where the position the FormField's label `top` `start` `none`                                                                 |
 | labelOverflow | string                                         | Treatment of text longer than available space `wrap` `visible` `clip` `ellipsis`                                              |
 | labelMaxWidth | integer                                        | Cap the label's width, useful on larger screen. This property only works on labelPosition=start.                              |
-| labelStyle    | [TextStyle](/widgets/types#TextStyle) | Styling for the label                                                                                                         |
+| labelStyle    | [TextStyle](/pages/widgets/types#TextStyle) | Styling for the label                                                                                                         |
 | width         | integer                                        | The width property determines the horizontal size of an element, allowing control over its width dimension within the layout. |
 | height        | integer                                        | The height property determines the vertical size of an element, allowing control over its height dimension within the layout. |
 | gap           | integer                                        | Vertical gap to insert between the children (default is 10)                                                                   |
@@ -8164,7 +8164,7 @@ The Icon Widget enables easy integration of icons from popular libraries like Fo
 [Test in Kitchen Sink](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/e7c686f5-b8a2-4670-9e6e-8fdb0fea768e)
 
 
-[List of supported icons](/widgets/icon2.md)
+[List of supported icons](/pages/widgets/icon2.md)
 
 
 ## Properties
@@ -8172,7 +8172,7 @@ The Icon Widget enables easy integration of icons from popular libraries like Fo
 | Property | Type   | Description                                                                                                                                                                                                                                                                                                                                                             |
 | :------- | :----- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | icon     | string | Icon name from Material Icons or Font Awesome                                                                                                                                                                                                                                                                                                                           |
-| library  | [string](/widgets/icon2.md) | Which icon library to use, if there is no value for library then its considered to be default. `fontAwesome` `remix` ( for now only few remix icons are supported but we will support most them soon) You can check list of supported icons [here](/widgets/icon2.md) |
+| library  | [string](/pages/widgets/icon2.md) | Which icon library to use, if there is no value for library then its considered to be default. `fontAwesome` `remix` ( for now only few remix icons are supported but we will support most them soon) You can check list of supported icons [here](/pages/widgets/icon2.md) |
 | onTap    | action | Call Ensemble's built-in functions or execute code                                                                                                                                                                                                                                                                                                                      |
 | onTapHaptic | enum | The type of haptic to perform when icon is pressed. It should be one of heavyImpact, mediumImpact, lightImpact, selectionClick, and vibrate |
 | styles   | object | [See properties](#styles)                                                                                                                                                                                                                                                                                                                                               |
@@ -8320,9 +8320,9 @@ See all the FontAwesome Icons from here: [FontAwesome Library](https://studio.en
 
 # Image widget
 
-The Image Widget allows you to render images from a URL or [local assets](/extending-ensemble/local-assets). 
+The Image Widget allows you to render images from a URL or [local assets](/pages/extending-ensemble/local-assets). 
 
-You can manage your assets using Ensemble Studio. [See how](/assets)
+You can manage your assets using Ensemble Studio. [See how](/pages/assets)
 
 ---
 
@@ -9494,7 +9494,7 @@ Row is designed to arrange child widgets horizontally, where the intrinsic sizes
 ## Best Practices
 
 - Use Row to lay out the children horizontally from left to right. Enable scrollable if the children might exceed the available space.
-- **Avoid** using child widgets with no width constraint or sized itself to the parent (e.g. form inputs such as TextInput) inside the Row. [FlexRow](/widgets/flex-row.md) may be a better choice in this case.
+- **Avoid** using child widgets with no width constraint or sized itself to the parent (e.g. form inputs such as TextInput) inside the Row. [FlexRow](/pages/widgets/flex-row.md) may be a better choice in this case.
 - Avoid using nested scrollable Row for better UX.
 
 ## Key Concepts
@@ -9538,9 +9538,9 @@ If you wish to stretch all the children to the same specified height, add `cross
 | scrollable                   | boolean                                                    | Set to true so content can scroll horizontally as needed                                                                                                                                                                                                                                                                          |
 | autoFit                      | boolean                                                    | Explicitly make the row's height as tall as the largest child, but only if the row's parent does not already assign us a height. This attribute is useful for sizing children who don't have a width (e.g vertical Divider)                                                                                                       |
 | borderRadius                 | string or integer                                          | The border radius of the widget.This can be specified using CSS-like notation with 1 to 4 integers. Minimum value: 0.                                                                                                                                                                                                             |
-| borderColor                  | [Color](/widgets/types#Color)                     | Sets the border color, starting with '0xFF' for full opacity. `transparent` `black` `blue` `white` `red` `grey` `teal` `amber` `pink` `purple` `yellow` `green` `brown` `cyan` `indigo` `lime` `orange`                                                                                                                           |
+| borderColor                  | [Color](/pages/widgets/types#Color)                     | Sets the border color, starting with '0xFF' for full opacity. `transparent` `black` `blue` `white` `red` `grey` `teal` `amber` `pink` `purple` `yellow` `green` `brown` `cyan` `indigo` `lime` `orange`                                                                                                                           |
 | borderWidth                  | integer                                                    | Thickness of the border. Minimum value should be 0.                                                                                                                                                                                                                                                                               |
-| shadowColor                  | [Color](/widgets/types#Color)                     | Sets the box shadow color starting with '0xFF' for full opacity. `transparent` `black` `blue` `white` `red` `grey` `teal` `amber` `pink` `purple` `yellow` `green` `brown` `cyan` `indigo` `lime` `orange`                                                                                                                        |
+| shadowColor                  | [Color](/pages/widgets/types#Color)                     | Sets the box shadow color starting with '0xFF' for full opacity. `transparent` `black` `blue` `white` `red` `grey` `teal` `amber` `pink` `purple` `yellow` `green` `brown` `cyan` `indigo` `lime` `orange`                                                                                                                        |
 | shadowOffset                 | array                                                      | The values in array define the horizontal and vertical offset of the shadow. Example: if the shadowOffset is set to [2, 4], the shadow will be offset by 2 pixels horizontally and 4 pixels vertically from its original position.                                                                                                |
 | shadowRadius                 | string or integer                                          | The border radius of the widget.This can be specified using CSS-like notation with 1 to 4 integers. Minimum value: 0.                                                                                                                                                                                                             |
 | shadowStyle                  | string                                                     | The blur style to apply on the shadow `normal`, `solid`, `outer`, `inner`                                                                                                                                                                                                                                                         |
@@ -9553,9 +9553,9 @@ If you wish to stretch all the children to the same specified height, add `cross
 | padding                      | string or integer                                          | Padding with CSS-style value                                                                                                                                                                                                                                                                                                      |
 | width                        | integer                                                    | The width property determines the horizontal size of an element, allowing control over its width dimension within the layout.                                                                                                                                                                                                     |
 | height                       | integer                                                    | The height property determines the vertical size of an element, allowing control over its height dimension within the layout.                                                                                                                                                                                                     |
-| backgroundImage              | [BackgroundImage](/widgets/types#BackgroundImage) | Background image of the box.                                                                                                                                                                                                                                                            |
-| backgroundGradient           | [Gradient](/widgets/types#Gradient)               | Background gradient of the box                                                                                                                                                                                                                                                  |
-| backgroundColor              | [Color](/widgets/types#Color)                     | Background color of the box. which can be represented in different formats. It can be specified as a number, a predefined color name, or a hexadecimal value starting with '0x'. `transparent` `black` `blue` `white` `red` `grey` `teal` `amber` `pink` `purple` `yellow` `green` `brown` `cyan` `indigo` `lime` `orange`        |
+| backgroundImage              | [BackgroundImage](/pages/widgets/types#BackgroundImage) | Background image of the box.                                                                                                                                                                                                                                                            |
+| backgroundGradient           | [Gradient](/pages/widgets/types#Gradient)               | Background gradient of the box                                                                                                                                                                                                                                                  |
+| backgroundColor              | [Color](/pages/widgets/types#Color)                     | Background color of the box. which can be represented in different formats. It can be specified as a number, a predefined color name, or a hexadecimal value starting with '0x'. `transparent` `black` `blue` `white` `red` `grey` `teal` `amber` `pink` `purple` `yellow` `green` `brown` `cyan` `indigo` `lime` `orange`        |
 | expanded                     | boolean                                                    | If the parent is a Row or Column, this flag will stretch this widget in the appropriate direction. (e.g. stretch horizontally for parent of type Row)                                                                                                                                                                             |
 | visibilityTransitionDuration | number                                                     | Specify the duration in seconds when a widget animates between visible and not visible state. Note that setting this value will cause the widget to still occupy the UI space even when it is not visible.                                                                                                                        |
 | elevation                    | integer                                                    | The z-coordinate at which to place this material relative to its parent. A non-zero value will show a shadow, with its size relative to the elevation value. Minimum value: 0, Maximum value: 24                                                                                                                                  |
@@ -9897,7 +9897,7 @@ The TextInput Widget enables the rendering of interactive text input fields, all
 | maxWidth                | integer                                        | The max width of this Input widget (default 700). while min vlaue can be `0` and maximum can be `5000`                                                                                                                            |
 | label                   | string                                         | Label for your widget                                                                                                                                                                                                             |
 | labelHint               | string                                         | Hint text on your label                                                                                                                                                                                                           |
-| labelStyle              | [TextStyle](/widgets/types#TextStyle) | Styling for the label                                                                                                                                                                                                             |
+| labelStyle              | [TextStyle](/pages/widgets/types#TextStyle) | Styling for the label                                                                                                                                                                                                             |
 | hintText                | string                                         | Hint text explaining your widget                                                                                                                                                                                                  |
 | hintStyle               | object                                         | Styling the hint text. Default to theme's bodyMedium styling. [see properties](#hintstyles)                                                                                                                                       |
 | required                | boolean                                        | Whether the field is required                                                                                                                                                                                                     |
@@ -10101,8 +10101,8 @@ TextStyle allows customization of font, size, color, decoration, and more to enh
 |:---------|:-----------------------------------------------|:-----------------------------------------------------------------------------------------------------------|
 | colors   | [Color[]](#Color)                              | An array of colors used for the gradient.                                                                  |
 | stops    | number[]                                       | The list of numbers from 0.0 (where the gradient starts) to 1.0 (where the gradient ends), one for each colors specified                         |
-| start    | [Alignment](/widgets/types#Alignment) | The starting position of the gradient.                                                                     |
-| end      | [Alignment](/widgets/types#Alignment) | The ending position of the gradient.                                                                       |
+| start    | [Alignment](/pages/widgets/types#Alignment) | The starting position of the gradient.                                                                     |
+| end      | [Alignment](/pages/widgets/types#Alignment) | The ending position of the gradient.                                                                       |
 
 ## FontWeight
 This property defines the weight (thickness) of the font used in text styling. It includes standard weights and numerical weights for finer control.
@@ -10175,9 +10175,9 @@ This property configures a background image for a widget, including its source, 
 | Property  | Type                                           | Description                                                                                                         |
 |:----------|:-----------------------------------------------|:--------------------------------------------------------------------------------------------------------------------|
 | source    | string                                         | The Image URL to fill the background.                                                                               |
-| fallback  | [Widget](/widgets)          | Return an inline widget or specify a custom widget to be rendered when the backgroundImage fails to load the image. |
-| fit       | [Fit](/widgets/types#Fit)             | How to fit the image within the dimensions.                                                                         |
-| alignment | [Alignment](/widgets/types#Alignment) | Align this image relative to its parent or dimensions.                                                              |
+| fallback  | [Widget](/pages/widgets)          | Return an inline widget or specify a custom widget to be rendered when the backgroundImage fails to load the image. |
+| fit       | [Fit](/pages/widgets/types#Fit)             | How to fit the image within the dimensions.                                                                         |
+| alignment | [Alignment](/pages/widgets/types#Alignment) | Align this image relative to its parent or dimensions.                                                              |
 
 
 ## Fit
@@ -10200,7 +10200,7 @@ This property determines how to fit the image within the dimension or the parent
 | Property     | Type                                   | Description                                            |
 |:-------------|:---------------------------------------|:-------------------------------------------------------|
 | borderRadius | integer / string                       | Border Radius with CSS-like notation (1 to 4 integers) |
-| borderColor  | [Color](/widgets/types#Color) | Border color, starting with '0xFF' for full opacity.   |
+| borderColor  | [Color](/pages/widgets/types#Color) | Border color, starting with '0xFF' for full opacity.   |
 | borderWidth  | integer                                | The thickness of the border. Minimum value: 0.         |
 
 ## Shadow
@@ -10254,7 +10254,7 @@ Video:
 
 # WebView widget
 
-The WebView Widget enables seamless integration of web content within native apps and web apps, providing a versatile and consistent browsing experience across platforms. In addition to its core functionality, WebView also supports the use of cookies. [Learn more here!](/tips-and-tricks/cookies.md)
+The WebView Widget enables seamless integration of web content within native apps and web apps, providing a versatile and consistent browsing experience across platforms. In addition to its core functionality, WebView also supports the use of cookies. [Learn more here!](/pages/tips-and-tricks/cookies.md)
 
 ```yaml
 - WebView:
@@ -10411,10 +10411,10 @@ View:
 
 | Name | Kitchen sink example | Output |
 | ---- | -------------------- | ------ |
-| HorizontalProgressBar | [link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/rlWyrWZrkb6JhxoACptf) | ![HorizontalProgressBar](/public/images/composite-widgets/HorizontalProgressBar.png) |
-| ImageThumbnailCarousel | [link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/gRexsL9GfS9k6rLswMck) | ![ImageThumbnailCarousel](/public/images/composite-widgets/ImageThumbnailCarousel.png) |
-| ProfileImageWithIndicator | [link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/xCU7BvaYzK20NsEuqyNB) | ![ProfileImageWithIndicator](/public/images/composite-widgets/ProfileImageWithIndicator.png) |
-| RatingStars | [link](https://studio.ensembleui.com/app/8PghcmhtGkWiWffmhDDl/widget/pn4g23nRuQ5D8AsN1qtp) | ![RatingStars](/public/images/composite-widgets/RatingStars.png) |
+| HorizontalProgressBar | [link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/rlWyrWZrkb6JhxoACptf) | ![HorizontalProgressBar](public/images/composite-widgets/HorizontalProgressBar.png) |
+| ImageThumbnailCarousel | [link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/gRexsL9GfS9k6rLswMck) | ![ImageThumbnailCarousel](public/images/composite-widgets/ImageThumbnailCarousel.png) |
+| ProfileImageWithIndicator | [link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/xCU7BvaYzK20NsEuqyNB) | ![ProfileImageWithIndicator](public/images/composite-widgets/ProfileImageWithIndicator.png) |
+| RatingStars | [link](https://studio.ensembleui.com/app/8PghcmhtGkWiWffmhDDl/widget/pn4g23nRuQ5D8AsN1qtp) | ![RatingStars](public/images/composite-widgets/RatingStars.png) |
 
 
 ## Contributing to Composite Widgets
@@ -10453,7 +10453,7 @@ Join Ensemble [Discord server](https://dsc.gg/ensembleui), and post a new topic 
 Make sure to make your app public so that reviewers can access it.
 
 
-![Make app public](/public/images/make-app-public.jpg)
+![Make app public](public/images/make-app-public.jpg)
 
 ---
 
@@ -10794,7 +10794,7 @@ ensemble.clearKeychain({
 -   If the key doesn't exist, the action may trigger an error depending on the platform.
 -   Use this action for cleanup when sensitive data is no longer needed (e.g., after logout).
 -   For security best practices, always clear sensitive data when it's no longer required.
--   This action works with data stored using [saveKeychain](/actions/save-keychain).
+-   This action works with data stored using [saveKeychain](/pages/actions/save-keychain).
 -   Unlike `clearSecureStorage`, this operates at the OS-level security layer.
 
 ---
@@ -10855,7 +10855,7 @@ try {
 -   If the key doesn't exist, the action completes successfully without any error.
 -   Use this action for cleanup when sensitive data is no longer needed (e.g., after logout).
 -   For security best practices, always clear sensitive data when it's no longer required.
--   This action works with data stored using [setSecureStorage](/actions/set-secure-storage).
+-   This action works with data stored using [setSecureStorage](/pages/actions/set-secure-storage).
 
 ---
 
@@ -11876,7 +11876,7 @@ ensemble.invokeAPI({
 -   This action requires an encryption key to be set in your secrets configuration.
 -   The retrieved data is automatically decrypted and converted back to its original data type (string, number, boolean, or object).
 -   If no data exists for the given key, `null` will be returned.
--   Data stored using [setSecureStorage](/actions/set-secure-storage) can be retrieved with this action.
+-   Data stored using [setSecureStorage](/pages/actions/set-secure-storage) can be retrieved with this action.
 -   The value is available in the `onComplete` action under `event.data` when used in YAML.
 -   When used in JavaScript, the value is returned directly from the function call.
 
@@ -12165,7 +12165,7 @@ API:
 | onResponse | Action | The action to handle the response                                          |
 | onError    | Action | The action to handle errors                                                |
 
-Details about API [here](/apis/api-overview)
+Details about API [here](/pages/apis/api-overview)
 
 ---
 
@@ -12844,7 +12844,7 @@ View:
 
 navigateViewGroup action allows users to navigate between menu items while maintaining the menu in place. This simulate the experience when user taps on different nav items.
 
-To use this action, first create your [ViewGroup](/screens-and-widgets/screen-structure#view-group).
+To use this action, first create your [ViewGroup](/pages/screens-and-widgets/screen-structure#view-group).
 
 ### Properties
 
@@ -13219,8 +13219,8 @@ Applicable on iOS/Android only. Opens the app settings page where the user can m
 | minCountMessage         | string  | Custom message to show when captured/selected media is greater than minCount                                                   |
 | permissionDeniedMessage | string  | Set custom message when access to camera is denied                                                                             |
 | nextButtonLabel         | string  | Set custom label on next button.                                                                                               |
-| cameraRotateIcon        | widget  | Set custom icon for camera rotate button. [see here](/widget-reference/Icon)                                                   |
-| galleryPickerIcon       | widget  | Set custom icon for gallery picker button. [see here](/widget-reference/Icon)                                                  |
+| cameraRotateIcon        | widget  | Set custom icon for camera rotate button. [see here](/pages/widget-reference/Icon)                                                   |
+| galleryPickerIcon       | widget  | Set custom icon for gallery picker button. [see here](/pages/widget-reference/Icon)                                                  |
 | focusIcon               | widget  | Set custom icon for focus node.                                                                                                |
 | assistAngle             | object  | Show assist message whenever angle goes below minAngle or above minAngle. [see properties](#values-for-optionsassistangle)     |
 | assistSpeed             | object  | Show assist message whenever camera is moving faster than maxSpeed. [see properties](#values-for-optionsassistspeed)           |
@@ -14104,7 +14104,7 @@ It is only available in YAML, as this calls a async function whose return type i
 -   Unlike the `getSecureStorage` action, this operation is asynchronous and must use callbacks even in JavaScript.
 -   The retrieved data is converted back to its original data type (string, number, boolean, or object).
 -   If no data exists for the given key, the onError callback will be triggered.
--   Data stored using [saveKeychain](/actions/save-keychain) can be retrieved with this action.
+-   Data stored using [saveKeychain](/pages/actions/save-keychain) can be retrieved with this action.
 -   The value is available in the `onComplete` action under `event.data`.
 -   This action provides access to data with OS-level security protection.
 
@@ -14157,9 +14157,9 @@ When user clicks on button browser pop-up asks for permission and as you allow i
 
 **Output**
 
-![Alt text](/public/images/actions/image-.png)
+![Alt text](public/images/actions/image-.png)
 
-![Alt text](/public/images/actions/image--2.png)
+![Alt text](public/images/actions/image--2.png)
 
 ---
 
@@ -14368,9 +14368,9 @@ ensemble.saveKeychain({
 -   On iOS, this uses the Keychain Services API.
 -   On Android, this uses the Android Keystore System or equivalent secure storage.
 -   Values stored in the keychain persist even when the app is uninstalled on iOS (not on Android).
--   To retrieve the value later, use the [readKeychain](/actions/read-keychain) action.
--   To remove the value, use the [clearKeychain](/actions/clear-keychain) action.
--   For less sensitive data that doesn't need OS-level security, consider using [setSecureStorage](/actions/set-secure-storage) instead.
+-   To retrieve the value later, use the [readKeychain](/pages/actions/read-keychain) action.
+-   To remove the value, use the [clearKeychain](/pages/actions/clear-keychain) action.
+-   For less sensitive data that doesn't need OS-level security, consider using [setSecureStorage](/pages/actions/set-secure-storage) instead.
 
 ---
 
@@ -14518,8 +14518,8 @@ ensemble.setSecureStorage({
 -   This action requires an encryption key to be set in your secrets configuration.
 -   The value can be any type of data - strings, numbers, booleans, or complex objects.
 -   All data is encrypted before storage using AES encryption.
--   To retrieve the value later, use the [getSecureStorage](/actions/get-secure-storage) action.
--   To remove the value, use the [clearSecureStorage](/actions/clear-secure-storage) action.
+-   To retrieve the value later, use the [getSecureStorage](/pages/actions/get-secure-storage) action.
+-   To remove the value, use the [clearSecureStorage](/pages/actions/clear-secure-storage) action.
 
 ---
 
@@ -14601,7 +14601,7 @@ The `showBottomModal` action is configured to call an `ActionsSheet` widget with
 
 | Property      | Type      | Description  |
 |:--------------|:----------|:-------------|
-| widget        | [Widget](/widgets/) | Constructs the UI of the bottom modal using widgets. |
+| widget        | [Widget](/pages/widgets/) | Constructs the UI of the bottom modal using widgets. |
 | styles        | [Styles](#styles) | Applies styles to customize the appearance of the modal. |
 | options       | [Options](#options) | Offers customization options for the modal behavior. |
 | onDismiss     | Action  | Execute predefined functions or custom code on modal dismiss. |
@@ -14843,7 +14843,7 @@ showNotification action triggers the display of local notifications within the a
 
 **Example**
 
-You can refer [here](/actions/request-notification-access) for example related to notification. Can also refer complete example [here](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/zbIn4f6tD3yQkC1MJRj1?propertyPanelEnabled=true&instantPreviewDisabled=false&editorV2Enabled=true).
+You can refer [here](/pages/actions/request-notification-access) for example related to notification. Can also refer complete example [here](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/zbIn4f6tD3yQkC1MJRj1?propertyPanelEnabled=true&instantPreviewDisabled=false&editorV2Enabled=true).
 
 ---
 
@@ -15947,7 +15947,7 @@ API:
 | onResponse | Action | The action to handle the response                                          |
 | onError    | Action | The action to handle errors                                                |
 
-Details about API [here](/build/user-interface/1-page-structure)
+Details about API [here](/pages/build/user-interface/1-page-structure)
 
 ---
 
@@ -16400,8 +16400,8 @@ notifications action provides a comprehensive and customizable solution for mana
 | minCountMessage         | string  | Custom message to show when captured/selected media is greater than minCount                                                   |
 | permissionDeniedMessage | string  | Set custom message when access to camera is denied                                                                             |
 | nextButtonLabel         | string  | Set custom label on next button.                                                                                               |
-| cameraRotateIcon        | widget  | Set custom icon for camera rotate button. [see here](/widgets/Icon)                                                   |
-| galleryPickerIcon       | widget  | Set custom icon for gallery picker button. [see here](/widgets/Icon)                                                  |
+| cameraRotateIcon        | widget  | Set custom icon for camera rotate button. [see here](/pages/widgets/Icon)                                                   |
+| galleryPickerIcon       | widget  | Set custom icon for gallery picker button. [see here](/pages/widgets/Icon)                                                  |
 | focusIcon               | widget  | Set custom icon for focus node.                                                                                                |
 | assistAngle             | object  | Show assist message whenever angle goes below minAngle or above minAngle. [see properties](#values-for-optionsassistangle)     |
 | assistSpeed             | object  | Show assist message whenever camera is moving faster than maxSpeed. [see properties](#values-for-optionsassistspeed)           |
@@ -16848,9 +16848,9 @@ When user clicks on button browser pop-up asks for permission and as you allow i
 
 **Output**
 
-![Alt text](/public/images/actions/image-.png)
+![Alt text](public/images/actions/image-.png)
 
-![Alt text](/public/images/actions/image--2.png)
+![Alt text](public/images/actions/image--2.png)
 
 ---
 
@@ -16983,9 +16983,9 @@ Try complete example [here](https://studio.ensembleui.com/app/e24402cb-75e2-404c
 
 **Output**
 
-![Alt text](/public/images/actions/image--4.png)
+![Alt text](public/images/actions/image--4.png)
 
-![Alt text](/public/images/actions/image--5.png)
+![Alt text](public/images/actions/image--5.png)
 
 **Example with inputs**
 
@@ -17048,9 +17048,9 @@ MyCustomDialog:
 
 **Output**
 
-![Alt text](/public/images/actions/image--1.png)
+![Alt text](public/images/actions/image--1.png)
 
-![Alt text](/public/images/actions/image--3.png)
+![Alt text](public/images/actions/image--3.png)
 
 ---
 
@@ -17067,7 +17067,7 @@ showNotification action triggers the display of local notifications within the a
 
 **Example**
 
-You can refer [here](/device-capabilities/request-notification-access) for example related to notification. Can also refer complete example [here](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/zbIn4f6tD3yQkC1MJRj1?propertyPanelEnabled=true&instantPreviewDisabled=false&editorV2Enabled=true).
+You can refer [here](/pages/device-capabilities/request-notification-access) for example related to notification. Can also refer complete example [here](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/zbIn4f6tD3yQkC1MJRj1?propertyPanelEnabled=true&instantPreviewDisabled=false&editorV2Enabled=true).
 
 ---
 
@@ -17416,15 +17416,15 @@ For example.
 
 ## Core Libraries
 
-- [The `ensemble` object](/javascript-reference/Ensemble)
-- [String](/javascript-reference/String)
-- [Numbers](/javascript-reference/Numbers)
-- [Date](/javascript-reference/Date)
-- [Object and Array](/javascript-reference/Map-and-Array)
-- [Globals](/javascript-reference/Global)
-- [Math](/javascript-reference/Math)
-- [JSON](/javascript-reference/JSON)
-- [JsonPath](/javascript-reference/JsonPath)
+- [The `ensemble` object](/pages/javascript-reference/Ensemble)
+- [String](/pages/javascript-reference/String)
+- [Numbers](/pages/javascript-reference/Numbers)
+- [Date](/pages/javascript-reference/Date)
+- [Object and Array](/pages/javascript-reference/Map-and-Array)
+- [Globals](/pages/javascript-reference/Global)
+- [Math](/pages/javascript-reference/Math)
+- [JSON](/pages/javascript-reference/JSON)
+- [JsonPath](/pages/javascript-reference/JsonPath)
 
 ## Common Errors and Logging/Debugging
 
@@ -17899,12 +17899,12 @@ app.useMockResponse = true;
 var isInMockResponseMode = app.useMockResponse; //returns true
 ```
 ### Theme
-Sets or Returns the value of the current theme. See [this](/theme-and-styling/theme) for details on how themes work and how to set/get a theme. 
+Sets or Returns the value of the current theme. See [this](/pages/theme-and-styling/theme) for details on how themes work and how to set/get a theme. 
 
 ### Themes
 Returns the current set of themes that were configured in the app. NOTE: you can only retrieve the list of pre-configured themes, you cannot add to the list or set the list to a different list. 
 
-See [this](/theme-and-styling/theme#checking-and-switching-themes-in-javascript) on how to configure multiple themes.
+See [this](/pages/theme-and-styling/theme#checking-and-switching-themes-in-javascript) on how to configure multiple themes.
 
 **Example:**
 
@@ -17921,13 +17921,13 @@ Bind the `themes` to a dropdown and let user switch themes from all the availabl
 ```
 ## Methods
 ### saveTheme
-Saves the theme name passed as argument into the persistent storage. This theme is then automatically applied on the next re-launch of the app. See [this](/theme-and-styling/theme#savings-themes-in-storage-so-they-can-be-applied-across-application-sessions) for details.
+Saves the theme name passed as argument into the persistent storage. This theme is then automatically applied on the next re-launch of the app. See [this](/pages/theme-and-styling/theme#savings-themes-in-storage-so-they-can-be-applied-across-application-sessions) for details.
 
 ### getSavedTheme
-Retrieves the saved theme. See [this](/theme-and-styling/theme#savings-themes-in-storage-so-they-can-be-applied-across-application-sessions) for details.
+Retrieves the saved theme. See [this](/pages/theme-and-styling/theme#savings-themes-in-storage-so-they-can-be-applied-across-application-sessions) for details.
 
 ### removeSavedTheme
-Clear out the saved theme. See [this](/theme-and-styling/theme#savings-themes-in-storage-so-they-can-be-applied-across-application-sessions) for details.
+Clear out the saved theme. See [this](/pages/theme-and-styling/theme#savings-themes-in-storage-so-they-can-be-applied-across-application-sessions) for details.
 
 ---
 
@@ -18005,7 +18005,7 @@ There are two ways to re-use js code as follows -
 - `Global` block within a screen definition. This, despite its name, is limited to the screen it is defined in and cannot be referenced in other screens
 - `Scripts` a script that is defined independent of a screen (see video below) may be used anywhere in the app by simply importing it. 
 
-In both cases above, you can define javascript variables (only `var` is supported as this is ES5, see [here](/javascript-reference/intro)) or functions. 
+In both cases above, you can define javascript variables (only `var` is supported as this is ES5, see [here](/pages/javascript-reference/intro)) or functions. 
 
 ## Example of `Global` code block within a screen
 
@@ -18037,7 +18037,7 @@ Watch the following video for how to define a js library and re-use it across th
 - Let us know on our [Discord server](https://discord.gg/k4CJeuRc) if you need any of other capabilities
 - or open a [ticket](https://github.com/EnsembleUI/ensemble/issues)
 
-For `parseInt`, `parseFloat`, see [String.tryParseInt](/javascript-reference/String) and [String.tryParseDouble](/javascript-reference/String) respectively.
+For `parseInt`, `parseFloat`, see [String.tryParseInt](/pages/javascript-reference/String) and [String.tryParseDouble](/pages/javascript-reference/String) respectively.
 
 ### console.log
 
@@ -18157,7 +18157,7 @@ console.log(obj.result);
 ### stringify()
 The JSON.stringify() static method converts a JavaScript value to a JSON string.
 
-Types that are directly converted to json strings - string, number, array, object (map), boolean and date. Date objects are converted to string by calling the [toISOString()](/javascript-reference/Date#toisostring) method. 
+Types that are directly converted to json strings - string, number, array, object (map), boolean and date. Date objects are converted to string by calling the [toISOString()](/pages/javascript-reference/Date#toisostring) method. 
 
 #### Returns
 Returns a string representing the json object 
@@ -19378,7 +19378,7 @@ Get metadata (information) about your app from Ensemble and from Appstore/Google
 - theme - The app's current theme
 - themes - List of all configured themes
 
-See the [themes docs](/theme-and-styling/theme) for more details.
+See the [themes docs](/pages/theme-and-styling/theme) for more details.
 
 ```yaml
 View:
@@ -19477,7 +19477,7 @@ Add your question [Builder Support channel](https://discord.com/channels/1031982
 Make sure to provide us with details. If you have an existing screen, share a link to your screen in Ensemble Studio. To allow others to access it, make your app public. You can undo this after your issue is resolved.
 
 
-![Make app public](/public/images/make-app-public.jpg)
+![Make app public](public/images/make-app-public.jpg)
 
 ---
 
@@ -19485,8 +19485,8 @@ Make sure to provide us with details. If you have an existing screen, share a li
 
 Beside the default styling for the Bottom Navbar items you can style them according to your needs and desire. Ensemble allows user to style items based on many features concept inherited from the CSS and Flutter technologies such as active, non-active states styling etc. Let us move to the code directly and see how it works practically.
 
-- [Icon Without Label](/tips-and-tricks/icon-with-label)
-- [Profile Picture as Item](/tips-and-tricks/profile-picture-item)
+- [Icon Without Label](/pages/tips-and-tricks/icon-with-label)
+- [Profile Picture as Item](/pages/tips-and-tricks/profile-picture-item)
 
 ---
 
@@ -19497,9 +19497,9 @@ Beside the default styling for the Bottom Navbar items you can style them accord
 ## In a nutshell:
 
 1. Use `${device.width}` to modify properties according to device width
-2. Use the [GridView widget's](/widgets/gridview) built-in responsive breakpoints
-3. Use the [Flow widget](/widgets/flow) to wrap content
-4. Use the [Flex widget](/widgets/flex) to toggle between horizontal and vertical layouts
+2. Use the [GridView widget's](/pages/widgets/gridview) built-in responsive breakpoints
+3. Use the [Flow widget](/pages/widgets/flow) to wrap content
+4. Use the [Flex widget](/pages/widgets/flex) to toggle between horizontal and vertical layouts
 5. Avoid setting explicit width and height, specially for container widgets (Rows, Columns, GridView, etc.)
 
 
@@ -19516,7 +19516,7 @@ Column:
 
 ## 2. GridView's built-in breakpoints
 
-[GridView widget](/widgets/gridview) includes built-in responsive breakpoints. 
+[GridView widget](/pages/widgets/gridview) includes built-in responsive breakpoints. 
 
 You can pass 1, 3, or 5 values to `horizontalTileCount` property to make the grid responsive based on predefined set of breakpoints.
 
@@ -19552,11 +19552,11 @@ GridView:
 # https://studio.ensembleui.com/app/nWsD5baeykm3W772kkSw/screen/WS6fad3K96prUBXM4Hde
 ```
 
-![Flex](/public/images/responsive-grid.png)
+![Flex](public/images/responsive-grid.png)
 
 ## 3. Wrap content with Flow widget
 
-[Flow widget](/widgets/flow) displays its children horizontally and wraps the children when it runs out of horizontal space.
+[Flow widget](/pages/widgets/flow) displays its children horizontally and wraps the children when it runs out of horizontal space.
 
 ```yaml
 Flow:
@@ -19570,11 +19570,11 @@ Flow:
 # https://studio.ensembleui.com/app/nWsD5baeykm3W772kkSw/screen/YbsqXNaXL5kpxKavlGKQ    
 ```
 
-![Flow](/public/images/responsive-flow.png)
+![Flow](public/images/responsive-flow.png)
 
 ## 4. Toggle between horizontal and vertical layouts with Flex widget
 
-[Flex widget](/widgets/flex) dynamically switches between a Row or a Column based on the `direction` property.
+[Flex widget](/pages/widgets/flex) dynamically switches between a Row or a Column based on the `direction` property.
 
 ```yaml
 Flex:
@@ -19586,7 +19586,7 @@ Flex:
 
 ```
 
-![Flex](/public/images/responsive-flex.png)
+![Flex](public/images/responsive-flex.png)
 
 ---
 
@@ -19890,7 +19890,7 @@ Spendings:
 
 **Output**
 
-![Alt text](/public/images/tips/image-8.png)
+![Alt text](public/images/tips/image-8.png)
 
 
 #### Explanation
@@ -20235,11 +20235,11 @@ View:
 
 # Using navigate Screen with BottomNavBar
 
-We can use [navigateScreen](/actions/navigate-screen) for combining functionality of [BottomNavBar](/screens-and-widgets/screen-structure#bottomnavbar) together with it for daily tasks like beside using BottomNavBar items to navigate across different screens, we can also make use of [navigateScreen](/actions/navigate-screen) here to navigate across screen keeping the bottomNavBAr in place as well. Let us look at an example to make better sense of it.
+We can use [navigateScreen](/pages/actions/navigate-screen) for combining functionality of [BottomNavBar](/pages/screens-and-widgets/screen-structure#bottomnavbar) together with it for daily tasks like beside using BottomNavBar items to navigate across different screens, we can also make use of [navigateScreen](/pages/actions/navigate-screen) here to navigate across screen keeping the bottomNavBAr in place as well. Let us look at an example to make better sense of it.
 
 **Example**
 
-In this scenario we want to navigate to Profile screen using `Account` item in the bottomNavBar menu and also an icon in our `dashboard` screen. Given is code for different screen widgets `CustomHeader` for our screen header with an Profile Picture and [ViewGroup](/screens-and-widgets/screen-structure#view-group) with bottomNavBar.
+In this scenario we want to navigate to Profile screen using `Account` item in the bottomNavBar menu and also an icon in our `dashboard` screen. Given is code for different screen widgets `CustomHeader` for our screen header with an Profile Picture and [ViewGroup](/pages/screens-and-widgets/screen-structure#view-group) with bottomNavBar.
 
 **Explanation**
 
@@ -20331,9 +20331,9 @@ ViewGroup:
               userId: "${ensemble.storage.userAccount != null ? ensemble.storage.userAccount.id : ''}"
 ```
 
-![Alt text](/public/images/tips/image-9.png)
+![Alt text](public/images/tips/image-9.png)
 
-![Alt text](/public/images/tips/image-10.png)
+![Alt text](public/images/tips/image-10.png)
 
 ---
 
@@ -20968,7 +20968,7 @@ Lets us consider an App where we want to use `0xFF308775` color for our all Butt
 
 1. Go to your App and click on **Theme** in left side panel. Here is hw it looks like.
 
-![Alt text](/public/images/tips/image-4.png).
+![Alt text](public/images/tips/image-4.png).
 
 2. Then use the code below to define [primary]() color for button color, focus color etc.
 
@@ -20986,7 +20986,7 @@ Colors:
 
 **Output**
 
-![Alt text](/public/images/tips/image-5.png)
+![Alt text](public/images/tips/image-5.png)
 
 
 Note: `Just like all other Web and Mobile technologies like Html, Css and Flutter etc if there is style done on a button it will be of higher priority then theme so to let theme work no need to style button color at all.`
@@ -21051,8 +21051,8 @@ ViewGroup:
 
 
 **Output**
-![Alt text](/public/images/tips-and-tricks/image.png)
-![Alt text](/public/images/tips-and-tricks/image-1.png)
+![Alt text](public/images/tips-and-tricks/image.png)
+![Alt text](public/images/tips-and-tricks/image-1.png)
 
 **Note:**`BottomNavBar is used to navigate across whole application so it always has a separate screen where it comes under [View Group]() with all the items corresponding to each screen of your application.`
 
@@ -21165,8 +21165,8 @@ ViewGroup:
 
 **Output**
 
-![Alt text](/public/images/image-2.png)
-![Alt text](/public/images/image-3.png)
+![Alt text](public/images/image-2.png)
+![Alt text](public/images/image-3.png)
 **Note:** `Its only specific item code, so as to stay relevant to our topic. You can see complete example` [here](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/aa634599-cd5d-411c-a4b6-1163f3b5c558?propertyPanelEnabled=true&instantPreviewDisabled=false&editorV2Enabled=true)
 
 ##### CustomNavBarItemWithImage
@@ -21288,7 +21288,7 @@ You get the error **"FlexRow requires a width for child distribution."**
 
 ## Reason
 
-FlexRow's layout algorithm works by distributing a pre-defined width proportionally to all its children. If the FlexRow does not have an explicit width, its parent is required to constrain its width. This is a variation of [no-bounded-width](/error/no-bounded-width) error, but specific to FlexRow.
+FlexRow's layout algorithm works by distributing a pre-defined width proportionally to all its children. If the FlexRow does not have an explicit width, its parent is required to constrain its width. This is a variation of [no-bounded-width](/pages/error/no-bounded-width) error, but specific to FlexRow.
 
 ## Solution
 
@@ -21307,7 +21307,7 @@ You get the error **"FlexColumn requires a height for child distribution."**
 
 ## Reason
 
-FlexColumn's layout algorithm works by distributing a pre-defined height proportionally to all its children. If the FlexColumn does not have an explicit height, its parent is required to constrain its height. This is a variation of [no-bounded-height](/error/no-bounded-height) error, but specific to FlexColumn.
+FlexColumn's layout algorithm works by distributing a pre-defined height proportionally to all its children. If the FlexColumn does not have an explicit height, its parent is required to constrain its height. This is a variation of [no-bounded-height](/pages/error/no-bounded-height) error, but specific to FlexColumn.
 
 ## Solution
 
