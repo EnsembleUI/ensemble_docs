@@ -371,7 +371,7 @@ def generate_full_docs(pages, base_url="https://docs.ensembleui.com"):
 
 
 def add_extension_to_link(match):
-    """Add /pages/ prefix and .md or .mdx extension to page links if not already present."""
+    """Convert page links to anchor links if content exists in merged docs, otherwise keep external links."""
     prefix = match.group(1)  # [text](
     original_path = match.group(2)    # /path or path part
     
@@ -383,7 +383,32 @@ def add_extension_to_link(match):
     
     # Skip adding extension if already has one or is an anchor link
     if path.endswith(('.md', '.mdx', '.html')) or '#' in path:
-        return prefix + path
+        anchor_part = ""
+        if '#' in path:
+            path_part, anchor_part = path.split('#', 1)
+            path = path_part
+        
+        # Extract the relative path for checking
+        if path.startswith('/pages/'):
+            rel_path = path[7:]  # Remove /pages/ prefix
+        else:
+            rel_path = path[1:] if path.startswith('/') else path
+        
+        # Check if this content exists in our merged documentation
+        if check_content_exists_in_merged_docs(rel_path):
+            # Convert to anchor link within README
+            if anchor_part:
+                # If there's an existing anchor, use it directly (it's already the specific section)
+                return prefix + '#' + anchor_part
+            else:
+                # No anchor, use the main heading
+                heading_text = get_heading_for_path(rel_path)
+                if heading_text:
+                    anchor = slugify(heading_text)
+                    return prefix + '#' + anchor
+        
+        # If content doesn't exist in merged docs, keep as external link
+        return prefix + path + (('#' + anchor_part) if anchor_part else '')
     
     # Extract the relative path for file checking
     if path.startswith('/pages/'):
@@ -391,6 +416,15 @@ def add_extension_to_link(match):
     else:
         rel_path = path[1:] if path.startswith('/') else path
     
+    # Check if this content exists in our merged documentation
+    if check_content_exists_in_merged_docs(rel_path):
+        # Convert to anchor link within README
+        heading_text = get_heading_for_path(rel_path)
+        if heading_text:
+            anchor = slugify(heading_text)
+            return prefix + '#' + anchor
+    
+    # If content doesn't exist in merged docs, keep as external link with extension
     # Try to find the actual file to determine extension
     full_path_mdx = os.path.join('pages', rel_path + '.mdx')
     full_path_md = os.path.join('pages', rel_path + '.md')
@@ -402,6 +436,47 @@ def add_extension_to_link(match):
     else:
         # Default to .md if file doesn't exist
         return prefix + path + '.md'
+
+
+def check_content_exists_in_merged_docs(rel_path):
+    """Check if the content for this path exists in our merged documentation structure."""
+    # Check if the file exists in our pages directory
+    full_path_mdx = os.path.join('pages', rel_path + '.mdx')
+    full_path_md = os.path.join('pages', rel_path + '.md')
+    full_path_dir = os.path.join('pages', rel_path, 'index.mdx')
+    full_path_dir_md = os.path.join('pages', rel_path, 'index.md')
+    
+    return (os.path.exists(full_path_mdx) or 
+            os.path.exists(full_path_md) or 
+            os.path.exists(full_path_dir) or 
+            os.path.exists(full_path_dir_md))
+
+
+def get_heading_for_path(rel_path):
+    """Get the heading text for a given path that will be used in the merged docs."""
+    # Try to find the file and get its heading
+    full_path_mdx = os.path.join('pages', rel_path + '.mdx')
+    full_path_md = os.path.join('pages', rel_path + '.md')
+    full_path_dir = os.path.join('pages', rel_path, 'index.mdx')
+    full_path_dir_md = os.path.join('pages', rel_path, 'index.md')
+    
+    file_path = None
+    if os.path.exists(full_path_mdx):
+        file_path = full_path_mdx
+    elif os.path.exists(full_path_md):
+        file_path = full_path_md
+    elif os.path.exists(full_path_dir):
+        file_path = full_path_dir
+    elif os.path.exists(full_path_dir_md):
+        file_path = full_path_dir_md
+    
+    if file_path:
+        heading = get_first_heading(file_path)
+        if heading:
+            return heading
+    
+    # Fallback: use the path to generate a heading
+    return to_sentence_case(os.path.basename(rel_path))
 
 
 def clean_content(lines):
