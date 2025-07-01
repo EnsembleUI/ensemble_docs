@@ -370,6 +370,40 @@ def generate_full_docs(pages, base_url="https://docs.ensembleui.com"):
     return content_blocks
 
 
+def add_extension_to_link(match):
+    """Add /pages/ prefix and .md or .mdx extension to page links if not already present."""
+    prefix = match.group(1)  # [text](
+    original_path = match.group(2)    # /path or path part
+    
+    # Add /pages/ prefix if not already there
+    if not original_path.startswith('/pages/'):
+        path = '/pages' + original_path
+    else:
+        path = original_path
+    
+    # Skip adding extension if already has one or is an anchor link
+    if path.endswith(('.md', '.mdx', '.html')) or '#' in path:
+        return prefix + path
+    
+    # Extract the relative path for file checking
+    if path.startswith('/pages/'):
+        rel_path = path[7:]  # Remove /pages/ prefix
+    else:
+        rel_path = path[1:] if path.startswith('/') else path
+    
+    # Try to find the actual file to determine extension
+    full_path_mdx = os.path.join('pages', rel_path + '.mdx')
+    full_path_md = os.path.join('pages', rel_path + '.md')
+    
+    if os.path.exists(full_path_mdx):
+        return prefix + path + '.mdx'
+    elif os.path.exists(full_path_md):
+        return prefix + path + '.md'
+    else:
+        # Default to .md if file doesn't exist
+        return prefix + path + '.md'
+
+
 def clean_content(lines):
     """
     Clean the content lines by:
@@ -377,7 +411,7 @@ def clean_content(lines):
       - Converting MDX Callout blocks into Markdown note blocks.
       - Removing other MDX component blocks.
       - Fixing markdown and HTML image paths (inserting 'public/' before /images/).
-      - Fixing internal links (inserting 'pages/' before relative links).
+      - Fixing internal links (inserting 'pages/' before relative links and adding extensions).
     """
     cleaned = []
     in_code_block = False
@@ -388,9 +422,9 @@ def clean_content(lines):
     md_image_pattern = re.compile(r"(!\[[^\]]*\]\()(/images/)", re.IGNORECASE)
     # Regex for HTML image tags: <img ... src="/images/...
     html_img_pattern = re.compile(r'(<img\s+[^>]*src=["\'])(/images/)', re.IGNORECASE)
-    # Regex for markdown links: [text](/relative-path) but not [text](http...) or [text](#anchor) or [text](/images/...) or [text](public/images/...)
+    # Regex for markdown links: [text](/relative-path) but not [text](http...) or [text](#anchor) or [text](/images/...)
     md_link_pattern = re.compile(r'(\[[^\]]*\]\()(/(?!images/|http|#)[^)]+)', re.IGNORECASE)
-    # Regex for HTML links: <a href="/relative-path"> but not <a href="http..."> or <a href="#anchor"> or <a href="/images/..."> or <a href="public/images/...">
+    # Regex for HTML links: <a href="/relative-path"> but not <a href="http..."> or <a href="#anchor"> or <a href="/images/...">
     html_link_pattern = re.compile(r'(<a\s+[^>]*href=["\'])(/(?!images/|http|#)[^"\']+)', re.IGNORECASE)
 
     for line in lines:
@@ -439,10 +473,10 @@ def clean_content(lines):
             line = md_image_pattern.sub(r"\1public\2", line)
             # Fix HTML image paths (add public before /images/).
             line = html_img_pattern.sub(r"\1public\2", line)
-            # Fix markdown links (add /pages/ before relative links, but exclude images).
-            line = md_link_pattern.sub(r"\1/pages\2", line)
-            # Fix HTML links (add /pages/ before relative links, but exclude images).
-            line = html_link_pattern.sub(r"\1/pages\2", line)
+            # Fix markdown links (add /pages/ before relative links and add extensions).
+            line = md_link_pattern.sub(lambda m: add_extension_to_link(m), line)
+            # Fix HTML links (add /pages/ before relative links and add extensions).
+            line = html_link_pattern.sub(lambda m: add_extension_to_link(m), line)
 
         cleaned.append(line)
     return cleaned
