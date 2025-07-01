@@ -1,13 +1,12 @@
 # Studio overview
 Source: https://docs.ensembleui.com/studio-overview
-# Studio overview
 
 Ensemble Studio is where  you can build, test, and publish apps. You can invite your team to collaborate on the same app.
 
 https://studio.ensembleui.com
+
 # Ensemble Studio Desktop App
 Source: https://docs.ensembleui.com/desktop-app/installation
-# Ensemble Studio Desktop App
 
 ## When to use the desktop app
 
@@ -117,9 +116,9 @@ Key location:
 ## Additional Resources
 
 For more information or support, join the [Discord community](https://discord.gg/cEHkJTmn75) or refer to the official documentation.
+
 # Ensemble Screen Structure
 Source: https://docs.ensembleui.com/screens-and-widgets/screen-structure
-# Ensemble Screen Structure
 
 Ensemble apps are built using a collection of screens, along with reusable components like [widgets](/screens-and-widgets/widgets), [scripts](/javascript-reference/global-scripts), [assets](/assets), etc. This guide explores the core structure of an Ensemble screen and the elements that make it up.
 
@@ -668,9 +667,9 @@ menu:
 </p>
 
 > To get hands-on experience with a complete Application, check [Ensemble Studio](https://studio.ensembleui.com/app/iM58Wgr7bgzTxEi7rV40/screen/cYMnCfhOya8Vq1QG6aCC?propertyPanelEnabled=true&instantPreviewDisabled=false)
+
 # Layouts
 Source: https://docs.ensembleui.com/screens-and-widgets/layouts
-# Layouts
 
 Ensemble layouts are themselves widgets that contain other widgets. Here is a comprehensive list of Layout widgets with their properties and usage examples in EnsembleUI.
 
@@ -691,9 +690,9 @@ Ensemble layouts are themselves widgets that contain other widgets. Here is a co
 | Carousel     | [Link](/widgets/carousel)      | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/2e1d88b1-f281-4c2c-9bb1-bd18016d2b8c) |
 | Divider      | [Link](/widgets/divider)       | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/4a893a2e-5bde-400c-b974-b25b497d31a5) |
 | Spacer       | [Link](/widgets/spacer)        | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/1d7e42a9-5bbc-4b4b-9a02-8c102234ee05)   |
+
 # Screen Navigation
 Source: https://docs.ensembleui.com/screens-and-widgets/navigation
-# Screen Navigation
 
 Ensemble provides two primary mechanism for navigating between screens:
 
@@ -772,9 +771,9 @@ In use cases where you do not want to allow user to go back to the previous scre
 Use `navigateBack` to pop the current screen and go the previous screen in the stack. This is the same action that would be preformed when user taps the built-in back button.
 
 ![navigation stack](/images/navigation/nav-navigateBack.jpg)
+
 # Widgets Directory
 Source: https://docs.ensembleui.com/screens-and-widgets/widgets
-# Widgets Directory
 
 Ensemble widgets enable you to build both simple and complex applications.
 
@@ -847,9 +846,9 @@ Ensemble widgets enable you to build both simple and complex applications.
 | ------------------ | ---------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
 | Progress indicator | [Link](/widgets/progressindicator) | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/c2c248f2-a289-40d3-acd5-65a1a7f3c5a2) |
 | Toast message      | [Link](/actions/show-toast)        | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/9a576805-019a-4bd3-953f-3c623fbfb905) |
+
 # Script with JavaScript
 Source: https://docs.ensembleui.com/scripts-with-js
-# Script with JavaScript
 
 Scripts can provide a powerful way to enhance your app's functionality and customize its behavior beyond what can be achieved with declarative configurations alone.
 
@@ -931,11 +930,12 @@ Similarly, the `backgroundColor` of the button is set using `${colors.red}`.
 2. Accessing Functions from the Script:
    + Clicking the button triggers the `onTap` event, which calls the `executeCode` block. Inside the block, the `getUserFromScript()` function (defined in Common Script) is called to retrieve user information.
    + The returned data is stored in the `thisUser` variable. To display the user's name, the code constructs a string by combining `"Name: "` with the `name` property of the `thisUser` object.
-# Interact with APIs
-Source: https://docs.ensembleui.com/apis/api-overview
-import { Callout } from 'nextra/components'
 
 # Interact with APIs
+Source: https://docs.ensembleui.com/apis/api-overview
+
+import { Callout } from 'nextra/components'
+
 
 The primary mechanism for an Ensemble app to interact with the backend is through APIs.
 
@@ -959,9 +959,9 @@ Following capabilities are also available in Ensemble:
 - [Chaining API calls](chaining-apis)
 - [Websocket](websocket)
 - [GraphQL](graphql)
+
 # Define APIs
 Source: https://docs.ensembleui.com/apis/define-api
-# Define APIs
 
 You define APIs by adding the `API` section to any screen. Note that `API` would be at the root level of the document, i.e. as a sibling to the `View`.
 
@@ -1034,9 +1034,9 @@ API:
       title: "${productTitle}" # example of a dynamic data that is set based on the inputs
       source: MyApp # example of a static data that is always passed
 ```
+
 # Invoking APIs, aka calling APIs
 Source: https://docs.ensembleui.com/apis/call-api
-# Invoking APIs, aka calling APIs
 
 Use `invokeAPI` action to call the APIs you defined. Here are the properties of invokeAPI:
 
@@ -1160,9 +1160,9 @@ API:
     body:
       title: ${productTitle}
 ```
+
 # Access API response body and headers
 Source: https://docs.ensembleui.com/apis/access-api-response
-# Access API response body and headers
 
 You can access an API response through:
 
@@ -1348,9 +1348,9 @@ API:
     parameters:
       name: ${company}
 ```
+
 # onError
 Source: https://docs.ensembleui.com/apis/api-on-error
-# onError
 
 When making API calls, it's crucial to handle errors gracefully to provide a better user experience. When invoking an API, `onError` event is dispatched when the response is a not a success.
 
@@ -1371,9 +1371,9 @@ View:
         - Text:
             id: apiStatus
 ```
+
 # Binding APIs to Item Templates
 Source: https://docs.ensembleui.com/apis/api-item-templates
-# Binding APIs to Item Templates
 
 When developing user interfaces, it's common to display lists of items, and Ensemble simplifies this process by providing the item-template property. This property can be assigned to container widgets like GridView or Carousel and is particularly useful for binding API responses to data-driven UI elements.
 
@@ -1403,9 +1403,10 @@ The `name` property is set to "item," serving as a reference to each item in the
 The `template` property defines the structure of each item in the list. In this case, it's a Text widget displaying the first name of each person from the API response (${item.name.first}).
 
 This setup uses the API response from getPeople2 to dynamically generate a list of Text widgets, each displaying the first name of a person from the API response.
+
 # Mocking API responses to develop and test your app
 Source: https://docs.ensembleui.com/apis/use-mock-api-response
-# Mocking API responses to develop and test your app
+
 A key to developing an app quickly is to build the user interface independently of the back-end. This allows the team building the UI to be unblocked and move fast while also providing actual API payloads to the back-end team to build. Another advantage of this approach is that app could be built quickly with mockdata and be demo'd to customers for feedback.
 Ensemble provides a framework for mockng API responses that allow you to do that. You can mock all APIs or some and test with mockdata by simply setting a property.
 
@@ -1513,9 +1514,9 @@ You can simply set `statusCode` property of the error to a specified status code
         options:
           duration: 5
 ```
+
 # Chaining APIs
 Source: https://docs.ensembleui.com/apis/chaining-apis
-# Chaining APIs
 
 Chaining APIs, i.e. making sequential API calls, is a practice in app development when you need to retrieve and use data from multiple APIs in a specific order. Chaining APIs allows you to build more complex workflows and gather the necessary information for your application.
 
@@ -1533,9 +1534,9 @@ onLoad:
 **Sequential API Calls:**
 The onResponse event for each API call specifies the next API call to be made after the current one is successfully completed.
 For example, after the initial API call named "getuser", the onResponse event triggers the "getcurrentUserContacts" API call.
+
 # SSL Configuration
 Source: https://docs.ensembleui.com/apis/api-ssl-configuration
-# SSL Configuration
 
 SSL (Secure Sockets Layer) configuration in Ensemble allows you to secure your API communications through certificate pinning and verification controls. This guide explains the available SSL configuration options and their proper usage.
 
@@ -1570,9 +1571,9 @@ SSL (Secure Sockets Layer) configuration in Ensemble allows you to secure your A
 1. Certificate pinning provides protection against man-in-the-middle attacks
 2. SSL bypass shouldn't be used in production environments as it will create security concerns.
 3. Web applications cannot use SSL pinning and rely on browser-based verification
+
 # GraphQL
 Source: https://docs.ensembleui.com/apis/graphql
-# GraphQL
 
 Use Case (Social Media): GraphQL is particularly beneficial in scenarios like social media, where large-scale data is involved. It allows clients to request only the specific data they need, leading to quicker response times (1-2 seconds).
 Efficiency: GraphQL enables clients to specify the exact data they want in a single query, reducing over-fetching and under-fetching.
@@ -1619,9 +1620,9 @@ body:
     mutation UpdatePost($input: CreateUpdatePostInput!) {}
     "variables": ${GQLInput}
 ```
+
 # Using WebSockets
 Source: https://docs.ensembleui.com/apis/websocket
-# Using WebSockets
 
 The Websockets feature enables bidirectional communication between client and server, facilitating real-time data exchange.
 
@@ -1681,9 +1682,9 @@ Ensemble supports following actions for WebSockets:
             message:
             "content": "Hello there"
 ```
+
 # Theme
 Source: https://docs.ensembleui.com/theme-and-styling/theme
-# Theme
 
 From color schemes to typography, widgets, and transition options, our comprehensive range of theme elements allows you to effortlessly personalize your app. Discover how themes can transform your online presence, create a cohesive brand identity, and provide a delightful user experience. Unlock the full potential of your app with our versatile and user-friendly theme customization features.
 
@@ -2086,9 +2087,9 @@ Now let us see what properties does it have on larger level
 | type      | string  | Kind of transition types. Can read more about it [here](/theme-and-styling/animations). Possible values are `fade`,`rightToLeft`,`leftToRight`,`topToBottom`,`bottomToTop`,`scale`,`rotate`,`size`,`rightToLeftWithFade`,`leftToRightWithFade`,`leftToRightPop`,`rightToLeftPop`,`topToBottomPop`,`bottomToTopPop` |
 | alignment | string  | The alignment of the widget relative to its parent. `topLeft`, `topCenter`, `topRight`, `centerLeft`, `center`, `centerRight`, `bottomLeft`, `bottomCenter`, `bottomRight`                                                                                                                                      |
 | duration  | integer | The duration in `ms ( millisecond )` for which the transition animation happens.                                                                                                                                                                                                                                |
+
 # Animations in EnsembleUI
 Source: https://docs.ensembleui.com/theme-and-styling/animations
-# Animations in EnsembleUI
 
 Welcome to our Animations page! Here, you'll learn how to bring your website to life with stunning page transition animations. Elevate user experience and captivate your audience with smooth transitions that seamlessly guide them through your content. Get ready to add a touch of magic to your web pages with our animation techniques.
 
@@ -2158,9 +2159,9 @@ Works similarly to page level transition in the screen but now we are defining i
 | RightToLeftPop      | Add an eye-catching pop animation to your page transitions as they slide from right to left, making a lasting impression on your users.       |
 | TopToBottomPop      | Infuse excitement into your transitions with a pop animation that brings pages into view from top to bottom, captivating your audience.       |
 | BottomToTopPop      | Elevate user experience with a pop animation that animates pages from bottom to top, adding a delightful touch to your website's transitions. |
+
 # Using Custom Fonts
 Source: https://docs.ensembleui.com/theme-and-styling/custom-fonts
-# Using Custom Fonts
 
 Ensemble supports Google Fonts, but you also have the option to use your own custom fonts when deploying your app with [Ensemble Starter](https://docs.ensembleui.com/#/deploy/1-prepare-app).
 
@@ -2183,9 +2184,9 @@ Text:
     textStyle:
       fontFamily: <fontName>
 ```
+
 # Splash Feedback (Touchable Opacity)
 Source: https://docs.ensembleui.com/theme-and-styling/splash-feedback
-# Splash Feedback (Touchable Opacity)
 
 The **Splash Feedback** is a visual feedback mechanism that creates a ripple or splash animation when a user interacts with a widget. This effect enhances the user experience by providing immediate visual confirmation that an action, such as a tap or click, has been recognized by the interface.
 
@@ -2261,9 +2262,9 @@ App:
 ```
 
 In the above example, text size will be increase by max 20%. E.g. if user selects a scaling factor of 1.5 in the OS settings, the text will no be increased more than 20%.
+
 # Text scaling
 Source: https://docs.ensembleui.com/theme-and-styling/text-scaling
-# Text scaling
 
 iOS and Android users can use the accessibility features to change the weight, size, and darkness of text to make it easier to read on their devices.
 
@@ -2297,11 +2298,12 @@ App:
 ```
 
 In the above example, text size will be increase by max 20%. E.g. if user selects a scaling factor of 1.5 in the OS settings, the text will no be increased more than 20%.
-# Assets (images, videos, etc.)
-Source: https://docs.ensembleui.com/assets
-import { Callout } from 'nextra/components'
 
 # Assets (images, videos, etc.)
+Source: https://docs.ensembleui.com/assets
+
+import { Callout } from 'nextra/components'
+
 
 You can manage the assets required by your app within Ensemble Studio. These are typically files such as:
 
@@ -2328,9 +2330,10 @@ Navigate to your app inside Ensemble Studio. Select Assets from the left menu. C
 1. Click on the `...` icon of the asset.
 2. Select `Copy path`.
 3. Paste the path in the relevant widget. This is typically the `source` property of widgets such as Image.
+
 # Persistent Local Storage
 Source: https://docs.ensembleui.com/local-storage
-# Persistent Local Storage
+
 You can write to or access the storage using simply `ensemble.storage`. On the browser, this uses the local storage. On the native apps, it uses the secure storage that's provided to each app by iOS and Android. This stoage is persistent i.e. the data you save will stay there until the user explicitly deletes the storage or the app. This means that you can use storage to share data among multiple screens in your app.
 
 Typically apps store data such as the logged-in user's information, app-level data to cache data from the backend etc.
@@ -2411,9 +2414,9 @@ To solve this issue, we set storage parameter back to itself to trigger the upda
 ```js
 ensemble.storage.myData = ensemble.storage.myData; //this will now update nameField.text and any other fields listening for this change
 ```
+
 # App Settings
 Source: https://docs.ensembleui.com/app-settings
-# App Settings
 
 Navigate to your app in Ensemble Studio to use the following settings:
 
@@ -2457,11 +2460,12 @@ Any screens can reference the variable with `${secrets.key_name}`. Here we are s
 You can override your secrets for deployment from the .env file in your Ensemble project by using the same key with a different value.
 
 We do not recommend version controlling your .env file as this will expose your secrets. Consider removing your .env file from version control or injecting secrets at build time.
-# Configuration of Firebase Project with Ensemble App
-Source: https://docs.ensembleui.com/firebase/configuration
-import { Callout } from 'nextra/components'
 
 # Configuration of Firebase Project with Ensemble App
+Source: https://docs.ensembleui.com/firebase/configuration
+
+import { Callout } from 'nextra/components'
+
 
 Application's performance significantly increases with ⁤Integrating Firebase with our Ensemble project. ⁤⁤Firebase offers some services, such as real-time databases, authentication, analytics, and cloud messaging, which can help streamline backend development,
 improve user engagement, and provide deep insights into user behavior. ⁤⁤Using Firebase with Ensemble allows us to focus more on our application's core features and user experience, while Firebase handles the backend.
@@ -2555,11 +2559,12 @@ Within our Ensemble application, navigate to the settings section and look for t
 ![Environment Variables](/images/firebase/envVari.png)
 
 By following these steps, we'll successfully establish a connection between your Ensemble app and Firebase.
-# Calling Cloud Firestore APIs
-Source: https://docs.ensembleui.com/firebase/firestore-operations
-import { Callout } from 'nextra/components'
 
 # Calling Cloud Firestore APIs
+Source: https://docs.ensembleui.com/firebase/firestore-operations
+
+import { Callout } from 'nextra/components'
+
 
 [Cloud Firestore](https://firebase.google.com/docs/firestore) is a flexible, scalable database for mobile, web, and server development from Firebase and Google Cloud. Ensemble platform provides a deep integration with the Firestore DB and allows you to call operations on your data in Firestore effortlessly.
 
@@ -2860,11 +2865,12 @@ Dropdown:
 
 By using these operations, we can efficiently manage our data in Firestore with an Ensemble project. Firestore's
 real-time capabilities and simple API calls make it a powerful tool for any application.
-# Translations
-Source: https://docs.ensembleui.com/translations
-import { Callout } from 'nextra/components'
 
 # Translations
+Source: https://docs.ensembleui.com/translations
+
+import { Callout } from 'nextra/components'
+
 
 Ensemble supports localization of app content so that your app users can view the app in their preferred language.
 
@@ -2998,9 +3004,10 @@ Screen:
 ```
 ### Defining different themes per language
 See [this](https://docs.ensembleui.com/theme-and-styling/theme#defining-themes-for-different-locales) for more details
+
 # Authentication
 Source: https://docs.ensembleui.com/authentication/overview
-# Authentication
+
 Ensemble supports Sign In with Google, Apple as well as with Auth0.
 
 ## Setup
@@ -3035,9 +3042,9 @@ Column:
 - For Sign in with Google locally or with your server, go to [Social Sign In](/authentication/social-signin).
 - To use Firebase instead of your server, go to [Firebase](/authentication/firebase).
 - For Sign in with Auth0, go to [Auth0](/authentication/auth0).
+
 # Social Sign In
 Source: https://docs.ensembleui.com/authentication/social-signin
-# Social Sign In
 
 Ensemble supports Social Sign in with Google and Apple. This guide will specifically target the **Sign in with Google** flow.
 For each service, we support three different mechanism for managing the signed-in users: [Client-side](#client-side), with your [Server](#Server-side), or with [Firebase](/authentication/firebase).
@@ -3197,9 +3204,9 @@ SignInWithGoogle:
         library: fontAwesome
         color: red
 ```
+
 # Setting up Authentication with Firebase
 Source: https://docs.ensembleui.com/authentication/firebase
-# Setting up Authentication with Firebase
 
 For convenience, Ensemble's Sign In can connect directly to Firebase, allowing you to manage users via Firebase console without the need for a backend server.
 
@@ -3310,9 +3317,9 @@ signInWithCustomToken:
 * Run `flutter pub upgrade`. Run this occasionally when the Ensemble framework has been updated.
 * Run `flutter create --org com.ensembleui --project-name starter --platform=ios,android .` (note the period at the end). If you modified the appId, make sure the org and project name match the bundle ID.
 * Run the App with `flutter run`. If you currently have a running iOS or Android emulator, the command will prompt for a selection, otherwise the App will be opened in the web browser.
+
 # Setting up Authentication with Auth0
 Source: https://docs.ensembleui.com/authentication/auth0
-# Setting up Authentication with Auth0
 
 In this guide, we will authenticate users against an existing Auth0 tenant.
 
@@ -3388,11 +3395,12 @@ View:
               showToast:
                 message: ${auth.user.email}
 ```
-# MoEngage Integration
-Source: https://docs.ensembleui.com/moengage/configuration
-import { Callout } from 'nextra/components'
 
 # MoEngage Integration
+Source: https://docs.ensembleui.com/moengage/configuration
+
+import { Callout } from 'nextra/components'
+
 
 MoEngage is a powerful customer engagement platform that enables real-time, personalized messaging across multiple channels. Ensemble provides native integration with MoEngage offering:
 - Push Notifications (iOS & Android)
@@ -3819,11 +3827,12 @@ import MoEngageMessaging
     }
 }
 ```
-# Adobe Analytics
-Source: https://docs.ensembleui.com/adobe-analytics
-import { Callout } from 'nextra/components'
 
 # Adobe Analytics
+Source: https://docs.ensembleui.com/adobe-analytics
+
+import { Callout } from 'nextra/components'
+
 
 Adobe Analytics is a powerful analytics solution that provides real-time analytics and detailed segmentation capabilities. Ensemble provides native integration with Adobe Analytics offering:
 - Real-time analytics tracking
@@ -4168,9 +4177,9 @@ logEvent:
 <Callout emoji="💡">
   Adobe Analytics integration in Ensemble enables comprehensive analytics tracking and user management capabilities. You can track custom analytics events, manage user profiles with rich attributes, handle user consent, and configure SDK behavior. All these operations are available through the [`logEvent`](actions/log-events.md) action which provides detailed documentation of supported operations and their implementations.
 </Callout>
+
 # Setup Deeplink
 Source: https://docs.ensembleui.com/deep-link/setup-deeplink
-# Setup Deeplink
 
 In this guide, we'll integrate the deep linking for the Android and iOS Apps
 
@@ -4204,9 +4213,10 @@ For more info: [iOS Universal Link](https://developer.apple.com/ios/universal-li
 
 ## For Deferred Deep Linking
 Checkout - https://docs.ensembleui.com/#/build/deep-link/deferred-deeplink
+
 # Setup Deferred Deeplink
 Source: https://docs.ensembleui.com/deep-link/setup-deferred-deeplink
-# Setup Deferred Deeplink
+
 In this guide, we'll integrate the deferred deep linking for the Android and iOS Apps. There are some service providers like branch, appsflyer, etc for deferred deep linking.
 
 *NOTE: Currently, we support only the BranchIO as of now.*
@@ -4261,11 +4271,12 @@ Inside the directory where you cloned Ensemble Starter, open `/lib/generated/ens
 ```
   static const useDeeplink = false;
 ```
-# Embed Flutter screen in an Ensemble app
-Source: https://docs.ensembleui.com/extending-ensemble/external-screen
-import { Callout } from 'nextra/components'
 
 # Embed Flutter screen in an Ensemble app
+Source: https://docs.ensembleui.com/extending-ensemble/external-screen
+
+import { Callout } from 'nextra/components'
+
 
 Ensemble allows you to navigate to a screen built with Flutter. This allows you to reuse any existing Flutter screen.
 
@@ -4368,9 +4379,9 @@ Button:
             message: Hello world
 
 ```
+
 # Using local assets
 Source: https://docs.ensembleui.com/extending-ensemble/local-assets
-# Using local assets
 
 While developing and previewing your app, you may reference images via URLs. While this is great for rapid prototyping, production Native apps may want to minimize rendering time by referencing assets locally. This is where Environment Variables come in.
 
@@ -4393,9 +4404,10 @@ When building Production app (see [Preparing your App](/deploy/1-prepare-app), y
 - Add the assets under folder `<Ensemble Starter>/ensemble/assets/`.
 - Open `<Ensemble Starter>/ensemble/ensemble-config.yaml` and add a matching environment variable that you defined on Ensemble Studio. Leave the value empty (if all your assets are directly under /ensemble/assets).
 - Note: define the variable name but with empty value will attempt to load assets from `/ensemble/assets/`.
+
 # Understanding Widget Sizing
 Source: https://docs.ensembleui.com/concepts/widget-sizing
-# Understanding Widget Sizing
+
 Widget sizing is a crucial aspect of building responsive UIs in Ensemble. In this guide, we'll explore the challenges of widget sizing, common solutions, and best practices to help you create layouts that look great on any screen.
 
 ## Core Concepts
@@ -4448,9 +4460,9 @@ TextInput does not have a width and rely on the parent to provide a width constr
 <u>Example</u>: When a FlexColumn is inside a 'Screen with scrollableView=true'.<br>
 A FlexColumn doesn't calculate its height from the children so it does not have a height. Instead it will attempt to stretch to fill the available height constraint provided by the parent. This will produce an error since the scrollable Screen cannot provide a height constraint.<br>
 <u>Solution</u>: Ensure every widget in a scrollable direction has a size. In this case simply use a Column instead of a FlexColumn. A Column will calculate its height from the children, forgo the need for a height constraint.
+
 # Item Template
 Source: https://docs.ensembleui.com/concepts/item-template
-# Item Template
 
 When developing UI, it is common to display lists of items, and Ensemble simplifies this process by providing the `item-template` property. When used within certain containers (e.g. Column, Carousel, Grid, ..), you can iterate through a data set and render a set of child widgets.
 
@@ -4551,9 +4563,10 @@ The output will look something like this:
 <img src="/images/screenshots/item-template-2.png" alt="Screenshot" width="450">
 
 Here's an [example](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/yWM8nLePITT8IpCZLMNe) of how to use `indexId` property to access the current index of the data array.
+
 # Data Binding
 Source: https://docs.ensembleui.com/concepts/data-binding
-# Data Binding
+
 Data binding allows you to bind data from various sources to your UI components. Any changes to applicable data sources will automatically update the UI components. Data Binding is also used when passing variables to API, Widgets, and Actions (among others).
 
 The syntax for binding is `${bindingSource}`, and can be used anywhere a text or an expression is accepted.
@@ -4563,9 +4576,10 @@ Ensemble makes it easy to listen for changes to any widget's properties. In the 
 <img src="/images/screenshots/binding-1.png" alt="Screenshot">
 
 (to be updated ...)
+
 # Screen Lifecycle
 Source: https://docs.ensembleui.com/concepts/screen-lifecycle
-# Screen Lifecycle
+
 An Ensemble app consists of a series of screens, each with its own lifecycle that defines how it renders, pauses, resumes, and disposes of resources. You can provide actions to be triggered at each of these lifecycle stages.
 
 ### onLoad
@@ -4590,9 +4604,10 @@ Note that this will not be triggered if you navigate to another instance of the 
 | :----------- | :------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | inactiveDuration | number (ms) | Specifying how long the screen has been in inactive state (in milliseconds). This is useful for tracking how long the screen has been inactive and re-fetching the data. Note that we may not always able to determine this, so it may be null. |
 | isAppResume | boolean  | This will be true if the app is causing onResume to be called because it is going to the foreground (the user is opening your app). Use this to differentiate with the user navigating back to your screen. |
+
 # Custom Widgets
 Source: https://docs.ensembleui.com/concepts/custom-widgets
-# Custom Widgets
+
 In addition to Ensemble-provided widgets and containers, you can create custom widgets to extend the functionality of your app. Custom widgets can be used to encapsulate complex logic, create reusable components, or integrate with third-party libraries.
 
 Custom Widgets can be created and used within a Screen or globally across multiple screens.
@@ -4603,9 +4618,9 @@ Custom Widgets can be created and used within a Screen or globally across multip
 
 
 ### App-level Custom Widgets
+
 # Preview your app
 Source: https://docs.ensembleui.com/test/preview-app
-# Preview your app
 
 Your apps are available for preview on web, and iOS and Android devices. Share it with your QA, Product Managers, customers, ... for early feedbacks.
 
@@ -4641,9 +4656,9 @@ Now follow these steps to preview your app:
 2. Locate the app you want to share, and click the `...` menu.
 3. Select Get Preview Link.
 4. The preview link is now copied to your clipboard. Paste it in the browser or share with others to run your app on web.
+
 # Automated Testing
 Source: https://docs.ensembleui.com/test/integration-tests
-# Automated Testing
 
 Ensemble apps support automated testing using Flutter's integration testing framework. You can easily find and interact with widgets in your tests using the `testId` property.
 
@@ -4709,9 +4724,9 @@ flutter test integration_test/app_test.dart
 ```
 
 For more information on Flutter integration tests, see the [Flutter Testing documentation](https://docs.flutter.dev/testing/integration-tests).
+
 # Preparing your App for deployment
 Source: https://docs.ensembleui.com/deploy/1-prepare-app
-# Preparing your App for deployment
 
 Once you have built your UI with Ensemble and used it to build your app and are ready to take it to production, follow these instructions to deploy it to any iOS or Android devices, or to submit it to the Apple AppStore or Google Play Store.
 
@@ -4744,9 +4759,10 @@ Below are the snippet per capability to insert for iOS and Android respectively.
 <key>NSMicrophoneUsageDescription</key>
 <string>e.g. your reason for requesting microphone access</string>
 ```
+
 # Configure Social Sign In for Deployment
 Source: https://docs.ensembleui.com/deploy/2-social-signin
-## Configure Social Sign In for Deployment
+
 Before deployment, you need to configure your own OAuth credentials plus specific setups for each platforms.
 
 ### Setting up Sign In credentials
@@ -4841,9 +4857,10 @@ if (useAuth) {
 }
 ...
 ```
+
 # Deploy to iOS TestFlight
 Source: https://docs.ensembleui.com/deploy/3-ios-appstore
-# Deploy to iOS TestFlight
+
 Note: we are showing here how to deploy your app to Apple TestFlight. Please follow Apple's [documentation](https://developer.apple.com/app-store/submitting/) on how to deploy to the App Store.
 #### Register app
 If this is a brand-new app, you first need to register a unique Bundle ID and a unique App Name with Apple.
@@ -4872,9 +4889,9 @@ If this is a brand-new app, you first need to register a unique Bundle ID and a 
 * Click to manage Apple's app compliance by answering the questions.
   <img src="/images/deploy/deploy_ios_4.png" alt="Update App configs" style="border: solid 1px lightgrey" />
 * You can now invite your team members to install your App under `Internal Testing`. Each person can download the app via TestFlight.
+
 # Connecting to OAuth services (Optional)
 Source: https://docs.ensembleui.com/deploy/3-oauth-services
-# Connecting to OAuth services (Optional)
 
 Ensemble supports authorizing and fetching data from OAuth2 services like Google and Microsoft. The entire flow is handled automatically if you are using Ensemble Go to preview your app.
 
@@ -5008,9 +5025,9 @@ Once the OAuth service successfully authenticates the user and redirect back to 
 - We provide the sample server code in Node (deployable with Firebase).
 - Open `ensemble/ensemble-config.yaml` and go to `services -> apiAuthorization`.
   - Replace the `tokenExchangeServer`
+
 # Deploy to Android devices
 Source: https://docs.ensembleui.com/deploy/4-android-device
-# Deploy to Android devices
 
 * Make sure you completed the [Preparing your App](/deploy/1-prepare-app.md) step, then navigate to the folder created (e.g. my_first_app).
 * Run `flutter create --platforms=android .` (note the period at the end)
@@ -5024,9 +5041,9 @@ Source: https://docs.ensembleui.com/deploy/4-android-device
   * Remove `/android/app/src/main/AndroidManifest.xml`.
   * Run `flutter create --platforms=android .`.
 * To update the app's name. Open `/android/app/src/main/AndroidManifest.xml` and change the `android:label=` to the app name.
+
 # Deploy to Android Play Store
 Source: https://docs.ensembleui.com/deploy/5-android-play-store
-# Deploy to Android Play Store
 
 ## Pre-requisites
 * Make sure you completed the [Preparing your App](/deploy/1-prepare-app.md) step, then navigate to the folder created (e.g. my_first_app).
@@ -5056,9 +5073,9 @@ storeFile=<location to the .jks file created above>
 * Increment the version (the one after the + sign) in `pubspec.yaml`.
 * Run `flutter build appbundle --no-tree-shake-icons`. This will create the bundle file under `build/app/outputs/bundle/release/app-release.aab`.
 * Log into your [Play Store console](https://play.google.com/console) and go to your App. Select your release and upload the `.aab` file.
+
 # Prepare for Production
 Source: https://docs.ensembleui.com/deploy/6-prepare-for-production
-# Prepare for Production
 
 Now, that you have built and tested an ensemble app, you would like to publish. Before publishing your app, it is recommended to make it production-ready.
 
@@ -5156,9 +5173,9 @@ flutter pub run flutter_native_splash:create
 Re-run your app and you'll see newly added splash screen.
 
 For more nitty-gritty detail check [flutter_native_splash#usage](https://pub.dev/packages/flutter_native_splash#usage)
+
 # Making your app work when offline
 Source: https://docs.ensembleui.com/deploy/7-offline-mode
-# Making your app work when offline
 
 You can embed your app definition in your build output so that your app works without network connectivity. Note that once you make this change, you will not have the ability to change the app from Ensemble Studio.
 
@@ -5261,9 +5278,9 @@ flutter:
 ## 5. Rebuild your app
 
 Now you can follow the steps for iOS or Android to run the app locally or build and upload your app to the respective app stores.
+
 # Guide: Generating Google Play Console API Key
 Source: https://docs.ensembleui.com/deploy/8-google-play-api-key
-# Guide: Generating Google Play Console API Key
 
 ## Overview
 
@@ -5342,9 +5359,9 @@ This guide outlines the steps to generate a Google Play Console API Key, enablin
     - Click on `Invite User`, then `Send Invite` to link the generated key with the apps successfully.
 
 Follow these steps diligently to ensure a hassle-free setup of your Google Play Console API Key.
+
 # Guide: Generating API Key for App Store Connect
 Source: https://docs.ensembleui.com/deploy/9-appstore-connect-api-key
-# Guide: Generating API Key for App Store Connect
 
 ## Overview
 
@@ -5391,9 +5408,9 @@ This guide provides step-by-step instructions on generating an API key for App S
    - They both will be required later on in the build system.
 
 Follow these steps to successfully generate an API key for App Store Connect, allowing seamless integration with the Build System.
+
 # Guide: Generating a Firebase Service Account for App Distribution
 Source: https://docs.ensembleui.com/deploy/10-firebase-app-distribution
-# Guide: Generating a Firebase Service Account for App Distribution
 
 ## Overview
 
@@ -5420,11 +5437,12 @@ This guide outlines the steps to generate a Firebase Service Account with the ne
 
 - Return to Ensemble Studio.
 - Upload the JSON key file to the **Firebase App Distribution** configuration in the **Build & Deploy** page.
-# Host and serve your app definition on your own server
-Source: https://docs.ensembleui.com/host-on-your-server
-import { FileTree, Callout, Steps } from 'nextra/components'
 
 # Host and serve your app definition on your own server
+Source: https://docs.ensembleui.com/host-on-your-server
+
+import { FileTree, Callout, Steps } from 'nextra/components'
+
 
 Ensemble automatically serves your application definition (EDL). It also allows you to take the EDL from Ensemble studio and serve it from your own server.
 
@@ -5525,13 +5543,14 @@ definitions:
 ```
 
 </Steps>
+
 # Accordion Widget
 Source: https://docs.ensembleui.com/widgets/accordion
+
 import BaseStyles from "./_snippets/base-styles.md";
 import BoxStyles from "./_snippets/box-styles.md";
 import { EnsemblePreview } from "../../components/ensemble-preview";
 
-# Accordion Widget
 
 The `Accordion` widget allows you to display a list of items in an accordion-style UI, where individual sections can be expanded or collapsed. This widget is highly customizable, offering options for styling the headers and bodies, controlling the behavior of sections (whether multiple sections can be open at once), and customizing animations and icons.
 
@@ -5635,13 +5654,14 @@ This widget also inherits these styles:
 <BaseStyles />
 
 By utilizing these properties, methods, and events, you can effectively integrate and customize the `Collapsible` widget to match your application's requirements.
+
 # Avatar widget
 Source: https://docs.ensembleui.com/widgets/avatar
+
 import BaseStyles from './_snippets/base-styles.md'
 import BoxStyles from './_snippets/box-styles.md'
 import { EnsemblePreview } from '../../components/ensemble-preview'
 
-# Avatar widget
 
 The Avatar Widget provides a visual representation of a user or entity, typically used in user interfaces to personalize user experience.
 
@@ -5679,12 +5699,13 @@ This widget also inherits these styles
 This widget also inherits these styles
 
 <BaseStyles />
+
 # Button widget
 Source: https://docs.ensembleui.com/widgets/button
+
 import BaseStyles from './_snippets/base-styles.md'
 import BoxStyles from './_snippets/box-styles.md'
 
-# Button widget
 
 A control that can execute an action on tap or click.
 
@@ -5740,9 +5761,9 @@ This widget also inherits these styles
 | library  | string  | Which icon library to use. `default` `fontAwesome` |
 | color    | color   | (/widgets/types#Color)                    |
 | size     | integer |                                                    |
+
 # Calendar widget
 Source: https://docs.ensembleui.com/widgets/calendar
-# Calendar widget
 
 [Kitchen Sink Example](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/4aAgiwyVyucOAilPNy0s)
 
@@ -5820,13 +5841,14 @@ executeCode:
         navigateBack:
 ```
 Here, we start by appending/pushing our new event into our `ensemble.storage.events` array. However, to activate the binding for the updated array, we set it equal to itself, completing the cycle.
+
 # Carousel widget
 Source: https://docs.ensembleui.com/widgets/carousel
+
 import BaseStyles from './_snippets/base-styles.md'
 import BoxStyles from './_snippets/box-styles.md'
 import { EnsemblePreview } from '../../components/ensemble-preview'
 
-# Carousel widget
 
 The Carousel Widget allows you to create and render carousels, enabling the presentation of multiple items in a visually engaging and interactive slideshow format within your application.
 
@@ -5893,12 +5915,13 @@ This widget also inherits these styles
 | data     | string | Bind to an array of data from an API response or a variable        |
 | name     | string | Set the name to reference as you iterate through the array of data |
 | template | widget | The widget to render for each item                                 |
+
 # ChartJS widget
 Source: https://docs.ensembleui.com/widgets/chart-js
+
 import { Callout } from 'nextra/components'
 import { EnsemblePreview } from '../../components/ensemble-preview'
 
-# ChartJS widget
 
 The ChartJS widget renders a chart by leveraging the open-source library [chartjs.org](https://www.chartjs.org/).
 
@@ -6356,12 +6379,13 @@ This method updates the chart to reflect any changes in data, labels, or configu
 ```javascript
 myChart.update();
 ```
+
 # Checkbox widget
 Source: https://docs.ensembleui.com/widgets/checkbox
+
 import BaseStyles from './_snippets/base-styles.md'
 import BoxStyles from './_snippets/box-styles.md'
 
-# Checkbox widget
 
 The Checkbox widget allows the rendering of checkbox input elements, enabling users to select or deselect options within your application for convenient and interactive data manipulation.
 
@@ -6439,9 +6463,9 @@ This widget also inherits these styles
 | library  | string            | Which icon library to use.                                                                                                                                                                                                                                                                                                          |
 | color    | integer or string | The color specification for the text, which can be represented in different formats. It can be specified as a number, a predefined color name, or a hexadecimal value starting with '0x'. `transparent` `black` `blue` `white` `red` `grey` `teal` `amber` `pink` `purple` `yellow` `green` `brown` `cyan` `indigo` `lime` `orange` |
 | size     | integer           | Defines the dimensions or magnitude of an element, allowing control over its overall size within the layout.                                                                                                                                                                                                                        |
+
 # Column widget
 Source: https://docs.ensembleui.com/widgets/column
-# Column widget
 
 Column is designed to arrange child widgets vertically, where the intrinsic sizes of child widgets dictate the layout's appearance.
 
@@ -6526,9 +6550,9 @@ If you wish to stretch all the children to the same specified width, add `crossA
 | splashDuration                      | integer                                                    | This is the duration it takes to fill the widget surface with the splashColor.The duration in ms when tap and release on the widget.                                                                                                                                                         |
 | splashFadeDuration                      | integer                                                    | The duration it takes to fade out once tapped. Since a typical tap starts and ends immdiately, this splashFadeDuration executes almost at the same time as the splashDuration, so ideally it should be equal or longer than splashDuration to see the entire effect.                                                                                                                                                         |
 | unconfirmedSplashDuration                      | integer                                                    | This happens when the user tap and hold (not yet released). It is called unconfirmed since the tap will be cancelled if the user moves out of the tap area and release. Usually this should be longer (around 1 secs) to signify that the user has not confirmed the tap.                                                                                                                                                         |
+
 # Conditional widget
 Source: https://docs.ensembleui.com/widgets/conditional
-# Conditional widget
 
 Conditional widget allows developers to conditionally render UI elements based on specified conditions, enhancing dynamic content display and personalized user experiences within the app.
 
@@ -6606,9 +6630,9 @@ Widget:
                     textStyle:
                       fontSize: 12
 ```
+
 # ConfirmationInput widget
 Source: https://docs.ensembleui.com/widgets/confirmation-input
-# ConfirmationInput widget
 
 The ConfirmationInput Widget enables the seamless rendering of a verification view. The usecases are entering OTP, Confirmation Code, PIN Number, Reset Password, Coupon and more.
 
@@ -6636,9 +6660,9 @@ The ConfirmationInput Widget enables the seamless rendering of a verification vi
 | onChange                      | action  | Execute an action when a change is detected to the text field                                   |
 | onComplete                    | action  | Execute an action when the text field fully entered or when keyboard submitted button tapped    |
 | autofillEnabled         | boolean                                        | Enables or disables the autofill functionality for the input field. Default is `false`.                                                                                                                                                                                                                           |
+
 # DataGrid widget
 Source: https://docs.ensembleui.com/widgets/data-grid
-# DataGrid widget
 
 The DataGrid Widget enables the seamless rendering of data grids, facilitating the organized display and manipulation of tabular data within your application for effective data representation and interaction.
 
@@ -6748,9 +6772,9 @@ The DataGrid Widget enables the seamless rendering of data grids, facilitating t
 | fontWeight | string            | The thickness of the glyphs used to draw the text. `light` `normal` `bold` `w100` `w200` `w300` `w400` `w500` `w600` `w700` ` w800``w900 `                                                                                                                                                                                          |
 | lineHeight | string or integer | The line height of the text, which determines the vertical spacing between lines. It can be specified as, a number, or a string chosen from a set of predefined values: `default` `1.0` `1.15` `1.25` `1.5` `2.0` `2.5`                                                                                                             |
 | textStyle  | string            | A linear decoration to draw near the text or whether to slant the glyphs in font. `normal` `italic` `underline` `strikethrough` `italic_underline` `italic_strikethrough`                                                                                                                                                           |                                                                                                                       |
+
 # Date widget
 Source: https://docs.ensembleui.com/widgets/date
-# Date widget
 
 The Date Widget facilitates the rendering of date input fields, providing a user-friendly interface for selecting and displaying dates within your application for date-related functionality.
 
@@ -6819,11 +6843,12 @@ The Date Widget facilitates the rendering of date input fields, providing a user
 | :-------- | :------------------------------------------------------------------------------------------------------------------- |
 | box       | draw a Box border around this input widget. This property can be defined in the theme to apply to all Input widgets. |
 | underline | draw an Underline below this input widget. This property can be defined in the theme to apply to all Input widgets.  |
-# Divider
-Source: https://docs.ensembleui.com/widgets/divider
-import { EnsemblePreview } from '../../components/ensemble-preview';
 
 # Divider
+Source: https://docs.ensembleui.com/widgets/divider
+
+import { EnsemblePreview } from '../../components/ensemble-preview';
+
 
 The Divider Widget is a simple, horizontal or vertical line that separates content visually within your application's layout. It is primarily used to create a clear distinction between different sections or components, improving the overall readability and organization of the interface. Common use cases include separating items in lists, forms, or between groups of content in both web and mobile applications.
 
@@ -6864,9 +6889,9 @@ All customizable properties of the `Divider` widget are specified under the `sty
 | visible                      | boolean           | Toggle a widget visibility on/off. Note that an invisible widget will not occupy UI space unless the visibilityTransitionDuration is specified.                                                                                                                                                                                   |
 | visibilityTransitionDuration | number            | Specify the duration in seconds when a widget animates between visible and not visible state. Note that setting this value will cause the widget to still occupy the UI space even when it is not visible.                                                                                                                         |
 | opacity                      | double            | Adjusts the opacity of the widget. Values range from 0 (fully transparent) to 1 (opaque). Default is `1`.                                                                                                                 |
+
 # DropDown widget
 Source: https://docs.ensembleui.com/widgets/dropdown
-# DropDown widget
 
 The DropDown Widget enables the rendering of dropdown menus, providing users with a selectable list of options within your application for intuitive and efficient data selection.
 
@@ -6944,9 +6969,10 @@ The DropDown Widget enables the rendering of dropdown menus, providing users wit
 | library  | string            | Which icon library to use.                                                                                                                                                                                                                                                                                                          |
 | color    | integer or string | The color specification for the text, which can be represented in different formats. It can be specified as a number, a predefined color name, or a hexadecimal value starting with '0x'. `transparent` `black` `blue` `white` `red` `grey` `teal` `amber` `pink` `purple` `yellow` `green` `brown` `cyan` `indigo` `lime` `orange` |
 | size     | integer           | Defines the dimensions or magnitude of an element, allowing control over its overall size within the layout.                                                                                                                                                                                                                        |
+
 # FittedColumn (deprecated)
 Source: https://docs.ensembleui.com/widgets/fitted-column
-# FittedColumn (deprecated)
+
 This widget is deprecated. Please use [FlexColumn](/widgets/flex-column.md) instead.
 
 Stretch to fit the parent (the parent is required to have a predetermined height), then distribute the vertical spaces evenly among its children. You can override the space distribution via 'childrenFits' attribute.
@@ -7032,9 +7058,10 @@ Stretch to fit the parent (the parent is required to have a predetermined height
 | fitHeight | Scale the image to fit the height, and clipping the width if needed                                 |
 | none      | Center-Align the original image size, clipping the content if needed                                |
 | scaleDown | Center-Align the image and only scale down to fit. Image will not be scaled up to bigger dimension. |
+
 # FittedRow (deprecated)
 Source: https://docs.ensembleui.com/widgets/fitted-row
-# FittedRow (deprecated)
+
 This widget is deprecated. Please use [FlexRow](/widgets/flex-row.md) instead.
 
 Stretch to fit the parent (the parent is required to have a predetermined width), then distribute the horizontal spaces evenly among its children. You can override the space distribution via 'childrenFits' attribute.
@@ -7120,9 +7147,9 @@ Stretch to fit the parent (the parent is required to have a predetermined width)
 | fitHeight | Scale the image to fit the height, and clipping the width if needed                                 |
 | none      | Center-Align the original image size, clipping the content if needed                                |
 | scaleDown | Center-Align the image and only scale down to fit. Image will not be scaled up to bigger dimension. |
+
 # FlexColumn
 Source: https://docs.ensembleui.com/widgets/flex-column
-# FlexColumn
 
 FlexColumn is designed to lay out child widgets vertically and proportionally from the available space given by its parent. By default, FlexColumn assigns equal space to each child (`flex=1`), but this can be customized to accommodate various design requirements.
 
@@ -7261,9 +7288,9 @@ FlexColumn:
 #### Base Styles (Inherited)
 
 [base](_snippets/base-styles.md ':include')
+
 # FlexRow
 Source: https://docs.ensembleui.com/widgets/flex-row
-# FlexRow
 
 FlexRow is designed to lay out child widgets horizontally and proportionally from the available space given by its parent. By default, flexRow assigns equal space to each child (`flex=1`), but this can be customized to accommodate various design requirements.
 
@@ -7401,9 +7428,9 @@ FlexRow:
 #### Base Styles (Inherited)
 
 [base](_snippets/base-styles.md ':include')
+
 # Flex
 Source: https://docs.ensembleui.com/widgets/flex
-# Flex
 
 The Flex Widget is a versatile layout option that dynamically switches between Row or Column based on the direction property, offering flexible and responsive designs that adapt to different screen sizes.
 
@@ -7500,9 +7527,9 @@ The Flex Widget is a versatile layout option that dynamically switches between R
 | fitHeight | Scale the image to fit the height, and clipping the width if needed                                 |
 | none      | Center-Align the original image size, clipping the content if needed                                |
 | scaleDown | Center-Align the image and only scale down to fit. Image will not be scaled up to bigger dimension. |
+
 # Flow
 Source: https://docs.ensembleui.com/widgets/flow
-# Flow
 
 The Flow Widget is a container that wraps its children, with a default horizontal direction that can be customized to vertical, allowing for flexible and fluid layouts within your application.
 
@@ -7547,9 +7574,9 @@ The Flow Widget is a container that wraps its children, with a default horizonta
 | alignment                    | string            | The alignment of the widget relative to its parent. `topLeft`, `topCenter`, `topRight`, `centerLeft`, `center`, `centerRight`, `bottomLeft`, `bottomCenter`, `bottomRight`                                                                                                                                                        |
 | visible                      | boolean           | Toggle a widget visibility on/off. Note that an invisible widget will not occupy UI space, unless the visibilityTransitionDuration is specified.                                                                                                                                                                                  |
 | opacity                      | double                                        | Adjusts the opacity of the widget. Values range from 0 (fully transparent) to 1 (opaque). Default is `1`.                                                                                                                 |
+
 # Form widget
 Source: https://docs.ensembleui.com/widgets/form
-# Form widget
 
 Form is a wrapper widget for inputs such as TextInput, Dropdown, Checkbox, etc. Form enables you to perform validation and styling on inputs inside the Form.
 
@@ -7684,9 +7711,9 @@ View:
 |:-----------|:------------|:-------------------------------------------------------------------------------------------------------|
 | validate() | boolean     | validates each formfield inside the Form. Returns true if all the fields are valid and false otherwise |
 | submit()   | none        | submits the form                                                                                       |
+
 # GridView
 Source: https://docs.ensembleui.com/widgets/gridview
-# GridView
 
 The GridView Widget empowers you to render grid-based layouts, enabling the display of content in a structured and organized manner with customizable grid configurations within your application.
 
@@ -7777,9 +7804,9 @@ The GridView Widget empowers you to render grid-based layouts, enabling the disp
 | fitHeight | Scale the image to fit the height, and clipping the width if needed                                 |
 | none      | Center-Align the original image size, clipping the content if needed                                |
 | scaleDown | Center-Align the image and only scale down to fit. Image will not be scaled up to bigger dimension. |
+
 # HTML widget
 Source: https://docs.ensembleui.com/widgets/html
-# HTML widget
 
 The HTML Render Widget enables seamless rendering of HTML code within your application, providing a dynamic and interactive experience for users.
 
@@ -7868,9 +7895,9 @@ The HTML Render Widget enables seamless rendering of HTML code within your appli
 | captureWebPointer            | boolean           | Applicable for Web only. When overlaying widgets on top of certain HTML container (e.g. Maps), the mouse click is captured by the HTML container, causing issue interacting with the widget. Use this to capture and maintain the mouse pointer on your widget.                                                                   |
 | headingText                  | object            | Set the text style for the heading text.[see properties](#headingtext)                                                                                                                                                                                                                                                            |
 | dataText                     | object            | Set the text style for the data item text. [see properties](#headingtext)                                                                                                                                                                                                                                                         |
+
 # Icon widget
 Source: https://docs.ensembleui.com/widgets/Icon
-# Icon widget
 
 The Icon Widget enables easy integration of icons from popular libraries like FontAwesome, allowing for seamless customization and visually appealing designs within your application.
 
@@ -7951,9 +7978,9 @@ The Icon Widget enables easy integration of icons from popular libraries like Fo
 | fitHeight | Scale the image to fit the height, and clipping the width if needed                                 |
 | none      | Center-Align the original image size, clipping the content if needed                                |
 | scaleDown | Center-Align the image and only scale down to fit. Image will not be scaled up to bigger dimension. |
+
 # Finding supported icons and their library
 Source: https://docs.ensembleui.com/widgets/icon2
-# Finding supported icons and their library
 
 3 icon libaries
 Remix, Default, fontAwesome
@@ -8026,11 +8053,12 @@ See all the FontAwesome Icons from here: [FontAwesome Library](https://studio.en
 | addressCard                            |
 | solidAddressCard                       |
 | applePay                                 |
-# Image widget
-Source: https://docs.ensembleui.com/widgets/Image
-import { EnsemblePreview } from "../../components/ensemble-preview";
 
 # Image widget
+Source: https://docs.ensembleui.com/widgets/Image
+
+import { EnsemblePreview } from "../../components/ensemble-preview";
+
 
 The Image Widget allows you to render images from a URL or [local assets](/extending-ensemble/local-assets).
 
@@ -8114,11 +8142,12 @@ You can manage your assets using Ensemble Studio. [See how](/assets)
 | fitHeight | Scale the image to fit the height, and clipping the width if needed                                 |
 | none      | Center-Align the original image size, clipping the content if needed                                |
 | scaleDown | Center-Align the image and only scale down to fit. Image will not be scaled up to bigger dimension. |
-# InlineTimePicker Widget
-Source: https://docs.ensembleui.com/widgets/inline-time-picker
-Here's the updated documentation for the `InlineTimePicker` widget with the correct link to the Kitchen Sink:
 
 # InlineTimePicker Widget
+Source: https://docs.ensembleui.com/widgets/inline-time-picker
+
+Here's the updated documentation for the `InlineTimePicker` widget with the correct link to the Kitchen Sink:
+
 
 The InlineTimePicker widget provides an intuitive, iOS-style time selection interface that allows users to select hours, minutes, and optionally seconds, all within the same view. It is designed to offer a smooth and customizable time-picking experience directly within the interface, without the need for opening a dialog.
 
@@ -8191,9 +8220,9 @@ This widget is ideal for scenarios where you want users to pick a specific time 
 By customizing the `minuteInterval` and `secondInterval`, developers can control how fine-grained the time selection is, ensuring that users can quickly and accurately select the desired time.
 
 This widget can be fully integrated with other actions and components in your app, offering flexibility and ease of use in time-based interactions.
+
 # ListView
 Source: https://docs.ensembleui.com/widgets/listview
-# ListView
 
 The ListView Widget enables the rendering of lists with dynamic and scrollable content, facilitating efficient display and navigation of large datasets within your application.
 
@@ -8260,9 +8289,9 @@ The ListView Widget enables the rendering of lists with dynamic and scrollable c
 | fontSize                     | integer           | Sets the size of the text.                                                                                                                                                                                                                                                                                                        |
 | fontFamily                   | string or object       | Set the font family applicable for all widgets inside this container, see the list of all available font families [here](https://github.com/material-foundation/flutter-packages/blob/main/packages/google_fonts/generator/families_supported). You can specify the fontFamily name directly or specify a different fontFamily for each language, see [Here](../translations.mdx#optionally-configure-different-fontfamily-for-each-language-your-app-supports).                                                                                   |
 | gap                          | integer           | The gap between the children in the main direction                                                                                                                                                                                                                                                                                |
+
 # LoadingContainer Widget
 Source: https://docs.ensembleui.com/widgets/loading-container
-# LoadingContainer Widget
 
 The LoadingContainer widget is designed to simplify the process of displaying a loading indicator while content is being fetched or processed. It provides a convenient abstraction layer for managing loading states in your app, allowing developers to easily toggle between the loading state and the state where content is available.
 
@@ -8358,9 +8387,9 @@ API:
 | shimmerEffect    | enum     | The direction of the shimmer effect. Options are `horizontal`, `vertical`, or `diagonal`.                        |
 | padding          | double     | The padding around the shimmer effect.                                                                          |
 | tileMode          | enum     | The tileMode property in a gradient determines how the gradient repeats or extends beyond its original bounds, offering options like `clamp`, `mirror`, and `repeated` to control the visual effect.                                                                          |
+
 # Lottie Animation widget
 Source: https://docs.ensembleui.com/widgets/lottie
-# Lottie Animation widget
 
 The Lottie Render Widget allows you to effortlessly render Lottie animation files, bringing life and motion to your application with smooth and captivating visual effects.
 
@@ -8444,9 +8473,9 @@ __NOTE:__ *onTap* property works only for native apps (iOS and Android) and web 
 | fitHeight | Scale the image to fit the height, and clipping the width if needed                                 |
 | none      | Center-Align the original image size, clipping the content if needed                                |
 | scaleDown | Center-Align the image and only scale down to fit. Image will not be scaled up to bigger dimension. |
+
 # Map widget
 Source: https://docs.ensembleui.com/widgets/Map
-# Map widget
 
 The Map widget enables the display of _location markers_ and _overlays_, providing a dynamic visual representation of geographic data.
 
@@ -8710,9 +8739,9 @@ API:
 | lat      | Number  | Latitude coordinate  |
 | lng      | Number  | Longitude coordinate |
 | zoom     | Integer | Zoom level           |
+
 # Markdown widget
 Source: https://docs.ensembleui.com/widgets/markdown
-# Markdown widget
 
 The Markdown Render Widget empowers you to effortlessly render Markdown text, transforming it into beautifully formatted and structured content for your application.
 
@@ -8752,9 +8781,9 @@ The Markdown Render Widget empowers you to effortlessly render Markdown text, tr
 | fontSize   | integer           | Sets the size of the text.                                                                                                                                                                                                                                                                                                          |
 | color      | integer or string | The color specification for the text, which can be represented in different formats. It can be specified as a number, a predefined color name, or a hexadecimal value starting with '0x'. `transparent` `black` `blue` `white` `red` `grey` `teal` `amber` `pink` `purple` `yellow` `green` `brown` `cyan` `indigo` `lime` `orange` |
 | decoration | string            | A linear decoration to draw near the text`none`,`lineThrough`,`underlines`,`overline`                                                                                                                                                                                                                                               |
+
 # Multi-Child Layout widgets
 Source: https://docs.ensembleui.com/widgets/multi-child-layouts
-# Multi-Child Layout widgets
 
 ## Options for Multi-Child Layout widgets
 
@@ -8940,9 +8969,9 @@ Similar examples for `mainAxis: spaceAround`, `mainAxis: center`, and `mainAxis:
             inputs:
             p: ${users}
 ```
+
 # PasswordInput widget
 Source: https://docs.ensembleui.com/widgets/passwordinput
-# PasswordInput widget
 
 The PasswordInput Widget enables the rendering of secure password input fields, ensuring that user-entered passwords remain hidden and protected within your application for enhanced security and privacy.
 
@@ -9035,9 +9064,9 @@ The PasswordInput Widget enables the rendering of secure password input fields, 
 | none       | string  | No enforcement applied to the editing value. It's possible to exceed the maxLength.    |
 | enforced   | string  | Keep the length of the text input from exceeding the max length even when the text has an unfinished composing region.    |
 | truncateAfterCompositionEnds  | string  | Users can still input text if the current value is composing even after reaching the max length limit. After composing ends, the value will be truncated. |
+
 # Profile Image Widget
 Source: https://docs.ensembleui.com/widgets/profile-image
-# Profile Image Widget
 
 The `ProfileImageWithIndicator` widget in Ensemble offers a convenient way to showcase user profile images along with customizable indicator labels.
 
@@ -9065,9 +9094,9 @@ By using these Input Parameters, you can effortlessly create various profile ima
         labelBackgroundColor: 0xFFDEDEDE
 ```
 Since this widget is globally available, you only need to specify the image input. The example above also showcases optional input parameters for further customization. Simply use `ensemble.ProfileImageWithIndicator` in your app to streamline the integration of profile images with indicator labels.
+
 # Progress Indicator
 Source: https://docs.ensembleui.com/widgets/progress-indicator
-# Progress Indicator
 
 The Progress Indicator Widget facilitates the rendering of visual progress indicators, providing users with visual feedback on the progress of tasks or operations within your application.
 
@@ -9091,9 +9120,9 @@ The Progress Indicator Widget facilitates the rendering of visual progress indic
 | size            | integer | Specifies the width (progress bar) or the diameter (circular progress indicator)                                                                     |
 | thickness       | integer | Specifies the thickness of the indicator (for progress bar this is the height)                                                                       |
 | color           |         |                                                                                                                                                      |
+
 # QRCodeScanner widget
 Source: https://docs.ensembleui.com/widgets/qrcode-scanner
-# QRCodeScanner widget
 
 The QR-Code Scanner Widget provides a camera preview for scanning QR codes and returns the decoded data.
 
@@ -9140,9 +9169,9 @@ This widget also inherits these styles
 This widget also inherits these styles
 
 [base](_snippets/base-styles.md ':include')
+
 # QR-Code widget
 Source: https://docs.ensembleui.com/widgets/qrcode
-# QR-Code widget
 
 The QR-Code Render Widget empowers you to effortlessly generate and render QR codes within your application, enabling convenient scanning and information exchange for users.
 
@@ -9216,13 +9245,14 @@ The QR-Code Render Widget empowers you to effortlessly generate and render QR co
 | fitHeight | Scale the image to fit the height, and clipping the width if needed                                 |
 | none      | Center-Align the original image size, clipping the content if needed                                |
 | scaleDown | Center-Align the image and only scale down to fit. Image will not be scaled up to bigger dimension. |
+
 # RadioButton
 Source: https://docs.ensembleui.com/widgets/radio-button
+
 import BaseStyles from "./_snippets/base-styles.md";
 import FormField from "./_snippets/form-field.md";
 import { EnsemblePreview } from '../../components/ensemble-preview'
 
-# RadioButton
 
 RadioButton widget renders a simple Radio button, which can be grouped with other RadioButtons anywhere on the screen with the groupId.
 
@@ -9251,14 +9281,15 @@ RadioButton widget renders a simple Radio button, which can be grouped with othe
 | inactiveColor | Color | Color when a radio button is not selected |
 
 <BaseStyles />
+
 # RadioGroup
 Source: https://docs.ensembleui.com/widgets/radio-group
+
 import BaseStyles from "./_snippets/base-styles.md";
 import BoxStyles from "./_snippets/box-styles.md";
 import FormField from "./_snippets/form-field.md";
 import { EnsemblePreview } from "../../components/ensemble-preview";
 
-# RadioGroup
 
 The RadioGroup widget renders a group of radios together in a few pre-determined layouts.
 
@@ -9304,9 +9335,9 @@ Used to iterate through a data set and render the label/value for each Radio.
 | inactiveColor   | Color   | Color when a radio button is not selected                                                           |
 
 <BaseStyles />
+
 # ensemble.RatingStars widget
 Source: https://docs.ensembleui.com/widgets/rating-widget
-# ensemble.RatingStars widget
 
 The `ensemble.RatingStars` widget in Ensemble provides an intuitive solution for displaying star ratings with customizable attributes. It is fixed at 5 stars.
 
@@ -9336,9 +9367,9 @@ By utilizing these Input Parameters, you can customize the appearance of the rat
       starBackgroundColor: red
 ```
 Since this widget is globally available, you only need to specify the rating input. The example above also showcases optional input parameters for further customization. Incorporate the `ensemble.RatingStars` widget in your app to enhance the visual representation of rating stars.
+
 # Row
 Source: https://docs.ensembleui.com/widgets/row
-# Row
 
 Row is designed to arrange child widgets horizontally, where the intrinsic sizes of child widgets dictate the layout's appearance.
 
@@ -9420,9 +9451,9 @@ If you wish to stretch all the children to the same specified height, add `cross
 | splashDuration                      | integer                                                    | This is the duration it takes to fill the widget surface with the splashColor.The duration in ms when tap and release on the widget.                                                                                                                                                         |
 | splashFadeDuration                      | integer                                                    | The duration it takes to fade out once tapped. Since a typical tap starts and ends immdiately, this splashFadeDuration executes almost at the same time as the splashDuration, so ideally it should be equal or longer than splashDuration to see the entire effect.                                                                                                                                                         |
 | unconfirmedSplashDuration                      | integer                                                    | This happens when the user tap and hold (not yet released). It is called unconfirmed since the tap will be cancelled if the user moves out of the tap area and release. Usually this should be longer (around 1 secs) to signify that the user has not confirmed the tap.                                                                                                                                                         |
+
 # Shape Widget
 Source: https://docs.ensembleui.com/widgets/shape
-# Shape Widget
 
 ECreate and customize a variety of shapes to add flair to your UI. Use this widget in combination with [LoadingContainer](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/3wNZSfVkdi56zmTtFeBT) to create compelling loading states.
 
@@ -9440,13 +9471,14 @@ ECreate and customize a variety of shapes to add flair to your UI. Use this widg
 | width           | integer           | The width property determines the horizontal size of an element, allowing control over its width dimension within the layout.                                                                                                                                                                                              |
 | height          | integer           | The height property determines the vertical size of an element, allowing control over its height dimension within the layout.                                                                                                                                                                                              |
 | backgroundColor | integer or string | Background color of the box. which can be represented in different formats. It can be specified as a number, a predefined color name, or a hexadecimal value starting with '0x'. `transparent` `black` `blue` `white` `red` `grey` `teal` `amber` `pink` `purple` `yellow` `green` `brown` `cyan` `indigo` `lime` `orange` |
+
 # Signature Widget
 Source: https://docs.ensembleui.com/widgets/signature
+
 import BaseStyles from "./_snippets/base-styles.md";
 import BoxStyles from "./_snippets/box-styles.md";
 import { EnsemblePreview } from '../../components/ensemble-preview'
 
-# Signature Widget
 
 The `Signature` widget allows users to capture handwritten signatures directly within your application. It provides a canvas where users can draw their signature using touch or mouse input. The widget is highly customizable, enabling you to adjust its appearance and behavior to suit your application's needs.
 
@@ -9561,13 +9593,14 @@ This widget also inherits these styles:
 ### Base Styles (Inherited)
 
 <BaseStyles />
+
 # Slidable Widget
 Source: https://docs.ensembleui.com/widgets/slidable
+
 import BaseStyles from "./_snippets/base-styles.md";
 import BoxStyles from "./_snippets/box-styles.md";
 import { EnsemblePreview } from "../../components/ensemble-preview";
 
-# Slidable Widget
 
 The `Slidable` widget enables you to create swipeable items with customizable action panes on both sides. This widget is particularly useful for implementing swipe-to-action functionality, such as swipe-to-delete, swipe-to-edit, or any other custom actions in your application.
 
@@ -9712,13 +9745,14 @@ For dismissible drawers, five types of motion animations are available:
 5. **stretch**: Stretches during dismissal
 
 By utilizing these properties and configurations, you can create intuitive swipe-based interactions in your application using the Slidable widget.
+
 # Slider Widget
 Source: https://docs.ensembleui.com/widgets/slider
+
 import BaseStyles from "./_snippets/base-styles.md";
 import BoxStyles from "./_snippets/box-styles.md";
 import { EnsemblePreview } from '../../components/ensemble-preview'
 
-# Slider Widget
 
 The `Slider` widget provides an intuitive way for users to select a value or range of values by dragging a handle along a track. This widget is particularly useful for adjusting numeric inputs like volume, brightness, or any other adjustable parameters that fall within a continuous or discrete range.
 
@@ -9846,9 +9880,9 @@ This widget also inherits these styles:
 - **rectangular**: Rectangular tooltip shape
 
 By utilizing these properties and configurations, you can create highly customized slider controls that match your application's design while providing intuitive value selection for users.
+
 # Spacer
 Source: https://docs.ensembleui.com/widgets/spacer
-# Spacer
 
 The Spacer Widget enables the creation of adjustable spacing between elements, offering precise control over the layout and alignment of content within your application.
 
@@ -9865,9 +9899,9 @@ The Spacer Widget enables the creation of adjustable spacing between elements, o
 | Property | Type    | Description                                                                                                  |
 | :------- | :------ | :----------------------------------------------------------------------------------------------------------- |
 | size     | integer | Defines the dimensions or magnitude of an element, allowing control over its overall size within the layout. |
+
 # Stack
 Source: https://docs.ensembleui.com/widgets/stack
-# Stack
 
 The Stack Widget allows you to visually stack items on top of each other, providing a flexible and layered approach to layout and design within your application.
 
@@ -9890,9 +9924,9 @@ The Stack Widget allows you to visually stack items on top of each other, provid
 | splashDuration                      | integer                                                    | This is the duration it takes to fill the widget surface with the splashColor.The duration in ms when tap and release on the widget.                                                                                                                                                         |
 | splashFadeDuration                      | integer                                                    | The duration it takes to fade out once tapped. Since a typical tap starts and ends immdiately, this splashFadeDuration executes almost at the same time as the splashDuration, so ideally it should be equal or longer than splashDuration to see the entire effect.                                                                                                                                                         |
 | unconfirmedSplashDuration                      | integer                                                    | This happens when the user tap and hold (not yet released). It is called unconfirmed since the tap will be cancelled if the user moves out of the tap area and release. Usually this should be longer (around 1 secs) to signify that the user has not confirmed the tap.                                                                                                                                                         |
+
 # Staggered Grid
 Source: https://docs.ensembleui.com/widgets/staggered-grid
-# Staggered Grid
 
 StaggeredGrid is a versatile widget that arranges its children in a staggered layout, allowing flexible and dynamic positioning for unique and visually appealing UI designs.
 
@@ -9936,9 +9970,9 @@ StaggeredGrid is a versatile widget that arranges its children in a staggered la
 | visibilityTransitionDuration | number            | Specify the duration in seconds when a widget animates between visible and not visible state. Note that setting this value will cause the widget to still occupy the UI space even when it is not visible.                                                                                                                        |
 | opacity                      | double                                        | Adjusts the opacity of the widget. Values range from 0 (fully transparent) to 1 (opaque). Default is `1`.                                                                                                                 |
 | expanded                     | boolean           | If the parent is a Row or Column, this flag will stretch this widget in the appropriate direction. (e.g stretch horizontally for parent of type Row)                                                                                                                                                                              |
+
 # Switch widget
 Source: https://docs.ensembleui.com/widgets/switch
-# Switch widget
 
 The Switch Widget enables the rendering of switch toggle elements, providing users with an intuitive and interactive way to toggle between two states within your application.
 
@@ -10002,9 +10036,9 @@ The Switch Widget enables the rendering of switch toggle elements, providing use
 | library  | string            | Which icon library to use.                                                                                                                                                                                                                                                                                                          |
 | color    | integer or string | The color specification for the text, which can be represented in different formats. It can be specified as a number, a predefined color name, or a hexadecimal value starting with '0x'. `transparent` `black` `blue` `white` `red` `grey` `teal` `amber` `pink` `purple` `yellow` `green` `brown` `cyan` `indigo` `lime` `orange` |
 | size     | integer           | Defines the dimensions or magnitude of an element, allowing control over its overall size within the layout.                                                                                                                                                                                                                        |
+
 # TabBar
 Source: https://docs.ensembleui.com/widgets/tabbar
-# TabBar
 
 The TabBar Widget enables the creation of tab bars, providing a convenient and visually appealing way to navigate between different sections or views within your application.
 
@@ -10040,9 +10074,9 @@ The TabBar Widget enables the creation of tab bars, providing a convenient and v
 | borderColor            | integer or string |The color of borders of the tabs, which can be represented in different formats. It can be specified as a number, a predefined color name, or a hexadecimal value starting with '0x'. `transparent` `black` `blue` `white` `red` `grey` `teal` `amber` `pink` `purple` `yellow` `green` `brown` `cyan` `indigo` `lime` `orange`|
 
 |
+
 # TextInput widget
 Source: https://docs.ensembleui.com/widgets/text-input
-# TextInput widget
 
 The TextInput Widget enables the rendering of interactive text input fields, allowing users to enter and edit text within your application for data input and interaction.
 
@@ -10184,11 +10218,12 @@ The TextInput Widget enables the rendering of interactive text input fields, all
 | none       | string  | No enforcement applied to the editing value. It's possible to exceed the maxLength.    |
 | enforced   | string  | Keep the length of the text input from exceeding the max length even when the text has an unfinished composing region.    |
 | truncateAfterCompositionEnds  | string  | Users can still input text if the current value is composing even after reaching the max length limit. After composing ends, the value will be truncated. |
-# Text widget
-Source: https://docs.ensembleui.com/widgets/text
-import { EnsemblePreview } from '../../components/ensemble-preview'
 
 # Text widget
+Source: https://docs.ensembleui.com/widgets/text
+
+import { EnsemblePreview } from '../../components/ensemble-preview'
+
 
 Display and style text within your application.
 
@@ -10302,11 +10337,12 @@ Display and style text within your application.
 | fitHeight | Scale the image to fit the height, and clipping the width if needed                                 |
 | none      | Center-Align the original image size, clipping the content if needed                                |
 | scaleDown | Center-Align the image and only scale down to fit. Image will not be scaled up to bigger dimension. |
-# Time widget
-Source: https://docs.ensembleui.com/widgets/time
-import { EnsemblePreview } from '../../components/ensemble-preview'
 
 # Time widget
+Source: https://docs.ensembleui.com/widgets/time
+
+import { EnsemblePreview } from '../../components/ensemble-preview'
+
 
 The Time Widget enables the rendering of time input fields, allowing users to select and display time values within your application for time-related functionality and interactions.
 
@@ -10403,9 +10439,9 @@ The Time Widget enables the rendering of time input fields, allowing users to se
 | hourMinuteBackgroundColor | string | Background color of the hour/minute section in Android-style picker|
 | hourMinuteTextStyle       | object | Style for the hour/minute text in Android-style picker             |
 | padding                   | object | Padding for the Android-style picker                               |
+
 # TripleSwitch widget
 Source: https://docs.ensembleui.com/widgets/triple-state-switch
-# TripleSwitch widget
 
 The TripleSwitch Widget enables the rendering of switch toggle elements, providing users with an intuitive and interactive way to toggle between three states (off, mixed, on) within your application.
 
@@ -10431,9 +10467,10 @@ The TripleSwitch Widget enables the rendering of switch toggle elements, providi
 | mixedColor                    | integer or string | Sets the mixed state color of the switch widget, starting with '0xFF' for full opacity. `transparent` `black` `blue` `white` `red` `grey` `teal` `amber` `pink` `purple` `yellow` `green` `brown` `cyan` `indigo` `lime` `orange`                                                                           |
 | activeThumbColor               | integer or string | Sets the active thumb color of the switch widget, starting with '0xFF' for full opacity. `transparent` `black` `blue` `white` `red` `grey` `teal` `amber` `pink` `purple` `yellow` `green` `brown` `cyan` `indigo` `lime` `orange`                                                                           |
 | inactiveThumbColor              | integer or string | Sets the inactive thumb color of the switch widget, starting with '0xFF' for full opacity. `transparent` `black` `blue` `white` `red` `grey` `teal` `amber` `pink` `purple` `yellow` `green` `brown` `cyan` `indigo` `lime` `orange`                                                                           |
+
 # Type References
 Source: https://docs.ensembleui.com/widgets/types
-# Type References
+
 These Types objects are used in multiple widgets. They are defined here for reference.
 
 ## TextStyle
@@ -10575,9 +10612,9 @@ This property defines the shadow properties for a widget, including color, offse
 | shadowRadius     | integer           | The radius of the shadow. Minimum value: 0.                                                                                                                                                                                    |
 | shadowBlurRadius | integer           | The blur radius of the shadow. Minimum value: 0.                                                                                                                                                                               |
 | shadowStyle      | enum              | The blur style to apply on the shadow: <br/>`normal` - Fuzzy inside and outside (default)<br/>`solid` - Solid inside, fuzzy outside.<br/>`outer` - Nothing inside, fuzzy outside.<br/>`inner` - Fuzzy inside, nothing outside. |
+
 # Video widget
 Source: https://docs.ensembleui.com/widgets/video
-# Video widget
 
 The Video Widget enables seamless integration of video content within your application, providing an immersive and engaging multimedia experience for users.
 
@@ -10609,11 +10646,12 @@ Video:
     Progress:
       display: circular
 ```
-# WebView widget
-Source: https://docs.ensembleui.com/widgets/webview
-import { EnsemblePreview } from '../../components/ensemble-preview';
 
 # WebView widget
+Source: https://docs.ensembleui.com/widgets/webview
+
+import { EnsemblePreview } from '../../components/ensemble-preview';
+
 
 The WebView Widget enables seamless integration of web content within native apps and web apps, providing a versatile and consistent browsing experience across platforms. In addition to its core functionality, WebView also supports the use of cookies. [Learn more here!](/tips-and-tricks/cookies.md)
 
@@ -10727,9 +10765,9 @@ The WebView widget provides the following methods:
 | visibilityTransitionDuration | number            | Specify the duration in seconds when a widget animates between visible and not visible state. Note that setting this value will cause the widget to still occupy the UI space even when it is not visible.                                                                                                                        |
 | visible                      | boolean           | Toggle a widget visibility on/off. Note that an invisible widget will not occupy UI space, unless the visibilityTransitionDuration is specified.                                                                                                                                                                                  |
 | opacity                      | double            | Adjusts the opacity of the widget. Values range from 0 (fully transparent) to 1 (opaque). Default is `1`.                                                                                                                 |
+
 # Youtube
 Source: https://docs.ensembleui.com/widgets/youtube
-# Youtube
 
 The YouTube feature in EnsembleUI allows integration of YouTube videos into your application, providing users with a rich multimedia experience.
 
@@ -10819,9 +10857,9 @@ Users can set the playback rate and volume using the provided text input fields:
 ```
 
 Note: The YouTube feature is compatible with Native iOS and Android applications.
+
 # Composite Widgets
 Source: https://docs.ensembleui.com/composite-widgets
-# Composite Widgets
 
 Composite widgets are a powerful concept in Ensemble where multiple smaller widgets are combined to create a more complex and reusable widget.
 
@@ -10904,9 +10942,9 @@ Make sure to make your app public so that reviewers can access it.
 
 
 ![Make app public](/images/make-app-public.jpg)
+
 # authenticateByBiometric
 Source: https://docs.ensembleui.com/actions/authenticate-by-biometric
-## authenticateByBiometric
 
 It helps to authenticate user based on biometrics such as face and fingerprint based on sensor available on user's device.
 
@@ -10986,9 +11024,9 @@ Button:
         ensemble.debug('on unknown error');
 
 ```
+
 # BLE Client
 Source: https://docs.ensembleui.com/actions/ble-actions
-### BLE Client
 
 Ensemble bluetooth modules allows you to create BLE client on ensemble platform.
 
@@ -11091,9 +11129,9 @@ Button:
         bluetoothUnsubscribeCharacteristic:
         id: ${characteristic.id}
 ```
+
 # callExternalMethod
 Source: https://docs.ensembleui.com/actions/call-external-method
-# callExternalMethod
 
 *Note this is relevant for developers who are integrating Ensemble with their flutter apps*
 
@@ -11146,9 +11184,9 @@ Alternatively you can call it in code as follows -
               },
             });
 ```
+
 # checkPermission
 Source: https://docs.ensembleui.com/actions/check-permission
-# checkPermission
 
 `checkPermission` is designed to check the permission status. It includes components for checking notification, location, contacts, and camera permissions.
 
@@ -11179,9 +11217,9 @@ Source: https://docs.ensembleui.com/actions/check-permission
             console.log("onNotDetermined called");
 ```
 When a user taps the "Notification Permission" button, the app checks the notification permission status. Depending on the status, one of the specified callbacks (onAuthorized, onDenied, or onNotDetermined) is executed.
+
 # clearKeychain
 Source: https://docs.ensembleui.com/actions/clear-keychain
-# clearKeychain
 
 The `clearKeychain` action removes previously stored data from the device's secure keychain (iOS) or equivalent secure storage (Android), allowing you to clean up sensitive information with the highest level of security when it's no longer needed.
 
@@ -11239,9 +11277,9 @@ ensemble.clearKeychain({
 -   For security best practices, always clear sensitive data when it's no longer required.
 -   This action works with data stored using [saveKeychain](/actions/save-keychain).
 -   Unlike `clearSecureStorage`, this operates at the OS-level security layer.
+
 # clearSecureStorage
 Source: https://docs.ensembleui.com/actions/clear-secure-storage
-# clearSecureStorage
 
 The `clearSecureStorage` action removes previously stored encrypted data from the device's secure storage, allowing you to clean up sensitive information when it's no longer needed, enhancing security by minimizing data exposure.
 
@@ -11298,9 +11336,9 @@ try {
 -   Use this action for cleanup when sensitive data is no longer needed (e.g., after logout).
 -   For security best practices, always clear sensitive data when it's no longer required.
 -   This action works with data stored using [setSecureStorage](/actions/set-secure-storage).
+
 # closeAllDialogs
 Source: https://docs.ensembleui.com/actions/close-all-dialogs
-# closeAllDialogs
 
 closeAllDialogs action dismisses or closes all open modal dialogs within the app, allowing developers to easily manage and reset the dialog stack, ensuring a clutter-free and user-friendly interface for a seamless app experience.
 
@@ -11326,9 +11364,9 @@ MyStartingDialog:
 ```
 
 The complete example [here](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/HRIajN2i8bDDVTL32j8m?propertyPanelEnabled=true&instantPreviewDisabled=false&editorV2Enabled=true) demonstrates its usage along with showDialog
+
 # connectWallet
 Source: https://docs.ensembleui.com/actions/connect-wallet
-# connectWallet
 
 connectWallet action enables users to establish a connection between their digital wallet and the app, facilitating seamless integration with blockchain-based functionalities, token transfers, and decentralized applications, enhancing user interactions with cryptocurrency-related features.
 
@@ -11413,9 +11451,9 @@ View:
 
 
 complete example [here](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/MnW9B85MmtqPXLEdZETu?propertyPanelEnabled=true&instantPreviewDisabled=false&editorV2Enabled=true)
+
 # copyToClipboard
 Source: https://docs.ensembleui.com/actions/copy-to-clipboard
-# copyToClipboard
 
 copyToClipboard action allows users to copy text or content to their device's clipboard with a simple interaction, facilitating easy sharing and transfer of information within the app, enhancing productivity and user convenience.
 
@@ -11474,9 +11512,9 @@ View:
 
 
 complete example [here](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/oQGrStPwLqERIc7kzHFn?propertyPanelEnabled=true&instantPreviewDisabled=false&editorV2Enabled=true)
+
 # Device Security
 Source: https://docs.ensembleui.com/actions/device-security
-# Device Security
 
 The `deviceSecurity` action checks if the device is rooted, debugged, or running on an emulator. It executes corresponding actions based on the results of these checks, enhancing security awareness and control within your application
 
@@ -11569,9 +11607,9 @@ You can find a complete example of using the deviceSecurity action in the [Ensem
         <string>activator</string>
     </array>
 ```
+
 # Actions
 Source: https://docs.ensembleui.com/actions/directory
-# Actions
 
 When an event is triggered (e.g. button is tapped), you can perform actions such as navigate to a screen, call an API, or even run JavaScript code.
 
@@ -11648,9 +11686,10 @@ When an event is triggered (e.g. button is tapped), you can perform actions such
 | [resumeAudio](resume-audio.md) | The resumeAudio action allows users to resume a previously paused audio          |
 | [stopAudio](stop-audio.md)     | The stopAudio action allows users to stop a already playing audio file           |
 | [seekAudio](seek-audio.md)     | The seekAudio action allows users to pause a already-playing audio file          |
+
 # dispatchEvent action
 Source: https://docs.ensembleui.com/actions/dispatch-event
-# dispatchEvent action
+
 Custom widgets in Ensemble, just like widgets in any UI framework, can dispatch events
 
 `dispatchEvent` action is used in custom widgets to let the caller of the widget know when something interesting has happened.
@@ -11743,9 +11782,10 @@ View:
               id: eventData
 ```
 See Kitchen Sink for the detailed example[(here](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/RajOE62KtSkOHYHJQVJF)
+
 # executeActionGroup
 Source: https://docs.ensembleui.com/actions/execute-action-group
-# executeActionGroup
+
 Executing a group of Actions, either in parallel (default) or sequentially with each waiting for the other to complete before executing.
 
 ## Usage
@@ -11799,9 +11839,9 @@ See [Kitchen Sink Example](https://studio.ensembleui.com/app/e24402cb-75e2-404c-
                         body: |-
                           console.log('executed code - 5');
 ```
+
 # executeCode
 Source: https://docs.ensembleui.com/actions/execute-code
-# executeCode
 
 Utilize the `executeCode` action to compose custom JavaScript code within the context of this application. When the execution of the code concludes, you can incorporate a follow-up action by leveraging the `onComplete` property.
 
@@ -11837,9 +11877,10 @@ For examples of the `executeCode` action, see the [Ensemble Kitchen Sink](https:
 | :-------   | :--- | :---------- |
 | body       | String  | Block of code writen in JavaScript. This block executes when the executeCode action is called. |
 | onComplete | String  | Block of code writen in JavaScript. This block executes after thh executeCode action is called, and the body code block is executed. |
+
 # executeConditionalAction
 Source: https://docs.ensembleui.com/actions/execute-conditional-action
-# executeConditionalAction
+
 `executeConditionalAction` is an Action and can be used like any other action. that allows actions to be executed based on if/elseif/else conditions
 
 - `if` condition is required and should be the first condition
@@ -11874,9 +11915,9 @@ See [Kitchen Sink Example](https://studio.ensembleui.com/app/e24402cb-75e2-404c-
                           options:
                             duration: 5
 ```
+
 # getLocation
 Source: https://docs.ensembleui.com/actions/get-location
-# getLocation
 
 getLocation action enables users to retrieve their device's current location, facilitating location-based functionalities within the app, such as mapping, navigation, or personalized content delivery, enhancing user experience and context-aware interactions. It requests user's permission to get his/her current location
 
@@ -11901,9 +11942,9 @@ Inside the directory where you cloned Ensemble Starter, open `/lib/generated/ens
 ```
   static const useLocation = false;
 ```
+
 # getNetworkInfo
 Source: https://docs.ensembleui.com/actions/get-network-info
-# getNetworkInfo
 
 **Works on native iOS and Android apps only. In the browser, `onError` (if specified) will be called with error `Network info is not supported on the web`.**
 
@@ -12069,9 +12110,9 @@ View:
                     body: |
                       status.value = event.error;
 ```
+
 # getPhoneContacts
 Source: https://docs.ensembleui.com/actions/get-phone-contacts
-# getPhoneContacts
 
 The `PhoneContacts` view is designed to retrieve and display phone contacts from Android and iOS physical devices or simulators. It includes a warning note, a button to fetch contacts, and a list view to display individual contact details.
 
@@ -12106,9 +12147,9 @@ The `onSuccess` and `onError` callbacks for the "Get Phone Contacts" button. In 
             contact: ${contact}
 ```
 The `ListView` component displaying a list of contacts (ensemble.storage.contacts). It uses the `UserContact` custom widget template for each item in the list.
+
 # getSecureStorage
 Source: https://docs.ensembleui.com/actions/get-secure-storage
-# getSecureStorage
 
 The `getSecureStorage` action retrieves previously stored encrypted data from the device's secure storage, decrypting it for use within your application while maintaining security of sensitive information.
 
@@ -12169,9 +12210,9 @@ ensemble.invokeAPI({
 -   Data stored using [setSecureStorage](/actions/set-secure-storage) can be retrieved with this action.
 -   The value is available in the `onComplete` action under `event.data` when used in YAML.
 -   When used in JavaScript, the value is returned directly from the function call.
+
 # invokeAPI
 Source: https://docs.ensembleui.com/actions/invoke-API
-# invokeAPI
 
 To check out examples of the invokeAPI action, go to the [Ensemble Kitchen Sink](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/e546b0d8-3220-4217-bd5c-181118154073).
 
@@ -12455,9 +12496,9 @@ API:
 | onError    | Action | The action to handle errors                                                |
 
 Details about API [here](/apis/api-overview)
+
 # invokeHaptic
 Source: https://docs.ensembleui.com/actions/invoke-haptic
-# invokeHaptic
 
 invokeHaptic action allows users to play haptics on the device allowing better UX. It supports 5 haptics namely heavyImpact, mediumImpact, lightImpact, selectionClick, and vibrate. They are listed in decreasing order of intensity
 and vibrate does a short vibrate pulse. It also supports playing haptic by JavaScript code and also has additional parameters like onTapHaptic or onChangeHaptic added to multiple widgets where haptic would be required.
@@ -12500,9 +12541,9 @@ View:
             //@code
             console.log("Button Press")
 ```
+
 # logEvent
 Source: https://docs.ensembleui.com/actions/log-events
-# logEvent
 
 logEvent action allows you to track analytics events and user interactions using Firebase Analytics, MoEngage, or Adobe Analytics.
 
@@ -12690,9 +12731,9 @@ Adobe Analytics provider enables comprehensive analytics tracking, user identity
 | setupAssurance | Configures Adobe Assurance for debugging. | parameters (Object with url) |
 
 For detailed examples of Adobe Analytics operations, see the [Adobe Analytics documentation](../adobe-analytics.mdx).
+
 # Action: navigateBack
 Source: https://docs.ensembleui.com/actions/navigate-back
-# Action: navigateBack
 
 The `navigateBack` action allows users to navigate back to the previous screen within the app’s navigation stack. It removes the current screen from the navigation history, so when the user navigates back, the previous screen reappears. This action is also useful when working with modal screens, as it closes the modal and returns the user to the originating screen.
 
@@ -12701,9 +12742,9 @@ The `navigateBack` action allows users to navigate back to the previous screen w
 | Property | Type   | Description                                                                                                     |
 | :------- | :----- | :-------------------------------------------------------------------------------------------------------------- |
 | data     | object | Data object to send back to the previous screen. This allows you to pass information back when navigating back. |
+
 # navigateModalScreen
 Source: https://docs.ensembleui.com/actions/navigate-modal-screen
-# navigateModalScreen
 
 navigateModalScreen action enables users to open a specific screen or page as a modal overlay, creating a temporary and focused view to capture user input or display additional content without losing context of the main app flow.
 
@@ -12762,9 +12803,9 @@ View:
 
 
 You can try complete example [here](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/67ICgJIX0McKswXCybb0?propertyPanelEnabled=true&instantPreviewDisabled=false&editorV2Enabled=true)
+
 # navigateScreen
 Source: https://docs.ensembleui.com/actions/navigate-screen
-# navigateScreen
 
 navigateScreen action allows users to transition to a specific screen or page within the app, facilitating seamless navigation and enhancing user interaction with different sections of the application.
 
@@ -13032,9 +13073,9 @@ View:
             duration: 1000
             alignment: center
 ```
+
 # navigateViewGroup
 Source: https://docs.ensembleui.com/actions/navigate-view-group
-# navigateViewGroup
 
 navigateViewGroup action allows users to navigate between menu items while maintaining the menu in place. This simulate the experience when user taps on different nav items.
 
@@ -13109,9 +13150,9 @@ View:
 
 
 This action will ensure that the menu renders when you navigate to the target screen. In contrast, using `navigateScreen` action will result in only displaying the new screen without the menu.
+
 # notification
 Source: https://docs.ensembleui.com/actions/notification
-# notification
 
 notifications action provides a comprehensive and customizable solution for managing notifications within the app, including handling incoming notifications, displaying them to users, and implementing notification-related functionalities, enhancing user experience and interaction with timely updates and alerts.
 
@@ -13121,12 +13162,14 @@ notifications action provides a comprehensive and customizable solution for mana
 | :-------- | :----- | :-------------------------------------------- |
 | onTap     | action | Execute an Action on notification is tap.     |
 | onReceive | action | Execute an Action on notification is receive. |
+
 # onNavigateBack
 Source: https://docs.ensembleui.com/actions/on-navigate-back
-## onNavigateBack
+
+
+
 # Action: onViewGroupResume
 Source: https://docs.ensembleui.com/actions/on-view-group-resume
-# Action: onViewGroupResume
 
 The `onViewGroupResume` action allows users to execute actions when navigate back to the viewGroup within the app’s navigation stack. when the user navigates back, the ViewGroup reappears and action specified under `onViewGroupResume` is executed. This action is useful when working with all type of menus.
 
@@ -13213,9 +13256,9 @@ View:
 
 
 You can try complete example [here](https://studio.ensembleui.com/app/2Mc1NI4RQlrEH23sU288/screens)
+
 # Action: onViewGroupUpdate
 Source: https://docs.ensembleui.com/actions/on-view-group-update
-# Action: onViewGroupUpdate
 
 The `onViewGroupUpdate` action allows users to execute actions when update to the ViewGroup occurs. This action is useful when working with all type of menus.
 
@@ -13288,9 +13331,9 @@ View:
 
 
 You can try complete example [here](https://studio.ensembleui.com/app/2Mc1NI4RQlrEH23sU288/screens)
+
 # openAppSettings
 Source: https://docs.ensembleui.com/actions/open-app-settings
-# openAppSettings
 
 Applicable on iOS/Android only. Opens the app settings page where the user can manage app permissions and settings. If `target` (optional) is provided and supported on the current running platform, it will open the specific setting page, otherwise the "Settings" screen will be opened.
 
@@ -13373,9 +13416,9 @@ Applicable on iOS/Android only. Opens the app settings page where the user can m
 | storageAndBackup                 | iOS                 | Open the storage and backup settings                          |
 | wallpapers                       | iOS                 | Open the wallpapers settings                                  |
 | subscriptions                    | iOS 15+             | Open the subscription settings                                |
+
 # openCamera
 Source: https://docs.ensembleui.com/actions/open-camera
-# openCamera
 
 `OpenCamera` action enables users to access their device's camera, capturing images or videos directly from the app, enhancing interactivity and enabling seamless integration of media functionalities within the application. With `id` property we can bind results of camera. Then use the `onComplete` properties to execute other actions after capture or selection is done.
 
@@ -13702,9 +13745,9 @@ Capture image on face detected
 
 
 To learn more about openCamera functionalities, test it out here in [Ensemble Kitchen Sink](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/USuOaOZApSgzE2uVrqlv) app.
+
 # openPlaidLink
 Source: https://docs.ensembleui.com/actions/open-plaid-link
-# openPlaidLink
 
 openPlaidLink action allows users to open external URLs or web links directly from the app, facilitating seamless integration with external content and enhancing the user's browsing experience within the application.
 
@@ -13716,9 +13759,9 @@ openPlaidLink action allows users to open external URLs or web links directly fr
 | onSuccess | action | This action is triggered when user successfully complete the Plaid Link flow. |
 | onEvent | action | This action is triggered when certain events in the Plaid Link flow have occurred, for example, when the user selected an institution. This enables your application to gain further insight into what is going on as the user goes through the Plaid Link flow. |
 | onExit | action | This action is triggered when user exits Plaid Link without successfully linking a financial institution, or when an error occurs during Link initialization. |
+
 # openUrl
 Source: https://docs.ensembleui.com/actions/open-url
-# openUrl
 
 openUrl action allows users to open external URLs or web links directly from the app, facilitating seamless integration with external content and enhancing the user's browsing experience within the application.
 
@@ -13785,9 +13828,9 @@ You can use `openInExternalApp` property, this will open the url in the right ap
 ```
 
 To learn more about how to use openUrl action, check out the [Ensemble Kitchen Sink](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/TnoazbWLihcenxD1NBkr) example.
+
 # pauseAudio
 Source: https://docs.ensembleui.com/actions/pause-audio
-# pauseAudio
 
 The pauseAudio action allows users to pause an already-playing audio file.
 
@@ -13865,9 +13908,9 @@ View:
                 id: My Audio
                 position: 20 # in seconds
 ```
+
 # pickFiles
 Source: https://docs.ensembleui.com/actions/pick-files
-# pickFiles
 
 pickFiles action enables users to select files from their device for further processing or usage within the app, offering a seamless way to choose and work with files, enhancing user interactions and content management capabilities.
 
@@ -14080,9 +14123,9 @@ API:
 
 
 complete example [here](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/mvFbwP5K5yvAqTlncTga?propertyPanelEnabled=true&instantPreviewDisabled=false&editorV2Enabled=true) including uploadFiles example.
+
 # playAudio
 Source: https://docs.ensembleui.com/actions/play-audio
-# playAudio
 
 The playAudio action allows users to play a given audio file from a URL or asset. It requires a unique ID passed to it so that the audio can be referenced.
 
@@ -14166,9 +14209,9 @@ View:
 ```
 
 **Related Actions: [pause-audio](pause-audio.md) [stop-audio](stop-audio.md) [resume-audio](resume-audio.md) [seek-audio](seek-audio.md)**
+
 # Pull To Refresh
 Source: https://docs.ensembleui.com/actions/pull-to-refresh
-# Pull To Refresh
 
 Pull to Refresh is a common interaction pattern in mobile app development, allowing users to refresh the content of a view by pulling it down. In Ensemble, you can implement Pull to Refresh using the `onPullToRefresh` event and update the content dynamically. Let's break down the example:
 
@@ -14214,9 +14257,9 @@ Global Section (Initialization):
 Initializes the RandomNumbers array with some initial values.
 `generateRandomNumber` function:
 Generates new random numbers when called. This function is triggered on pull-to-refresh.
+
 # rateApp
 Source: https://docs.ensembleui.com/actions/rate-app
-# rateApp
 
 The "Rate Us" functionality is available only for iOS devices when the app is in production.
 
@@ -14239,9 +14282,9 @@ View:
               rateApp:
 ```
 The rateApp action is triggered when the "Rate Us" button is tapped. It is to handle the logic for prompting users to rate the app.
+
 # readKeychain
 Source: https://docs.ensembleui.com/actions/read-keychain
-# readKeychain
 
 The `readKeychain` action retrieves previously stored data from the device's secure keychain (iOS) or equivalent secure storage (Android), allowing access to sensitive information that was stored with the highest level of OS security protection.
 
@@ -14287,9 +14330,9 @@ It is only available in YAML, as this calls a async function whose return type i
 -   Data stored using [saveKeychain](/actions/save-keychain) can be retrieved with this action.
 -   The value is available in the `onComplete` action under `event.data`.
 -   This action provides access to data with OS-level security protection.
+
 # requestNotificationAccess
 Source: https://docs.ensembleui.com/actions/request-notification-access
-# requestNotificationAccess
 
 requestNotificationAccess action prompts users to grant permission for the app to send notifications to their device, enabling personalized alerts and updates, enhancing user engagement, and ensuring timely delivery of relevant information within the application.
 
@@ -14339,9 +14382,9 @@ When user clicks on button browser pop-up asks for permission and as you allow i
 ![Alt text](/images/actions/image-.png)
 
 ![Alt text](/images/actions/image--2.png)
+
 # resumeAudio
 Source: https://docs.ensembleui.com/actions/resume-audio
-# resumeAudio
 
 The resumeAudio action allows users to resume a previously paused audio
 
@@ -14419,9 +14462,9 @@ View:
                 id: My Audio
                 position: 20 # in seconds
 ```
+
 # saveFile
 Source: https://docs.ensembleui.com/actions/save-file
-# saveFile
 
 The `saveFile` action saves media files (e.g., images) to the default media storage and documents to the default documents directory on Android and IOS. On the web, it downloads the file to the browser's default download folder.
 
@@ -14480,9 +14523,9 @@ Button:
            message: File saving failed
 ```
 You can try complete example [here](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/9rgeMobpDsSosMoL2Hxv)
+
 # saveKeychain
 Source: https://docs.ensembleui.com/actions/save-keychain
-# saveKeychain
 
 The `saveKeychain` action stores sensitive information in the device's secure keychain (iOS) or equivalent secure storage (Android), providing a high level of OS-level protection for critical data like authentication credentials, tokens, and other sensitive user information.
 
@@ -14547,9 +14590,9 @@ ensemble.saveKeychain({
 -   To retrieve the value later, use the [readKeychain](/actions/read-keychain) action.
 -   To remove the value, use the [clearKeychain](/actions/clear-keychain) action.
 -   For less sensitive data that doesn't need OS-level security, consider using [setSecureStorage](/actions/set-secure-storage) instead.
+
 # seekAudio
 Source: https://docs.ensembleui.com/actions/seek-audio
-# seekAudio
 
 The seekAudio action allows users to pause a already-playing audio file
 
@@ -14628,9 +14671,9 @@ View:
                 id: My Audio
                 position: 20 # in seconds
 ```
+
 # setSecureStorage
 Source: https://docs.ensembleui.com/actions/set-secure-storage
-# setSecureStorage
 
 The `setSecureStorage` action securely stores sensitive information in an encrypted format on the device, ensuring that sensitive data like tokens, user credentials, or personal information remains protected from unauthorized access.
 
@@ -14694,9 +14737,9 @@ ensemble.setSecureStorage({
 -   All data is encrypted before storage using AES encryption.
 -   To retrieve the value later, use the [getSecureStorage](/actions/get-secure-storage) action.
 -   To remove the value, use the [clearSecureStorage](/actions/clear-secure-storage) action.
+
 # Share
 Source: https://docs.ensembleui.com/actions/share
-# Share
 
 Using the native sharing capabilities of the device to provide users with the ability to share text and files.
 
@@ -14743,9 +14786,9 @@ Here's the example of how you can share files using `share` action
 ```
 
 complete example [here](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/Dnv8CceAHCHlEpS61DEE)
+
 # showBottomModal
 Source: https://docs.ensembleui.com/actions/show-bottom-modal
-# showBottomModal
 
 The `showBottomModal` action enables the display of content on a modal that slides from the bottom of the device, providing a user experience similar to iOS Sheets.
 
@@ -14791,9 +14834,9 @@ The `showBottomModal` action is configured to call an `ActionsSheet` widget with
 |:--------------|:----------|:-------------|
 | enableDrag | boolean | Enable the user to drag the modal up and down. |
 | enableDragHandler | boolean | Determines whether the drag handler is displayed. |
+
 # showDialog
 Source: https://docs.ensembleui.com/actions/show-dialog
-# showDialog
 
 showDialog action triggers the display of a modal dialog box within the app, presenting users with important information, notifications, or customizable content while pausing the main app flow, ensuring clear and focused communication with users.
 
@@ -14998,9 +15041,9 @@ View:
                           onTap:
                             dismissDialog:
 ```
+
 # showNotification
 Source: https://docs.ensembleui.com/actions/show-notification
-# showNotification
 
 showNotification action triggers the display of local notifications within the app, notifying users of important events or information even when the app is in the background or closed, enhancing user engagement and ensuring timely communication with users.
 
@@ -15014,9 +15057,9 @@ showNotification action triggers the display of local notifications within the a
 **Example**
 
 You can refer [here](/actions/request-notification-access) for example related to notification. Can also refer complete example [here](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/zbIn4f6tD3yQkC1MJRj1?propertyPanelEnabled=true&instantPreviewDisabled=false&editorV2Enabled=true).
+
 # showToast
 Source: https://docs.ensembleui.com/actions/show-toast
-# showToast
 
 The ShowToast enables the display of informative toast messages, providing temporary and non-intrusive notifications or alerts within your application for important updates or messages.
 
@@ -15061,9 +15104,9 @@ The ShowToast enables the display of informative toast messages, providing tempo
 | size            | integer          | Specifies the width (progress bar) or the diameter (circular progress indicator)                                                                     |
 | thickness       | integer          | Specifies the thickness of the indicator (for progress bar this is the height)                                                                       |
 | color           |                  | Progress indicator color.                                                                                                                            |
+
 # startTimer
 Source: https://docs.ensembleui.com/actions/start-timer
-# startTimer
 
 Use the `onTimer` action to start a timer. Then use the `onTimer` and/or `onTimerComplete` properties to execute other actions once the timer finishes.
 
@@ -15141,9 +15184,9 @@ API:
 
 
 To learn more about how to use `startTimer` action, check out the [Ensemble Kitchen Sink](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/86fba216-4f96-408b-abff-d3ddcfbdcf49) example.
+
 # stopAudio
 Source: https://docs.ensembleui.com/actions/stop-audio
-# stopAudio
 
 The stopAudio action allows users to stop a already playing audio file
 
@@ -15221,9 +15264,9 @@ View:
                 id: My Audio
                 position: 20 # in seconds
 ```
+
 # stopTimer
 Source: https://docs.ensembleui.com/actions/stop-timer
-# stopTimer
 
 stopTimer action allows developers to halt or pause a running timer within the app, providing control over time-sensitive processes and facilitating efficient handling of time-related events, enhancing user interactions and application behavior.
 
@@ -15277,9 +15320,9 @@ Joke:
 
 
 see the complete example [here](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/86fba216-4f96-408b-abff-d3ddcfbdcf49?propertyPanelEnabled=true&instantPreviewDisabled=false&editorV2Enabled=true) to understand usage
+
 # takeScreenshot
 Source: https://docs.ensembleui.com/actions/take-screenshot
-# takeScreenshot
 
 takeScreenshot action allows you to capture a screenshot of read-only widgets using its widgetId. The screenshot is saved to the gallery on mobile platforms or downloaded directly on the web, while also providing the image bytes for further use. It's an efficient solution for exporting visual content in high quality.
 ### Properties
@@ -15351,9 +15394,9 @@ View:
 
 
 complete example [here](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/C3zALhZvHQHyFISY9Yvo)
+
 # uploadFiles
 Source: https://docs.ensembleui.com/actions/upload-files
-# uploadFiles
 
 uploadFiles action allows users to select and upload files from their device to the app, enabling easy data transfer and content sharing, supporting various file formats, and enhancing the app's versatility and user engagement.
 
@@ -15567,9 +15610,9 @@ API:
 
 
 complete example [here](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/mvFbwP5K5yvAqTlncTga?propertyPanelEnabled=true&instantPreviewDisabled=false&editorV2Enabled=true)
+
 # Formatter
 Source: https://docs.ensembleui.com/utilities/formatter
-# Formatter
 
 Ensemble provide convenience formatter utilities for handling date/time and common tasks.
 
@@ -15621,11 +15664,12 @@ Text:
   # output 2022-12-02 14:20" for all locales
   text: ${ensemble.formatter.customDateTime('2022-12-02T14:20:05-0700', 'yyyy-MM-dd HH:mm')}
 ```
-# Device
-Source: https://docs.ensembleui.com/utilities/device
-import { EnsemblePreview } from "../../components/ensemble-preview";
 
 # Device
+Source: https://docs.ensembleui.com/utilities/device
+
+import { EnsemblePreview } from "../../components/ensemble-preview";
+
 
 Ensemble provides convenient access to device information and capabilities. This includes device information, such as the device model, operating system, and screen size.
 
@@ -15794,9 +15838,9 @@ For Windows devices, the following properties are available.
 | `windowsInfo.productName`             | Value of `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\ProductName` registry key. For example: `Windows 10 Home Single Language`.                                     |
 | `windowsInfo.releaseId`               | Value of the `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\ReleaseId` registry key. For example: `1903`.                                                              |
 | `windowsInfo.deviceId`                | Displayed as "Device ID" in Windows Settings. Value of `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\SQMClient\MachineId` registry key.                                                         |
+
 # checkPermission
 Source: https://docs.ensembleui.com/device-capabilities/check-permission
-# checkPermission
 
 `checkPermission` is designed to check the permission status. It includes components for checking notification, location, contacts, and camera permissions.
 
@@ -15830,9 +15874,9 @@ Source: https://docs.ensembleui.com/device-capabilities/check-permission
             console.log("onNotDetermined called");
 ```
 When a user taps the "Notification Permission" button, the app checks the notification permission status. Depending on the status, one of the specified callbacks (onAuthorized, onDenied, or onNotDetermined) is executed.
+
 # getLocation
 Source: https://docs.ensembleui.com/device-capabilities/get-location
-# getLocation
 
 getLocation action enables users to retrieve their device's current location, facilitating location-based functionalities within the app, such as mapping, navigation, or personalized content delivery, enhancing user experience and context-aware interactions. It requests user's permission to get his/her current location
 
@@ -15857,9 +15901,9 @@ Inside the directory where you cloned Ensemble Starter, open `/lib/generated/ens
 ```
   static const useLocation = false;
 ```
+
 # getPhoneContacts
 Source: https://docs.ensembleui.com/device-capabilities/get-phone-contacts
-# getPhoneContacts
 
 The `PhoneContacts` view is designed to retrieve and display phone contacts from Android and iOS physical devices or simulators. It includes a warning note, a button to fetch contacts, and a list view to display individual contact details.
 
@@ -15957,9 +16001,9 @@ Global: |
   }
 ```
 The global code block initializes `ensemble.storage.contacts` as an empty array if it's null. It also includes the `getPhoneNumber` function, which extracts the primary phone number from an array of phone numbers.
+
 # invokeAPI
 Source: https://docs.ensembleui.com/device-capabilities/invoke-API
-# invokeAPI
 
 To check out examples of the invokeAPI action, go to the [Ensemble Kitchen Sink](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/e546b0d8-3220-4217-bd5c-181118154073).
 
@@ -16206,9 +16250,9 @@ API:
 | onError    | Action | The action to handle errors                                                |
 
 Details about API [here](/build/user-interface/1-page-structure)
+
 # invokeHaptic
 Source: https://docs.ensembleui.com/device-capabilities/invoke-haptic
-# invokeHaptic
 
 invokeHaptic action allows users to play haptics on the device allowing better UX. It supports 5 haptics namely heavyImpact, mediumImpact, lightImpact, selectionClick, and vibrate. They are listed in decreasing order of intensity
 and vibrate does a short vibrate pulse. It also supports playing haptic by JavaScript code and also has additional parameters like onTapHaptic or onChangeHaptic added to multiple widgets where haptic would be required.
@@ -16251,9 +16295,9 @@ View:
             //@code
             console.log("Button Press")
 ```
+
 # navigateBack
 Source: https://docs.ensembleui.com/device-capabilities/navigate-back
-# navigateBack
 
 `navigateBack` action allows users to go back to the previous screen or page within the app's navigation stack, enhancing user experience and facilitating smooth app navigation. Navigating back to the previous screen if possible. The current screen will be removed from the navigation history. This also works for a modal screen.
 
@@ -16284,9 +16328,9 @@ View:
 
 
 can see complete example [here](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/XjvL2XseLnRvYO4FS82e?propertyPanelEnabled=true&instantPreviewDisabled=false&editorV2Enabled=true)
+
 # navigateModalScreen
 Source: https://docs.ensembleui.com/device-capabilities/navigate-modal-screen
-# navigateModalScreen
 
 navigateModalScreen action enables users to open a specific screen or page as a modal overlay, creating a temporary and focused view to capture user input or display additional content without losing context of the main app flow.
 
@@ -16339,9 +16383,9 @@ View:
 
 
 You can try complete example [here](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/67ICgJIX0McKswXCybb0?propertyPanelEnabled=true&instantPreviewDisabled=false&editorV2Enabled=true)
+
 # navigateScreen
 Source: https://docs.ensembleui.com/device-capabilities/navigate-screen
-# navigateScreen
 
 navigateScreen action allows users to transition to a specific screen or page within the app, facilitating seamless navigation and enhancing user interaction with different sections of the application.
 
@@ -16608,9 +16652,9 @@ View:
             duration: 1000
             alignment: center
 ```
+
 # notification
 Source: https://docs.ensembleui.com/device-capabilities/notification
-# notification
 
 notifications action provides a comprehensive and customizable solution for managing notifications within the app, including handling incoming notifications, displaying them to users, and implementing notification-related functionalities, enhancing user experience and interaction with timely updates and alerts.
 
@@ -16620,9 +16664,9 @@ notifications action provides a comprehensive and customizable solution for mana
 | :-------- | :----- | :-------------------------------------------- |
 | onTap     | action | Execute an Action on notification is tap.     |
 | onReceive | action | Execute an Action on notification is receive. |
+
 # openCamera
 Source: https://docs.ensembleui.com/device-capabilities/open-camera
-# openCamera
 
 `OpenCamera` action enables users to access their device's camera, capturing images or videos directly from the app, enhancing interactivity and enabling seamless integration of media functionalities within the application. With `id` property we can bind results of camera. Then use the `onComplete` properties to execute other actions after capture or selection is done.
 
@@ -16808,9 +16852,9 @@ API:
 
 
 To learn more about openCamera functionalities, test it out here in [Ensemble Kitchen Sink](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/USuOaOZApSgzE2uVrqlv) app.
+
 # pickFiles
 Source: https://docs.ensembleui.com/device-capabilities/pick-files
-# pickFiles
 
 pickFiles action enables users to select files from their device for further processing or usage within the app, offering a seamless way to choose and work with files, enhancing user interactions and content management capabilities.
 
@@ -17023,9 +17067,9 @@ API:
 
 
 complete example [here](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/mvFbwP5K5yvAqTlncTga?propertyPanelEnabled=true&instantPreviewDisabled=false&editorV2Enabled=true) including uploadFiles example.
+
 # rateApp
 Source: https://docs.ensembleui.com/device-capabilities/rate-app
-# rateApp
 
 The "Rate Us" functionality is available only for iOS devices when the app is in production.
 
@@ -17048,9 +17092,9 @@ View:
               rateApp:
 ```
 The rateApp action is triggered when the "Rate Us" button is tapped. It is to handle the logic for prompting users to rate the app.
+
 # requestNotificationAccess
 Source: https://docs.ensembleui.com/device-capabilities/request-notification-access
-# requestNotificationAccess
 
 requestNotificationAccess action prompts users to grant permission for the app to send notifications to their device, enabling personalized alerts and updates, enhancing user engagement, and ensuring timely delivery of relevant information within the application.
 
@@ -17100,9 +17144,9 @@ When user clicks on button browser pop-up asks for permission and as you allow i
 ![Alt text](/images/actions/image-.png)
 
 ![Alt text](/images/actions/image--2.png)
+
 # Share
 Source: https://docs.ensembleui.com/device-capabilities/share
-# Share
 
 Using the native sharing capabilities of the device to provide users with the ability to share a specific piece of content.
 
@@ -17117,9 +17161,9 @@ Using the native sharing capabilities of the device to provide users with the ab
       text: Works only on Native iOS and Android
 ```
 The share action is triggered when the "Open Share Sheet" button is tapped. It typically opens the native share sheet on the device, allowing users to share content. In this case, it shares a title ("EnsembleUI") and a URL ("https://ensembleui.com/").
+
 # showDialog
 Source: https://docs.ensembleui.com/device-capabilities/show-dialog
-# showDialog
 
 showDialog action triggers the display of a modal dialog box within the app, presenting users with important information, notifications, or customizable content while pausing the main app flow, ensuring clear and focused communication with users.
 
@@ -17298,9 +17342,9 @@ MyCustomDialog:
 ![Alt text](/images/actions/image--1.png)
 
 ![Alt text](/images/actions/image--3.png)
+
 # showNotification
 Source: https://docs.ensembleui.com/device-capabilities/show-notification
-# showNotification
 
 showNotification action triggers the display of local notifications within the app, notifying users of important events or information even when the app is in the background or closed, enhancing user engagement and ensuring timely communication with users.
 
@@ -17314,9 +17358,9 @@ showNotification action triggers the display of local notifications within the a
 **Example**
 
 You can refer [here](/device-capabilities/request-notification-access) for example related to notification. Can also refer complete example [here](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/zbIn4f6tD3yQkC1MJRj1?propertyPanelEnabled=true&instantPreviewDisabled=false&editorV2Enabled=true).
+
 # uploadFiles
 Source: https://docs.ensembleui.com/device-capabilities/upload-files
-# uploadFiles
 
 uploadFiles action allows users to select and upload files from their device to the app, enabling easy data transfer and content sharing, supporting various file formats, and enhancing the app's versatility and user engagement.
 
@@ -17530,9 +17574,9 @@ API:
 
 
 complete example [here](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/mvFbwP5K5yvAqTlncTga?propertyPanelEnabled=true&instantPreviewDisabled=false&editorV2Enabled=true)
+
 # Add logic using JavaScript
 Source: https://docs.ensembleui.com/javascript-reference/intro
-# Add logic using JavaScript
 
 Welcome to the Ensemble Javascript manual. It provides how-to guides, API reference documentation and examples.
 
@@ -17673,9 +17717,10 @@ For example.
 ## Common Errors and Logging/Debugging
 
 TBD
+
 # JavaScript Date
 Source: https://docs.ensembleui.com/javascript-reference/Date
-# JavaScript Date
+
 The Date object is a built-in JavaScript object that represents a single moment in time, based on the number of milliseconds since January 1, 1970, 00:00:00 UTC.
 
 - Let us know on our [Discord server](https://discord.gg/k4CJeuRc) if you need any of other capabilities
@@ -18115,9 +18160,9 @@ var yesterday = date - 1000 * 60 * 60 * 24;   // current date's milliseconds - 1
 yesterday = new Date(yesterday);
 console.log(yesterday); //Example output: 1
 ```
+
 # Ensemble Objects and their properties
 Source: https://docs.ensembleui.com/javascript-reference/Ensemble
-# Ensemble Objects and their properties
 
 # The `app` object
 `app` object provides app and theme configuration related properties and methods.
@@ -18170,9 +18215,9 @@ Retrieves the saved theme. See [this](/theme-and-styling/theme#savings-themes-in
 
 ### removeSavedTheme
 Clear out the saved theme. See [this](/theme-and-styling/theme#savings-themes-in-storage-so-they-can-be-applied-across-application-sessions) for details.
+
 # Exception Handling in Javascript
 Source: https://docs.ensembleui.com/javascript-reference/exceptions
-# Exception Handling in Javascript
 
 Ensemble supports try/catch/finally in ES5 and the throw clause as well. In JavaScript ES5, the try/catch/finally structure, along with the throw statement, provides robust error-handling capabilities. These constructs allow developers to handle runtime errors gracefully, ensuring that code can respond to unexpected issues without crashing.
 
@@ -18236,9 +18281,9 @@ Global: |-
   }
 
 ```
+
 # Defining and Re-using Javascript Code
 Source: https://docs.ensembleui.com/javascript-reference/global-scripts
-# Defining and Re-using Javascript Code
 
 There are two ways to re-use js code as follows -
 
@@ -18271,14 +18316,15 @@ Watch the following video for how to define a js library and re-use it across th
 ## Demo
 
 <div style="position: relative; padding-bottom: calc(55.463451394122075% + 41px); height: 0; width: 100%;"><iframe src="https://demo.arcade.software/6YFOTXvqE5kmEs8mJptS?embed&show_copy_link=true" title="Demo" frameborder="0" loading="lazy" webkitallowfullscreen mozallowfullscreen allowfullscreen allow="clipboard-write" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;color-scheme: light;"></iframe>
+
 # console.log
 Source: https://docs.ensembleui.com/javascript-reference/Global
+
 - Let us know on our [Discord server](https://discord.gg/k4CJeuRc) if you need any of other capabilities
 - or open a [ticket](https://github.com/EnsembleUI/ensemble/issues)
 
 For `parseInt`, `parseFloat`, see [String.tryParseInt](/javascript-reference/String) and [String.tryParseDouble](/javascript-reference/String) respectively.
 
-### console.log
 
 The `console.log()` function is used to print messages to the console. It can be used for debugging purposes or to display information.
 
@@ -18369,9 +18415,10 @@ console.log(decodeURI(encoded));
 // Expected output: "https://mozilla.org/?x=шеллы"
 
 ```
+
 # JSON
 Source: https://docs.ensembleui.com/javascript-reference/JSON
-# JSON
+
 Ensemble Javascript provides two key methods to deal with the JSON objects.
 
 ## Methods
@@ -18405,14 +18452,15 @@ Example -
 console.log(JSON.stringify({ x: 5, y: 6 }));
 // Expected output: '{"x":5,"y":6}'
 ```
+
 # JsonPath
 Source: https://docs.ensembleui.com/javascript-reference/JsonPath
-# JsonPath
 
 TBD
+
 # Object
 Source: https://docs.ensembleui.com/javascript-reference/Map-and-Array
-# Object
+
 Any property of a javascript object may be accessed using either the parenthesis `['propname']` or the dot `myObj.propname`.
 
 - It the property does not exist on the object, it will return null. Exception will *not* be thrown.
@@ -19022,9 +19070,10 @@ var array = [1, 2, 3];
 console.log(array.includes(2)); // true
 console.log(array.includes(4)); // false
 ```
+
 # JavaScript Math
 Source: https://docs.ensembleui.com/javascript-reference/Math
-# JavaScript Math
+
 Provides most of the functions exposed by the [Math library](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math) in JS.
 
 1. **Math.floor()**:
@@ -19142,9 +19191,9 @@ Provides most of the functions exposed by the [Math library](https://developer.m
     ```
 
 Each of these functions can be called using the `Math` object followed by the function name and the necessary arguments enclosed in parentheses.
+
 # Number Functions
 Source: https://docs.ensembleui.com/javascript-reference/Numbers
-# Number Functions
 
 This document covers JavaScript Number functions available in Ensemble with examples. Each function is briefly explained and followed by an example demonstrating its usage.
 
@@ -19172,9 +19221,9 @@ console.log(fixedNum); // Output: "123.46"
 ```
 
 In this example, the `toFixed()` method is called on the `num` variable with the argument `2`. This means that the number will be formatted with two decimal places. The result is the string `"123.46"`.
+
 # String Functions
 Source: https://docs.ensembleui.com/javascript-reference/String
-# String Functions
 
 This document covers JavaScript String functions available in Ensemble with examples. Each function is briefly explained and followed by an example demonstrating its usage.
 
@@ -19565,9 +19614,9 @@ Column:
         text: Apple + It's me SwiftUI New 2
 
 ```
+
 # AppInfo object
 Source: https://docs.ensembleui.com/app-object
-# AppInfo object
 
 Get metadata (information) about your app from Ensemble and from Appstore/Google Play. Does not apply to webapps.
 
@@ -19604,9 +19653,9 @@ View:
         - Text:
             text: "${appInfo.buildNumber}"
 ```
+
 # Device object
 Source: https://docs.ensembleui.com/device-object
-# Device object
 
 You have access to the following properties of the device.
 
@@ -19659,9 +19708,9 @@ View:
         - Text:
             text: Size of bottom area used by device is ${device.safeAreaBottom}
 ```
+
 # Getting help from Ensemble team
 Source: https://docs.ensembleui.com/tips-and-tricks/getting-help
-# Getting help from Ensemble team
 
 Ran into an issue or not sure how to build part of your app? Ask us on Discord.
 
@@ -19677,19 +19726,17 @@ Make sure to provide us with details. If you have an existing screen, share a li
 
 
 ![Make app public](/images/make-app-public.jpg)
+
 # Custom BottomNavBar item styling
 Source: https://docs.ensembleui.com/tips-and-tricks/custom-navbar-items
-# Custom BottomNavBar item styling
 
 Beside the default styling for the Bottom Navbar items you can style them according to your needs and desire. Ensemble allows user to style items based on many features concept inherited from the CSS and Flutter technologies such as active, non-active states styling etc. Let us move to the code directly and see how it works practically.
 
 - [Icon Without Label](/tips-and-tricks/icon-with-label)
 - [Profile Picture as Item](/tips-and-tricks/profile-picture-item)
+
 # Building responsive UIs
 Source: https://docs.ensembleui.com/tips-and-tricks/responsive-ui
-# Building responsive UIs
-
-
 
 ## In a nutshell:
 
@@ -19735,9 +19782,9 @@ GridView's horizontalTileCount can be:
 - 5 numbers, corresponding to each breakpoint
 
 When not specified, the horizontal tile count is automatic based on resolution.
+
 # Use device's camera for updating profile picture
 Source: https://docs.ensembleui.com/tips-and-tricks/user-profile-picture
-# Use device's camera for updating profile picture
 
 This guide shows the typical interaction for updating a user's profile picture in a native app, where user can take a photo or pick an existing image from device's gallery. To see the full example in Ensemble Studio, [click here](https://studio.ensembleui.com/app/nWsD5baeykm3W772kkSw/screen/P2v4AOS8w3DXfUauqi0Q).
 
@@ -19936,9 +19983,9 @@ Here, we use the `pickFiles` action with following configurations:
 ```
 
 This configuration uses the device's native gallery, and limits it to one image.
+
 # Inputs to ChartJs
 Source: https://docs.ensembleui.com/tips-and-tricks/inputs-chartjs
-# Inputs to ChartJs
 
 The ChartJs widget in ensemble may sometime not accept variables in plain ChartJS widget so a better way to go about this is to use Code section in ensemble to define configuration for the ChartJs and there we can easily use the variables ( inputs ). In our example we will look how we use labels passed as inputs to the ChartJs custom widget and use them according to our need.
 
@@ -20037,9 +20084,9 @@ Spendings:
 #### Explanation
 
 The _categories_ and _spending_ are our inputs passed to this Custom Widget from one of our screens. Categories is an array consisting of string values. This input array is used as a value for **labels** property in the CharJs configuration if you paid close attention to the code for [Custom Widget](#custom-widget). This is how we can pass inputs to ChartJs and make it dynamic.
+
 # How to modify the BottomNavBar with custom styling and widgets
 Source: https://docs.ensembleui.com/tips-and-tricks/how-to-modify-bottom-navbar
-# How to modify the BottomNavBar with custom styling and widgets
 
 #### Steps
 
@@ -20151,9 +20198,9 @@ menu:
                 color: 0xFF4CA771
                 library: fontAwesome
 ```
+
 # Open Maps with Coordinates on Android and iOS
 Source: https://docs.ensembleui.com/tips-and-tricks/open-maps-with-coordinates
-# Open Maps with Coordinates on Android and iOS
 
 This guide explains how to open map applications with specific coordinates on Android and iOS devices. The examples demonstrate how to launch Google Maps or Apple Maps, depending on the platform, and also include the ability to use dynamic coordinates input.
 
@@ -20368,9 +20415,9 @@ View:
                               openUrl:
                                 url: https://www.google.com/maps/?q=${mapsCoordinates.value}(${mapslabel.value})
 ```
+
 # Using navigate Screen with BottomNavBar
 Source: https://docs.ensembleui.com/tips-and-tricks/navigateScreen-with-bottomNavBar
-# Using navigate Screen with BottomNavBar
 
 We can use [navigateScreen](/actions/navigate-screen) for combining functionality of [BottomNavBar](/screens-and-widgets/screen-structure#bottomnavbar) together with it for daily tasks like beside using BottomNavBar items to navigate across different screens, we can also make use of [navigateScreen](/actions/navigate-screen) here to navigate across screen keeping the bottomNavBAr in place as well. Let us look at an example to make better sense of it.
 
@@ -20471,9 +20518,9 @@ ViewGroup:
 ![Alt text](/images/tips/image-9.png)
 
 ![Alt text](/images/tips/image-10.png)
+
 # Dynamic Color Modification in JavaScript
 Source: https://docs.ensembleui.com/tips-and-tricks/dynamic-color-modification
-# Dynamic Color Modification in JavaScript
 
 **Objective**
 
@@ -20498,9 +20545,9 @@ To achieve this, consider the following steps:
     ```javascript
     helloUser.color = 'red';
     ```
+
 # Configuring BottomNavBar Icons
 Source: https://docs.ensembleui.com/tips-and-tricks/icons-in-bottomNavBar
-# Configuring BottomNavBar Icons
 
 **Objective**
 To add a heart icon to a BottomNavBar item, ensuring correct rendering. If using a default icon, no additional library specification is needed; however, for non-default icons like Font Awesome, it's crucial to specify the library.
@@ -20534,9 +20581,9 @@ To achieve this, consider the following steps:
 
 3. Active Icons:
     If an active state icon is needed (e.g., a different icon when the item is selected), use the activeIcon attribute.
+
 # Invoke Haptics
 Source: https://docs.ensembleui.com/tips-and-tricks/invoke-haptic
-# Invoke Haptics
 
 We can use the invokeHaptic action to provide haptic feedback in your app. This feature enhances the user experience by providing tactile responses for different interactions.
 
@@ -20573,9 +20620,9 @@ Furthermore, the onTapHaptic property is used for the "Selection Click" button, 
         body: |
             //@code
             console.log("Button Pressed")
+
 # Custom Lottie Animations with Events and Controls
 Source: https://docs.ensembleui.com/tips-and-tricks/lottie-animations
-# Custom Lottie Animations with Events and Controls
 
 With features like onStart, onPause, onComplete, and control buttons, you can create interactive animations tailored to your application.
 
@@ -20614,9 +20661,9 @@ The Lottie animations have events such as onForward, onReverse, onPause, and onC
     //@code
     console.log("Forward");
     MyLottie.forward();
+
 # HTML Widget with maxLines Support and Enhanced Styling
 Source: https://docs.ensembleui.com/tips-and-tricks/html-widget
-# HTML Widget with maxLines Support and Enhanced Styling
 
 The HTML widget allows you to apply CSS-like styles to specific elements within the HTML content. Customize text color, font size, and font weight effortlessly using both CSS tags and the box wrapper, providing increased styling flexibility.
 
@@ -20646,9 +20693,9 @@ The <div> with an id of "hello" and the <p> with an id of "tag2" are styled with
         The placeholder text, beginning with the line “Lorem ipsum dolor sit amet, consectetur adipiscing elit”, looks like Latin because in its youth, centuries ago, it was Latin.
 
         Richard McClintock, a Latin scholar from Hampden-Sydney College, is credited with discovering the source behind the ubiquitous filler text. In seeing a sample of lorem ipsum, his interest was piqued by consectetur—a genuine, albeit rare, Latin word. Consulting a Latin dictionary led McClintock to a passage from De Finibus Bonorum et Malorum (“On the Extremes of Good and Evil”), a first-century B.C. text from the Roman philosopher Cicero.
+
 # Push Notification
 Source: https://docs.ensembleui.com/tips-and-tricks/push-notification
-# Push Notification
 
 ## Setup
 This guide will walk you through setting up iOS/Android push notifications for your Ensemble app. Before you begin, ensure your bundle ID is correct. Also ensure the `appId` under `ensemble.properties` has the same bundle ID.
@@ -20821,9 +20868,9 @@ View:
         Notification body: ${notificationPayload.body}
         Notification payload: ${notificationPayload.data.hello}
 ```
+
 # Using device width and height
 Source: https://docs.ensembleui.com/tips-and-tricks/using-device-dimentions
-# Using device width and height
 
 You have access to device width and height through:
 
@@ -20847,9 +20894,9 @@ View:
               height: ${Math.floor(device.height / 2)}
               backgroundColor: yellow
 ```
+
 # Using BottomSafeArea for Responsive Layouts
 Source: https://docs.ensembleui.com/tips-and-tricks/bottom-safe-area
-### Using BottomSafeArea for Responsive Layouts
 
 In mobile devices, especially those with a 3-button navigation bar (as seen on some Android devices), extra space at the bottom can affect the layout of your UI elements. To ensure that your content doesn't get overlapped by the navigation bar, it’s important to adjust the height of your widgets to exclude the space taken by the navigation bar, known as the "Safe Area."
 
@@ -20881,9 +20928,9 @@ Here are two screenshots that show the UI with and without the 3-button navigati
 
 
 By implementing this trick, you ensure that your app’s UI remains consistent and user-friendly across devices with different navigation styles. This technique prevents layout issues such as buttons being hidden or content being overlapped.
+
 # Floating Button
 Source: https://docs.ensembleui.com/tips-and-tricks/floatingButton
-# Floating Button
 
 [Kitchen Sink Example](https://studio.ensembleui.com/app/YQGEapU8rrEfhTJJLzz8/screen/Vz7SuvSTF8i5no7jKXGx)
 
@@ -20931,9 +20978,9 @@ Source: https://docs.ensembleui.com/tips-and-tricks/floatingButton
 
 ## Floating Button Implementation:
 By placing the `Button` component within the `Stack` alongside the `ListView`, it remains visually separate from the list content and appears to float above it. This arrangement allows for easy access to important actions while maintaining a clean and organized UI layout.
+
 # Creating an Avatar
 Source: https://docs.ensembleui.com/tips-and-tricks/avatar
-# Creating an Avatar
 
 Display basic avatars with various configurations such as size, shape, and borders. You can also display avatars with initials when an image source is unavailable.
 
@@ -20965,9 +21012,9 @@ Use the `Stack` component to overlay additional elements on the `Avatar`.
           styles:
             color: black
 ```
+
 # Cookies in Webview
 Source: https://docs.ensembleui.com/tips-and-tricks/cookies
-# Cookies in Webview
 
 Cookies usage in the EnsembleUI WebView is designed to enhance functionality, especially in native applications. The code snippet allows you to set cookies directly for the WebView, and it provides options to control navigation based on cookie conditions.
 
@@ -21025,8 +21072,10 @@ The `cookieHeader` property takes cookies from the set-cookies header directly. 
 Cookie handling features are applicable only to native applications, not web applications.
 Customize the cookies and cookie-related settings according to your application's requirements.
 Understand the navigation control mechanism based on cookies, especially regarding its platform-specific behavior.
+
 # adding this timer here just so that we can delay closing the dialog
 Source: https://docs.ensembleui.com/tips-and-tricks/custom-progress-dialog-close-on-an-event
+
 One common theme in most apps is to show a progress dialog while an API is being processed on the server and close it when the response from the API has been received. This can easily be achieved as follows. Note the use of closeAllDialogs action.
 
 This method will not work when the progress container is being displayed on top of an existing dialog as closeAllDialogs will close the dialog under it as well which may not be what you desire.
@@ -21052,7 +21101,6 @@ ProgressDialog:
       inputs:
         userId: ${userId}
       onResponse:
-        #adding this timer here just so that we can delay closing the dialog
         startTimer:
           options:
             startAfter: 3
@@ -21078,9 +21126,9 @@ API:
     method: GET
 ```
 See [this](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/c2c248f2-a289-40d3-acd5-65a1a7f3c5a2#) for a live example
+
 # General Color for All Buttons across an App
 Source: https://docs.ensembleui.com/tips-and-tricks/general_primary_color-theme
-# General Color for All Buttons across an App
 
 Defining a theme for your app so as to save time for writing repeated code for text colors, backgroundColors etc is a better way for being efficient and avoiding DRY principle. EnsembleUI enables us to define our own App theme. You can find more about themes [here](). For now lets focus on achieving a general color our Button text.
 
@@ -21113,9 +21161,9 @@ Colors:
 
 
 Note: `Just like all other Web and Mobile technologies like Html, Css and Flutter etc if there is style done on a button it will be of higher priority then theme so to let theme work no need to style button color at all.`
+
 # Icon Without Label
 Source: https://docs.ensembleui.com/tips-and-tricks/icon-with-label
-## Icon Without Label
 
 Since these kind of icons require us to utilize [custom widgets]() thus we will be using **customItem** widget for getting through it. It has two properties namely **widget** and **selectedWidget**.
 
@@ -21266,9 +21314,9 @@ ActiveIconOnlyWidget:
               padding: 12
               size: 26
 ```
+
 # Profile Picture
 Source: https://docs.ensembleui.com/tips-and-tricks/profile-picture-item
-## Profile Picture
 
 Its possible that you might need to have your profile picture as item to navigate to settings page or profile page etc, anyway whichever is your case here is how can do it with EnsembleUI.
 
@@ -21332,9 +21380,9 @@ ActiveCustomNavBarItemWithImage:
               borderWidth: 2
               borderColor: black
 ```
+
 # Specify library icons for start and end
 Source: https://docs.ensembleui.com/tips-and-tricks/specifying-icons
-# Specify library icons for start and end
 
 **Objective**
 To specify library icons for startingIcon and endingIcon on a Button
@@ -21356,9 +21404,9 @@ To achieve this, consider the following steps:
             size: 50
             color: red
     ```
+
 # No Bounded Width Error
 Source: https://docs.ensembleui.com/tips-and-tricks/no-bounded-width
-# No Bounded Width Error
 
 You get the error **"This widget requires a width."** on some widgets.
 
@@ -21375,9 +21423,9 @@ A widget needs a width (and a height) to render. Some widgets can automatically 
    - For **Row** parent: Row does not constrain the children's widths so consider using *FlexRow* instead. FlexRow will stretch to fill its parent and distribute the available space between its children.
    - For **Stack** parent: Similarly Stack also do not constrain the children's widths. Adjust its stackPositionLeft / stackPositionRight attributes to constrain the children within this width.
    - For **horizontal scrollable** parent: Scrollable parent allows its children to decide their own widths (so it knows how to scroll), meaning all children must be able to calculate their own widths. Consider changing your design if you run into this situation.
+
 # No Bounded Height Error
 Source: https://docs.ensembleui.com/tips-and-tricks/no-bounded-height
-# No Bounded Height Error
 
 You get the error **"This widget requires a height."** on some widgets
 
@@ -21395,9 +21443,9 @@ A widget needs a height (and a width) to render. Some widgets can automatically 
     - If the parent is **Row**: Row does constrain the height (crossAxis) so it alone is **not** a problem. However if the parent of the Row is another Column, the Column will not send the height constraint to the Row, which in turn cannot provide the constraint to its children. If your Row has at least 1 child that has a height, you may explicitly set the height constraint to the tallest child's height using `crossAxisConstraint: largestChild`. This will ensure all children without a height will get the height of the row.
     - For **Stack** parent: Similarly Stack also do not constrain the children's widths. Adjust its stackPositionTop / stackPositionBottom attributes to constrain the children within this height.
     - For **vertical scrollable** parent: Scrollable parent allows its children to decide their own height (so it knows how to scroll), meaning all children must be able to calculate their own heights. Consider changing your design if you run into this situation.
+
 # FlexRow No Bounded Width Error
 Source: https://docs.ensembleui.com/tips-and-tricks/flexrow-no-bounded-width
-# FlexRow No Bounded Width Error
 
 You get the error **"FlexRow requires a width for child distribution."**
 
@@ -21413,9 +21461,9 @@ FlexRow's layout algorithm works by distributing a pre-defined width proportiona
     - For **Row** ancestor: Row does not constrain its children's widths (it lets the children dictate their own widths). For this reason, ensure there is a width set (can be explicit or stretched to parent) at least once in the hierarchy chain between the FlexRow and the Row ancestor.
       - Consider using all FlexRow(s) instead of Row up the ancestor chain to the root View. This ensure the screen width is distributed properly down to our last FlexRow.
       - If you don't need FlexRow's distribution capability, considered using all Rows instead. Rows lay out their children with their requested widths in a left to right manner, with the ability to add horizontal scrollbar as needed.
+
 # FlexColumn No Bounded Height Error
 Source: https://docs.ensembleui.com/tips-and-tricks/flexcolumn-no-bounded-height
-# FlexColumn No Bounded Height Error
 
 You get the error **"FlexColumn requires a height for child distribution."**
 
