@@ -403,7 +403,7 @@ For more information or support, join the [Discord community](https://discord.gg
 
 # Ensemble Screen Structure
 
-Ensemble apps are built using a collection of screens, along with reusable components like [widgets](/pages/screens-and-widgets/widgets), [scripts](/pages/javascript-reference/global-scripts), [assets](/pages/assets), etc. This guide explores the core structure of an Ensemble screen and the elements that make it up.
+Ensemble apps are built using a collection of screens, along with reusable components like [widgets](/pages/screens-and-widgets/widgets.md), [scripts](/pages/javascript-reference/global-scripts.md), [assets](/pages/assets.mdx), etc. This guide explores the core structure of an Ensemble screen and the elements that make it up.
 
 **Key Components of Screen:**
 This section serves as a reference point for the key elements you'll encounter while creating a screen on Ensemble:
@@ -498,9 +498,9 @@ The header contains the Safe Area (e.g. iPhone notch) and by default has the bac
 | Property           | Type               | Description                                                                                                                                                                                                                           |
 | :----------------- | :----------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | titleText          | string             | The title for the screen                                                                                                                                                                                                              |
-| titleWidget        | [Widget](/pages/widgets) | Render this widget as the screen title                                                                                                                                                                                                |
+| titleWidget        | [Widget](/pages/widgets.mdx) | Render this widget as the screen title                                                                                                                                                                                                |
 | styles             | object             | [see properties](#headerstyles)                                                                                                                                                                                                       |
-| flexibleBackground | [Widget](/pages/widgets) | This widget (typically used as an background image) acts as the header's background, with the title bar and the bottom widget overlaid on top. On non-scrollable screen, its dimensions is dictated by the header's width and height. |
+| flexibleBackground | [Widget](/pages/widgets.mdx) | This widget (typically used as an background image) acts as the header's background, with the title bar and the bottom widget overlaid on top. On non-scrollable screen, its dimensions is dictated by the header's width and height. |
 
 #### Header.styles
 
@@ -565,8 +565,8 @@ This is the navigation bar at the bottom of the screen, typical of most iOS and 
 
 | Property       | Type               | Description                                            |
 | :------------- | :----------------- | :----------------------------------------------------- |
-| widget         | [Widget](/pages/widgets) | Custom bottom navigation item for the unselected state |
-| selectedWidget | [Widget](/pages/widgets) | Custom bottom navigation item for the selected state   |
+| widget         | [Widget](/pages/widgets.mdx) | Custom bottom navigation item for the unselected state |
+| selectedWidget | [Widget](/pages/widgets.mdx) | Custom bottom navigation item for the selected state   |
 
 #### BottomNavBar.styles
 
@@ -845,7 +845,7 @@ API provides a convenient way to interact with external services or data sources
 | onError    | Action | The action to handle errors                                                     |
 | inputs     | Array  | The input values                                                                |
 
-> To learn about API's in detail, click [here](/pages/actions/invoke-API)
+> To learn about API's in detail, click [here](/pages/actions/invoke-API.md)
 
 ## Global
 
@@ -959,21 +959,21 @@ Ensemble layouts are themselves widgets that contain other widgets. Here is a co
 
 | Widget       | Documentation  | Kitchen sink example    |
 | ------------ | -------------- | ----------------------- |
-| Column       | [Link](/pages/widgets/column)        | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/90a8e4df-5eab-4473-ba10-2ecffc9596b0) |
-| FittedColumn | [Link](/pages/widgets/fitted-column) | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/hRFxxoaBePQaLfmoBiIb)  |
-| Row          | [Link](/pages/widgets/row)           | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/4bd0d453-c243-429d-a562-93cbc9db38e3) |
-| FittedRow    | [Link](/pages/widgets/fitted-row)    | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/fvSONumk7npuTDmIWwis) |
-| Flex         | [Link](/pages/widgets/flex)          | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/R3KgxV3UPWb4TjoiPI0U) |
-| Flow         | [Link](/pages/widgets/flow)          | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/3e901fb8-a0e8-4f52-979b-7f5f2547e650) |
-| ListView     | [Link](/pages/widgets/listview)      | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/w0Wmu9ZMP4csk7IELSx3) |
-| GridView     | [Link](/pages/widgets/gridview)      | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/DX5j2WVQFabmxD9FCD5h) |
+| Column       | [Link](/pages/widgets/column.md)        | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/90a8e4df-5eab-4473-ba10-2ecffc9596b0) |
+| FittedColumn | [Link](/pages/widgets/fitted-column.md) | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/hRFxxoaBePQaLfmoBiIb)  |
+| Row          | [Link](/pages/widgets/row.md)           | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/4bd0d453-c243-429d-a562-93cbc9db38e3) |
+| FittedRow    | [Link](/pages/widgets/fitted-row.md)    | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/fvSONumk7npuTDmIWwis) |
+| Flex         | [Link](/pages/widgets/flex.md)          | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/R3KgxV3UPWb4TjoiPI0U) |
+| Flow         | [Link](/pages/widgets/flow.md)          | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/3e901fb8-a0e8-4f52-979b-7f5f2547e650) |
+| ListView     | [Link](/pages/widgets/listview.md)      | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/w0Wmu9ZMP4csk7IELSx3) |
+| GridView     | [Link](/pages/widgets/gridview.md)      | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/DX5j2WVQFabmxD9FCD5h) |
 | StaggeredGrid | [Link](/pages/widgets/staggeredgrid.md) | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/a9iIs4wvgqDOhU4rN6GR) |
-| Stack        | [Link](/pages/widgets/stack)         | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/572ecf3b-b9f2-46f4-960f-ff438e5fa1dc) |
-| DataGrid     | [Link](/pages/widgets/data-grid)      | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/c5940e18-f2c1-4318-8e68-a678a6ae7247) |
-| TabBar       | [Link](/pages/widgets/tabbar)        | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/cebd491d-7d90-43f4-9f17-b8575de441ca) |
-| Carousel     | [Link](/pages/widgets/carousel)      | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/2e1d88b1-f281-4c2c-9bb1-bd18016d2b8c) |
-| Divider      | [Link](/pages/widgets/divider)       | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/4a893a2e-5bde-400c-b974-b25b497d31a5) |
-| Spacer       | [Link](/pages/widgets/spacer)        | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/1d7e42a9-5bbc-4b4b-9a02-8c102234ee05)   |
+| Stack        | [Link](/pages/widgets/stack.md)         | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/572ecf3b-b9f2-46f4-960f-ff438e5fa1dc) |
+| DataGrid     | [Link](/pages/widgets/data-grid.md)      | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/c5940e18-f2c1-4318-8e68-a678a6ae7247) |
+| TabBar       | [Link](/pages/widgets/tabbar.md)        | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/cebd491d-7d90-43f4-9f17-b8575de441ca) |
+| Carousel     | [Link](/pages/widgets/carousel.mdx)      | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/2e1d88b1-f281-4c2c-9bb1-bd18016d2b8c) |
+| Divider      | [Link](/pages/widgets/divider.mdx)       | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/4a893a2e-5bde-400c-b974-b25b497d31a5) |
+| Spacer       | [Link](/pages/widgets/spacer.md)        | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/1d7e42a9-5bbc-4b4b-9a02-8c102234ee05)   |
 
 ---
 
@@ -999,7 +999,7 @@ When you navigate back, the topmost screen is popped off the stack, and the prev
 
 ## Navigate Screen action
 
-[navigateScreen reference](/pages/actions/navigate-screen)
+[navigateScreen reference](/pages/actions/navigate-screen.md)
 
 Use `navigateScreen` action when navigating to a screen. This action will push the target screen on top of the current screen. You can pass inputs to the target screen when performing this action:
 
@@ -1051,7 +1051,7 @@ In use cases where you do not want to allow user to go back to the previous scre
 
 ## Navigate back action
 
-[navigateBack reference](/pages/actions/navigate-back)
+[navigateBack reference](/pages/actions/navigate-back.md)
 
 Use `navigateBack` to pop the current screen and go the previous screen in the stack. This is the same action that would be preformed when user taps the built-in back button.
 
@@ -1067,71 +1067,71 @@ Ensemble widgets enable you to build both simple and complex applications.
 
 | Widget           | Documentation             | Kitchen sink example                                                                                                       |
 | ---------------- | ------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| Text             | [Link](/pages/widgets/text)     | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/c87f8b09-58e2-4c2f-99a1-cbbe9e25e9a5) |
-| Image            | [Link](/pages/widgets/Image)    | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/7c7a3ffe-68ef-4e99-b9d1-4b5cee166233) |
-| Icon             | [Link](/pages/widgets/Icon)     | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/e7c686f5-b8a2-4670-9e6e-8fdb0fea768e) |
-| Avatar           | [Link](/pages/widgets/avatar)   | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/kJ9eqI5BPL30IwjnEDdJ)                 |
-| Map              | [Link](/pages/widgets/Map)      | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/36e52d1a-39c5-4a6b-b064-2be6cfe3cf7b) |
-| QRCode           | [Link](/pages/widgets/qrcode)   | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/f4921ba2-9f3d-4c33-8848-4df29a5e7a4d) |
-| Video            | [Link](/pages/widgets/video)    | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/fce92bbb-af8e-403d-bf2d-c10926cc89a0) |
-| Lottie animation | [Link](/pages/widgets/lottie)   | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/576f3004-83e6-429d-b256-628d85e05f7f) |
-| Markdown         | [Link](/pages/widgets/markdown) | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/6b6d9c3d-359b-4768-99a5-3f087a64387c) |
-| HTML             | [Link](/pages/widgets/html)     | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/ZhTBody9YozadVvTlhW0)                 |
-| Webview          | [Link](/pages/widgets/webview)  | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/22c8d57d-a906-4d11-873d-161fd6c56c0a) |
+| Text             | [Link](/pages/widgets/text.mdx)     | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/c87f8b09-58e2-4c2f-99a1-cbbe9e25e9a5) |
+| Image            | [Link](/pages/widgets/Image.mdx)    | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/7c7a3ffe-68ef-4e99-b9d1-4b5cee166233) |
+| Icon             | [Link](/pages/widgets/Icon.md)     | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/e7c686f5-b8a2-4670-9e6e-8fdb0fea768e) |
+| Avatar           | [Link](/pages/widgets/avatar.mdx)   | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/kJ9eqI5BPL30IwjnEDdJ)                 |
+| Map              | [Link](/pages/widgets/Map.md)      | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/36e52d1a-39c5-4a6b-b064-2be6cfe3cf7b) |
+| QRCode           | [Link](/pages/widgets/qrcode.md)   | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/f4921ba2-9f3d-4c33-8848-4df29a5e7a4d) |
+| Video            | [Link](/pages/widgets/video.md)    | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/fce92bbb-af8e-403d-bf2d-c10926cc89a0) |
+| Lottie animation | [Link](/pages/widgets/lottie.md)   | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/576f3004-83e6-429d-b256-628d85e05f7f) |
+| Markdown         | [Link](/pages/widgets/markdown.md) | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/6b6d9c3d-359b-4768-99a5-3f087a64387c) |
+| HTML             | [Link](/pages/widgets/html.md)     | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/ZhTBody9YozadVvTlhW0)                 |
+| Webview          | [Link](/pages/widgets/webview.mdx)  | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/22c8d57d-a906-4d11-873d-161fd6c56c0a) |
 
 ### Layout
 
 | Widget        | Documentation                     | Kitchen sink example                                                                                                       |
 | ------------- | --------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| Column        | [Link](/pages/widgets/column)           | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/90a8e4df-5eab-4473-ba10-2ecffc9596b0) |
-| FittedColumn  | [Link](/pages/widgets/fitted-column)    | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/hRFxxoaBePQaLfmoBiIb)                 |
-| Row           | [Link](/pages/widgets/row)              | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/4bd0d453-c243-429d-a562-93cbc9db38e3) |
-| FittedRow     | [Link](/pages/widgets/fitted-row)       | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/fvSONumk7npuTDmIWwis)                 |
-| Flex          | [Link](/pages/widgets/flex)             | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/R3KgxV3UPWb4TjoiPI0U)                 |
-| Flow          | [Link](/pages/widgets/flow)             | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/3e901fb8-a0e8-4f52-979b-7f5f2547e650) |
-| ListView      | [Link](/pages/widgets/listview)         | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/w0Wmu9ZMP4csk7IELSx3)                 |
-| GridView      | [Link](/pages/widgets/gridview)         | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/DX5j2WVQFabmxD9FCD5h)                 |
+| Column        | [Link](/pages/widgets/column.md)           | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/90a8e4df-5eab-4473-ba10-2ecffc9596b0) |
+| FittedColumn  | [Link](/pages/widgets/fitted-column.md)    | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/hRFxxoaBePQaLfmoBiIb)                 |
+| Row           | [Link](/pages/widgets/row.md)              | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/4bd0d453-c243-429d-a562-93cbc9db38e3) |
+| FittedRow     | [Link](/pages/widgets/fitted-row.md)       | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/fvSONumk7npuTDmIWwis)                 |
+| Flex          | [Link](/pages/widgets/flex.md)             | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/R3KgxV3UPWb4TjoiPI0U)                 |
+| Flow          | [Link](/pages/widgets/flow.md)             | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/3e901fb8-a0e8-4f52-979b-7f5f2547e650) |
+| ListView      | [Link](/pages/widgets/listview.md)         | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/w0Wmu9ZMP4csk7IELSx3)                 |
+| GridView      | [Link](/pages/widgets/gridview.md)         | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/DX5j2WVQFabmxD9FCD5h)                 |
 | StaggeredGrid | [Link](/pages/widgets/staggeredgrid.md) | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/a9iIs4wvgqDOhU4rN6GR)                 |
-| Stack         | [Link](/pages/widgets/stack)            | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/572ecf3b-b9f2-46f4-960f-ff438e5fa1dc) |
-| DataGrid      | [Link](/pages/widgets/data-grid)        | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/c5940e18-f2c1-4318-8e68-a678a6ae7247) |
-| TabBar        | [Link](/pages/widgets/tabbar)           | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/cebd491d-7d90-43f4-9f17-b8575de441ca) |
-| Carousel      | [Link](/pages/widgets/carousel)         | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/2e1d88b1-f281-4c2c-9bb1-bd18016d2b8c) |
-| Collapsible      | [Link](/pages/widgets/collapsible)         | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/yTFRepwpRQJbvRYaVpRi) |
-| Divider       | [Link](/pages/widgets/divider)          | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/4a893a2e-5bde-400c-b974-b25b497d31a5) |
-| Spacer        | [Link](/pages/widgets/spacer)           | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/1d7e42a9-5bbc-4b4b-9a02-8c102234ee05) |
-| Shape         | [Link](/pages/widgets/shape)            | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/Lg2nljyD46n2hiAUlBMP)                 |
-| Slidable   | [Link](/pages/widgets/slidable) | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/hDUEQtsqHbuLoegWoyDR) |
+| Stack         | [Link](/pages/widgets/stack.md)            | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/572ecf3b-b9f2-46f4-960f-ff438e5fa1dc) |
+| DataGrid      | [Link](/pages/widgets/data-grid.md)        | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/c5940e18-f2c1-4318-8e68-a678a6ae7247) |
+| TabBar        | [Link](/pages/widgets/tabbar.md)           | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/cebd491d-7d90-43f4-9f17-b8575de441ca) |
+| Carousel      | [Link](/pages/widgets/carousel.mdx)         | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/2e1d88b1-f281-4c2c-9bb1-bd18016d2b8c) |
+| Collapsible      | [Link](/pages/widgets/collapsible.md)         | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/yTFRepwpRQJbvRYaVpRi) |
+| Divider       | [Link](/pages/widgets/divider.mdx)          | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/4a893a2e-5bde-400c-b974-b25b497d31a5) |
+| Spacer        | [Link](/pages/widgets/spacer.md)           | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/1d7e42a9-5bbc-4b4b-9a02-8c102234ee05) |
+| Shape         | [Link](/pages/widgets/shape.md)            | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/Lg2nljyD46n2hiAUlBMP)                 |
+| Slidable   | [Link](/pages/widgets/slidable.mdx) | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/hDUEQtsqHbuLoegWoyDR) |
 
 ### Forms and inputs
 
 | Widget          | Documentation                  | Kitchen sink example                                                                                                       |
 | --------------- | ------------------------------ | -------------------------------------------------------------------------------------------------------------------------- |
-| Form            | [Link](/pages/widgets/form)          | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/3107baf6-dfc3-42cd-b617-61c37b31f31e) |
-| TextInput       | [Link](/pages/widgets/textinput)     | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/abc081b1-bcb4-4db6-ae55-7987cb6c418e) |
-| Button          | [Link](/pages/widgets/button)        | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/09c1087b-f9ee-4a8c-9286-e0e881184c07) |
-| Dropdown        | [Link](/pages/widgets/dropdown)      | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/fb8d28a2-834e-40a9-8419-155272fb0191) |
+| Form            | [Link](/pages/widgets/form.md)          | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/3107baf6-dfc3-42cd-b617-61c37b31f31e) |
+| TextInput       | [Link](/pages/widgets/textinput.md)     | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/abc081b1-bcb4-4db6-ae55-7987cb6c418e) |
+| Button          | [Link](/pages/widgets/button.mdx)        | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/09c1087b-f9ee-4a8c-9286-e0e881184c07) |
+| Dropdown        | [Link](/pages/widgets/dropdown.md)      | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/fb8d28a2-834e-40a9-8419-155272fb0191) |
 | AutoComplete    | Coming soon                    | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/3tBTU9CUTu0IegpytNYa)                 |
-| Checkbox        | [Link](/pages/widgets/checkbox)      | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/21f43d9b-db21-40fe-9c2f-806267e6c412) |
-| Switch          | [Link](/pages/widgets/switch)        | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/3f4ba37a-0e6a-46a1-9b78-e4e04c84937d) |
-| Date            | [Link](/pages/widgets/date)          | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/e7zOy8oX5dxQU7kD5IO4)                 |
+| Checkbox        | [Link](/pages/widgets/checkbox.mdx)      | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/21f43d9b-db21-40fe-9c2f-806267e6c412) |
+| Switch          | [Link](/pages/widgets/switch.md)        | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/3f4ba37a-0e6a-46a1-9b78-e4e04c84937d) |
+| Date            | [Link](/pages/widgets/date.md)          | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/e7zOy8oX5dxQU7kD5IO4)                 |
 | DateRange       | Coming soon                    | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/b45c5576-ec22-4b04-832f-6dd7571dd20f) |
-| Time            | [Link](/pages/widgets/time)          | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/yNHLPObY1wWgCpg0sgoW)                 |
-| PasswordInput   | [Link](/pages/widgets/passwordinput) | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/218fa244-f0cd-4d17-91e6-7c099bbedede) |
-| Signature       | [Link](/pages/widgets/signature)          | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/70eb8a13-e7df-4778-b7e6-57df17b032a0) |
+| Time            | [Link](/pages/widgets/time.mdx)          | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/yNHLPObY1wWgCpg0sgoW)                 |
+| PasswordInput   | [Link](/pages/widgets/passwordinput.md) | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/218fa244-f0cd-4d17-91e6-7c099bbedede) |
+| Signature       | [Link](/pages/widgets/signature.mdx)          | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/70eb8a13-e7df-4778-b7e6-57df17b032a0) |
 | WeeklyScheduler | Coming soon                             | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/244ce957-98ed-4db8-a5a7-ee587d6dfe0b) |
 
 ### Conditional
 
 | Widget      | Documentation                | Kitchen sink example                                                                                                                                                                   |
 | ----------- | ---------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Conditional | [link](/pages/widgets/conditional) | [link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/XljPegGrdieyKjy16URC?propertyPanelEnabled=true&instantPreviewDisabled=false&editorV2Enabled=true) |
+| Conditional | [link](/pages/widgets/conditional.md) | [link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/XljPegGrdieyKjy16URC?propertyPanelEnabled=true&instantPreviewDisabled=false&editorV2Enabled=true) |
 
 ### Feedback
 
 | Widget             | Documentation                      | Kitchen sink example                                                                                                       |
 | ------------------ | ---------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| Progress indicator | [Link](/pages/widgets/progressindicator) | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/c2c248f2-a289-40d3-acd5-65a1a7f3c5a2) |
-| Toast message      | [Link](/pages/actions/show-toast)        | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/9a576805-019a-4bd3-953f-3c623fbfb905) |
+| Progress indicator | [Link](/pages/widgets/progressindicator.md) | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/c2c248f2-a289-40d3-acd5-65a1a7f3c5a2) |
+| Toast message      | [Link](/pages/actions/show-toast.md)        | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/9a576805-019a-4bd3-953f-3c623fbfb905) |
 
 ---
 
@@ -2378,7 +2378,7 @@ Now let us see what properties does it have on larger level
 
 | Property  | Type    | Description                                                                                                                                                                                                                                                                                                     |
 | :-------- | :------ | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| type      | string  | Kind of transition types. Can read more about it [here](/pages/theme-and-styling/animations). Possible values are `fade`,`rightToLeft`,`leftToRight`,`topToBottom`,`bottomToTop`,`scale`,`rotate`,`size`,`rightToLeftWithFade`,`leftToRightWithFade`,`leftToRightPop`,`rightToLeftPop`,`topToBottomPop`,`bottomToTopPop` |
+| type      | string  | Kind of transition types. Can read more about it [here](/pages/theme-and-styling/animations.md). Possible values are `fade`,`rightToLeft`,`leftToRight`,`topToBottom`,`bottomToTop`,`scale`,`rotate`,`size`,`rightToLeftWithFade`,`leftToRightWithFade`,`leftToRightPop`,`rightToLeftPop`,`topToBottomPop`,`bottomToTopPop` |
 | alignment | string  | The alignment of the widget relative to its parent. `topLeft`, `topCenter`, `topRight`, `centerLeft`, `center`, `centerRight`, `bottomLeft`, `bottomCenter`, `bottomRight`                                                                                                                                      |
 | duration  | integer | The duration in `ms ( millisecond )` for which the transition animation happens.                                                                                                                                                                                                                                |
 
@@ -2497,21 +2497,21 @@ In many user interfaces, buttons come with a default splash effect, providing in
 Following are the list of widgets that support Splash Feedback
 | Widget       | Documentation  | Kitchen sink example    |
 | ------------ | -------------- | ----------------------- |
-| Column       | [Link](/pages/widgets/column)        | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/90a8e4df-5eab-4473-ba10-2ecffc9596b0) |
-| FittedColumn | [Link](/pages/widgets/fitted-column) | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/hRFxxoaBePQaLfmoBiIb)  |
-| Row          | [Link](/pages/widgets/row)           | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/4bd0d453-c243-429d-a562-93cbc9db38e3) |
-| FittedRow    | [Link](/pages/widgets/fitted-row)    | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/fvSONumk7npuTDmIWwis) |
-| Flex         | [Link](/pages/widgets/flex)          | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/R3KgxV3UPWb4TjoiPI0U) |
-| Stack        | [Link](/pages/widgets/stack)         | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/572ecf3b-b9f2-46f4-960f-ff438e5fa1dc) |
-<!-- | Flow         | [Link](/pages/widgets/flow)          | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/3e901fb8-a0e8-4f52-979b-7f5f2547e650) | -->
-<!-- | ListView     | [Link](/pages/widgets/listview)      | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/w0Wmu9ZMP4csk7IELSx3) |
-| GridView     | [Link](/pages/widgets/gridview)      | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/DX5j2WVQFabmxD9FCD5h) |
+| Column       | [Link](/pages/widgets/column.md)        | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/90a8e4df-5eab-4473-ba10-2ecffc9596b0) |
+| FittedColumn | [Link](/pages/widgets/fitted-column.md) | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/hRFxxoaBePQaLfmoBiIb)  |
+| Row          | [Link](/pages/widgets/row.md)           | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/4bd0d453-c243-429d-a562-93cbc9db38e3) |
+| FittedRow    | [Link](/pages/widgets/fitted-row.md)    | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/fvSONumk7npuTDmIWwis) |
+| Flex         | [Link](/pages/widgets/flex.md)          | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/R3KgxV3UPWb4TjoiPI0U) |
+| Stack        | [Link](/pages/widgets/stack.md)         | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/572ecf3b-b9f2-46f4-960f-ff438e5fa1dc) |
+<!-- | Flow         | [Link](/pages/widgets/flow.md)          | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/3e901fb8-a0e8-4f52-979b-7f5f2547e650) | -->
+<!-- | ListView     | [Link](/pages/widgets/listview.md)      | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/w0Wmu9ZMP4csk7IELSx3) |
+| GridView     | [Link](/pages/widgets/gridview.md)      | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/DX5j2WVQFabmxD9FCD5h) |
 | StaggeredGrid | [Link](/pages/widgets/staggeredgrid.md) | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/a9iIs4wvgqDOhU4rN6GR) | -->
-<!-- | DataGrid     | [Link](/pages/widgets/data-grid)      | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/c5940e18-f2c1-4318-8e68-a678a6ae7247) |
-| TabBar       | [Link](/pages/widgets/tabbar)        | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/cebd491d-7d90-43f4-9f17-b8575de441ca) |
-| Carousel     | [Link](/pages/widgets/carousel)      | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/2e1d88b1-f281-4c2c-9bb1-bd18016d2b8c) |
-| Divider      | [Link](/pages/widgets/divider)       | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/4a893a2e-5bde-400c-b974-b25b497d31a5) |
-| Spacer       | [Link](/pages/widgets/spacer)        | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/1d7e42a9-5bbc-4b4b-9a02-8c102234ee05)   | -->
+<!-- | DataGrid     | [Link](/pages/widgets/data-grid.md)      | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/c5940e18-f2c1-4318-8e68-a678a6ae7247) |
+| TabBar       | [Link](/pages/widgets/tabbar.md)        | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/cebd491d-7d90-43f4-9f17-b8575de441ca) |
+| Carousel     | [Link](/pages/widgets/carousel.mdx)      | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/2e1d88b1-f281-4c2c-9bb1-bd18016d2b8c) |
+| Divider      | [Link](/pages/widgets/divider.mdx)       | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/4a893a2e-5bde-400c-b974-b25b497d31a5) |
+| Spacer       | [Link](/pages/widgets/spacer.md)        | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/1d7e42a9-5bbc-4b4b-9a02-8c102234ee05)   | -->
 
 
 
@@ -2613,7 +2613,7 @@ You can manage the assets required by your app within Ensemble Studio. These are
 - image files (PNGs, JPEGs, SVGs, etc.)
 - video files
 - audio files
-- JSON source for [Lottie widget](/pages/widgets/lottie)
+- JSON source for [Lottie widget](/pages/widgets/lottie.md)
 
 > [!NOTE]
 > When you build and deploy your app, these assets are included in your built output. These assets are loaded instantly in iOS and Android apps instead of downloading them over the network. This approach avoides any delay in displaying the assets.
@@ -3334,16 +3334,16 @@ Column:
 ```
 
 ## Implementation
-- For Sign in with Google locally or with your server, go to [Social Sign In](/pages/authentication/social-signin).
-- To use Firebase instead of your server, go to [Firebase](/pages/authentication/firebase).
-- For Sign in with Auth0, go to [Auth0](/pages/authentication/auth0).
+- For Sign in with Google locally or with your server, go to [Social Sign In](/pages/authentication/social-signin.md).
+- To use Firebase instead of your server, go to [Firebase](/pages/authentication/firebase.md).
+- For Sign in with Auth0, go to [Auth0](/pages/authentication/auth0.md).
 
 ---
 
 # Social Sign In
 
 Ensemble supports Social Sign in with Google and Apple. This guide will specifically target the **Sign in with Google** flow.
-For each service, we support three different mechanism for managing the signed-in users: [Client-side](#client-side), with your [Server](#Server-side), or with [Firebase](/pages/authentication/firebase).
+For each service, we support three different mechanism for managing the signed-in users: [Client-side](#client-side), with your [Server](#Server-side), or with [Firebase](/pages/authentication/firebase.md).
 
 <video width="70%"  controls>
   <source src="/images/signin-client.mov" type="video/mp4">
@@ -5000,7 +5000,7 @@ Any screens can reference the variable with `${env.variable_name}`. Here we pref
 
 ### Override environment variables to load images locally
 
-When building Production app (see [Preparing your App](/pages/deploy/1-prepare-app), you can load this image locally instead of via URL.
+When building Production app (see [Preparing your App](/pages/deploy/1-prepare-app.md), you can load this image locally instead of via URL.
 
 - Add the assets under folder `<Ensemble Starter>/ensemble/assets/`.
 - Open `<Ensemble Starter>/ensemble/ensemble-config.yaml` and add a matching environment variable that you defined on Ensemble Studio. Leave the value empty (if all your assets are directly under /ensemble/assets).
@@ -5074,7 +5074,7 @@ When developing UI, it is common to display lists of items, and Ensemble simplif
 | -------- |--------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | data     | array              | Bind to an array of data from an API response or a variable                                                                                                    |
 | name     | string             | Variable name referencing each item in the array. Name it as per your use case (e.g. 'person', 'item' ..)                                                      |
-| template | [Widget](/pages/widgets) | Define the child widget to render for each item in the array. Within this widget you can bind to the item using the `name` syntax (e.g. `${person.firstName}`) |
+| template | [Widget](/pages/widgets.mdx) | Define the child widget to render for each item in the array. Within this widget you can bind to the item using the `name` syntax (e.g. `${person.firstName}`) |
 | indexId  | string              | (optional) Default: index. The property that will be assigned the current index of the data array while looping through it |
 
 Different containers may expose additional properties to further customize the rendering of the children, but they will always have the `data` and `name`.
@@ -5792,7 +5792,7 @@ You can embed your app definition in your build output so that your app works wi
 
 ## Prerequisites
 
-* You have completed the [Prepare your app for deployment step](/pages/deploy/1-prepare-app).
+* You have completed the [Prepare your app for deployment step](/pages/deploy/1-prepare-app.md).
 * You have a text or code editor on your machine. We recommend [VS Code](https://code.visualstudio.com/).
 
 ## Step 1. Create a folder for your app
@@ -7478,8 +7478,8 @@ FlexColumn:
 ```
 
 ## Related
-- See [FlexRow](/pages/widgets/flex-row) for a similar layout in the horizontal direction.
-- See [Column](/pages/widgets/column) for a more generic and scrollable container for laying out children vertically.
+- See [FlexRow](/pages/widgets/flex-row.md) for a similar layout in the horizontal direction.
+- See [Column](/pages/widgets/column.md) for a more generic and scrollable container for laying out children vertically.
 
 ## Reference
 #### Properties
@@ -7619,8 +7619,8 @@ FlexRow:
 ```
 
 ## Related
-- See [FlexColumn](/pages/widgets/flex-column) for a similar layout in the vertical direction.
-- See [Row](/pages/widgets/column) for a more generic and scrollable container for laying out children horizontally.
+- See [FlexColumn](/pages/widgets/flex-column.md) for a similar layout in the vertical direction.
+- See [Row](/pages/widgets/column.md) for a more generic and scrollable container for laying out children horizontally.
 
 ## Reference
 #### Properties
@@ -8320,9 +8320,9 @@ See all the FontAwesome Icons from here: [FontAwesome Library](https://studio.en
 
 # Image widget
 
-The Image Widget allows you to render images from a URL or [local assets](/pages/extending-ensemble/local-assets). 
+The Image Widget allows you to render images from a URL or [local assets](/pages/extending-ensemble/local-assets.md). 
 
-You can manage your assets using Ensemble Studio. [See how](/pages/assets)
+You can manage your assets using Ensemble Studio. [See how](/pages/assets.mdx)
 
 ---
 
@@ -10175,7 +10175,7 @@ This property configures a background image for a widget, including its source, 
 | Property  | Type                                           | Description                                                                                                         |
 |:----------|:-----------------------------------------------|:--------------------------------------------------------------------------------------------------------------------|
 | source    | string                                         | The Image URL to fill the background.                                                                               |
-| fallback  | [Widget](/pages/widgets)          | Return an inline widget or specify a custom widget to be rendered when the backgroundImage fails to load the image. |
+| fallback  | [Widget](/pages/widgets.mdx)          | Return an inline widget or specify a custom widget to be rendered when the backgroundImage fails to load the image. |
 | fit       | [Fit](/pages/widgets/types#Fit)             | How to fit the image within the dimensions.                                                                         |
 | alignment | [Alignment](/pages/widgets/types#Alignment) | Align this image relative to its parent or dimensions.                                                              |
 
@@ -10794,7 +10794,7 @@ ensemble.clearKeychain({
 -   If the key doesn't exist, the action may trigger an error depending on the platform.
 -   Use this action for cleanup when sensitive data is no longer needed (e.g., after logout).
 -   For security best practices, always clear sensitive data when it's no longer required.
--   This action works with data stored using [saveKeychain](/pages/actions/save-keychain).
+-   This action works with data stored using [saveKeychain](/pages/actions/save-keychain.md).
 -   Unlike `clearSecureStorage`, this operates at the OS-level security layer.
 
 ---
@@ -10855,7 +10855,7 @@ try {
 -   If the key doesn't exist, the action completes successfully without any error.
 -   Use this action for cleanup when sensitive data is no longer needed (e.g., after logout).
 -   For security best practices, always clear sensitive data when it's no longer required.
--   This action works with data stored using [setSecureStorage](/pages/actions/set-secure-storage).
+-   This action works with data stored using [setSecureStorage](/pages/actions/set-secure-storage.md).
 
 ---
 
@@ -11876,7 +11876,7 @@ ensemble.invokeAPI({
 -   This action requires an encryption key to be set in your secrets configuration.
 -   The retrieved data is automatically decrypted and converted back to its original data type (string, number, boolean, or object).
 -   If no data exists for the given key, `null` will be returned.
--   Data stored using [setSecureStorage](/pages/actions/set-secure-storage) can be retrieved with this action.
+-   Data stored using [setSecureStorage](/pages/actions/set-secure-storage.md) can be retrieved with this action.
 -   The value is available in the `onComplete` action under `event.data` when used in YAML.
 -   When used in JavaScript, the value is returned directly from the function call.
 
@@ -12165,7 +12165,7 @@ API:
 | onResponse | Action | The action to handle the response                                          |
 | onError    | Action | The action to handle errors                                                |
 
-Details about API [here](/pages/apis/api-overview)
+Details about API [here](/pages/apis/api-overview.mdx)
 
 ---
 
@@ -13219,8 +13219,8 @@ Applicable on iOS/Android only. Opens the app settings page where the user can m
 | minCountMessage         | string  | Custom message to show when captured/selected media is greater than minCount                                                   |
 | permissionDeniedMessage | string  | Set custom message when access to camera is denied                                                                             |
 | nextButtonLabel         | string  | Set custom label on next button.                                                                                               |
-| cameraRotateIcon        | widget  | Set custom icon for camera rotate button. [see here](/pages/widget-reference/Icon)                                                   |
-| galleryPickerIcon       | widget  | Set custom icon for gallery picker button. [see here](/pages/widget-reference/Icon)                                                  |
+| cameraRotateIcon        | widget  | Set custom icon for camera rotate button. [see here](/pages/widget-reference/Icon.md)                                                   |
+| galleryPickerIcon       | widget  | Set custom icon for gallery picker button. [see here](/pages/widget-reference/Icon.md)                                                  |
 | focusIcon               | widget  | Set custom icon for focus node.                                                                                                |
 | assistAngle             | object  | Show assist message whenever angle goes below minAngle or above minAngle. [see properties](#values-for-optionsassistangle)     |
 | assistSpeed             | object  | Show assist message whenever camera is moving faster than maxSpeed. [see properties](#values-for-optionsassistspeed)           |
@@ -14104,7 +14104,7 @@ It is only available in YAML, as this calls a async function whose return type i
 -   Unlike the `getSecureStorage` action, this operation is asynchronous and must use callbacks even in JavaScript.
 -   The retrieved data is converted back to its original data type (string, number, boolean, or object).
 -   If no data exists for the given key, the onError callback will be triggered.
--   Data stored using [saveKeychain](/pages/actions/save-keychain) can be retrieved with this action.
+-   Data stored using [saveKeychain](/pages/actions/save-keychain.md) can be retrieved with this action.
 -   The value is available in the `onComplete` action under `event.data`.
 -   This action provides access to data with OS-level security protection.
 
@@ -14368,9 +14368,9 @@ ensemble.saveKeychain({
 -   On iOS, this uses the Keychain Services API.
 -   On Android, this uses the Android Keystore System or equivalent secure storage.
 -   Values stored in the keychain persist even when the app is uninstalled on iOS (not on Android).
--   To retrieve the value later, use the [readKeychain](/pages/actions/read-keychain) action.
--   To remove the value, use the [clearKeychain](/pages/actions/clear-keychain) action.
--   For less sensitive data that doesn't need OS-level security, consider using [setSecureStorage](/pages/actions/set-secure-storage) instead.
+-   To retrieve the value later, use the [readKeychain](/pages/actions/read-keychain.md) action.
+-   To remove the value, use the [clearKeychain](/pages/actions/clear-keychain.md) action.
+-   For less sensitive data that doesn't need OS-level security, consider using [setSecureStorage](/pages/actions/set-secure-storage.md) instead.
 
 ---
 
@@ -14518,8 +14518,8 @@ ensemble.setSecureStorage({
 -   This action requires an encryption key to be set in your secrets configuration.
 -   The value can be any type of data - strings, numbers, booleans, or complex objects.
 -   All data is encrypted before storage using AES encryption.
--   To retrieve the value later, use the [getSecureStorage](/pages/actions/get-secure-storage) action.
--   To remove the value, use the [clearSecureStorage](/pages/actions/clear-secure-storage) action.
+-   To retrieve the value later, use the [getSecureStorage](/pages/actions/get-secure-storage.md) action.
+-   To remove the value, use the [clearSecureStorage](/pages/actions/clear-secure-storage.md) action.
 
 ---
 
@@ -14601,7 +14601,7 @@ The `showBottomModal` action is configured to call an `ActionsSheet` widget with
 
 | Property      | Type      | Description  |
 |:--------------|:----------|:-------------|
-| widget        | [Widget](/pages/widgets/) | Constructs the UI of the bottom modal using widgets. |
+| widget        | [Widget](/pages/widgets/.md) | Constructs the UI of the bottom modal using widgets. |
 | styles        | [Styles](#styles) | Applies styles to customize the appearance of the modal. |
 | options       | [Options](#options) | Offers customization options for the modal behavior. |
 | onDismiss     | Action  | Execute predefined functions or custom code on modal dismiss. |
@@ -14843,7 +14843,7 @@ showNotification action triggers the display of local notifications within the a
 
 **Example**
 
-You can refer [here](/pages/actions/request-notification-access) for example related to notification. Can also refer complete example [here](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/zbIn4f6tD3yQkC1MJRj1?propertyPanelEnabled=true&instantPreviewDisabled=false&editorV2Enabled=true).
+You can refer [here](/pages/actions/request-notification-access.md) for example related to notification. Can also refer complete example [here](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/zbIn4f6tD3yQkC1MJRj1?propertyPanelEnabled=true&instantPreviewDisabled=false&editorV2Enabled=true).
 
 ---
 
@@ -15947,7 +15947,7 @@ API:
 | onResponse | Action | The action to handle the response                                          |
 | onError    | Action | The action to handle errors                                                |
 
-Details about API [here](/pages/build/user-interface/1-page-structure)
+Details about API [here](/pages/build/user-interface/1-page-structure.md)
 
 ---
 
@@ -16400,8 +16400,8 @@ notifications action provides a comprehensive and customizable solution for mana
 | minCountMessage         | string  | Custom message to show when captured/selected media is greater than minCount                                                   |
 | permissionDeniedMessage | string  | Set custom message when access to camera is denied                                                                             |
 | nextButtonLabel         | string  | Set custom label on next button.                                                                                               |
-| cameraRotateIcon        | widget  | Set custom icon for camera rotate button. [see here](/pages/widgets/Icon)                                                   |
-| galleryPickerIcon       | widget  | Set custom icon for gallery picker button. [see here](/pages/widgets/Icon)                                                  |
+| cameraRotateIcon        | widget  | Set custom icon for camera rotate button. [see here](/pages/widgets/Icon.md)                                                   |
+| galleryPickerIcon       | widget  | Set custom icon for gallery picker button. [see here](/pages/widgets/Icon.md)                                                  |
 | focusIcon               | widget  | Set custom icon for focus node.                                                                                                |
 | assistAngle             | object  | Show assist message whenever angle goes below minAngle or above minAngle. [see properties](#values-for-optionsassistangle)     |
 | assistSpeed             | object  | Show assist message whenever camera is moving faster than maxSpeed. [see properties](#values-for-optionsassistspeed)           |
@@ -17067,7 +17067,7 @@ showNotification action triggers the display of local notifications within the a
 
 **Example**
 
-You can refer [here](/pages/device-capabilities/request-notification-access) for example related to notification. Can also refer complete example [here](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/zbIn4f6tD3yQkC1MJRj1?propertyPanelEnabled=true&instantPreviewDisabled=false&editorV2Enabled=true).
+You can refer [here](/pages/device-capabilities/request-notification-access.md) for example related to notification. Can also refer complete example [here](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/zbIn4f6tD3yQkC1MJRj1?propertyPanelEnabled=true&instantPreviewDisabled=false&editorV2Enabled=true).
 
 ---
 
@@ -17416,15 +17416,15 @@ For example.
 
 ## Core Libraries
 
-- [The `ensemble` object](/pages/javascript-reference/Ensemble)
-- [String](/pages/javascript-reference/String)
-- [Numbers](/pages/javascript-reference/Numbers)
-- [Date](/pages/javascript-reference/Date)
-- [Object and Array](/pages/javascript-reference/Map-and-Array)
-- [Globals](/pages/javascript-reference/Global)
-- [Math](/pages/javascript-reference/Math)
-- [JSON](/pages/javascript-reference/JSON)
-- [JsonPath](/pages/javascript-reference/JsonPath)
+- [The `ensemble` object](/pages/javascript-reference/Ensemble.md)
+- [String](/pages/javascript-reference/String.md)
+- [Numbers](/pages/javascript-reference/Numbers.md)
+- [Date](/pages/javascript-reference/Date.md)
+- [Object and Array](/pages/javascript-reference/Map-and-Array.md)
+- [Globals](/pages/javascript-reference/Global.md)
+- [Math](/pages/javascript-reference/Math.md)
+- [JSON](/pages/javascript-reference/JSON.md)
+- [JsonPath](/pages/javascript-reference/JsonPath.md)
 
 ## Common Errors and Logging/Debugging
 
@@ -17899,7 +17899,7 @@ app.useMockResponse = true;
 var isInMockResponseMode = app.useMockResponse; //returns true
 ```
 ### Theme
-Sets or Returns the value of the current theme. See [this](/pages/theme-and-styling/theme) for details on how themes work and how to set/get a theme. 
+Sets or Returns the value of the current theme. See [this](/pages/theme-and-styling/theme.md) for details on how themes work and how to set/get a theme. 
 
 ### Themes
 Returns the current set of themes that were configured in the app. NOTE: you can only retrieve the list of pre-configured themes, you cannot add to the list or set the list to a different list. 
@@ -18005,7 +18005,7 @@ There are two ways to re-use js code as follows -
 - `Global` block within a screen definition. This, despite its name, is limited to the screen it is defined in and cannot be referenced in other screens
 - `Scripts` a script that is defined independent of a screen (see video below) may be used anywhere in the app by simply importing it. 
 
-In both cases above, you can define javascript variables (only `var` is supported as this is ES5, see [here](/pages/javascript-reference/intro)) or functions. 
+In both cases above, you can define javascript variables (only `var` is supported as this is ES5, see [here](/pages/javascript-reference/intro.md)) or functions. 
 
 ## Example of `Global` code block within a screen
 
@@ -18037,7 +18037,7 @@ Watch the following video for how to define a js library and re-use it across th
 - Let us know on our [Discord server](https://discord.gg/k4CJeuRc) if you need any of other capabilities
 - or open a [ticket](https://github.com/EnsembleUI/ensemble/issues)
 
-For `parseInt`, `parseFloat`, see [String.tryParseInt](/pages/javascript-reference/String) and [String.tryParseDouble](/pages/javascript-reference/String) respectively.
+For `parseInt`, `parseFloat`, see [String.tryParseInt](/pages/javascript-reference/String.md) and [String.tryParseDouble](/pages/javascript-reference/String.md) respectively.
 
 ### console.log
 
@@ -19378,7 +19378,7 @@ Get metadata (information) about your app from Ensemble and from Appstore/Google
 - theme - The app's current theme
 - themes - List of all configured themes
 
-See the [themes docs](/pages/theme-and-styling/theme) for more details.
+See the [themes docs](/pages/theme-and-styling/theme.md) for more details.
 
 ```yaml
 View:
@@ -19485,8 +19485,8 @@ Make sure to provide us with details. If you have an existing screen, share a li
 
 Beside the default styling for the Bottom Navbar items you can style them according to your needs and desire. Ensemble allows user to style items based on many features concept inherited from the CSS and Flutter technologies such as active, non-active states styling etc. Let us move to the code directly and see how it works practically.
 
-- [Icon Without Label](/pages/tips-and-tricks/icon-with-label)
-- [Profile Picture as Item](/pages/tips-and-tricks/profile-picture-item)
+- [Icon Without Label](/pages/tips-and-tricks/icon-with-label.md)
+- [Profile Picture as Item](/pages/tips-and-tricks/profile-picture-item.md)
 
 ---
 
@@ -19497,9 +19497,9 @@ Beside the default styling for the Bottom Navbar items you can style them accord
 ## In a nutshell:
 
 1. Use `${device.width}` to modify properties according to device width
-2. Use the [GridView widget's](/pages/widgets/gridview) built-in responsive breakpoints
-3. Use the [Flow widget](/pages/widgets/flow) to wrap content
-4. Use the [Flex widget](/pages/widgets/flex) to toggle between horizontal and vertical layouts
+2. Use the [GridView widget's](/pages/widgets/gridview.md) built-in responsive breakpoints
+3. Use the [Flow widget](/pages/widgets/flow.md) to wrap content
+4. Use the [Flex widget](/pages/widgets/flex.md) to toggle between horizontal and vertical layouts
 5. Avoid setting explicit width and height, specially for container widgets (Rows, Columns, GridView, etc.)
 
 
@@ -19516,7 +19516,7 @@ Column:
 
 ## 2. GridView's built-in breakpoints
 
-[GridView widget](/pages/widgets/gridview) includes built-in responsive breakpoints. 
+[GridView widget](/pages/widgets/gridview.md) includes built-in responsive breakpoints. 
 
 You can pass 1, 3, or 5 values to `horizontalTileCount` property to make the grid responsive based on predefined set of breakpoints.
 
@@ -19556,7 +19556,7 @@ GridView:
 
 ## 3. Wrap content with Flow widget
 
-[Flow widget](/pages/widgets/flow) displays its children horizontally and wraps the children when it runs out of horizontal space.
+[Flow widget](/pages/widgets/flow.md) displays its children horizontally and wraps the children when it runs out of horizontal space.
 
 ```yaml
 Flow:
@@ -19574,7 +19574,7 @@ Flow:
 
 ## 4. Toggle between horizontal and vertical layouts with Flex widget
 
-[Flex widget](/pages/widgets/flex) dynamically switches between a Row or a Column based on the `direction` property.
+[Flex widget](/pages/widgets/flex.md) dynamically switches between a Row or a Column based on the `direction` property.
 
 ```yaml
 Flex:
@@ -20235,7 +20235,7 @@ View:
 
 # Using navigate Screen with BottomNavBar
 
-We can use [navigateScreen](/pages/actions/navigate-screen) for combining functionality of [BottomNavBar](/pages/screens-and-widgets/screen-structure#bottomnavbar) together with it for daily tasks like beside using BottomNavBar items to navigate across different screens, we can also make use of [navigateScreen](/pages/actions/navigate-screen) here to navigate across screen keeping the bottomNavBAr in place as well. Let us look at an example to make better sense of it.
+We can use [navigateScreen](/pages/actions/navigate-screen.md) for combining functionality of [BottomNavBar](/pages/screens-and-widgets/screen-structure#bottomnavbar) together with it for daily tasks like beside using BottomNavBar items to navigate across different screens, we can also make use of [navigateScreen](/pages/actions/navigate-screen.md) here to navigate across screen keeping the bottomNavBAr in place as well. Let us look at an example to make better sense of it.
 
 **Example**
 
@@ -21288,7 +21288,7 @@ You get the error **"FlexRow requires a width for child distribution."**
 
 ## Reason
 
-FlexRow's layout algorithm works by distributing a pre-defined width proportionally to all its children. If the FlexRow does not have an explicit width, its parent is required to constrain its width. This is a variation of [no-bounded-width](/pages/error/no-bounded-width) error, but specific to FlexRow.
+FlexRow's layout algorithm works by distributing a pre-defined width proportionally to all its children. If the FlexRow does not have an explicit width, its parent is required to constrain its width. This is a variation of [no-bounded-width](/pages/error/no-bounded-width.md) error, but specific to FlexRow.
 
 ## Solution
 
@@ -21307,7 +21307,7 @@ You get the error **"FlexColumn requires a height for child distribution."**
 
 ## Reason
 
-FlexColumn's layout algorithm works by distributing a pre-defined height proportionally to all its children. If the FlexColumn does not have an explicit height, its parent is required to constrain its height. This is a variation of [no-bounded-height](/pages/error/no-bounded-height) error, but specific to FlexColumn.
+FlexColumn's layout algorithm works by distributing a pre-defined height proportionally to all its children. If the FlexColumn does not have an explicit height, its parent is required to constrain its height. This is a variation of [no-bounded-height](/pages/error/no-bounded-height.md) error, but specific to FlexColumn.
 
 ## Solution
 
