@@ -188,7 +188,7 @@ def process_dir(dir_path, skip_index=False):
                     "title": page_title,
                     "path": resolved,
                     "heading": heading_text,
-                    "meta_description": meta_description,  # Only from _meta.json
+                    "meta_description": meta_description,
                 }
             )
         elif os.path.isdir(resolved):
@@ -210,14 +210,10 @@ def process_dir(dir_path, skip_index=False):
             if index_node:
                 group_node["index_path"] = index_node["path"]
                 group_node["heading"] = index_node.get("heading", group_title)
-                group_node["meta_description"] = (
-                    meta_description  # Only from _meta.json
-                )
+                group_node["meta_description"] = meta_description
             else:
                 group_node["heading"] = group_title
-                group_node["meta_description"] = (
-                    meta_description  # Only from _meta.json
-                )
+                group_node["meta_description"] = meta_description
             nodes.append(group_node)
     return nodes
 
@@ -305,69 +301,6 @@ def generate_llms_toc(nodes, base_url="https://docs.ensembleui.com"):
                 lines.append(f"- [{title}]({url})")
 
     return lines
-
-
-def collect_all_pages(nodes):
-    """Collect all pages from the structure for full content generation."""
-    pages = []
-
-    for node in nodes:
-        if "children" in node:
-            # Add index page if it exists
-            if node.get("index_path"):
-                pages.append(
-                    {
-                        "title": node.get("heading", node["title"]),
-                        "path": node["index_path"],
-                        "url_path": get_url_path(node["index_path"]),
-                    }
-                )
-
-            # Add child pages
-            pages.extend(collect_all_pages(node["children"]))
-        else:
-            # This is a standalone page
-            pages.append(
-                {
-                    "title": node["title"],
-                    "path": node["path"],
-                    "url_path": get_url_path(node["path"]),
-                }
-            )
-
-    return pages
-
-
-def get_url_path(file_path):
-    """Convert file path to URL path."""
-    rel_path = os.path.relpath(file_path, "pages")
-    url_path = rel_path.replace("\\", "/").replace(".mdx", "").replace(".md", "")
-    if url_path == "index":
-        url_path = ""
-    elif url_path.endswith("/index"):
-        url_path = url_path[:-6]
-    return url_path
-
-
-def generate_full_docs(pages, base_url="https://docs.ensembleui.com"):
-    """Generate full documentation content in llms-full.txt format."""
-    content_blocks = []
-
-    for page in pages:
-        title = page["title"]
-        file_path = page["path"]
-        url_path = page["url_path"]
-
-        url = f"{base_url}/{url_path}" if url_path else base_url
-
-        # Get full content
-        full_content = get_full_content(file_path)
-
-        # Format as does: # Title \n Source: URL \n Content
-        block = f"# {title}\nSource: {url}\n\n{full_content}\n"
-        content_blocks.append(block)
-
-    return content_blocks
 
 
 def add_extension_to_link(match):
@@ -590,15 +523,6 @@ def collect_content(nodes, level=1):
     return lines
 
 
-def resolve_entry_path_custom(dir_path, name):
-    """Helper to resolve an index entry from the given dir."""
-    for candidate in [name, name + ".md", name + ".mdx"]:
-        path = os.path.join(dir_path, candidate)
-        if os.path.exists(path):
-            return path
-    return None
-
-
 # Base directory settings
 repo_root = os.getcwd()
 pages_dir = os.path.join(repo_root, "pages")
@@ -607,16 +531,19 @@ public_dir = os.path.join(repo_root, "public")
 # Ensure public directory exists
 os.makedirs(public_dir, exist_ok=True)
 
-# Process the pages directory.
+# Process the pages directory
 structure = process_dir(pages_dir, skip_index=True)
 
-# Read the root index.mdx content to place it at the beginning.
-index_path = resolve_entry_path_custom(pages_dir, "index")
+# Read the root index.mdx content
+index_path = os.path.join(pages_dir, "index.mdx")
+if not os.path.exists(index_path):
+    index_path = os.path.join(pages_dir, "index.md")
+
 index_lines = []
 main_title = "Ensemble"
 main_description = "Documentation for the Ensemble platform"
 
-if index_path and os.path.isfile(index_path):
+if os.path.exists(index_path):
     with open(index_path, "r", encoding="utf-8") as f:
         raw_index = f.read().splitlines()
     index_lines = clean_content(raw_index)
@@ -632,25 +559,27 @@ if index_path and os.path.isfile(index_path):
         main_description = description_content
 
 # Generate README.md
-# Assemble the final README content.
 output_lines = []
 if index_lines:
     output_lines += index_lines
     if output_lines and output_lines[-1] != "":
         output_lines.append("")
-# Generate the Table of Contents from the sidebar structure.
+
+# Generate the Table of Contents from the sidebar structure
 toc = generate_toc(structure)
 if toc:
     output_lines.append("## Table of Contents")
     output_lines.append("")
     output_lines += toc
     output_lines.append("")
-# Append the remaining content in the defined order.
+
+# Append the remaining content in the defined order
 output_lines += collect_content(structure)
 
-# Write the merged content to README.md.
+# Write the merged content to README.md
+readme_content = "\n".join(output_lines)
 with open("README.md", "w", encoding="utf-8") as out_file:
-    out_file.write("\n".join(output_lines))
+    out_file.write(readme_content)
 
 print("Merged documentation written to README.md")
 
@@ -674,9 +603,7 @@ toc_lines.append("")
 toc_lines.append("- [Website](https://ensembleui.com/)")
 toc_lines.append("- [Ensemble Studio](https://studio.ensembleui.com/)")
 toc_lines.append("- [Chat with us on Discord](https://discord.gg/cEHkJTmn75)")
-toc_lines.append(
-    "- [Join our office hours](https://discord.gg/eJrUWhnRHS?event=1218554330765066310)"
-)
+toc_lines.append("- [Join our office hours](https://discord.gg/eJrUWhnRHS?event=1218554330765066310)")
 toc_lines.append("- [Drop us an email](mailto:hello@ensembleui.com)")
 
 # Write llms.txt
@@ -684,26 +611,10 @@ llms_txt_path = os.path.join(public_dir, "llms.txt")
 with open(llms_txt_path, "w", encoding="utf-8") as f:
     f.write("\n".join(toc_lines))
 
-# Generate llms-full.txt (full content)
-all_pages = collect_all_pages(structure)
-full_content_blocks = generate_full_docs(all_pages)
-
-# Prepend only the title and description section to llms-full.txt (not the full TOC)
-header_section = []
-header_section.append(f"# {main_title}")
-header_section.append("")
-header_section.append(f"{main_description}")
-header_section.append("")
-header_section.append("---")  # Add separator before full content
-header_section.append("")
-
-# Combine header with full content
-full_content_with_header = header_section + full_content_blocks
-
+# Generate llms-full.txt using the README content directly
 llms_full_txt_path = os.path.join(public_dir, "llms-full.txt")
 with open(llms_full_txt_path, "w", encoding="utf-8") as f:
-    f.write("\n".join(full_content_with_header))
+    f.write(readme_content)
 
 print(f"Generated {llms_txt_path} successfully!")
 print(f"Generated {llms_full_txt_path} successfully!")
-print(f"Total pages in full docs: {len(all_pages)}")
