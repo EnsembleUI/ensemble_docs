@@ -5,6 +5,9 @@
     "layouts": {
         "title": "Layouts"
     },
+    "navigation": {
+        "title": "Navigation"
+    },
     "widgets": {
         "title": "Widgets"
     }

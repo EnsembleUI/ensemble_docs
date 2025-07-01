@@ -1,6 +1,9 @@
 name: Merge Docs
 
-on: pull_request
+on:
+  push:
+    branches:
+      - main
 
 jobs:
   update-docs:

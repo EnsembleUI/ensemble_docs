@@ -44,6 +44,9 @@
   "execute-condition": {
     "title": "Execute Condition"
   },
+  "execute-conditional-action": {
+    "title": "Execute Conditional Action"
+  },
   "get-location": {
     "title": "Get Location"
   },
@@ -82,6 +85,12 @@
   },
   "on-navigate-back": {
     "title": "On Navigate Back"
+  },
+  "on-view-group-resume": {
+    "title": "On View Group Resume"
+  },
+  "on-view-group-update": {
+    "title": "On View Group Update"
   },
   "open-app-settings": {
     "title": "Open App Settings"
