@@ -377,6 +377,7 @@ def clean_content(lines):
       - Converting MDX Callout blocks into Markdown note blocks.
       - Removing other MDX component blocks.
       - Fixing markdown and HTML image paths (inserting 'public/' before /images/).
+      - Fixing internal links (inserting 'pages/' before relative links).
     """
     cleaned = []
     in_code_block = False
@@ -387,6 +388,10 @@ def clean_content(lines):
     md_image_pattern = re.compile(r"(!\[[^\]]*\]\()(/images/)", re.IGNORECASE)
     # Regex for HTML image tags: <img ... src="/images/...
     html_img_pattern = re.compile(r'(<img\s+[^>]*src=["\'])(/images/)', re.IGNORECASE)
+    # Regex for markdown links: [text](/relative-path) but not [text](http...) or [text](#anchor) or [text](/images/...) or [text](public/images/...)
+    md_link_pattern = re.compile(r'(\[[^\]]*\]\()(/(?!images/|http|#)[^)]+)', re.IGNORECASE)
+    # Regex for HTML links: <a href="/relative-path"> but not <a href="http..."> or <a href="#anchor"> or <a href="/images/..."> or <a href="public/images/...">
+    html_link_pattern = re.compile(r'(<a\s+[^>]*href=["\'])(/(?!images/|http|#)[^"\']+)', re.IGNORECASE)
 
     for line in lines:
         if line.strip().startswith("```"):
@@ -430,10 +435,14 @@ def clean_content(lines):
                 in_component_block = True
                 continue
 
-            # Fix markdown image paths.
-            line = md_image_pattern.sub(r"\1/public/images/", line)
-            # Fix HTML image paths.
-            line = html_img_pattern.sub(r"\1public/images/", line)
+            # Fix markdown image paths (add public before /images/).
+            line = md_image_pattern.sub(r"\1public\2", line)
+            # Fix HTML image paths (add public before /images/).
+            line = html_img_pattern.sub(r"\1public\2", line)
+            # Fix markdown links (add /pages/ before relative links, but exclude images).
+            line = md_link_pattern.sub(r"\1/pages\2", line)
+            # Fix HTML links (add /pages/ before relative links, but exclude images).
+            line = html_link_pattern.sub(r"\1/pages\2", line)
 
         cleaned.append(line)
     return cleaned
