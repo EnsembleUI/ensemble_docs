@@ -32,7 +32,7 @@ jobs:
           # Check if there are changes
           if [ -n "$(git status --porcelain)" ]; then
             echo "Changes detected. Committing updated docs..."
-            git add README.md
+            git add README.md public/
             git commit -m "Update merged docs via GitHub Action"
             git push
           else
