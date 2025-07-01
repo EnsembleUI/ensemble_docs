@@ -29,13 +29,12 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git checkout -B "${{ github.head_ref }}"
           # Check if there are changes
           if [ -n "$(git status --porcelain)" ]; then
             echo "Changes detected. Committing updated docs..."
             git add README.md
             git commit -m "Update merged docs via GitHub Action"
-            git push --set-upstream origin "${{ github.head_ref }}"
+            git push
           else
             echo "No changes to commit."
           fi
