@@ -32,6 +32,7 @@ Ensemble provides a browser-based IDE, [Ensemble Studio](https://studio.ensemble
 - **Screens and Widgets**
   - [Ensemble Screen Structure](#ensemble-screen-structure)
   - [Layouts](#layouts)
+  - [Screen Navigation](#screen-navigation)
   - [Widgets Directory](#widgets-directory)
 - [Script with JavaScript](#script-with-javascript)
 - **Apis**
@@ -80,8 +81,8 @@ Ensemble provides a browser-based IDE, [Ensemble Studio](https://studio.ensemble
   - [Screen Lifecycle](#screen-lifecycle)
   - [Custom Widgets](#custom-widgets)
 - **Test**
-  - [Automated Testing](#automated-testing)
   - [Preview your app](#preview-your-app)
+  - [Automated Testing](#automated-testing)
 - **Deploy**
   - [Preparing your App for deployment](#preparing-your-app-for-deployment)
   - [Configure Social Sign In for Deployment](#configure-social-sign-in-for-deployment)
@@ -171,18 +172,22 @@ Ensemble provides a browser-based IDE, [Ensemble Studio](https://studio.ensemble
   - [dispatchEvent action](#dispatchevent-action)
   - [executeActionGroup](#executeactiongroup)
   - [executeCode](#executecode)
+  - [executeConditionalAction](#executeconditionalaction)
   - [getLocation](#getlocation)
   - [getNetworkInfo](#getnetworkinfo)
   - [getPhoneContacts](#getphonecontacts)
   - [getSecureStorage](#getsecurestorage)
   - [invokeAPI](#invokeapi)
   - [invokeHaptic](#invokehaptic)
+  - [logEvent](#logevent)
   - [Action: navigateBack](#action-navigateback)
   - [navigateModalScreen](#navigatemodalscreen)
   - [navigateScreen](#navigatescreen)
   - [navigateViewGroup](#navigateviewgroup)
   - [notification](#notification)
   - [onNavigateBack](#onnavigateback)
+  - [Action: onViewGroupResume](#action-onviewgroupresume)
+  - [Action: onViewGroupUpdate](#action-onviewgroupupdate)
   - [openAppSettings](#openappsettings)
   - [openCamera](#opencamera)
   - [openPlaidLink](#openplaidlink)
@@ -263,6 +268,13 @@ Ensemble provides a browser-based IDE, [Ensemble Studio](https://studio.ensemble
   - [Using device width and height](#using-device-width-and-height)
   - [Using BottomSafeArea for Responsive Layouts](#using-bottomsafearea-for-responsive-layouts)
   - [Floating Button](#floating-button)
+  - [Creating an Avatar](#creating-an-avatar)
+  - [Cookies in Webview](#cookies-in-webview)
+  - [adding this timer here just so that we can delay closing the dialog](#adding-this-timer-here-just-so-that-we-can-delay-closing-the-dialog)
+  - [General Color for All Buttons across an App](#general-color-for-all-buttons-across-an-app)
+  - [Icon Without Label](#icon-without-label)
+  - [Profile Picture](#profile-picture)
+  - [Specify library icons for start and end](#specify-library-icons-for-start-and-end)
   - [No Bounded Width Error](#no-bounded-width-error)
   - [No Bounded Height Error](#no-bounded-height-error)
   - [FlexRow No Bounded Width Error](#flexrow-no-bounded-width-error)
@@ -962,6 +974,88 @@ Ensemble layouts are themselves widgets that contain other widgets. Here is a co
 | Carousel     | [Link](/widgets/carousel)      | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/2e1d88b1-f281-4c2c-9bb1-bd18016d2b8c) |
 | Divider      | [Link](/widgets/divider)       | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/4a893a2e-5bde-400c-b974-b25b497d31a5) |
 | Spacer       | [Link](/widgets/spacer)        | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/1d7e42a9-5bbc-4b4b-9a02-8c102234ee05)   |
+
+---
+
+# Screen Navigation
+
+Ensemble provides two primary mechanism for navigating between screens:
+
+1. App menu, i.e. the nav bar, as [described here](/screens-and-widgets/screen-structure#menu)
+2. Navigation actions, which we will cover here.
+
+## The navigation stack
+
+The navigation stack keeps track of the screens as they are pushed and popped off the stack.
+
+For example, your app could have a home screen, that navigates to listing screen. From the listing user can navigate to a detail screen. When you navigate to a new screen, that screen is pushed onto the top of the stack.
+
+
+![navigation stack](/public/images/navigation/nav-navigation-stack.jpg)
+
+When you navigate back, the topmost screen is popped off the stack, and the previous screen becomes visible Navigation stack follows the Last In, First Out (LIFO) principle, meaning the last screen that was navigated to is the first one to be navigated away from when the user presses the back button.
+
+![navigation stack](/public/images/navigation/nav-navigation-stack-pop.jpg)
+
+## Navigate Screen action
+
+[navigateScreen reference](/actions/navigate-screen)
+
+Use `navigateScreen` action when navigating to a screen. This action will push the target screen on top of the current screen. You can pass inputs to the target screen when performing this action:
+
+```yaml
+- Button:
+    label: View details
+    onTap:
+      navigateScreen:
+        name: ProductDetails
+        inputs:
+          productId: ${product.id}
+```
+
+![navigation stack](/public/images/navigation/nav-navigateScreen.jpg)
+
+
+Optionally, you can set `onNavigateBack` property to perform an action when user goes back to previous screen.
+
+```yaml
+- Button:
+    label: View details
+    onTap:
+      navigateScreen:
+        name: ProductDetails
+        inputs:
+          productId: ${product.id}
+        onNavigateBack:
+          showToast:
+            message: You just returned from product detail screen.
+```
+
+In use cases where you do not want to allow user to go back to the previous screen, use `clearAllScreens: true` option. This essentially clears the navigation stack.
+
+```yaml
+- Button:
+    label: SIGN IN
+    onTap:
+      invoteAPI:
+        name: authenticateUser
+        onResponse:
+          navigateScreen:
+            name: Home
+            options:
+              clearAllScreens: true
+```
+
+![navigation stack](/public/images/navigation/nav-navigateBack-clearAllScreens.jpg)
+
+
+## Navigate back action
+
+[navigateBack reference](/actions/navigate-back)
+
+Use `navigateBack` to pop the current screen and go the previous screen in the stack. This is the same action that would be preformed when user taps the built-in back button.
+
+![navigation stack](/public/images/navigation/nav-navigateBack.jpg)
 
 ---
 
@@ -5129,6 +5223,45 @@ Custom Widgets can be created and used within a Screen or globally across multip
 
 ---
 
+# Preview your app
+
+Your apps are available for preview on web, and iOS and Android devices. Share it with your QA, Product Managers, customers, ... for early feedbacks. 
+
+## Preview on iOS and Android
+
+First, download Ensemble Preview app by scanning this QR Code:
+
+<div style="width:150px; height:150px">
+
+![QR code for Ensemble Preview](/public/images/app-qr.png)
+
+</div>
+
+
+or select your platform here:
+
+
+<a href="https://testflight.apple.com/join/yFKnLQ1S" ><img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83&amp;releaseDate=1672185600?h=3167c6c62f888e2ac4e0aa67026d4b48" alt="Download on the App Store" style="border-radius: 13px; height: 60px;"></a>
+
+<a href='https://play.google.com/store/apps/details?id=com.ensembleui.preview&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png' style="height: 88px"/></a>
+
+Now follow these steps to preview your app:
+
+1. Log in to Ensemble Studio.
+2. Click on the app you want to preview.
+3. Click Settings on the left sidebar. Here you find the app ID and a QR code.
+4. Open Ensemble Preview app and select the option to scan the QR code on the settings page.
+
+
+## Preview on web
+
+1. Log in to Ensemble Studio.
+2. Locate the app you want to share, and click the `...` menu.
+3. Select Get Preview Link.
+4. The preview link is now copied to your clipboard. Paste it in the browser or share with others to run your app on web.
+
+---
+
 # Automated Testing
 
 Ensemble apps support automated testing using Flutter's integration testing framework. You can easily find and interact with widgets in your tests using the `testId` property.
@@ -5195,45 +5328,6 @@ flutter test integration_test/app_test.dart
 ```
 
 For more information on Flutter integration tests, see the [Flutter Testing documentation](https://docs.flutter.dev/testing/integration-tests).
-
----
-
-# Preview your app
-
-Your apps are available for preview on web, and iOS and Android devices. Share it with your QA, Product Managers, customers, ... for early feedbacks. 
-
-## Preview on iOS and Android
-
-First, download Ensemble Preview app by scanning this QR Code:
-
-<div style="width:150px; height:150px">
-
-![QR code for Ensemble Preview](/public/images/app-qr.png)
-
-</div>
-
-
-or select your platform here:
-
-
-<a href="https://testflight.apple.com/join/yFKnLQ1S" ><img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83&amp;releaseDate=1672185600?h=3167c6c62f888e2ac4e0aa67026d4b48" alt="Download on the App Store" style="border-radius: 13px; height: 60px;"></a>
-
-<a href='https://play.google.com/store/apps/details?id=com.ensembleui.preview&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png' style="height: 88px"/></a>
-
-Now follow these steps to preview your app:
-
-1. Log in to Ensemble Studio.
-2. Click on the app you want to preview.
-3. Click Settings on the left sidebar. Here you find the app ID and a QR code.
-4. Open Ensemble Preview app and select the option to scan the QR code on the settings page.
-
-
-## Preview on web
-
-1. Log in to Ensemble Studio.
-2. Locate the app you want to share, and click the `...` menu.
-3. Select Get Preview Link.
-4. The preview link is now copied to your clipboard. Paste it in the browser or share with others to run your app on web.
 
 ---
 
@@ -11319,6 +11413,44 @@ For examples of the `executeCode` action, see the [Ensemble Kitchen Sink](https:
 
 ---
 
+# executeConditionalAction
+`executeConditionalAction` is an Action and can be used like any other action. that allows actions to be executed based on if/elseif/else conditions
+
+- `if` condition is required and should be the first condition
+- `elseif` is optional and there can be any number of elseif conditions
+- `else` is optional and there can only be one else condition
+
+See [Kitchen Sink Example](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/HoLgqsVN4zS20TxTHe4M#)
+
+## Example
+```yaml
+          - Button:
+              label: Tap to compare the price with 10
+              onTap:
+                executeConditionalAction:
+                  conditions:
+                    - if: ${parseInt(price.value) < 10}
+                      action:
+                        showToast:
+                          message: Price is less than $10
+                          options:
+                            duration: 5
+                    - elseif: "${parseInt(price.value) > 10}"
+                      action:
+                        showToast:
+                          message: Price is greater than $10
+                          options:
+                            duration: 5
+                    - else: 
+                      action:
+                        showToast:
+                          message: Price is $10
+                          options:
+                            duration: 5
+```
+
+---
+
 # getLocation
 
 getLocation action enables users to retrieve their device's current location, facilitating location-based functionalities within the app, such as mapping, navigation, or personalized content delivery, enhancing user experience and context-aware interactions. It requests user's permission to get his/her current location
@@ -12083,6 +12215,197 @@ View:
 
 ---
 
+# logEvent
+
+logEvent action allows you to track analytics events and user interactions using Firebase Analytics, MoEngage, or Adobe Analytics.
+
+## Properties
+| Property | Type | Description | Default |
+|:---------|:-----|:------------|:--------|
+| provider | String | Analytics provider ("firebase", "moengage", "adobe") | "firebase" |
+| operation | String | Operation to perform (see provider-specific operations) | "logEvent" |
+| name | String | Name of the event to track (required for Firebase and MoEngage trackEvent) | - |
+| parameters | Object | Additional parameters for events | {} |
+| value | Any | Value for MoEngage operations (location, user attributes etc) | - |
+| attributeKey | String | Key for MoEngage custom attributes | - |  
+| logLevel | enum | Log level ("info", "debug", "fatal") | "info" |
+| onSuccess | Action | Action to execute on success | - |
+| onError | Action | Action to execute on error | - |
+| userId | String | User ID for Firebase setUserId operation | - |
+
+## Firebase Provider
+
+Firebase provider enables basic analytics event tracking and user identification.
+
+### Operations
+
+#### logEvent (Default)
+Logs an analytics event to Firebase. Requires name and optional parameters.
+
+```yaml
+Button:
+  label: Track Purchase 
+  onTap:
+    logEvent:
+      name: purchase_complete
+      parameters:
+        amount: 99.99
+        currency: USD
+```
+
+#### setUserId 
+Sets the user identifier for Firebase Analytics.
+
+```yaml
+logEvent:
+  provider: firebase
+  operation: setUserId
+  userId: "user123" 
+```
+
+## MoEngage Provider
+MoEngage provider enables comprehensive user engagement features including event tracking, user attributes, and in-app messaging.
+
+### MoEngage User Profile Operations
+| Operation | Description | Required Properties |
+|:----------|:------------|:-------------------|
+| setUniqueId | Sets a unique identifier for a user. This should be a unique and consistent identifier for the user across sessions. | value (String) |
+| setUserName | Tracks full name as a user attribute. | value (String) |
+| setFirstName | Tracks first name portion as a separate user attribute. | value (String) |
+| setLastName | Tracks last name portion as a separate user attribute. | value (String) |
+| setEmail | Tracks user's email ID as attribute for communication and identification. | value (String) |
+| setPhoneNumber | Tracks user's phone number as attribute for communication. | value (String) |
+| setBirthDate | Sets user's birth date. Must be in ISO format: yyyy-MM-dd'T'HH:mm:ss.fff'Z' | value (ISO date string) |
+| setGender | Sets user's gender for demographic data. | value (enum: male/female) |
+| setAlias | Updates user's unique ID that was previously set via setUniqueId. Use this to migrate IDs. | value (String) |
+| setLocation | Sets user's geographic location for location-based targeting. | value (Object: {latitude: number, longitude: number}) |
+| setAppStatus | Indicates whether this is a fresh install or app update. | value (enum: install/update) |
+
+### MoEngage Custom Attributes
+| Operation | Description | Required Properties |
+|:----------|:------------|:-------------------|
+| custom | Sets a custom user attribute. Supports primitive types (String, Number, Boolean), arrays of primitives, and valid JSON objects/arrays. Cannot be empty. | attributeKey (String), value (Any supported type) |
+| timestamp | Sets a date/time attribute in ISO format. | attributeKey (String), value (ISO date string) |
+| locationAttribute | Sets a location-based attribute for geo-targeting. | attributeKey (String), value ({latitude: number, longitude: number}) |
+
+### MoEngage Event & Campaign Operations 
+| Operation | Description | Required Properties |
+|:----------|:------------|:-------------------|
+| trackEvent | Tracks an analytics event with optional properties. Properties support same types as custom attributes. | name (String), parameters (Object, optional) |
+| showInApp | Shows an in-app message if one is available. | None |
+| showNudge | Shows a non-intrusive nudge notification. If position not specified, uses default position. | value (enum: top, bottom, bottomLeft, bottomRight, any) | 
+| setContext | Sets the current context for in-app message targeting. Contexts determine when messages can be shown. | value (String[]) |
+| resetContext | Removes all previously set contexts for in-app targeting. | None |
+
+### MoEngage Push Notification Operations
+| Operation | Description | Required Properties |
+|:----------|:------------|:-------------------|
+| registerForPush | Registers for push notifications (iOS only). | None |
+| registerForProvisionalPush | Registers for provisional push notifications (iOS only). | None |
+| passFCMToken | Passes Firebase Cloud Messaging token to SDK (Android only). | value (String - FCM token) |
+| passPushKitToken | Passes PushKit token to SDK (Android only). | value (String - PushKit token) |
+| passFCMPushPayload | Passes FCM push notification payload to SDK (Android only). | value (Object - FCM payload) |
+| requestPushPermission | Requests push notification permission (Android 13+). | None |
+| updatePermissionCount | Updates count of permission requests made. | value (Number) |
+| pushPermissionResponse | Notifies SDK about push permission response. | value (Boolean) |
+
+### MoEngage SDK Configuration Operations
+| Operation | Description | Required Properties |
+|:----------|:------------|:-------------------|
+| enableSdk | Enables all SDK features. By default enabled. | None |
+| disableSdk | Disables all SDK features. | None |
+| enableDataTracking | Enables analytics tracking. By default enabled. | None |  
+| disableDataTracking | Disables all analytics tracking. No events/attributes will be tracked. | None |
+| enableDeviceIdTracking | Enables device ID tracking (Android only). By default enabled. | None |
+| disableDeviceIdTracking | Disables device ID tracking (Android only). | None |
+| enableAndroidIdTracking | Enables Android ID tracking. By default disabled. | None |
+| disableAndroidIdTracking | Disables Android ID tracking. | None |
+| enableAdIdTracking | Enables advertising ID tracking. By default disabled. | None |
+| disableAdIdTracking | Disables advertising ID tracking. | None |
+| logout | Invalidates current user session and creates new one. | None |
+| deleteUser | Deletes current user data from MoEngage (Android only). Returns UserDeletionData. | None |
+
+### Examples
+
+#### Track Event
+```yaml
+logEvent:
+  provider: moengage
+  operation: trackEvent
+  name: "level_complete"
+  parameters:
+    level: 5
+    score: 1000
+```
+
+#### Set User Profile
+```yaml
+logEvent:
+  provider: moengage
+  operation: setUserName
+  value: "John Smith"
+  onSuccess: |
+    //@code
+    console.log("User name updated")
+```
+
+#### Show In-App Message
+```yaml
+logEvent:
+  provider: moengage
+  operation: showInApp
+```
+
+## Adobe Analytics Provider
+
+Adobe Analytics provider enables comprehensive analytics tracking, user identity management, consent management, and user profile management.
+
+### Core Operations
+
+| Operation | Description | Required Properties |
+|:----------|:------------|:-------------------|
+| trackAction | Tracks user interactions and events. | name (String), parameters (Object with event details) |
+| trackState | Tracks page views and screen states. | name (String), parameters (Object with state details) |
+| sendEvent | Sends an Experience event to Adobe Experience Platform Edge Network. | name (String), parameters (Object with xdmData) |
+
+### Identity Management Operations
+
+| Operation | Description | Required Properties |
+|:----------|:------------|:-------------------|
+| getExperienceCloudId | Retrieves the Experience Cloud ID (ECID). | None |
+| getUrlVariables | Returns the identifiers in a URL's query parameters for consumption in hybrid mobile applications. | None |
+| getIdentities | Gets all identities in the Identity for Edge Network extension. | None |
+| updateIdentities | Updates the currently known identities within the SDK. | parameters (Object with identities) |
+| removeIdentity | Removes the identity from the stored client-side IdentityMap. | parameters (Object with item and namespace) |
+| resetIdentities | Clears all identities stored in the Identity extension and generates a new Experience Cloud ID (ECID). | None |
+| setAdvertisingIdentifier | Sets or removes the advertising identifier in the XDM Identity Map. | parameters (Object with advertisingIdentifier) |
+
+### Consent Management Operations
+
+| Operation | Description | Required Properties |
+|:----------|:------------|:-------------------|
+| getConsents | Retrieves current consent preferences. | None |
+| updateConsent | Merges existing consents with given consents. | parameters (Object with allowed boolean) |
+| setDefaultConsent | Sets default consent for the SDK. | parameters (Object with allowed boolean) |
+
+### User Profile Operations
+
+| Operation | Description | Required Properties |
+|:----------|:------------|:-------------------|
+| getUserAttributes | Gets user profile attributes matching provided keys. | parameters (Object with attributes array) |
+| updateUserAttributes | Sets multiple user profile attributes. | parameters (Object with attributeMap) |
+| removeUserAttributes | Removes user profile attributes matching provided keys. | parameters (Object with attributes array) |
+
+### Adobe Assurance Operations
+
+| Operation | Description | Required Properties |
+|:----------|:------------|:-------------------|
+| setupAssurance | Configures Adobe Assurance for debugging. | parameters (Object with url) |
+
+For detailed examples of Adobe Analytics operations, see the [Adobe Analytics documentation](../adobe-analytics.mdx).
+
+---
+
 # Action: navigateBack
 
 The `navigateBack` action allows users to navigate back to the previous screen within the app’s navigation stack. It removes the current screen from the navigation history, so when the user navigates back, the previous screen reappears. This action is also useful when working with modal screens, as it closes the modal and returns the user to the originating screen.
@@ -12609,6 +12932,172 @@ notifications action provides a comprehensive and customizable solution for mana
 ---
 
 ## onNavigateBack
+
+---
+
+# Action: onViewGroupResume
+
+The `onViewGroupResume` action allows users to execute actions when navigate back to the viewGroup within the app’s navigation stack. when the user navigates back, the ViewGroup reappears and action specified under `onViewGroupResume` is executed. This action is useful when working with all type of menus.
+
+### Properties
+
+| Property | Type   | Description                                                                                                     |
+| :------- | :----- | :-------------------------------------------------------------------------------------------------------------- |
+| Action     | ensemble action | Any ensemble action that'll be executed when navigating back to ViewGroup. Such as `executeCode`, `showDialog`, `showToast` etc. |
+
+
+## Example: onViewGroupResume
+
+In this example, we use the `navigateScreen` action to navigate to another screen, and then use the `onViewGroupResume` action to execute any user specified action while returning to screen.
+
+### Originating Screen
+
+```yaml
+ViewGroup:
+  onViewGroupResume:
+    showDialog:
+      body:
+        Text:
+          text: onViewGroupResume executed
+  BottomNavBar:
+    items:
+      - label: Screen1
+        icon:
+          name: home
+        page: onViewGroupResume1
+      - label: Screen2
+        icon:
+          name: input
+        page: onViewGroupResume2
+      - label: Screen3
+        icon:
+          name: settings
+        page: onViewGroupResume3
+
+```
+
+### Pushed Screen
+
+```yaml
+View:
+  styles:
+    useSafeArea: true
+  header:
+    titleText: Overlay
+  body:
+    Column:
+      styles:
+        padding: 24
+        gap: 8
+      children:
+        - Text:
+            text: This is overlay screen
+
+        - Button:
+            label: Tap to Navigate Back to ViewGroup
+            onTap:
+              navigateBack:
+```
+### Explanation
+
+1. **Navigate to Another Screen:**  
+   First, the user clicks the "Go to another screen" button, which triggers the `navigateScreen` action, navigating to a new screen called `overlay`.
+
+   ```yaml
+     - Button:
+        label: Go to another screen
+        onTap:
+          navigateScreen:
+            name: overlay
+   ```
+   
+2. **Trigger `onViewGroupResume` on the ViewGroup screen:**  
+   On the overlay screen, there’s a button with the label "Go Back." When this button is pressed, the `onViewGroupResume` action is triggered, executing any action provided on ViewGroup screen:
+   ```yaml
+    - Button:
+        label: Tap to Navigate Back to ViewGroup
+        onTap:
+            navigateBack:
+   ```
+
+
+You can try complete example [here](https://studio.ensembleui.com/app/2Mc1NI4RQlrEH23sU288/screens)
+
+---
+
+# Action: onViewGroupUpdate
+
+The `onViewGroupUpdate` action allows users to execute actions when update to the ViewGroup occurs. This action is useful when working with all type of menus.
+
+### Properties
+
+| Property | Type   | Description                                                                                                     |
+| :------- | :----- | :-------------------------------------------------------------------------------------------------------------- |
+| Action     | ensemble action | Any ensemble action that'll be executed when there's update in ViewGroup. Such as `executeCode`, `showDialog`, `showToast` etc. |
+
+
+## Example: onViewGroupUpdate
+
+In this example, we use the `onViewGroupUpdate` action to execute when viewGroup is updated.
+
+### ViewGroup
+
+```yaml
+ViewGroup:
+  BottomNavBar:
+    items:
+      - label: Screen1
+        icon:
+          name: home
+        page: onViewGroupupdate1
+      - label: Screen2
+        icon:
+          name: input
+        page: onViewGroupUpdate2
+      - label: Screen3
+        icon:
+          name: settings
+        page: onViewGroupUpdate3
+
+```
+
+### Action execution View
+
+```yaml
+View:
+  onViewGroupUpdate:
+    showDialog:
+       body:
+        Text: text 
+  styles:
+    useSafeArea: true
+  header:
+    titleText: Overlay
+  body:
+    Column:
+      styles:
+        padding: 24
+        gap: 8
+      children:
+        - Text:
+            text: This is overlay screen
+
+        - Button:
+            label: Tap to Navigate Back to ViewGroup
+            onTap:
+              navigateBack:
+```
+### Explanation
+
+1. **ViewGroup update:**  
+   First, the user clicks the any menu button, which triggers the `onViewGroupUpdate` action, navigating to selected screen.
+
+   
+2. **Trigger `onViewGroupUpdate` on the View screen:**  
+   On the selected screen, the action specified is triggered automatically. Executing the action specified under `onViewGroupUpdate`.
+
+
+You can try complete example [here](https://studio.ensembleui.com/app/2Mc1NI4RQlrEH23sU288/screens)
 
 ---
 
@@ -20315,6 +20804,440 @@ By implementing this trick, you ensure that your app’s UI remains consistent a
 
 ## Floating Button Implementation:
 By placing the `Button` component within the `Stack` alongside the `ListView`, it remains visually separate from the list content and appears to float above it. This arrangement allows for easy access to important actions while maintaining a clean and organized UI layout.
+
+---
+
+# Creating an Avatar
+
+Display basic avatars with various configurations such as size, shape, and borders. You can also display avatars with initials when an image source is unavailable.
+
+Use the `Avatar` component inside a `Flow` or other container.
+Set the `source` attribute to the URL of the image for the avatar.
+
+```yaml
+- Avatar:
+    source: https://mui.com/static/images/avatar/1.jpg
+- Avatar:
+    source: https://mui.com/static/images/avatar/2.jpg
+    styles:
+      width: 50
+      borderColor: grey
+```
+
+Use the `Stack` component to overlay additional elements on the `Avatar`.
+
+```yaml
+- Stack:
+    children:
+      - Avatar:
+          source: https://mui.com/static/images/avatar/2.jpg
+          styles:
+            width: 80
+      - Icon:
+          name: camera_line
+          library: remix
+          styles:
+            color: black
+```
+
+---
+
+# Cookies in Webview
+
+Cookies usage in the EnsembleUI WebView is designed to enhance functionality, especially in native applications. The code snippet allows you to set cookies directly for the WebView, and it provides options to control navigation based on cookie conditions.
+
+## WebView Configuration
+```yaml
+    WebView:
+        # Setting cookies for the WebView (only works for native applications)
+        cookies: ${cookiesArray} #assumes cookiesArray has been defined as a js variable elsewhere
+
+        # Taking cookies from the set-cookies header directly (only works for native applications)
+        cookieHeader: ${cookieString} #assumes cookiesString has been defined as a js variable elsewhere
+        
+        id: webview
+        uri: https://ensembleui.com/
+        styles:
+            height: 400
+```
+See [Webview in Kitchen Sink](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/22c8d57d-a906-4d11-873d-161fd6c56c0a) for the full example
+### Cookies Setting
+The `cookies` property allows you to set cookies directly for the WebView. The cookies are defined in the `cookiesArray` variable in the Global section.
+The `cookieHeader` property takes cookies from the set-cookies header directly. The cookies are specified in the `cookieString` variable in the Global section.
+
+### Cookie Usage Example
+```yaml
+    Global: |-
+    //@code
+    var cookieString = "CustomName=CustomValue; Max-Age=2592000; Domain=ensembleui.com; Path=/; Expires=Sun, 30 Nov 2024 14:08:46 GMT; HttpOnly=false; Secure=true; SameSite=None";
+    
+    var cookiesArray = 
+    [
+        {
+        "name": "CustomName1",
+        "value": "CustomValue1",
+        "domain": ".ensembleui.com",
+        "path": "/",
+        "expires": 1727414966.520928,
+        "httpOnly": false,
+        "secure": false,
+        "sameSite": "None"
+        },
+        {
+        "name": "CustomName2",
+        "value": "CustomValue2",
+        "domain": "github.com",
+        "path": "/",
+        "expires": 1727414959.838461,
+        "httpOnly": false,
+        "secure": false,
+        "sameSite": "None"
+        },
+    ]
+```
+
+**Notes**
+Cookie handling features are applicable only to native applications, not web applications.
+Customize the cookies and cookie-related settings according to your application's requirements.
+Understand the navigation control mechanism based on cookies, especially regarding its platform-specific behavior.
+
+---
+
+One common theme in most apps is to show a progress dialog while an API is being processed on the server and close it when the response from the API has been received. This can easily be achieved as follows. Note the use of closeAllDialogs action. 
+
+This method will not work when the progress container is being displayed on top of an existing dialog as closeAllDialogs will close the dialog under it as well which may not be what you desire. 
+
+Lastly a dialog is not the samething as a modal that is displayed with navigateModalScreen. Calling closeAllDialogs does NOT close the modal that is opened with navigateModalScreen
+
+  ```yaml
+          - Button:
+            label: Custom Progress - closes in 3 seconds
+            onTap:
+              showDialog:
+                widget:
+                  ProgressDialog:
+                    inputs:
+                      userId: 1        
+
+ProgressDialog:
+  inputs:
+    - userId
+  onLoad:
+    invokeAPI:
+      name: getMockUser
+      inputs:
+        userId: ${userId}
+      onResponse:
+        #adding this timer here just so that we can delay closing the dialog
+        startTimer:
+          options:
+            startAfter: 3
+            repeat: false
+          onTimer:
+            #all you need to do to close the dialog is to call closeAllDialogs action
+            closeAllDialogs:
+  body:
+    Column:
+      styles:
+        crossAxis: center
+        gap: 8
+      children:
+        - Progress:
+        - Text:
+            text: Just a moment...
+
+API:
+  getMockUser:
+    inputs:
+      - userId
+    uri: https://dummyjson.com/users/${userId}
+    method: GET
+```
+See [this](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/c2c248f2-a289-40d3-acd5-65a1a7f3c5a2#) for a live example
+
+---
+
+# General Color for All Buttons across an App
+
+Defining a theme for your app so as to save time for writing repeated code for text colors, backgroundColors etc is a better way for being efficient and avoiding DRY principle. EnsembleUI enables us to define our own App theme. You can find more about themes [here](). For now lets focus on achieving a general color our Button text.
+
+**Example**
+Lets us consider an App where we want to use `0xFF308775` color for our all Buttons text. To achieve this we will use Theme option in ensemble studio.
+
+**Steps**
+
+1. Go to your App and click on **Theme** in left side panel. Here is hw it looks like.
+
+![Alt text](/public/images/tips/image-4.png).
+
+2. Then use the code below to define [primary]() color for button color, focus color etc.
+
+**Code**
+
+
+
+```yaml
+# define your app theme here
+Colors:
+  primary: 0xFF308775
+```
+
+
+
+**Output**
+
+![Alt text](/public/images/tips/image-5.png)
+
+
+Note: `Just like all other Web and Mobile technologies like Html, Css and Flutter etc if there is style done on a button it will be of higher priority then theme so to let theme work no need to style button color at all.`
+
+---
+
+## Icon Without Label
+
+Since these kind of icons require us to utilize [custom widgets]() thus we will be using **customItem** widget for getting through it. It has two properties namely **widget** and **selectedWidget**.
+
+| Property       | Type   | Description                                                            |
+| :------------- | :----- | :--------------------------------------------------------------------- |
+| widget         | widget | Used for inactive item.                                                |
+| selectedWidget | widget | Used for active item.                                                  |
+| page           | screen | Used for naming the screen to which we navigate once clicked upon item |
+
+We will utilize these two to achieve two different states for an icon active and inactive. Let us see the code example
+
+**Example**
+
+
+
+```yaml
+ViewGroup:
+  BottomNavBar:
+    styles:
+      backgroundColor: white
+      color: 0xFF9DAEC1
+      selectedColor: black
+      floatingBackgroundColor: 0xFF8A1C9D
+      floatingIconColor: white
+      notchColor: 0xFF0F0E1C
+    items:
+      - customItem:
+          widget:
+            IconWidget:
+              inputs:
+                icon: home
+          selectedWidget:
+            ActiveIconWidget:
+              inputs:
+                icon: home
+        page: Home
+
+      - customItem:
+          widget: IconOnlyWidget
+          selectedWidget: ActiveIconOnlyWidget
+        page: Chat
+
+      - customItem:
+          widget:
+            IconWidget:
+              inputs:
+                icon: account_balance_wallet
+          selectedWidget:
+            ActiveIconWidget:
+              inputs:
+                icon: account_balance_wallet
+        page: Home
+```
+
+
+
+**Output**
+![Alt text](/public/images/tips-and-tricks/image.png)
+![Alt text](/public/images/tips-and-tricks/image-1.png)
+
+**Note:**`BottomNavBar is used to navigate across whole application so it always has a separate screen where it comes under [View Group]() with all the items corresponding to each screen of your application.`
+
+**Explanation**
+
+Each item has two properties for active and inactive widget. [IconWidget](#iconwidget) and [IconOnlyWidget](#icononlywidget) represents the in-active state / screen while [ActiveIconWidget](#activeiconwidget) and [ActiveIconOnlyWidget](#activeicononlywidget) for active state / screen. Both of these are [custom widgets](). Its important to notice that [IconWidget](#iconwidget) and [ActiveIconWidget](#activeiconwidget) accept input as well which is the **name** of the **icon** we want to use.
+
+##### IconWidget
+
+
+
+```yaml
+IconWidget:
+  inputs:
+    - icon
+  body:
+    Column:
+      styles: { mainAxis: center, crossAxis: center }
+      children:
+        - Icon:
+            icon: ${icon}
+            styles:
+              color: 0x70000000
+              size: 28
+```
+
+
+
+##### ActiveIconWidget
+
+
+
+```yaml
+ActiveIconWidget:
+  inputs:
+    - icon
+  body:
+    Column:
+      styles: { mainAxis: center, crossAxis: center }
+      children:
+        - Icon:
+            icon: ${icon}
+            styles:
+              color: black
+              size: 28
+```
+
+
+
+##### IconOnlyWidget
+
+
+
+```yaml
+IconOnlyWidget:
+  body:
+    Column:
+      styles: { mainAxis: center, crossAxis: center }
+      children:
+        - Icon:
+            icon: star
+            styles:
+              backgroundColor: transparent
+              borderColor: black
+              color: yellow
+              borderRadius: 26
+              padding: 10
+              size: 18
+```
+
+
+
+##### ActiveIconOnlyWidget
+
+
+
+```yaml
+ActiveIconOnlyWidget:
+  body:
+    Column:
+      styles: { mainAxis: center, crossAxis: center }
+      children:
+        - Icon:
+            icon: star
+            styles:
+              backgroundColor: 0xFF004548
+              color: yellow
+              borderRadius: 26
+              padding: 12
+              size: 26
+```
+
+
+---
+
+## Profile Picture
+
+Its possible that you might need to have your profile picture as item to navigate to settings page or profile page etc, anyway whichever is your case here is how can do it with EnsembleUI.
+
+**Example**
+
+```yaml
+ViewGroup:
+    BottomNavBar:
+        - customItem:
+          widget: CustomNavBarItemWithImage
+          selectedWidget: ActiveCustomNavBarItemWithImage
+        page: WeeklyScheduler
+```
+
+**Output**
+
+![Alt text](/public/images/image-2.png)
+![Alt text](/public/images/image-3.png)
+**Note:** `Its only specific item code, so as to stay relevant to our topic. You can see complete example` [here](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/aa634599-cd5d-411c-a4b6-1163f3b5c558?propertyPanelEnabled=true&instantPreviewDisabled=false&editorV2Enabled=true)
+
+##### CustomNavBarItemWithImage
+
+
+
+```yaml
+CustomNavBarItemWithImage:
+  body:
+    Column:
+      styles:
+        padding: 2 8
+      children:
+        - Image:
+            source: https://robohash.org/hicveldicta.png
+            styles:
+              width: 40
+              height: 40
+              borderRadius: 40
+              borderWidth: 2
+              borderColor: 0xFFDEDEDE
+```
+
+
+
+##### ActiveCustomNavBarItemWithImage
+
+
+
+```yaml
+ActiveCustomNavBarItemWithImage:
+  body:
+    Column:
+      styles:
+        padding: 2 8
+      children:
+        - Image:
+            source: https://robohash.org/hicveldicta.png
+            styles:
+              width: 40
+              height: 40
+              borderRadius: 40
+              borderWidth: 2
+              borderColor: black
+```
+
+
+---
+
+# Specify library icons for start and end
+
+**Objective**
+To specify library icons for startingIcon and endingIcon on a Button
+
+To achieve this, consider the following steps:
+
+1. To specify library icons in shorthand notation for startingIcon and endingIcon on a Button, you can use the following syntax:
+    ```yaml
+    Button:
+        startingIcon: wifi
+        endingIcon: addressBook fontAwesome
+    ```
+2. Icons can be represented with a more verbose syntax on a Button using the following structure:
+    ```yaml
+    Button:
+        endingIcon:
+            name: addressBook
+            library: fontAwesome
+            size: 50
+            color: red
+    ```
 
 ---
 
