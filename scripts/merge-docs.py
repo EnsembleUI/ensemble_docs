@@ -50,6 +50,59 @@ def get_first_heading(file_path):
                     break
     return heading_text
 
+def get_description_content(file_path):
+    """Extract description content from index file, starting from 'What is Ensemble?' section."""
+    with open(file_path, 'r', encoding='utf-8') as f:
+        in_frontmatter = False
+        found_what_is = False
+        description_lines = []
+        for line in f:
+            line_stripped = line.strip()
+            
+            # Skip frontmatter
+            if line_stripped.startswith("---"):
+                in_frontmatter = not in_frontmatter
+                continue
+            if in_frontmatter:
+                continue
+            
+            # Skip HTML comments
+            if line_stripped.startswith("<!--"):
+                continue
+                
+            # Look for "What is Ensemble?" section
+            if line_stripped.startswith("## What is Ensemble?"):
+                found_what_is = True
+                continue
+                
+            # If we found the section, collect content until next section or end
+            if found_what_is:
+                if line_stripped.startswith("##"):  # Next section starts
+                    break
+                if line_stripped:  # Non-empty line
+                    description_lines.append(line_stripped)
+                    
+        return " ".join(description_lines) if description_lines else None
+
+def get_full_content(file_path):
+    """Extract the full content from a file, skipping YAML frontmatter."""
+    with open(file_path, 'r', encoding='utf-8') as f:
+        content_lines = []
+        in_frontmatter = False
+        for line in f:
+            if line.strip().startswith("---"):
+                in_frontmatter = not in_frontmatter
+                continue
+            if in_frontmatter:
+                continue
+            content_lines.append(line.rstrip())
+    
+    # Join and clean up the content
+    content = '\n'.join(content_lines).strip()
+    # Remove any remaining HTML comments
+    content = re.sub(r'<!--.*?-->', '', content, flags=re.DOTALL)
+    return content
+
 def resolve_entry_path(dir_path, name):
     """
     Given a directory and an entry name from _meta.json, try to resolve it to an actual file or directory.
@@ -71,16 +124,26 @@ def process_dir(dir_path, skip_index=False):
     """
     meta_file = os.path.join(dir_path, "_meta.json")
     entries = []
+    meta_descriptions = {}
+    
     if os.path.isfile(meta_file):
         with open(meta_file, 'r', encoding='utf-8') as f:
             meta = json.load(f)
         for key, val in meta.items():
-            entries.append((key, val))
+            if isinstance(val, dict) and 'description' in val:
+                # Store description for this key
+                meta_descriptions[key] = val['description']
+                # Extract title if it exists
+                title = val.get('title', key)
+                entries.append((key, title))
+            else:
+                entries.append((key, val))
     else:
         for name in sorted(os.listdir(dir_path)):
             if name.startswith('_'):
                 continue
             entries.append((name, None))
+    
     nodes = []
     for name, title in entries:
         resolved = resolve_entry_path(dir_path, name)
@@ -92,6 +155,9 @@ def process_dir(dir_path, skip_index=False):
         if base in ("training-videos.md", "training-videos.mdx"):
             continue
 
+        # Get description from _meta.json if available
+        meta_description = meta_descriptions.get(name)
+
         if os.path.isfile(resolved):
             if skip_index and base in ("index.md", "index.mdx"):
                 continue
@@ -101,10 +167,12 @@ def process_dir(dir_path, skip_index=False):
                 page_title = heading_text if heading_text else name
             if heading_text is None:
                 heading_text = page_title
+            
             nodes.append({
                 "title": page_title,
                 "path": resolved,
-                "heading": heading_text
+                "heading": heading_text,
+                "meta_description": meta_description  # Only from _meta.json
             })
         elif os.path.isdir(resolved):
             group_title = title if isinstance(title, str) else name
@@ -117,8 +185,10 @@ def process_dir(dir_path, skip_index=False):
             if index_node:
                 group_node["index_path"] = index_node["path"]
                 group_node["heading"] = index_node.get("heading", group_title)
+                group_node["meta_description"] = meta_description  # Only from _meta.json
             else:
                 group_node["heading"] = group_title
+                group_node["meta_description"] = meta_description  # Only from _meta.json
             nodes.append(group_node)
     return nodes
 
@@ -144,6 +214,114 @@ def generate_toc(nodes, depth=0):
             anchor = slugify(anchor_text) if anchor_text else ""
             toc_lines.append(f"{indent}- [{title}](#{anchor})")
     return toc_lines
+
+def generate_llms_toc(nodes, base_url="https://docs.ensembleui.com"):
+    """Generate table of contents in llms.txt format (Cursor style)."""
+    lines = []
+    
+    for node in nodes:
+        if "children" in node:
+            # This is a section/group
+            section_title = to_sentence_case(node["title"])
+            
+            # Add index page if it exists
+            if node.get("index_path"):
+                title = node.get("heading", section_title)
+                rel_path = os.path.relpath(node["index_path"], "pages")
+                url_path = rel_path.replace("\\", "/").replace(".mdx", "").replace(".md", "")
+                if url_path == "index":
+                    url_path = ""
+                elif url_path.endswith("/index"):
+                    url_path = url_path[:-6]
+                
+                url = f"{base_url}/{url_path}" if url_path else base_url
+                meta_description = node.get("meta_description")
+                if meta_description:
+                    lines.append(f"- [{title}]({url}): {meta_description}")
+                else:
+                    lines.append(f"- [{title}]({url})")
+            
+            # Add child pages
+            for child in node["children"]:
+                if "path" in child:
+                    title = child["title"]
+                    rel_path = os.path.relpath(child["path"], "pages")
+                    url_path = rel_path.replace("\\", "/").replace(".mdx", "").replace(".md", "")
+                    url = f"{base_url}/{url_path}"
+                    meta_description = child.get("meta_description")
+                    if meta_description:
+                        lines.append(f"- [{title}]({url}): {meta_description}")
+                    else:
+                        lines.append(f"- [{title}]({url})")
+        else:
+            # This is a standalone page at root level
+            title = node["title"]
+            rel_path = os.path.relpath(node["path"], "pages")
+            url_path = rel_path.replace("\\", "/").replace(".mdx", "").replace(".md", "")
+            url = f"{base_url}/{url_path}"
+            meta_description = node.get("meta_description")
+            if meta_description:
+                lines.append(f"- [{title}]({url}): {meta_description}")
+            else:
+                lines.append(f"- [{title}]({url})")
+    
+    return lines
+
+def collect_all_pages(nodes):
+    """Collect all pages from the structure for full content generation."""
+    pages = []
+    
+    for node in nodes:
+        if "children" in node:
+            # Add index page if it exists
+            if node.get("index_path"):
+                pages.append({
+                    "title": node.get("heading", node["title"]),
+                    "path": node["index_path"],
+                    "url_path": get_url_path(node["index_path"])
+                })
+            
+            # Add child pages
+            pages.extend(collect_all_pages(node["children"]))
+        else:
+            # This is a standalone page
+            pages.append({
+                "title": node["title"],
+                "path": node["path"],
+                "url_path": get_url_path(node["path"])
+            })
+    
+    return pages
+
+def get_url_path(file_path):
+    """Convert file path to URL path."""
+    rel_path = os.path.relpath(file_path, "pages")
+    url_path = rel_path.replace("\\", "/").replace(".mdx", "").replace(".md", "")
+    if url_path == "index":
+        url_path = ""
+    elif url_path.endswith("/index"):
+        url_path = url_path[:-6]
+    return url_path
+
+def generate_full_docs(pages, base_url="https://docs.ensembleui.com"):
+    """Generate full documentation content in llms-full.txt format (Cursor style)."""
+    content_blocks = []
+    
+    for page in pages:
+        title = page["title"]
+        file_path = page["path"]
+        url_path = page["url_path"]
+        
+        url = f"{base_url}/{url_path}" if url_path else base_url
+        
+        # Get full content
+        full_content = get_full_content(file_path)
+        
+        # Format as Cursor does: # Title \n Source: URL \n Content
+        block = f"# {title}\nSource: {url}\n{full_content}"
+        content_blocks.append(block)
+    
+    return content_blocks
 
 def clean_content(lines):
     """
@@ -243,14 +421,6 @@ def collect_content(nodes, level=1):
             lines.append("")
     return lines
 
-# Base directory settings
-repo_root = os.getcwd()
-pages_dir = os.path.join(repo_root, "pages")
-
-# Process the pages directory.
-structure = process_dir(pages_dir, skip_index=True)
-
-# Read the root index.mdx content to place it at the beginning.
 def resolve_entry_path_custom(dir_path, name):
     """Helper to resolve an index entry from the given dir."""
     for candidate in [name, name + ".md", name + ".mdx"]:
@@ -259,13 +429,39 @@ def resolve_entry_path_custom(dir_path, name):
             return path
     return None
 
+# Base directory settings
+repo_root = os.getcwd()
+pages_dir = os.path.join(repo_root, "pages")
+public_dir = os.path.join(repo_root, "public")
+
+# Ensure public directory exists
+os.makedirs(public_dir, exist_ok=True)
+
+# Process the pages directory.
+structure = process_dir(pages_dir, skip_index=True)
+
+# Read the root index.mdx content to place it at the beginning.
 index_path = resolve_entry_path_custom(pages_dir, "index")
 index_lines = []
+main_title = "Ensemble"
+main_description = "Documentation for the Ensemble platform"
+
 if index_path and os.path.isfile(index_path):
     with open(index_path, 'r', encoding='utf-8') as f:
         raw_index = f.read().splitlines()
     index_lines = clean_content(raw_index)
+    
+    # Extract title for llms.txt
+    title_from_index = get_first_heading(index_path)
+    if title_from_index:
+        main_title = title_from_index
+    
+    # Extract description for llms.txt
+    description_content = get_description_content(index_path)
+    if description_content:
+        main_description = description_content
 
+# Generate README.md
 # Assemble the final README content.
 output_lines = []
 if index_lines:
@@ -287,3 +483,40 @@ with open("README.md", 'w', encoding='utf-8') as out_file:
     out_file.write("\n".join(output_lines))
 
 print("Merged documentation written to README.md")
+
+# Generate llms.txt (table of contents)
+toc_lines = []
+toc_lines.append(f"# {main_title}")
+toc_lines.append("")
+toc_lines.append(f"{main_description}")
+toc_lines.append("")
+toc_lines.append("## Docs")
+toc_lines.append("")
+
+# Generate TOC links
+toc_content = generate_llms_toc(structure)
+toc_lines.extend(toc_content)
+
+# Add optional section at the end (like Cursor does)
+toc_lines.append("")
+toc_lines.append("## Optional")
+toc_lines.append("")
+toc_lines.append("- [Website](https://ensembleui.com/)")
+toc_lines.append("- [Ensemble Studio](https://studio.ensembleui.com/)")
+
+# Write llms.txt
+llms_txt_path = os.path.join(public_dir, "llms.txt")
+with open(llms_txt_path, 'w', encoding='utf-8') as f:
+    f.write("\n".join(toc_lines))
+
+# Generate llms-full.txt (full content)
+all_pages = collect_all_pages(structure)
+full_content_blocks = generate_full_docs(all_pages)
+
+llms_full_txt_path = os.path.join(public_dir, "llms-full.txt")
+with open(llms_full_txt_path, 'w', encoding='utf-8') as f:
+    f.write("\n".join(full_content_blocks))
+
+print(f"Generated {llms_txt_path} successfully!")
+print(f"Generated {llms_full_txt_path} successfully!")
+print(f"Total pages in full docs: {len(all_pages)}")
