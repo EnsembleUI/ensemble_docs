@@ -162,8 +162,9 @@ Ensemble provides a browser-based IDE, [Ensemble Studio](https://studio.ensemble
   - [BLE Client](#ble-client)
   - [callExternalMethod](#callexternalmethod)
   - [checkPermission](#checkpermission)
+  - [readKeychain](#readkeychain)
+  - [saveKeychain](#savekeychain)
   - [clearKeychain](#clearkeychain)
-  - [clearSecureStorage](#clearsecurestorage)
   - [closeAllDialogs](#closealldialogs)
   - [connectWallet](#connectwallet)
   - [copyToClipboard](#copytoclipboard)
@@ -176,7 +177,6 @@ Ensemble provides a browser-based IDE, [Ensemble Studio](https://studio.ensemble
   - [getLocation](#getlocation)
   - [getNetworkInfo](#getnetworkinfo)
   - [getPhoneContacts](#getphonecontacts)
-  - [getSecureStorage](#getsecurestorage)
   - [invokeAPI](#invokeapi)
   - [invokeHaptic](#invokehaptic)
   - [logEvent](#logevent)
@@ -197,13 +197,13 @@ Ensemble provides a browser-based IDE, [Ensemble Studio](https://studio.ensemble
   - [playAudio](#playaudio)
   - [Pull To Refresh](#pull-to-refresh)
   - [rateApp](#rateapp)
-  - [readKeychain](#readkeychain)
   - [requestNotificationAccess](#requestnotificationaccess)
   - [resumeAudio](#resumeaudio)
   - [saveFile](#savefile)
-  - [saveKeychain](#savekeychain)
   - [seekAudio](#seekaudio)
+  - [getSecureStorage](#getsecurestorage)
   - [setSecureStorage](#setsecurestorage)
+  - [clearSecureStorage](#clearsecurestorage)
   - [Share](#share)
   - [showBottomModal](#showbottommodal)
   - [showDialog](#showdialog)
@@ -10738,6 +10738,123 @@ When a user taps the "Notification Permission" button, the app checks the notifi
 
 ---
 
+# readKeychain
+
+The `readKeychain` action retrieves previously stored data from the device's secure keychain (iOS) or equivalent secure storage (Android), allowing access to sensitive information that was stored with the highest level of OS security protection.
+
+## Properties
+
+| Property   | Type   | Description                                                                                                |
+| :--------- | :----- | :--------------------------------------------------------------------------------------------------------- |
+| key        | string | The key to retrieve the value from                                                                         |
+| onComplete | action | Execute an Action when the data has been successfully retrieved. The value is available under 'event.data' |
+| onError    | action | Execute an Action when an error occurs. The error reason is available under 'event.error'                  |
+
+## Example
+
+```yaml
+Button:
+    label: Read from Keychain
+    onTap:
+        readKeychain:
+            key: apiKey
+            onComplete:
+                executeCode:
+                    body: |
+                        //@code
+                        console.log("Retrieved API key: " + event.data);
+                        apiKeyInput.value = event.data;
+            onError:
+                showToast:
+                    message: ${event.error}
+                    options:
+                        type: error
+```
+
+## JavaScript Usage
+
+It is only available in YAML, as this calls a async function whose return type is Future and we use callbacks to handle the result. Our JS is sync and we cannot use async/await in JS.
+
+## Notes
+
+-   This action reads from the device's secure keychain or equivalent OS security storage.
+-   Unlike the `getSecureStorage` action, this operation is asynchronous and must use callbacks even in JavaScript.
+-   The retrieved data is converted back to its original data type (string, number, boolean, or object).
+-   If no data exists for the given key, the onError callback will be triggered.
+-   Data stored using [saveKeychain](#savekeychain) can be retrieved with this action.
+-   The value is available in the `onComplete` action under `event.data`.
+-   This action provides access to data with OS-level security protection.
+
+---
+
+# saveKeychain
+
+The `saveKeychain` action stores sensitive information in the device's secure keychain (iOS) or equivalent secure storage (Android), providing a high level of OS-level protection for critical data like authentication credentials, tokens, and other sensitive user information.
+
+## Properties
+
+| Property   | Type   | Description                                                                               |
+| :--------- | :----- | :---------------------------------------------------------------------------------------- |
+| key        | string | The key to store the value under                                                          |
+| value      | any    | The value to store in the keychain                                                        |
+| onComplete | action | Execute an Action when the data has been successfully stored                              |
+| onError    | action | Execute an Action when an error occurs. The error reason is available under 'event.error' |
+
+## Example
+
+```yaml
+Button:
+    label: Save to Keychain
+    onTap:
+        saveKeychain:
+            key: apiKey
+            value: 3f8d9a72e5c6b1f0
+            onComplete:
+                showToast:
+                    message: API key saved to keychain
+                    options:
+                        type: success
+            onError:
+                showToast:
+                    message: ${event.error}
+                    options:
+                        type: error
+```
+
+## JavaScript Usage
+
+You can also use this action in JavaScript:
+
+```javascript
+// Store a simple string value
+ensemble.saveKeychain({
+    key: "apiKey",
+    value: "3f8d9a72e5c6b1f0",
+});
+
+// Store a complex object
+ensemble.saveKeychain({
+    key: "accountDetails",
+    value: {
+        accountId: "ACC123456",
+        accessLevel: "premium",
+        lastAccess: "2023-05-19T14:30:00Z",
+    },
+});
+```
+
+## Notes
+
+-   The keychain provides OS-level security for storing sensitive data.
+-   On iOS, this uses the Keychain Services API.
+-   On Android, this uses the Android Keystore System or equivalent secure storage.
+-   Values stored in the keychain persist even when the app is uninstalled on iOS (not on Android).
+-   To retrieve the value later, use the [readKeychain](#readkeychain) action.
+-   To remove the value, use the [clearKeychain](#clearkeychain) action.
+-   For less sensitive data that doesn't need OS-level security, consider using [setSecureStorage](#setsecurestorage) instead.
+
+---
+
 # clearKeychain
 
 The `clearKeychain` action removes previously stored data from the device's secure keychain (iOS) or equivalent secure storage (Android), allowing you to clean up sensitive information with the highest level of security when it's no longer needed.
@@ -10796,66 +10913,6 @@ ensemble.clearKeychain({
 -   For security best practices, always clear sensitive data when it's no longer required.
 -   This action works with data stored using [saveKeychain](#savekeychain).
 -   Unlike `clearSecureStorage`, this operates at the OS-level security layer.
-
----
-
-# clearSecureStorage
-
-The `clearSecureStorage` action removes previously stored encrypted data from the device's secure storage, allowing you to clean up sensitive information when it's no longer needed, enhancing security by minimizing data exposure.
-
-## Properties
-
-| Property   | Type   | Description                                                                               |
-| :--------- | :----- | :---------------------------------------------------------------------------------------- |
-| key        | string | The key to remove from secure storage                                                     |
-| onComplete | action | Execute an Action when the data has been successfully removed                             |
-| onError    | action | Execute an Action when an error occurs. The error reason is available under 'event.error' |
-
-## Example
-
-```yaml
-Button:
-    label: Clear Secure Data
-    onTap:
-        clearSecureStorage:
-            key: userToken
-            onComplete:
-                showToast:
-                    message: Secure data removed successfully
-                    options:
-                        type: success
-            onError:
-                showToast:
-                    message: ${event.error}
-                    options:
-                        type: error
-```
-
-## JavaScript Usage
-
-You can also use this action in JavaScript:
-
-```javascript
-// Clear a stored secure value
-ensemble.clearSecureStorage("userToken");
-
-// With error handling
-try {
-    ensemble.clearSecureStorage("userToken");
-    console.log("Token removed successfully");
-} catch (error) {
-    console.error("Failed to clear token: " + error);
-}
-```
-
-## Notes
-
--   This action requires an encryption key to be set in your secrets configuration.
--   This action completely removes the specified key and its associated value from secure storage.
--   If the key doesn't exist, the action completes successfully without any error.
--   Use this action for cleanup when sensitive data is no longer needed (e.g., after logout).
--   For security best practices, always clear sensitive data when it's no longer required.
--   This action works with data stored using [setSecureStorage](#setsecurestorage).
 
 ---
 
@@ -11815,70 +11872,6 @@ Global: |
   }
 ```
 The global code block initializes `ensemble.storage.contacts` as an empty array if it's null. It also includes the `getPhoneNumber` function, which extracts the primary phone number from an array of phone numbers.
-
----
-
-# getSecureStorage
-
-The `getSecureStorage` action retrieves previously stored encrypted data from the device's secure storage, decrypting it for use within your application while maintaining security of sensitive information.
-
-## Properties
-
-| Property   | Type   | Description                                                                                                |
-| :--------- | :----- | :--------------------------------------------------------------------------------------------------------- |
-| key        | string | The key to retrieve the value from                                                                         |
-| onComplete | action | Execute an Action when the data has been successfully retrieved. The value is available under 'event.data' |
-| onError    | action | Execute an Action when an error occurs. The error reason is available under 'event.error'                  |
-
-## Example
-
-```yaml
-Button:
-    label: Retrieve Secure Data
-    onTap:
-        getSecureStorage:
-            key: userToken
-            onComplete:
-                executeCode:
-                    body: |
-                        //@code
-                        console.log("Retrieved token: " + event.data);
-                        // Use the token for an API call
-                        apiHeaders.value = { "Authorization": "Bearer " + event.data };
-            onError:
-                showToast:
-                    message: ${event.error}
-                    options:
-                        type: error
-```
-
-## JavaScript Usage
-
-When used in JavaScript, this action returns the value directly, making it useful in code blocks:
-
-```javascript
-// Retrieve a stored value directly
-const userToken = ensemble.getSecureStorage("userToken");
-console.log("Token: " + userToken);
-
-// Use the retrieved value in an API call
-ensemble.invokeAPI({
-    name: "fetchUserData",
-    inputs: {},
-    headers: {
-        Authorization: "Bearer " + ensemble.getSecureStorage("userToken"),
-    },
-});
-```
-
-## Notes
-
--   This action requires an encryption key to be set in your secrets configuration.
--   The retrieved data is automatically decrypted and converted back to its original data type (string, number, boolean, or object).
--   If no data exists for the given key, `null` will be returned.
--   Data stored using [setSecureStorage](#setsecurestorage) can be retrieved with this action.
--   The value is available in the `onComplete` action under `event.data` when used in YAML.
--   When used in JavaScript, the value is returned directly from the function call.
 
 ---
 
@@ -14061,55 +14054,6 @@ The rateApp action is triggered when the "Rate Us" button is tapped. It is to ha
 
 ---
 
-# readKeychain
-
-The `readKeychain` action retrieves previously stored data from the device's secure keychain (iOS) or equivalent secure storage (Android), allowing access to sensitive information that was stored with the highest level of OS security protection.
-
-## Properties
-
-| Property   | Type   | Description                                                                                                |
-| :--------- | :----- | :--------------------------------------------------------------------------------------------------------- |
-| key        | string | The key to retrieve the value from                                                                         |
-| onComplete | action | Execute an Action when the data has been successfully retrieved. The value is available under 'event.data' |
-| onError    | action | Execute an Action when an error occurs. The error reason is available under 'event.error'                  |
-
-## Example
-
-```yaml
-Button:
-    label: Read from Keychain
-    onTap:
-        readKeychain:
-            key: apiKey
-            onComplete:
-                executeCode:
-                    body: |
-                        //@code
-                        console.log("Retrieved API key: " + event.data);
-                        apiKeyInput.value = event.data;
-            onError:
-                showToast:
-                    message: ${event.error}
-                    options:
-                        type: error
-```
-
-## JavaScript Usage
-
-It is only available in YAML, as this calls a async function whose return type is Future and we use callbacks to handle the result. Our JS is sync and we cannot use async/await in JS.
-
-## Notes
-
--   This action reads from the device's secure keychain or equivalent OS security storage.
--   Unlike the `getSecureStorage` action, this operation is asynchronous and must use callbacks even in JavaScript.
--   The retrieved data is converted back to its original data type (string, number, boolean, or object).
--   If no data exists for the given key, the onError callback will be triggered.
--   Data stored using [saveKeychain](#savekeychain) can be retrieved with this action.
--   The value is available in the `onComplete` action under `event.data`.
--   This action provides access to data with OS-level security protection.
-
----
-
 # requestNotificationAccess
 
 requestNotificationAccess action prompts users to grant permission for the app to send notifications to their device, enabling personalized alerts and updates, enhancing user engagement, and ensuring timely delivery of relevant information within the application.
@@ -14306,74 +14250,6 @@ You can try complete example [here](https://studio.ensembleui.com/app/e24402cb-7
 
 ---
 
-# saveKeychain
-
-The `saveKeychain` action stores sensitive information in the device's secure keychain (iOS) or equivalent secure storage (Android), providing a high level of OS-level protection for critical data like authentication credentials, tokens, and other sensitive user information.
-
-## Properties
-
-| Property   | Type   | Description                                                                               |
-| :--------- | :----- | :---------------------------------------------------------------------------------------- |
-| key        | string | The key to store the value under                                                          |
-| value      | any    | The value to store in the keychain                                                        |
-| onComplete | action | Execute an Action when the data has been successfully stored                              |
-| onError    | action | Execute an Action when an error occurs. The error reason is available under 'event.error' |
-
-## Example
-
-```yaml
-Button:
-    label: Save to Keychain
-    onTap:
-        saveKeychain:
-            key: apiKey
-            value: 3f8d9a72e5c6b1f0
-            onComplete:
-                showToast:
-                    message: API key saved to keychain
-                    options:
-                        type: success
-            onError:
-                showToast:
-                    message: ${event.error}
-                    options:
-                        type: error
-```
-
-## JavaScript Usage
-
-You can also use this action in JavaScript:
-
-```javascript
-// Store a simple string value
-ensemble.saveKeychain({
-    key: "apiKey",
-    value: "3f8d9a72e5c6b1f0",
-});
-
-// Store a complex object
-ensemble.saveKeychain({
-    key: "accountDetails",
-    value: {
-        accountId: "ACC123456",
-        accessLevel: "premium",
-        lastAccess: "2023-05-19T14:30:00Z",
-    },
-});
-```
-
-## Notes
-
--   The keychain provides OS-level security for storing sensitive data.
--   On iOS, this uses the Keychain Services API.
--   On Android, this uses the Android Keystore System or equivalent secure storage.
--   Values stored in the keychain persist even when the app is uninstalled on iOS (not on Android).
--   To retrieve the value later, use the [readKeychain](#readkeychain) action.
--   To remove the value, use the [clearKeychain](/pages/actions/clear-keychain.md) action.
--   For less sensitive data that doesn't need OS-level security, consider using [setSecureStorage](#setsecurestorage) instead.
-
----
-
 # seekAudio
 
 The seekAudio action allows users to pause a already-playing audio file
@@ -14456,6 +14332,70 @@ View:
 
 ---
 
+# getSecureStorage
+
+The `getSecureStorage` action retrieves previously stored encrypted data from the device's secure storage, decrypting it for use within your application while maintaining security of sensitive information.
+
+## Properties
+
+| Property   | Type   | Description                                                                                                |
+| :--------- | :----- | :--------------------------------------------------------------------------------------------------------- |
+| key        | string | The key to retrieve the value from                                                                         |
+| onComplete | action | Execute an Action when the data has been successfully retrieved. The value is available under 'event.data' |
+| onError    | action | Execute an Action when an error occurs. The error reason is available under 'event.error'                  |
+
+## Example
+
+```yaml
+Button:
+    label: Retrieve Secure Data
+    onTap:
+        getSecureStorage:
+            key: userToken
+            onComplete:
+                executeCode:
+                    body: |
+                        //@code
+                        console.log("Retrieved token: " + event.data);
+                        // Use the token for an API call
+                        apiHeaders.value = { "Authorization": "Bearer " + event.data };
+            onError:
+                showToast:
+                    message: ${event.error}
+                    options:
+                        type: error
+```
+
+## JavaScript Usage
+
+When used in JavaScript, this action returns the value directly, making it useful in code blocks:
+
+```javascript
+// Retrieve a stored value directly
+const userToken = ensemble.getSecureStorage("userToken");
+console.log("Token: " + userToken);
+
+// Use the retrieved value in an API call
+ensemble.invokeAPI({
+    name: "fetchUserData",
+    inputs: {},
+    headers: {
+        Authorization: "Bearer " + ensemble.getSecureStorage("userToken"),
+    },
+});
+```
+
+## Notes
+
+-   This action requires an encryption key to be set in your secrets configuration.
+-   The retrieved data is automatically decrypted and converted back to its original data type (string, number, boolean, or object).
+-   If no data exists for the given key, `null` will be returned.
+-   Data stored using [setSecureStorage](#setsecurestorage) can be retrieved with this action.
+-   The value is available in the `onComplete` action under `event.data` when used in YAML.
+-   When used in JavaScript, the value is returned directly from the function call.
+
+---
+
 # setSecureStorage
 
 The `setSecureStorage` action securely stores sensitive information in an encrypted format on the device, ensuring that sensitive data like tokens, user credentials, or personal information remains protected from unauthorized access.
@@ -14520,6 +14460,66 @@ ensemble.setSecureStorage({
 -   All data is encrypted before storage using AES encryption.
 -   To retrieve the value later, use the [getSecureStorage](#getsecurestorage) action.
 -   To remove the value, use the [clearSecureStorage](#clearsecurestorage) action.
+
+---
+
+# clearSecureStorage
+
+The `clearSecureStorage` action removes previously stored encrypted data from the device's secure storage, allowing you to clean up sensitive information when it's no longer needed, enhancing security by minimizing data exposure.
+
+## Properties
+
+| Property   | Type   | Description                                                                               |
+| :--------- | :----- | :---------------------------------------------------------------------------------------- |
+| key        | string | The key to remove from secure storage                                                     |
+| onComplete | action | Execute an Action when the data has been successfully removed                             |
+| onError    | action | Execute an Action when an error occurs. The error reason is available under 'event.error' |
+
+## Example
+
+```yaml
+Button:
+    label: Clear Secure Data
+    onTap:
+        clearSecureStorage:
+            key: userToken
+            onComplete:
+                showToast:
+                    message: Secure data removed successfully
+                    options:
+                        type: success
+            onError:
+                showToast:
+                    message: ${event.error}
+                    options:
+                        type: error
+```
+
+## JavaScript Usage
+
+You can also use this action in JavaScript:
+
+```javascript
+// Clear a stored secure value
+ensemble.clearSecureStorage("userToken");
+
+// With error handling
+try {
+    ensemble.clearSecureStorage("userToken");
+    console.log("Token removed successfully");
+} catch (error) {
+    console.error("Failed to clear token: " + error);
+}
+```
+
+## Notes
+
+-   This action requires an encryption key to be set in your secrets configuration.
+-   This action completely removes the specified key and its associated value from secure storage.
+-   If the key doesn't exist, the action completes successfully without any error.
+-   Use this action for cleanup when sensitive data is no longer needed (e.g., after logout).
+-   For security best practices, always clear sensitive data when it's no longer required.
+-   This action works with data stored using [setSecureStorage](#setsecurestorage).
 
 ---
 
