@@ -50,9 +50,13 @@ It is only available in YAML, as this calls a async function whose return type i
 -   The value is available in the `onComplete` action under `event.data`.
 -   This action provides access to data with OS-level security protection.
 
-<Callout type="info">
-For API calls, you can use `apiSecureStorage.key` to directly access secure storage values within the API context without depending on callbacks or async issues.
-</Callout>
+## apiSecureStorage
+
+For API calls, you can use `apiSecureStorage.key` to directly access secure storage values within the API context. This approach doesn't require any callbacks or async handling.
+
+### Example
+
+```yaml
 yamlAPI:
   createToDo:
     url: http://192.168.18.163:3000/api/test
@@ -63,3 +67,4 @@ yamlAPI:
       records:
         - fields:
             desc: "${apiSecureStorage.newdata} ${ensemble.storage.counter}"
+```
