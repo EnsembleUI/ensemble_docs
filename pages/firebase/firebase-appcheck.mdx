@@ -12,7 +12,6 @@ Now, let's dive into configuring Firebase App Check for our Ensemble application
   App Check integration requires proper Firebase configuration. Ensure your Firebase project is set up before proceeding. Learn how to configure it [here](pages/firebase/configuration.mdx).
 </Callout>
 
-- To get hands-on experience with App Check configuration, check the live example on [Ensemble Studio](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/W7b1n4a1LVoQgLyAie4F)
 
 ## 1. Environment Configuration
 
@@ -99,33 +98,6 @@ Environment Variables:
 - `FIRDebugEnabled`: Enables Firebase debug logging.
 - `FIRAppCheckDebugEnabled`: Specifically enables App Check debug token generation.
 
-### Production Providers:
-Configure App Check providers for production environments with enhanced security.
-
-1. **Example (Android Production Setup)**:
-```yaml
-# Firebase Console Configuration
-Provider: Play Integrity
-Status: Enabled
-Apps: com.yourapp.package
-```
-
-2. **Example (iOS Production Setup)**:
-```yaml
-# Firebase Console Configuration  
-Provider: App Attest
-Fallback: DeviceCheck
-Status: Enabled
-Apps: com.yourapp.bundle
-```
-
-3. **Example (Web Production Setup)**:
-```yaml
-# Firebase Console Configuration
-Provider: reCAPTCHA v3
-Site Key: your-recaptcha-site-key
-Domains: yourdomain.com
-```
 
 ### Conditional App Check:
 Control App Check usage on a per-API basis depending on your security requirements.
