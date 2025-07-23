@@ -9,16 +9,14 @@ Unlike traditional API security measures, App Check provides automatic app verif
 Now, let's dive into configuring Firebase App Check for our Ensemble application:
 
 <Callout type="warning">
-  App Check integration requires proper Firebase configuration. Ensure your Firebase project is set up before proceeding. Learn how to configure it [here](configuration.mdx#2-configure-ensemble-app).
+  App Check integration requires proper Firebase configuration. Ensure your Firebase project is set up before proceeding. Learn how to configure it [here](pages/firebase/configuration.mdx#2-configure-ensemble-app).
 </Callout>
 
+- To get hands-on experience with App Check configuration, check the live example on [Ensemble Studio](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/W7b1n4a1LVoQgLyAie4F)
 
 ## 1. Environment Configuration
 
-To enable App Check security in your Ensemble application, you'll need to configure environment variables and Firebase service files. Follow these steps to set up the necessary configuration:
-
-### Enabling App Check
-Add an environment variable named `firebase_app_check` and set its value to `true` to enforce App Check security across your application.
+To enable App Check security in your Ensemble application, add an environment variable named `firebase_app_check` and set its value to `true` to enforce App Check security across your application.
 
 **Example**:
 ```bash
@@ -27,52 +25,13 @@ firebase_app_check=true
 **Explanation**:
 - `firebase_app_check=true`: Enables App Check verification for all Firebase API calls in your Ensemble application.
 
-### Firebase Service Files Configuration
-Configure the `firebase_config` environment variable with platform-specific configuration extracted from your Firebase service files.
-
-**Example**:
-```json
-{
-  "web": {
-    "apiKey": "your-web-api-key",
-    "authDomain": "your-project.firebaseapp.com",
-    "projectId": "your-project-id",
-    "storageBucket": "your-project.appspot.com",
-    "messagingSenderId": "123456789",
-    "appId": "1:123456789:web:abcdef123456"
-  },
-  "android": {
-    "apiKey": "your-android-api-key",
-    "appId": "1:123456789:android:abcdef123456",
-    "messagingSenderId": "123456789",
-    "projectId": "your-project-id",
-    "storageBucket": "your-project.appspot.com"
-  },
-  "ios": {
-    "apiKey": "your-ios-api-key",
-    "appId": "1:123456789:ios:abcdef123456",
-    "messagingSenderId": "123456789",
-    "projectId": "your-project-id",
-    "storageBucket": "your-project.appspot.com",
-    "iosBundleId": "com.your.app.bundle"
-  }
-}
-```
-
-**Explanation**:
-- Extract configuration values from your downloaded Firebase service files (`google-services.json` for Android, `GoogleService-Info.plist` for iOS).
-- Each platform section contains the necessary keys for App Check verification.
-
-<Callout type="info">
-  Download the required service files from your Firebase console: `google-services.json` for Android and `GoogleService-Info.plist` for iOS before configuring the environment variable.
-</Callout>
-
 ## 2. Types of App Check Operations
 
 App Check provides different verification methods for different platforms and environments. Here's a breakdown of the main operations and configurations:
 
 ### Debug Token Setup:
-Debug tokens are essential for development and testing environments where app verification might not work as expected.
+Debug tokens are essential for development and testing environments where app verification might not work as expected. To run application with appcheck (Dev environment), you would need to register debug token in firebase console's appcheck section for your project.
+For release, you will need to register SHA 256 token of your app with your respective platform (Appstore or Google Play).
 
 1. **Example (Android Debug Token Extraction)**:
 ```bash
@@ -102,7 +61,7 @@ Environment Variables:
 ### Conditional App Check:
 Control App Check usage on a per-API basis depending on your security requirements.
 
-1. **Example (Secure Firebase Function)**:
+**Example (Secure Firebase Function)**:
 ```yaml
 secureFunction:
   type: firebaseFunction
@@ -113,34 +72,6 @@ secureFunction:
     operation: transfer
 ```
 
-2. **Example (Public Firebase Function)**:
-```yaml
-publicFunction:
-  type: firebaseFunction
-  name: getPublicData  
-  useAppcheck: false  # Explicitly disable App Check
-  data:
-    category: news
-    limit: 10
-```
-
-3. **Example (Environment-Conditional App Check)**:
-```yaml
-conditionalFunction:
-  inputs:
-    - userId
-    - isProduction
-  type: firebaseFunction
-  name: getUserData
-  useAppcheck: ${isProduction}  # Use App Check only in production
-  data:
-    userId: ${userId}
-```
-
-**Explanation**:
-- `useAppcheck: false`: Explicitly disables App Check for public endpoints.
-- `useAppcheck: ${isProduction}`: Conditionally enables App Check based on environment variables.
-- Default behavior when `firebase_app_check=true` is to enable App Check for all Firebase operations.
 
 ## 3. Response and Monitoring of App Check Operations
 
@@ -156,70 +87,13 @@ invokeAPI:
     executeCode:
       body: |-
         console.log('App Check verification successful');
-        analytics.logEvent('app_check_success', {
-          operation: 'firestore_query'
-        });
+
   onError:
     executeCode:
       body: |-
         console.log('App Check verification failed:', response.error);
-        analytics.logEvent('app_check_failure', {
-          operation: 'firestore_query', 
-          error_code: response.error.code
-        });
 ```
 
-### 2. Using App Check status in UI components:
-```yaml
-Column:
-  children:
-    - Column:
-        styles:
-          visible: '${secureFirestoreOperation.isLoading ? true : false}'
-        children:
-          - Progress:
-              display: circular
-          - Text:
-              text: "Verifying app authenticity..."
-    - Column:
-        styles:
-          visible: '${secureFirestoreOperation.isSuccess ? true : false}'
-        item-template:
-          data: ${secureFirestoreOperation.body.documents}
-          name: item
-          template:
-            Text:
-              text: ${item.name}
-    - Column:
-        styles:
-          visible: '${secureFirestoreOperation.isError ? true : false}'
-        children:
-          - Text:
-              text: "App verification failed. Please update your app."
-              styles:
-                color: red
-```
-
-### 3. App Check status monitoring:
-```yaml
-Button:
-  label: Check App Security Status
-  onTap:
-    invokeAPI:
-      name: checkAppCheckStatus
-    onResponse:
-      executeCode:
-        body: |-
-          var isVerified = response.body.appCheckVerified || false;
-          statusIndicator.styles.backgroundColor = isVerified ? 'green' : 'red';
-          statusText.text = isVerified ? 'App Verified' : 'Verification Failed';
-```
-
-**Explanation**:
-- The first child `Column` shows a loading state with an App Check verification message.
-- The second child `Column` displays data only when App Check verification succeeds.
-- The third child `Column` shows a user-friendly error message when App Check fails.
-- The monitoring example demonstrates how to check and display App Check verification status.
 
 ## 4. Troubleshooting Common App Check Issues
 
