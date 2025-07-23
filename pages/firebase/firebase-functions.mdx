@@ -1,0 +1,402 @@
+---
+title: "Calling Firebase Functions APIs"
+description: "Learn how to integrate and call Firebase Functions in your Ensemble applications"
+---
+
+import { Callout } from 'nextra/components'
+
+# Calling Firebase Functions APIs
+
+Firebase Functions allows you to run backend code in response to events triggered by Firebase features and HTTPS requests. Ensemble platform provides seamless integration with Firebase Functions, enabling you to call serverless functions from your app effortlessly.
+
+Unlike traditional server setups, Firebase Functions offers a serverless architecture that automatically scales based on demand. Firebase Functions is an excellent choice for Ensemble applications because it provides automatic scaling, secure execution environment, easy deployment, and simplified backend logic without server management.
+
+Now, let's dive into implementing Firebase Functions in our Ensemble application:
+
+<Callout type="warning">
+Operations on Firebase Functions won't work unless we have configured our Ensemble application with Firebase. Learn how to configure it here.
+</Callout>
+
+<Callout type="info">
+To get hands-on experience with Firebase Functions operations, check the live example on Ensemble Studio.
+</Callout>
+
+## 1. Environment Configuration
+
+### Setting Up API Providers
+To use Firebase Functions, create an environment variable named `api_providers` and add "firebase" to it.
+
+<Callout type="info">
+**Note:** You can use multiple api_providers by using comma-separated values (e.g., firestore,firebase)
+</Callout>
+
+**Example:**
+```bash
+api_providers=firestore,firebase
+```
+
+## 2. Types of Firebase Functions Operations
+
+Firebase Functions offers various ways to interact with your serverless backend. Here's a breakdown of core operations along with demo API calls for our Ensemble app:
+
+### Basic Function Call:
+This operation calls a Firebase Function without any parameters.
+
+**Example (Simple function call):**
+```yaml
+testFunction:
+  type: firebaseFunction
+  name: helloWorld
+```
+
+**Explanation:**
+- `type: firebaseFunction`: Specifies that the operation is for Firebase Functions
+- `name`: The name of the Firebase Function to call
+
+### Function Call with Data:
+This operation calls a Firebase Function with input parameters.
+
+**Example (Function with parameters):**
+```yaml
+createUser:
+  inputs:
+    - email
+    - displayName
+  type: firebaseFunction
+  name: createCustomUser
+  data:
+    email: ${email}
+    displayName: ${displayName}
+    role: user
+    createdAt: ${new Date().toISOString()}
+```
+
+**Explanation:**
+- `inputs`: Dynamic variables that can be passed to the function
+- `data`: The payload sent to the Firebase Function
+- Values can be static or use dynamic variables with `${variableName}` syntax
+
+### Function Call with Custom Headers:
+You can add custom headers to your Firebase Function calls.
+
+**Example (With custom headers):**
+```yaml
+authenticatedCall:
+  inputs:
+    - authToken
+    - userId
+  type: firebaseFunction
+  name: getUserProfile
+  headers:
+    Authorization: Bearer ${authToken}
+    Content-Type: application/json
+    X-Custom-Header: ensemble-app
+  data:
+    userId: ${userId}
+    includePrivateData: true
+```
+
+**Explanation:**
+- `headers`: Custom HTTP headers to include with the request
+- Useful for authentication tokens, content types, or custom application headers
+
+### Function Call with HTTP Methods:
+By default, Firebase Functions use POST method, but you can specify other methods if your function supports them.
+
+**Example (GET request):**
+```yaml
+getPublicData:
+  type: firebaseFunction
+  name: getNews
+  method: GET
+  query:
+    category: technology
+    limit: 10
+```
+
+**Explanation:**
+- `method`: HTTP method for the request (GET, POST, PUT, DELETE)
+- `query`: Query parameters for GET requests
+
+## 3. Response Handling of Firebase Functions
+
+When performing Firebase Functions operations, you may need to handle responses and errors appropriately. Below are common patterns for handling API responses in your Ensemble app.
+
+### 1. Making an API call:
+```yaml
+invokeAPI:
+  name: myFunction
+  inputs:
+    userId: ${userID}
+```
+
+You can also use `onResponse` & `onError` on Firebase Function API calls and perform operations on the response.
+
+### 2. Complete Function Definition with Response Handling:
+```yaml
+API:
+  getUserData:
+    inputs:
+      - userId
+    type: firebaseFunction
+    name: fetchUserProfile
+    data:
+      userId: ${userId}
+      includeStats: true
+    onResponse:
+      executeCode:
+        body: |-
+          console.log('User data fetched successfully');
+          console.log(response.body);
+          userNameText.text = response.body.user.name;
+          userEmailText.text = response.body.user.email;
+    onError:
+      executeCode:
+        body: |-
+          console.log('Failed to fetch user data');
+          console.log(response.error);
+          errorText.text = "Error: " + response.error.message;
+
+  sendNotification:
+    inputs:
+      - message
+      - recipientId
+    type: firebaseFunction
+    name: sendPushNotification
+    data:
+      message: ${message}
+      recipientId: ${recipientId}
+      priority: high
+    onResponse:
+      executeCode:
+        body: |-
+          console.log('Notification sent successfully');
+          statusText.text = "Notification sent!";
+          statusText.styles = { color: "green" };
+    onError:
+      executeCode:
+        body: |-
+          console.log('Failed to send notification');
+          statusText.text = "Failed to send notification";
+          statusText.styles = { color: "red" };
+```
+
+### 3. Using response in UI Components:
+To display data based on the API call's state (loading, success, error), you can use the following structure:
+
+```yaml
+Column:
+  children:
+    - Column:
+        styles:
+          visible: '${getUserData.isLoading ? true : false}'
+        children:
+          - Progress:
+              display: circular
+          - Text:
+              text: "Loading user data..."
+    - Column:
+        styles:
+          visible: '${getUserData.isSuccess ? true : false}'
+        children:
+          - Text:
+              id: userNameText
+              text: "Name: ${getUserData.body.user.name}"
+          - Text:
+              id: userEmailText  
+              text: "Email: ${getUserData.body.user.email}"
+          - Text:
+              text: "Last Login: ${getUserData.body.user.lastLogin}"
+    - Column:
+        styles:
+          visible: '${getUserData.isError ? true : false}'
+        children:
+          - Text:
+              id: errorText
+              text: "Failed to load user data"
+              styles:
+                color: red
+```
+
+**Explanation:**
+- The first child Column is visible only when the API call is loading (`visible: '${getUserData.isLoading ? true : false}'`). It shows a circular progress indicator.
+- The second child Column is visible only when the API call is successful (`visible: '${getUserData.isSuccess ? true : false}'`). It displays the function result.
+- The third child Column is visible only when there is an error (`visible: '${getUserData.isError ? true : false}'`). It shows an error message.
+
+### 4. Using Function Response in Forms:
+```yaml
+Form:
+  children:
+    - TextInput:
+        id: emailInput
+        label: Email Address
+        required: true
+    - TextInput:
+        id: messageInput
+        label: Message
+        multiline: true
+    - Button:
+        label: Send Email
+        onTap:
+          invokeAPI:
+            name: sendEmail
+            inputs:
+              email: ${emailInput.value}
+              message: ${messageInput.value}
+    - Text:
+        id: emailResult
+        styles:
+          visible: '${sendEmail.isSuccess ? true : false}'
+          color: green
+        text: "Email sent successfully!"
+    - Text:
+        id: emailError
+        styles:
+          visible: '${sendEmail.isError ? true : false}'
+          color: red
+        text: "Failed to send email: ${sendEmail.error.message}"
+```
+
+### 5. Using response in ListView:
+```yaml
+ListView:
+  item-template:
+    data: ${getNotifications.body.notifications}
+    name: notification
+    template:
+      Card:
+        padding: 16
+        margin: 8
+        children:
+          - Text:
+              text: ${notification.title}
+              styles:
+                fontSize: 18
+                fontWeight: bold
+          - Text:
+              text: ${notification.message}
+              styles:
+                fontSize: 14
+                color: gray
+          - Text:
+              text: ${notification.timestamp}
+              styles:
+                fontSize: 12
+                color: lightgray
+```
+
+## 4. Advanced Features
+
+### Batch Function Calls:
+You can call multiple Firebase Functions sequentially or handle complex workflows.
+
+**Example (Sequential calls):**
+```yaml
+API:
+  processOrder:
+    inputs:
+      - orderId
+    type: firebaseFunction
+    name: validateOrder
+    data:
+      orderId: ${orderId}
+    onResponse:
+      invokeAPI:
+        name: chargePayment
+        inputs:
+          orderId: ${orderId}
+          amount: ${response.body.totalAmount}
+
+  chargePayment:
+    inputs:
+      - orderId
+      - amount
+    type: firebaseFunction
+    name: processPayment
+    data:
+      orderId: ${orderId}
+      amount: ${amount}
+    onResponse:
+      invokeAPI:
+        name: sendConfirmation
+        inputs:
+          orderId: ${orderId}
+```
+
+### Error Handling with Retry Logic:
+```yaml
+API:
+  reliableFunction:
+    type: firebaseFunction
+    name: criticalOperation
+    data:
+      operation: important
+    onError:
+      executeCode:
+        body: |-
+          console.log('Function failed, implementing retry logic');
+          if (response.error.code === 'timeout') {
+            // Retry after a delay
+            setTimeout(() => {
+              invokeAPI({ name: 'reliableFunction' });
+            }, 2000);
+          }
+```
+
+## 5. Best Practices
+
+### Input Validation:
+Always validate inputs before sending to Firebase Functions:
+
+```yaml
+validateAndSubmit:
+  inputs:
+    - email
+    - password
+  type: firebaseFunction
+  name: createAccount
+  data:
+    email: ${email}
+    password: ${password}
+  condition: '${email.includes("@") && password.length >= 8}'
+  onResponse:
+    executeCode:
+      body: |-
+        console.log('Account created successfully');
+        navigateToScreen('welcome');
+  onError:
+    executeCode:
+      body: |-
+        console.log('Account creation failed');
+        showErrorDialog(response.error.message);
+```
+
+### Loading States:
+Provide clear feedback during function execution:
+
+```yaml
+Button:
+  label: '${submitForm.isLoading ? "Processing..." : "Submit"}'
+  enabled: '${!submitForm.isLoading}'
+  onTap:
+    invokeAPI:
+      name: submitForm
+```
+
+## 6. Troubleshooting
+
+### Common Issues
+- Ensure Firebase Functions are deployed and accessible
+- Verify function names match exactly (case-sensitive)
+- Check that the Firebase project is correctly configured
+- Confirm internet connectivity for function calls
+
+### Debug Tips
+- Use console.log in onResponse and onError handlers to inspect responses
+- Check Firebase Console for function logs and error details
+- Test functions independently using Firebase Console or Postman
+- Verify function permissions and authentication requirements
+
+<Callout type="success">
+By using these operations, you can efficiently call Firebase Functions from your Ensemble application. Firebase Functions' serverless architecture makes it a powerful solution for any backend logic your application needs.
+</Callout>

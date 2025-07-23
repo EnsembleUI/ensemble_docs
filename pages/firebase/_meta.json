@@ -4,5 +4,11 @@
     },
     "firestore-operations": {
         "title": "Firestore"
+    },
+    "firebase-functions": {
+      "title": "Firebase Functions"
+    },
+    "firebase-appcheck": {
+      "title": "Firebase Appcheck"
     }
 }
