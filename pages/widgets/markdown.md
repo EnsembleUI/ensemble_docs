@@ -13,7 +13,7 @@ The Markdown Render Widget empowers you to effortlessly render Markdown text, tr
 
 ### styles
 
-| Property                     | Type              | Description                                                                                                                                                                                                                                                                                                                       |
+| Property                     | Type              | Description                                                                                          Image:                                                                                                                                                                                                                             |
 | :--------------------------- | :---------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | textStyle                    | string            | An opaque object that determines the size, color, and decoration of text. Styling for regular text. Default to theme's bodyMedium styling. [See properties](#styleslinkstyle)                                                                                                                                                     |
 | linkStyle                    | object            | Styling for the url. [See properties](#styleslinkstyle)                                                                                                                                                                                                                                                                           |
@@ -30,6 +30,8 @@ The Markdown Render Widget empowers you to effortlessly render Markdown text, tr
 | visibilityTransitionDuration | number            | Specify the duration in seconds when a widget animates between visible and not visible state. Note that setting this value will cause the widget to still occupy the UI space even when it is not visible.                                                                                                                        |
 | visible                      | boolean           | Toggle a widget visibility on/off. Note that an invisible widget will not occupy UI space, unless the visibilityTransitionDuration is specified.                                                                                                                                                                                  |
 | opacity                      | double                                        | Adjusts the opacity of the widget. Values range from 0 (fully transparent) to 1 (opaque). Default is `1`.                                                                                                                 |
+| colorFilter   | object                                         | Applies color filter to Markdown                                                                         |      
+
 
 #### styles.linkStyle
 
