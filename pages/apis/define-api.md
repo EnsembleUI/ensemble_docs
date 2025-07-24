@@ -71,3 +71,22 @@ API:
       title: "${productTitle}" # example of a dynamic data that is set based on the inputs
       source: MyApp # example of a static data that is always passed
 ```
+
+## apiSecureStorage
+
+For API calls, you can use `apiSecureStorage.key` to directly access secure storage values within the API context. This approach doesn't require any callbacks or async handling.
+
+### Example
+
+```yaml
+API:
+  createToDo:
+    url: http://192.168.18.163:3000/api/test
+    method: 'POST'
+    headers:
+      Context: apiKey ${apiSecureStorage.newdata}
+    body:
+      records:
+        - fields:
+            desc: "${apiSecureStorage.newdata} ${ensemble.storage.counter}"
+```
