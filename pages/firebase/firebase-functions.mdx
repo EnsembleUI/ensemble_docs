@@ -22,16 +22,17 @@ Now, let's dive into implementing Firebase Functions in our Ensemble application
 ## 1. Environment Configuration
 
 ### Setting Up API Providers
-To use Firebase Functions, create an environment variable named `api_providers` and add "firebase" to it.
+Within our Ensemble application, navigate to the settings section and look for the option to manage environmental variables. Here, we'll create two new variables:
+- `api_providers`: Set the value of this variable to `firebase`. This tells our app to use Firebase function as a api provider.
+
+**Example**:
+```bash
+![All Apps](/images/firebase/firebasefunction.png)
 
 <Callout type="info">
 **Note:** You can use multiple api_providers by using comma-separated values (e.g., firestore,firebase)
 </Callout>
 
-**Example:**
-```bash
-api_providers=firestore,firebase
-```
 
 ## 2. Types of Firebase Functions Operations
 
