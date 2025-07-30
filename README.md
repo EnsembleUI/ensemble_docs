@@ -65,6 +65,8 @@ Ensemble provides a browser-based IDE, [Ensemble Studio](https://studio.ensemble
   - [Social Sign In](#social-sign-in)
   - [Setting up Authentication with Firebase](#setting-up-authentication-with-firebase)
   - [Setting up Authentication with Auth0](#setting-up-authentication-with-auth0)
+- **Payments**
+  - [Stripe Integration](#stripe-integration)
 - **Moengage**
   - [MoEngage Integration](#moengage-integration)
 - [Adobe Analytics](#adobe-analytics)
@@ -208,6 +210,7 @@ Ensemble provides a browser-based IDE, [Ensemble Studio](https://studio.ensemble
   - [showBottomModal](#showbottommodal)
   - [showDialog](#showdialog)
   - [showNotification](#shownotification)
+  - [showPaymentSheet](#showpaymentsheet)
   - [showToast](#showtoast)
   - [startTimer](#starttimer)
   - [stopAudio](#stopaudio)
@@ -4165,6 +4168,234 @@ View:
 * Run `flutter pub upgrade`. Run this occasionally when the Ensemble framework has been updated.
 * Run `flutter create --org com.ensembleui --project-name starter --platform=ios,android .` (note the period at the end). If you modified the appId, make sure the org and project name match the bundle ID.
 * Run the App with `flutter run`. If you currently have a running iOS or Android emulator, the command will prompt for a selection, otherwise the App will be opened in the web browser.
+
+---
+
+# Stripe Integration
+
+Ensemble provides seamless integration with Stripe for processing payments in your mobile apps. The Stripe module allows you to accept credit card payments, digital wallets, and other payment methods through Stripe's secure Payment Sheet.
+
+## Overview
+
+The Stripe integration in Ensemble consists of:
+
+- **Payment Sheet**: A pre-built UI component for collecting payment information
+- **Payment Intent Management**: Client-side payment intent handling
+- **Error Handling**: Comprehensive error handling for payment failures
+- **Security**: PCI-compliant payment processing
+
+## Configuration
+
+### Build Configuration
+
+1. Go to Build & Deploy > Build Settings
+2. Enable Stripe Module
+3. Add your Stripe publishable key in Stripe Attributes. You also need to add Apple Pay Merchant Identifier for Apple Pay.
+
+## Basic Implementation
+
+### Simple Payment Flow
+
+Here's a basic example of implementing Stripe payments:
+
+```yaml
+View:
+  header:
+    title: Checkout
+  body:
+    Column:
+      styles:
+        padding: 24
+        gap: 16
+      children:
+        - Text:
+            text: Order Total: $29.99
+            styles:
+              fontSize: 18
+              fontWeight: bold
+        - Button:
+            label: Pay Now
+            onTap:
+              showPaymentSheet:
+                clientSecret: ${paymentIntentClientSecret}
+                configuration:
+                  merchantDisplayName: "My Store"
+                  style: "system"
+                  primaryButtonLabel: "Pay $29.99"
+                onSuccess:
+                  showToast:
+                    message: "Payment successful!"
+                onError:
+                  showToast:
+                    message: "Payment failed"
+```
+
+### Advanced Configuration
+
+You can customize the payment sheet with various configuration options:
+
+```yaml
+showPaymentSheet:
+  clientSecret: ${paymentIntentClientSecret}
+  configuration:
+    merchantDisplayName: "Premium Store"
+    preferredNetworks: ["visa", "mastercard", "amex"]
+    customerId: ${stripeCustomerId}
+    customerEphemeralKeySecret: ${ephemeralKeySecret}
+    returnURL: "myapp://payment-return"
+    primaryButtonLabel: "Complete Payment"
+    style: "dark"
+    applePay:
+      merchantCountryCode: "US"
+    googlePay:
+      merchantCountryCode: "US"
+      testEnv: true
+    billingDetails:
+      email: ${userEmail}
+      name: ${userName}
+      address:
+        city: ${userCity}
+        country: "US"
+        line1: ${userAddress}
+        postalCode: ${userPostalCode}
+        state: ${userState}
+  onSuccess:
+    showToast:
+      message: "Payment successful!"
+  onError:
+    showToast:
+      message: "Payment failed"
+```
+
+### Handle Payment Success
+
+When payment is successful, you can navigate to a confirmation screen:
+
+```yaml
+onSuccess:
+  navigateScreen:
+    name: OrderConfirmation
+    inputs:
+      orderId: ${orderId}
+```
+
+### Handle Payment Failure
+
+Implement proper error handling for failed payments:
+
+```yaml
+onError:
+  showDialog:
+    widget:
+      Column:
+        styles:
+          gap: 16
+          padding: 20
+        children:
+          - Text:
+              text: Payment Failed
+              styles:
+                fontSize: 18
+                fontWeight: bold
+          - Text:
+              text: "There was an issue processing your payment. Please try again."
+          - Button:
+              label: Try Again
+              onTap: 
+                dismissDialog:
+```
+
+## Configuration Options
+
+### Payment Sheet Style
+
+You can customize the appearance of the payment sheet:
+
+- `"light"`: Light theme
+- `"dark"`: Dark theme  
+- `"system"`: Follows system theme (default)
+
+### Digital Wallets
+
+Configure Apple Pay and Google Pay:
+
+```yaml
+configuration:
+  applePay:
+    merchantCountryCode: "US"
+  googlePay:
+    merchantCountryCode: "US"
+    testEnv: true  # Set to false for production
+```
+
+### Billing Details
+
+Pre-fill customer information:
+
+```yaml
+configuration:
+  billingDetails:
+    email: ${userEmail}
+    name: ${userName}
+    phone: ${userPhone}
+    address:
+      city: ${userCity}
+      country: "US"
+      line1: ${userAddress}
+      postalCode: ${userPostalCode}
+      state: ${userState}
+```
+
+## Security Best Practices
+
+### 1. Secure Payment Intent Handling
+
+- Ensure payment intents are created securely
+- Validate payment amounts before processing
+- Use HTTPS for all API calls
+- Implement proper error handling
+
+### 2. Configuration Security
+
+- Use environment variables for sensitive data
+- Never expose secret keys in client-side code
+- Use test account for development
+
+## Testing
+
+### Test Card Numbers
+
+Use these test card numbers for development:
+
+| Card Number | Description |
+|-------------|-------------|
+| 4242 4242 4242 4242 | Successful payment |
+| 4000 0000 0000 0002 | Declined payment |
+| 4000 0025 0000 3155 | Requires authentication |
+| 4000 0000 0000 9995 | Insufficient funds |
+
+### Test Mode
+
+Always use test mode during development:
+
+- Use `pk_test_` keys for publishable keys
+- Test with various scenarios before going live
+
+## Production Checklist
+
+Before going live with Stripe payments:
+
+- [ ] Switch to live API keys
+- [ ] Configure fraud detection
+- [ ] Test with real payment methods
+- [ ] Implement proper error handling
+- [ ] Set up monitoring and logging
+- [ ] Configure customer support processes
+- [ ] Review compliance requirements
+
+## Related Actions
+
+- [showPaymentSheet](../actions/show-payment-sheet.md) - Display the Stripe Payment Sheet 
 
 ---
 
@@ -15056,6 +15287,227 @@ showNotification action triggers the display of local notifications within the a
 **Example**
 
 You can refer [here](#requestnotificationaccess) for example related to notification. Can also refer complete example [here](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/zbIn4f6tD3yQkC1MJRj1?propertyPanelEnabled=true&instantPreviewDisabled=false&editorV2Enabled=true).
+
+---
+
+# showPaymentSheet
+
+The `showPaymentSheet` action displays Stripe's Payment Sheet, allowing users to securely enter payment information and complete transactions within your Ensemble app.
+
+### Properties
+
+| Property      | Type   | Description                                                                              |
+| :------------ | :----- | :--------------------------------------------------------------------------------------- |
+| clientSecret  | string | The Stripe PaymentIntent client secret that identifies the payment to be completed.      |
+| configuration | object | Optional configuration for the payment sheet. [see properties](#propertiesconfiguration) |
+| onSuccess     | action | Execute an Action when the payment is successfully completed.                            |
+| onError       | action | Execute an Action when the payment fails or is cancelled.                                |
+
+#### properties.configuration
+
+| Property                   | Type   | Description                                                                  |
+| :------------------------- | :----- | :--------------------------------------------------------------------------- |
+| merchantDisplayName        | string | The merchant display name shown in the payment sheet.                        |
+| preferredNetworks          | array  | Preferred card networks (e.g., ["visa", "mastercard"]).                      |
+| customerId                 | string | Stripe customer ID (for returning customers).                                |
+| customerEphemeralKeySecret | string | Ephemeral key for the customer.                                              |
+| returnURL                  | string | Return URL after payment.                                                    |
+| primaryButtonLabel         | string | Label for the primary button.                                                |
+| applePay                   | object | Apple Pay configuration. [see properties](#propertiesapplepay)               |
+| googlePay                  | object | Google Pay configuration. [see properties](#propertiesgooglepay)             |
+| style                      | string | Payment sheet style: 'light', 'dark', or 'system'.                           |
+| billingDetails             | object | Billing details for the payment. [see properties](#propertiesbillingdetails) |
+
+#### properties.configuration.applePay
+
+| Property            | Type   | Description                      |
+| :------------------ | :----- | :------------------------------- |
+| merchantCountryCode | string | Apple Pay merchant country code. |
+
+#### properties.configuration.googlePay
+
+| Property            | Type    | Description                             |
+| :------------------ | :------ | :-------------------------------------- |
+| merchantCountryCode | string  | Google Pay merchant country code.       |
+| testEnv             | boolean | Enable test environment for Google Pay. |
+
+#### properties.configuration.billingDetails
+
+| Property | Type   | Description                                            |
+| :------- | :----- | :----------------------------------------------------- |
+| email    | string | Customer email address.                                |
+| phone    | string | Customer phone number.                                 |
+| name     | string | Customer name.                                         |
+| address  | object | Customer address. [see properties](#propertiesaddress) |
+
+#### properties.configuration.billingDetails.address
+
+| Property   | Type   | Description      |
+| :--------- | :----- | :--------------- |
+| city       | string | City name.       |
+| country    | string | Country code.    |
+| line1      | string | Address line 1.  |
+| line2      | string | Address line 2.  |
+| postalCode | string | Postal/ZIP code. |
+| state      | string | State/Province.  |
+
+### Example
+
+Here's a basic example of how to implement Stripe payments in your Ensemble app:
+
+```yaml
+View:
+  header:
+    title: Payment Example
+  body:
+    Column:
+      styles:
+        padding: 24
+        gap: 16
+      children:
+        - Text:
+            text: Complete your purchase
+            styles:
+              fontSize: 18
+              fontWeight: bold
+        - Text:
+            text: Total: $29.99
+            styles:
+              fontSize: 16
+        - Button:
+            label: Pay with Stripe
+            onTap:
+              showPaymentSheet:
+                clientSecret: ${paymentIntentClientSecret}
+                configuration:
+                  merchantDisplayName: "My Store"
+                  style: "system"
+                  primaryButtonLabel: "Pay $29.99"
+                onSuccess:
+                  showToast:
+                    message: "Payment successful!"
+                onError:
+                  showToast:
+                    message: "Payment failed or cancelled"
+```
+
+### Advanced Configuration Example
+
+```yaml
+showPaymentSheet:
+  clientSecret: ${paymentIntentClientSecret}
+  configuration:
+    merchantDisplayName: "Premium Store"
+    preferredNetworks: ["visa", "mastercard", "amex"]
+    customerId: ${stripeCustomerId}
+    customerEphemeralKeySecret: ${ephemeralKeySecret}
+    returnURL: "myapp://payment-return"
+    primaryButtonLabel: "Complete Payment"
+    style: "dark"
+    applePay:
+      merchantCountryCode: "US"
+    googlePay:
+      merchantCountryCode: "US"
+      testEnv: true
+    billingDetails:
+      email: ${userEmail}
+      name: ${userName}
+      address:
+        city: ${userCity}
+        country: "US"
+        line1: ${userAddress}
+        postalCode: ${userPostalCode}
+        state: ${userState}
+  onSuccess:
+    showToast:
+      message: "Payment successful!"
+  onError:
+    showToast:
+      message: "Payment failed"
+```
+
+### Error Handling
+
+The `showPaymentSheet` action provides error handling through the `onError` callback. Common failure scenarios include:
+
+- User cancels the payment
+- Invalid payment method
+- Insufficient funds
+- Network connectivity issues
+- Invalid payment intent
+
+### Testing
+
+For testing, use Stripe's test mode with test card numbers:
+
+- **Success**: 4242 4242 4242 4242
+- **Decline**: 4000 0000 0000 0002
+- **Requires Authentication**: 4000 0025 0000 3155
+
+### Complete Example
+
+```yaml
+View:
+  header:
+    title: Checkout
+  body:
+    Column:
+      styles:
+        padding: 24
+        gap: 16
+      children:
+        - Text:
+            text: Order Summary
+            styles:
+              fontSize: 18
+              fontWeight: bold
+        - Text:
+            text: |
+              Product: Premium Widget
+              Quantity: 1
+              Total: $29.99
+        - Button:
+            label: Pay $29.99
+            styles:
+              backgroundColor: 0xff6772E5
+              color: white
+            onTap:
+              showPaymentSheet:
+                clientSecret: ${paymentIntentClientSecret}
+                configuration:
+                  merchantDisplayName: "Widget Store"
+                  style: "system"
+                  primaryButtonLabel: "Pay $29.99"
+                  billingDetails:
+                    email: ${userEmail}
+                    name: ${userName}
+                onSuccess:
+                  navigateScreen:
+                      name: OrderConfirmation
+                      inputs:
+                        orderId: ${orderId}
+                onError:
+                  showDialog:
+                    widget:
+                      Column:
+                        styles:
+                          gap: 16
+                          padding: 20
+                        children:
+                          - Text:
+                              text: Payment Failed
+                              styles:
+                                fontSize: 18
+                                fontWeight: bold
+                          - Text:
+                              text: "There was an issue processing your payment. Please try again or contact support."
+                          - Button:
+                              label: Try Again
+                              onTap: 
+                                dismissDialog:
+```
+
+This implementation provides a complete Stripe payment flow with proper error handling and user feedback. 
 
 ---
 
