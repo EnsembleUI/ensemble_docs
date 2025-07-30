@@ -42,6 +42,9 @@
   "authentication": {
     "title": "Authentication"
   },
+  "payments": {
+    "title": "Payments"
+  },
   "moengage": {
     "title": "MoEngage"
   },

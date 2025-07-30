@@ -152,6 +152,9 @@
   "show-notification": {
     "title": "Show Notification"
   },
+  "show-payment-sheet": {
+    "title": "Show Payment Sheet"
+  },
   "show-toast": {
     "title": "Show Toast"
   },
