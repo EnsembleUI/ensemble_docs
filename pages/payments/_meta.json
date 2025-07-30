@@ -1,0 +1,8 @@
+{
+  "stripe": {
+    "title": "Stripe Integration"
+  },
+  "stripe-example": {
+    "title": "Stripe Example"
+  }
+} 
