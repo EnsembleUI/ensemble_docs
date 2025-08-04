@@ -173,6 +173,7 @@ Ensemble is a platform where you can build, publish, and iterate native and web 
 - [showBottomModal](https://docs.ensembleui.com/actions/show-bottom-modal)
 - [showDialog](https://docs.ensembleui.com/actions/show-dialog)
 - [showNotification](https://docs.ensembleui.com/actions/show-notification)
+- [initializeStripe](https://docs.ensembleui.com/actions/initialize-stripe)
 - [showPaymentSheet](https://docs.ensembleui.com/actions/show-payment-sheet)
 - [showToast](https://docs.ensembleui.com/actions/show-toast)
 - [startTimer](https://docs.ensembleui.com/actions/start-timer)

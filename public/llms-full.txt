@@ -210,6 +210,7 @@ Ensemble provides a browser-based IDE, [Ensemble Studio](https://studio.ensemble
   - [showBottomModal](#showbottommodal)
   - [showDialog](#showdialog)
   - [showNotification](#shownotification)
+  - [initializeStripe](#initializestripe)
   - [showPaymentSheet](#showpaymentsheet)
   - [showToast](#showtoast)
   - [startTimer](#starttimer)
@@ -4179,18 +4180,41 @@ Ensemble provides seamless integration with Stripe for processing payments in yo
 
 The Stripe integration in Ensemble consists of:
 
+- **Stripe Initialization**: Initialize Stripe with your configuration
 - **Payment Sheet**: A pre-built UI component for collecting payment information
 - **Payment Intent Management**: Client-side payment intent handling
 - **Error Handling**: Comprehensive error handling for payment failures
 - **Security**: PCI-compliant payment processing
 
-## Configuration
+## Setup
 
-### Build Configuration
+### Initialize Stripe
 
-1. Go to Build & Deploy > Build Settings
-2. Enable Stripe Module
-3. Add your Stripe publishable key in Stripe Attributes. You also need to add Apple Pay Merchant Identifier for Apple Pay.
+Before using Stripe payments, you need to initialize Stripe with your configuration:
+
+```yaml
+View:
+  header:
+    title: Payment Setup
+  body:
+    Column:
+      styles:
+        padding: 24
+        gap: 16
+      children:
+        - Button:
+            label: Initialize Stripe
+            onTap:
+              initializeStripe:
+                publishableKey: "pk_test_your_publishable_key_here"
+                merchantIdentifier: "merchant.com.yourapp"
+                onSuccess:
+                  showToast:
+                    message: "Stripe initialized successfully"
+                onError:
+                  showToast:
+                    message: "Failed to initialize Stripe"
+```
 
 ## Basic Implementation
 
@@ -4216,18 +4240,25 @@ View:
         - Button:
             label: Pay Now
             onTap:
-              showPaymentSheet:
-                clientSecret: ${paymentIntentClientSecret}
-                configuration:
-                  merchantDisplayName: "My Store"
-                  style: "system"
-                  primaryButtonLabel: "Pay $29.99"
+              initializeStripe:
+                publishableKey: "pk_test_your_publishable_key_here"
+                merchantIdentifier: "merchant.com.yourapp"
                 onSuccess:
-                  showToast:
-                    message: "Payment successful!"
+                  showPaymentSheet:
+                    clientSecret: ${paymentIntentClientSecret}
+                    configuration:
+                      merchantDisplayName: "My Store"
+                      style: "system"
+                      primaryButtonLabel: "Pay $29.99"
+                    onSuccess:
+                      showToast:
+                        message: "Payment successful!"
+                    onError:
+                      showToast:
+                        message: "Payment failed"
                 onError:
                   showToast:
-                    message: "Payment failed"
+                    message: "Failed to initialize payment system"
 ```
 
 ### Advanced Configuration
@@ -4395,6 +4426,7 @@ Before going live with Stripe payments:
 
 ## Related Actions
 
+- [initializeStripe](../actions/initialize-stripe.md) - Initialize Stripe with configuration
 - [showPaymentSheet](../actions/show-payment-sheet.md) - Display the Stripe Payment Sheet 
 
 ---
@@ -15287,6 +15319,150 @@ showNotification action triggers the display of local notifications within the a
 **Example**
 
 You can refer [here](#requestnotificationaccess) for example related to notification. Can also refer complete example [here](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/zbIn4f6tD3yQkC1MJRj1?propertyPanelEnabled=true&instantPreviewDisabled=false&editorV2Enabled=true).
+
+---
+
+# initializeStripe
+
+Initialize Stripe with custom configuration. This is the primary way to initialize Stripe in your application.
+
+## Properties
+
+| Property           | Type   | Description                                                                              |
+| :----------------- | :----- | :--------------------------------------------------------------------------------------- |
+| publishableKey     | string | Your Stripe publishable key (required)                                                   |
+| stripeAccountId    | string | Your Stripe account ID for Connect applications (optional)                               |
+| merchantIdentifier | string | Your merchant identifier for Apple Pay (optional)                                         |
+| onSuccess          | action | Action to execute when initialization succeeds (optional)                                 |
+| onError            | action | Action to execute when initialization fails (optional)                                    |
+
+### Example
+
+Here's a basic example of how to initialize Stripe in your Ensemble app:
+
+```yaml
+View:
+  header:
+    title: Payment Setup
+  body:
+    Column:
+      styles:
+        padding: 24
+        gap: 16
+      children:
+        - Text:
+            text: Initialize Stripe
+            styles:
+              fontSize: 18
+              fontWeight: bold
+        - Button:
+            label: Initialize Stripe
+            onTap:
+              initializeStripe:
+                publishableKey: "pk_test_your_publishable_key_here"
+                merchantIdentifier: "merchant.com.yourapp"
+                onSuccess:
+                  showToast:
+                    message: "Stripe initialized successfully"
+                onError:
+                  showToast:
+                    message: "Failed to initialize Stripe"
+```
+
+### Advanced Configuration
+
+For Connect applications or when you need more control:
+
+```yaml
+initializeStripe:
+  publishableKey: "pk_test_your_publishable_key_here"
+  stripeAccountId: "acct_optional_account_id"
+  merchantIdentifier: "merchant.com.yourapp"
+  onSuccess:
+    - showToast:
+        message: "Stripe initialized successfully"
+    - navigateScreen:
+        name: PaymentScreen
+  onError:
+    showDialog:
+      widget:
+        Column:
+          styles:
+            gap: 16
+            padding: 20
+          children:
+            - Text:
+                text: Initialization Failed
+                styles:
+                  fontSize: 18
+                  fontWeight: bold
+            - Text:
+                text: "Failed to initialize Stripe. Please check your configuration and try again."
+            - Button:
+                label: Try Again
+                onTap: 
+                  dismissDialog:
+```
+
+### Usage with Payment Flow
+
+Initialize Stripe before showing the payment sheet:
+
+```yaml
+View:
+  header:
+    title: Checkout
+  body:
+    Column:
+      styles:
+        padding: 24
+        gap: 16
+      children:
+        - Button:
+            label: Pay Now
+            onTap:
+              initializeStripe:
+                publishableKey: "pk_test_your_publishable_key_here"
+                merchantIdentifier: "merchant.com.yourapp"
+                onSuccess:
+                  showPaymentSheet:
+                    clientSecret: ${paymentIntentClientSecret}
+                    configuration:
+                      merchantDisplayName: "My Store"
+                      style: "system"
+                    onSuccess:
+                      showToast:
+                        message: "Payment successful!"
+                    onError:
+                      showToast:
+                        message: "Payment failed"
+                onError:
+                  showToast:
+                    message: "Failed to initialize payment system"
+```
+
+### Configuration
+
+- **publishableKey**: Your Stripe publishable key (starts with `pk_test_` for test mode, `pk_live_` for live mode)
+- **stripeAccountId**: Required only for Connect applications
+- **merchantIdentifier**: Required for Apple Pay integration (format: `merchant.com.yourapp`)
+
+### Error Handling
+
+The `initializeStripe` action provides error handling through the `onError` callback. Common failure scenarios include:
+
+- Invalid publishable key
+- Network connectivity issues
+- Invalid merchant identifier
+- Stripe service unavailable
+
+### Testing
+
+For testing, use test mode keys:
+
+- Use `pk_test_` keys for development
+- Use `pk_live_` keys for production
+- Test with various scenarios before going live 
 
 ---
 
