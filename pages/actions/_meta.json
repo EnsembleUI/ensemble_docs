@@ -152,6 +152,9 @@
   "show-notification": {
     "title": "Show Notification"
   },
+  "initialize-stripe": {
+    "title": "Initialize Stripe"
+  },
   "show-payment-sheet": {
     "title": "Show Payment Sheet"
   },

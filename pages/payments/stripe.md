@@ -6,18 +6,41 @@ Ensemble provides seamless integration with Stripe for processing payments in yo
 
 The Stripe integration in Ensemble consists of:
 
+- **Stripe Initialization**: Initialize Stripe with your configuration
 - **Payment Sheet**: A pre-built UI component for collecting payment information
 - **Payment Intent Management**: Client-side payment intent handling
 - **Error Handling**: Comprehensive error handling for payment failures
 - **Security**: PCI-compliant payment processing
 
-## Configuration
+## Setup
 
-### Build Configuration
+### Initialize Stripe
 
-1. Go to Build & Deploy > Build Settings
-2. Enable Stripe Module
-3. Add your Stripe publishable key in Stripe Attributes. You also need to add Apple Pay Merchant Identifier for Apple Pay.
+Before using Stripe payments, you need to initialize Stripe with your configuration:
+
+```yaml
+View:
+  header:
+    title: Payment Setup
+  body:
+    Column:
+      styles:
+        padding: 24
+        gap: 16
+      children:
+        - Button:
+            label: Initialize Stripe
+            onTap:
+              initializeStripe:
+                publishableKey: "pk_test_your_publishable_key_here"
+                merchantIdentifier: "merchant.com.yourapp"
+                onSuccess:
+                  showToast:
+                    message: "Stripe initialized successfully"
+                onError:
+                  showToast:
+                    message: "Failed to initialize Stripe"
+```
 
 ## Basic Implementation
 
@@ -43,18 +66,25 @@ View:
         - Button:
             label: Pay Now
             onTap:
-              showPaymentSheet:
-                clientSecret: ${paymentIntentClientSecret}
-                configuration:
-                  merchantDisplayName: "My Store"
-                  style: "system"
-                  primaryButtonLabel: "Pay $29.99"
+              initializeStripe:
+                publishableKey: "pk_test_your_publishable_key_here"
+                merchantIdentifier: "merchant.com.yourapp"
                 onSuccess:
-                  showToast:
-                    message: "Payment successful!"
+                  showPaymentSheet:
+                    clientSecret: ${paymentIntentClientSecret}
+                    configuration:
+                      merchantDisplayName: "My Store"
+                      style: "system"
+                      primaryButtonLabel: "Pay $29.99"
+                    onSuccess:
+                      showToast:
+                        message: "Payment successful!"
+                    onError:
+                      showToast:
+                        message: "Payment failed"
                 onError:
                   showToast:
-                    message: "Payment failed"
+                    message: "Failed to initialize payment system"
 ```
 
 ### Advanced Configuration
@@ -222,4 +252,5 @@ Before going live with Stripe payments:
 
 ## Related Actions
 
+- [initializeStripe](../actions/initialize-stripe.md) - Initialize Stripe with configuration
 - [showPaymentSheet](../actions/show-payment-sheet.md) - Display the Stripe Payment Sheet 
