@@ -1,0 +1,156 @@
+---
+title: "Calling Firebase Functions APIs"
+description: "Learn how to integrate and call Firebase Functions in your Ensemble applications"
+---
+
+import { Callout } from 'nextra/components'
+
+# Calling Firebase Functions APIs
+
+Firebase Functions allows you to run backend code in response to events triggered by Firebase features and HTTPS requests. Ensemble platform provides seamless integration with Firebase Functions, enabling you to call serverless functions from your app effortlessly.
+
+Unlike traditional server setups, Firebase Functions offers a serverless architecture that automatically scales based on demand. Firebase Functions is an excellent choice for Ensemble applications because it provides automatic scaling, secure execution environment, easy deployment, and simplified backend logic without server management.
+
+Now, let's dive into implementing Firebase Functions in our Ensemble application:
+
+<Callout type="warning">
+  Firebase function integration requires proper Firebase configuration. Ensure your Firebase project is set up before proceeding. Learn how to configure it [here](configuration.mdx#2-configure-ensemble-app).
+</Callout>
+
+
+
+## 1. Environment Configuration
+
+### Setting Up API Providers
+Within our Ensemble application, navigate to the settings section and look for the option to manage environmental variables. Here, we'll create two new variables:
+- `api_providers`: Set the value of this variable to `firebase`. This tells our app to use Firebase function as a api provider.
+
+**Example**:
+![All Apps](/images/firebase/firebasefunction.png)
+
+<Callout type="info">
+**Note:** You can use multiple api_providers by using comma-separated values (e.g., firestore,firebase)
+</Callout>
+
+
+## 2. Types of Firebase Functions Operations
+
+Firebase Functions offers various ways to interact with your serverless backend. Here's a breakdown of core operations along with demo API calls for our Ensemble app:
+
+### Basic Function Call:
+This operation calls a Firebase Function without any parameters.
+
+**Example (Simple function call):**
+```yaml
+testFunction:
+  type: firebaseFunction
+  name: helloWorld
+```
+
+**Explanation:**
+- `type: firebaseFunction`: Specifies that the operation is for Firebase Functions
+- `name`: The name of the Firebase Function to call
+
+### Function Call with Data:
+This operation calls a Firebase Function with input parameters.
+
+**Example (Function with parameters):**
+```yaml
+createUser:
+  inputs:
+    - email
+    - displayName
+  type: firebaseFunction
+  name: createCustomUser
+  data:
+    email: ${email}
+    displayName: ${displayName}
+    role: user
+    createdAt: ${new Date().toISOString()}
+```
+
+**Explanation:**
+- `inputs`: Dynamic variables that can be passed to the function
+- `data`: The payload sent to the Firebase Function
+- Values can be static or use dynamic variables with `${variableName}` syntax
+
+## 3. Response Handling of Firebase Functions
+
+When performing Firebase Functions operations, you may need to handle responses and errors appropriately. Below are common patterns for handling API responses in your Ensemble app.
+
+### 1. Making an API call:
+```yaml
+invokeAPI:
+  name: myFunction
+  inputs:
+    userId: ${userID}
+```
+
+You can also use `onResponse` & `onError` on Firebase Function API calls and perform operations on the response.
+
+### 2. Complete Function Definition with Response Handling:
+```yaml
+API:
+  getUserData:
+    inputs:
+      - userId
+    type: firebaseFunction
+    name: fetchUserProfile
+    data:
+      userId: ${userId}
+      includeStats: true
+    onResponse:
+      executeCode:
+        body: |-
+          console.log('User data fetched successfully');
+          console.log(response.body);
+          userNameText.text = response.body.user.name;
+          userEmailText.text = response.body.user.email;
+    onError:
+      executeCode:
+        body: |-
+          console.log('Failed to fetch user data');
+          console.log(response.body);
+          errorText.text = "Error: " + response.body;
+
+```
+
+### 3. Using response in UI Components:
+Firebase functions will work similar to simple http APIs and their responses can be used in UI Components:
+
+```yaml
+
+Column:
+    styles:
+        visible: '${getUserData.isSuccess ? true : false}'
+    children:
+        - Text:
+            id: userNameText
+            text: "Name: ${getUserData.body.user.name}"
+        - Text:
+            id: userEmailText  
+            text: "Email: ${getUserData.body.user.email}"
+        - Text:
+            text: "Last Login: ${getUserData.body.user.lastLogin}"
+ 
+```
+
+
+
+## 4. Troubleshooting
+
+### Common Issues
+- Ensure Firebase Functions are deployed and accessible
+- Verify function names match exactly (case-sensitive)
+- Check that the Firebase project is correctly configured
+- Confirm internet connectivity for function calls
+
+### Debug Tips
+- Use console.log in onResponse and onError handlers to inspect responses
+- Check Firebase Console for function logs and error details
+- Test functions independently using Firebase Console or Postman
+- Verify function permissions and authentication requirements
+
+<Callout type="success">
+By using these operations, you can efficiently call Firebase Functions from your Ensemble application. Firebase Functions' serverless architecture makes it a powerful solution for any backend logic your application needs.
+</Callout>

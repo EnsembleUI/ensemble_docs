@@ -1,0 +1,111 @@
+import { Callout } from 'nextra/components'
+
+# Firebase App Check Configuration
+
+[Firebase App Check](https://firebase.google.com/docs/app-check) helps protect your API resources from abuse by preventing unauthorized clients from accessing your backend resources. Ensemble platform provides seamless integration with Firebase App Check, ensuring that only legitimate requests from your verified app can access your Firebase services.
+
+Unlike traditional API security measures, App Check provides automatic app verification that works transparently with your existing Firebase services. App Check is an excellent security addition for Ensemble applications because it provides automatic app verification, protection against abuse, seamless integration with Firebase services, and minimal performance impact.
+
+Now, let's dive into configuring Firebase App Check for our Ensemble application:
+
+<Callout type="warning">
+  App Check integration requires proper Firebase configuration. Ensure your Firebase project is set up before proceeding. Learn how to configure it [here](configuration.mdx#2-configure-ensemble-app).
+</Callout>
+
+
+## 1. Environment Configuration
+Within our Ensemble application, navigate to the settings section and look for the option to manage environmental variables. Here, we'll create the environment variable for appcheck as follows:
+
+**Example**:
+![App Check](/images/firebase/appcheck.png)
+**Explanation**:
+Enables App Check verification for all Firebase API calls in your Ensemble application.
+
+## 2. Types of App Check Operations
+
+App Check provides different verification methods for different platforms and environments. Here's a breakdown of the main operations and configurations:
+
+### Debug Token Setup:
+Debug tokens are essential for development and testing environments where app verification might not work as expected. To run application with appcheck (Dev environment), you would need to register debug token in firebase console's appcheck section for your project.
+For release, you will need to register SHA 256 token of your app with your respective platform (Appstore or Google Play).
+
+1. **Example (Android Debug Token Extraction)**:
+```bash
+# Run the application
+flutter run
+
+# Extract debug token from logs
+adb logcat | grep "App Check"
+```
+**Explanation**:
+- `flutter run`: Starts your application in debug mode.
+- `adb logcat | grep "App Check"`: Filters log output to show App Check debug token.
+- Look for output like: `App Check debug token: 12345678-ABCD-EFGH-IJKL-123456789012`
+
+2. **Example (iOS Debug Token Configuration)**:
+```yaml
+# In Xcode scheme configuration
+Environment Variables:
+  FIRDebugEnabled: YES
+  FIRAppCheckDebugEnabled: YES
+```
+**Explanation**:
+- `FIRDebugEnabled`: Enables Firebase debug logging.
+- `FIRAppCheckDebugEnabled`: Specifically enables App Check debug token generation.
+
+
+### Conditional App Check:
+Control App Check usage on a per-API basis depending on your security requirements.
+
+**Example (Secure Firebase Function)**:
+```yaml
+secureFunction:
+  type: firebaseFunction
+  name: sensitiveOperation
+  # App Check enabled by default when firebase_app_check=true
+  data:
+    userId: ${currentUser.id}
+    operation: transfer
+```
+
+
+## 3. Response and Monitoring of App Check Operations
+
+When performing Firebase operations with App Check enabled, you can monitor verification status and handle failures appropriately. Below are examples demonstrating how to handle App Check responses and implement monitoring.
+
+### 1. Making API calls with App Check monitoring:
+```yaml
+invokeAPI:
+  name: secureFirestoreOperation
+  inputs:
+    userId: ${userID}
+  onResponse:
+    executeCode:
+      body: |-
+        console.log('App Check verification successful');
+
+  onError:
+    executeCode:
+      body: |-
+        console.log('App Check verification failed:', response.error);
+```
+
+
+## 4. Troubleshooting Common App Check Issues
+
+### Debug Token Issues
+<Callout type="error">
+**Debug Token Not Working**: Ensure the token is correctly copied without extra spaces, verify it's added to the correct app in Firebase Console, and check that debug environment variables are properly set.
+</Callout>
+
+### Production Verification Failures  
+<Callout type="error">
+**App Check Failing in Production**: Verify Play Integrity/App Attest is properly configured, check that your app is signed with correct certificates, and ensure your app is published or in internal testing.
+</Callout>
+
+### Web Configuration Issues
+<Callout type="error">
+**Web App Check Issues**: Verify reCAPTCHA configuration and site keys, check that your domain is whitelisted, and ensure the reCAPTCHA script loads correctly.
+</Callout>
+
+By implementing Firebase App Check with these operations, you can significantly enhance the security of your Ensemble application. App Check's real-time verification capabilities and seamless integration make it a powerful tool for protecting your Firebase resources from unauthorized access and abuse.

@@ -1,3 +1,5 @@
+import { Callout } from 'nextra/components'
+
 # readKeychain
 
 The `readKeychain` action retrieves previously stored data from the device's secure keychain (iOS) or equivalent secure storage (Android), allowing access to sensitive information that was stored with the highest level of OS security protection.
@@ -33,9 +35,12 @@ Button:
 
 ## JavaScript Usage
 
+<Callout type="warning">
 It is only available in YAML, as this calls a async function whose return type is Future and we use callbacks to handle the result. Our JS is sync and we cannot use async/await in JS.
+</Callout>
 
 ## Notes
+
 
 -   This action reads from the device's secure keychain or equivalent OS security storage.
 -   Unlike the `getSecureStorage` action, this operation is asynchronous and must use callbacks even in JavaScript.

@@ -87,9 +87,14 @@ After we have replaced the placeholder hashtags (#) in our configuration file, i
 
 #### Update Environmental Variables
 
-Within our Ensemble application, navigate to the settings section and look for the option to manage environmental variables. Here, we'll create two new variables:
+Within our Ensemble application, navigate to the settings section and look for the option to manage environmental variables. Here, we'll create the following variables:
 - `api_providers`: Set the value of this variable to `firestore`. This tells our app to use Firebase Firestore as a data provider.
 - `firestore_config`: This is where you'll paste the complete configuration file we created earlier, including the replaced values from our downloaded configuration files.
+- `firebase_config`: Similar to `firestore_config`, this variable is required when using Firebase Functions or Firebase App Check. Use the same configuration file format and values as above.
+
+<Callout type="info">
+  The `firebase_config` environment variable follows the same structure and values as `firestore_config`. It's specifically needed when implementing Firebase Functions or Firebase App Check in your Ensemble application.
+</Callout>
 
 ![Environment Variables](/images/firebase/envVari.png)
 
