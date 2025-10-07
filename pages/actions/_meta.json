@@ -175,5 +175,8 @@
   },
   "upload-files": {
     "title": "Upload Files"
+  },
+  "wakelock": {
+    "title": "Wakelock" 
   }
 }

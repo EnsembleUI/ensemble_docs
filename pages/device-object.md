@@ -51,3 +51,24 @@ View:
         - Text:
             text: Size of bottom area used by device is ${device.safeAreaBottom}
 ```
+
+## device.wakelockEnabled
+
+Returns a boolean indicating whether the device's screen wakelock is currently active. When the wakelock is enabled (`true`), the screen will not automatically turn off due to inactivity. When disabled (`false`), the device follows its normal screen timeout settings.
+
+```yaml
+View:
+  body:
+    Column:
+      styles: { gap: 16, padding: 24 }
+      children:
+        - Text:
+            text: Wakelock is ${device.wakelockEnabled ? 'enabled' : 'disabled'}
+        - Button:
+            label: Toggle Wakelock
+            onTap:
+              wakelock:
+                enable: ${!device.wakelockEnabled}
+```
+
+This property is useful for checking the current wakelock state before toggling it or displaying the status to users. See the [wakelock action](/actions/wakelock) for controlling the wakelock state.
