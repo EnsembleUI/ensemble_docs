@@ -10743,6 +10743,41 @@ The WebView Widget enables seamless integration of web content within native app
   #note that if you explicitly specify `allowedLaunchSchemes` you must specify the defaults as well if you want them to be allowed otherwise they will be overwritten
 ```
 ```yaml
+- WebView:
+    id: testWebView
+    url: https://10.0.2.2:5501/test_webview_channels.html
+    styles:
+      height: 300
+    javascriptChannels:
+      - name: AppBridge
+        onMessageReceived:
+          executeCode:
+            body: |
+              console.log("Received from AppBridge: " + event.data.message);
+              myMessage.text = event.data.message;
+
+      - name: PaymentChannel
+        onMessageReceived:
+          executeCode:
+            body: |
+              console.log("Received from PaymentChannel: " + event.data.message);
+              var data = JSON.parse(event.data.message);
+              if (data.action === "process_payment") {
+                paymentStatus.text = 'Processing payment...';
+              }
+```
+```html
+<script>
+  // Send a simple string
+  window.AppBridge.postMessage('Hello from WebView!');
+
+  // Send structured data as JSON string
+  window.PaymentChannel.postMessage(
+    JSON.stringify({ action: 'process_payment', amount: 29.99, currency: 'USD' })
+  );
+</script>
+```
+```yaml
 headerOverrideRules:
   - urlPattern: "api.example.com"
     matchType: CONTAINS
