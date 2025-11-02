@@ -1,4 +1,10 @@
-const withNextra = require('nextra')({
+const nextraModule = require('nextra')
+// Handle both default export and named export cases
+const nextra = typeof nextraModule === 'function' 
+  ? nextraModule 
+  : (nextraModule.default || nextraModule)
+  
+const withNextra = nextra({
   theme: 'nextra-theme-docs',
   themeConfig: './theme.config.tsx'
 })
