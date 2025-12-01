@@ -5811,27 +5811,34 @@ For more information on Flutter integration tests, see the [Flutter Testing docu
 Once you have built your UI with Ensemble and used it to build your app and are ready to take it to production, follow these instructions to deploy it to any iOS or Android devices, or to submit it to the Apple App Store or Google Play Store.
 
 ### Prerequisites
-* Your Ensemble App ID. From [Ensemble Studio](https://studio.ensembleui.com), go to your App's Settings screen to retrieve the App ID. 
+
+-   Your Ensemble App ID. From [Ensemble Studio](https://studio.ensembleui.com), go to your App's Settings screen to retrieve the App ID.
 
 ### Download Ensemble Starter
-Ensemble Starter is our packaging solution, enabling you to connect to your Ensemble UI and package it. 
-* Clone the Starter App `git clone https://github.com/EnsembleUI/starter my_first_app` into the folder *my_first_app*. You may change the name, but don't use camelCase (e.g. myFirstApp) or dash (-) as the separators.
-* Follow the README in this repo.
+
+Ensemble Starter is our packaging solution, enabling you to connect to your Ensemble UI and package it.
+
+-   Clone the Starter App `git clone https://github.com/EnsembleUI/starter my_first_app` into the folder _my_first_app_. You may change the name, but don't use camelCase (e.g. myFirstApp) or dash (-) as the separators.
+-   Follow the README in this repo.
 
 ### Requesting permissions from your end-users
+
 If your app requires capabilities like location, camera, ..., you will need to enter a reason per capability. These reasons will be prompted to the end users, who can decide whether to grant or deny your requests.
-* For iOS, edit `<my_first_app>/ios/Runner/Info.plist` and add the below permissions as the direct children of the `<dict>` tag.
-* For Android, edit `<my_first_app>/android/app/src/main/AndroidManifest.xml` and add the below permissions as the direct children of the `<manifest>` tag.
+
+-   For iOS, edit `<my_first_app>/ios/Runner/Info.plist` and add the below permissions as the direct children of the `<dict>` tag.
+-   For Android, edit `<my_first_app>/android/app/src/main/AndroidManifest.xml` and add the below permissions as the direct children of the `<manifest>` tag.
 
 Below are the snippet per capability to insert for iOS and Android respectively.
 
 **Location**
+
 ```xml
 <key>NSLocationWhenInUseUsageDescription</key>
 <string>e.g. This app needs access to your location to ....</string>
 ```
 
 **Camera**
+
 ```xml
 <key>NSCameraUsageDescription</key>
 <string>e.g. your reason for requesting camera access</string>
@@ -5839,7 +5846,6 @@ Below are the snippet per capability to insert for iOS and Android respectively.
 <key>NSMicrophoneUsageDescription</key>
 <string>e.g. your reason for requesting microphone access</string>
 ```
-
 
 ---
 
@@ -10260,24 +10266,29 @@ The Switch Widget enables the rendering of switch toggle elements, providing use
 
 ## Properties
 
-| Property     | Type    | Description                                                                                                                                                                                              |
-| :----------- | :------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| id           | string  | ID to be referenced later                                                                                                                                                                                |
-| maxWidth     | integer | The max width of this Input widget (default 700). while min vlaue can be `0` and maximum can be `5000`                                                                                                   |
-| label        | string  | Label for your widget                                                                                                                                                                                    |
-| labelHint    | string  | Hint text on your label                                                                                                                                                                                  |
-| hintText     | string  | Hint text explaining your widget                                                                                                                                                                         |
-| required     | boolean | Whether the field is required                                                                                                                                                                            |
-| enabled      | boolean | Enables or disables the interactivity and input functionality of the widget                                                                                                                              |
-| icon         | object  | [See properties](#icon)                                                                                                                                                                                  |
-| onChange     | action  | Call Ensemble's built-in functions or execute code when the input changes. Note for free-form text input, this event only dispatches if the text changes AND the focus is lost (e.g. clicking on button) |
-| onChangeHaptic | enum | The type of haptic to perform when switch state is changed. It should be one of heavyImpact, mediumImpact, lightImpact, selectionClick, and vibrate |
-| value        | string  | Specifying the value of your Text Input                                                                                                                                                                  |
-| autoComplete | boolean | Enable the Input search suggestion option                                                                                                                                                                |
-| items        | array   | List of values, or Objects with value/label pairs                                                                                                                                                        |
-| styles       | object  | [see properties](#styles)                                                                                                                                                                                |
-| leadingText  | string  | Sets the text displayed before the checkbox                                                                                                                                                              |
-| trailingText | string  | Sets the text displayed after the checkbox                                                                                                                                                               |
+| Property           | Type    | Description                                                                                                                                                                                              |
+| :----------------- | :------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| id                 | string  | ID to be referenced later                                                                                                                                                                                |
+| maxWidth           | integer | The max width of this Input widget (default 700). while min value can be `0` and maximum can be `5000`                                                                                                   |
+| label              | string  | Label for your widget                                                                                                                                                                                    |
+| labelHint          | string  | Hint text on your label                                                                                                                                                                                  |
+| hintText           | string  | Hint text explaining your widget                                                                                                                                                                         |
+| required           | boolean | Whether the field is required                                                                                                                                                                            |
+| enabled            | boolean | Enables or disables the interactivity and input functionality of the widget                                                                                                                              |
+| icon               | object  | [See properties](#icon)                                                                                                                                                                                  |
+| onChange           | action  | Call Ensemble's built-in functions or execute code when the switch value changes                                                                                                                         |
+| onChangeHaptic     | enum    | The type of haptic to perform when switch state is changed. It should be one of heavyImpact, mediumImpact, lightImpact, selectionClick, and vibrate                                                      |
+| value              | boolean | The current state of the switch. `true` for on, `false` for off                                                                                                                                          |
+| autoComplete       | boolean | Enable the Input search suggestion option                                                                                                                                                                |
+| items              | array   | List of values, or Objects with value/label pairs                                                                                                                                                        |
+| styles             | object  | [see properties](#styles)                                                                                                                                                                                |
+| leadingText        | string  | Sets the text displayed before the switch                                                                                                                                                                |
+| trailingText       | string  | Sets the text displayed after the switch                                                                                                                                                                 |
+| activeColor        | color   | The color of the switch track when it is in the active/on state, starting with '0xFF' for full opacity. |
+| inactiveColor      | color   | The color of the switch track when it is in the inactive/off state, starting with '0xFF' for full opacity.|
+| activeThumbColor   | color   | The color of the switch thumb when it is in the active/on state, starting with '0xFF' for full opacity. |
+| inactiveThumbColor | color   | The color of the switch thumb when it is in the inactive/off state, starting with '0xFF' for full opacity.|
+| useIOSStyle        | boolean | If true, renders the switch using iOS-style appearance (CupertinoSwitch). When false, uses Material style (default)                                                                                      |
 
 ### styles
 
@@ -10286,7 +10297,7 @@ The Switch Widget enables the rendering of switch toggle elements, providing use
 | variant                      | string            | Select a pre-defined look and feel for this Input widget. This property can be defined in the theme to apply to all Input widgets. [see properties](#options-for-stylesvariant)                                                                                                                                                               |
 | visible                      | boolean           | Toggle a widget visibility on/off. Note that an invisible widget will not occupy UI space, unless the visibilityTransitionDuration is specified.                                                                                                                                                                                              |
 | visibilityTransitionDuration | number            | Specify the duration in seconds when a widget animates between visible and not visible state. Note that setting this value will cause the widget to still occupy the UI space even when it is not visible.                                                                                                                                    |
-| opacity                      | double                                        | Adjusts the opacity of the widget. Values range from 0 (fully transparent) to 1 (opaque). Default is `1`.                                                                                                                 |
+| opacity                      | double            | Adjusts the opacity of the widget. Values range from 0 (fully transparent) to 1 (opaque). Default is `1`.                                                                                                                                                                                                                                     |
 | stackPositionTop             | integer           | The distance of the child's top edge from the top of the stack. This is applicable only for Stack's children.                                                                                                                                                                                                                                 |
 | stackPositionBottom          | integer           | The distance that the child's bottom edge from the bottom of the stack. This is applicable only for Stack's children.                                                                                                                                                                                                                         |
 | stackPositionLeft            | integer           | The distance that the child's left edge from the left of the stack. This is applicable only for Stack's children.                                                                                                                                                                                                                             |
@@ -10306,7 +10317,6 @@ The Switch Widget enables the rendering of switch toggle elements, providing use
 | borderRadius                 | string or integer | The border radius of the widget.This can be specified using CSS-like notation with 1 to 4 integers. Minimum value: 0.                                                                                                                                                                                                                         |
 | borderColor                  | integer or string | Sets the border color, starting with '0xFF' for full opacity. `transparent` `black` `blue` `white` `red` `grey` `teal` `amber` `pink` `purple` `yellow` `green` `brown` `cyan` `indigo` `lime` `orange`                                                                                                                                       |
 | borderWidth                  | integer           | Thickness of the border. Minimum value should be 0.                                                                                                                                                                                                                                                                                           |
-| expanded                     | boolean           | If the parent is a Row or Column, this flag will stretch this widget in the appropriate direction. (e.g stretch horizontally for parent of type Row)                                                                                                                                                                                          |
 
 ### icon
 
