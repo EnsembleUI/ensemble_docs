@@ -6,33 +6,29 @@ The Switch Widget enables the rendering of switch toggle elements, providing use
 
 ## Properties
 
-| Property       | Type    | Description                                                                                                                                                                                              |
-| :------------- | :------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| id             | string  | ID to be referenced later                                                                                                                                                                                |
-| maxWidth       | integer | The max width of this Input widget (default 700). while min vlaue can be `0` and maximum can be `5000`                                                                                                   |
-| label          | string  | Label for your widget                                                                                                                                                                                    |
-| labelHint      | string  | Hint text on your label                                                                                                                                                                                  |
-| hintText       | string  | Hint text explaining your widget                                                                                                                                                                         |
-| required       | boolean | Whether the field is required                                                                                                                                                                            |
-| enabled        | boolean | Enables or disables the interactivity and input functionality of the widget                                                                                                                              |
-| icon           | object  | [See properties](#icon)                                                                                                                                                                                  |
-| onChange       | action  | Call Ensemble's built-in functions or execute code when the input changes. Note for free-form text input, this event only dispatches if the text changes AND the focus is lost (e.g. clicking on button) |
-| onChangeHaptic | enum    | The type of haptic to perform when switch state is changed. It should be one of heavyImpact, mediumImpact, lightImpact, selectionClick, and vibrate                                                      |
-| value          | string  | Specifying the value of your Text Input                                                                                                                                                                  |
-| autoComplete   | boolean | Enable the Input search suggestion option                                                                                                                                                                |
-| items          | array   | List of values, or Objects with value/label pairs                                                                                                                                                        |
-| styles         | object  | [see properties](#styles)                                                                                                                                                                                |
-| leadingText    | string  | Sets the text displayed before the checkbox                                                                                                                                                              |
-| trailingText   | string  | Sets the text displayed after the checkbox                                                                                                                                                               |
-
-| value | boolean | The current state of the switch. `true` for on, `false` for off |
-| leadingText | string | Sets the text displayed before the switch |
-| trailingText | string | Sets the text displayed after the switch |
-| activeColor | color | The color of the switch track when it is in the active/on state, starting with '0xFF' for full opacity. |
-| inactiveColor | color | The color of the switch track when it is in the inactive/off state, starting with '0xFF' for full opacity.|
-| activeThumbColor | color | The color of the switch thumb when it is in the active/on state, starting with '0xFF' for full opacity. |
-| inactiveThumbColor | color | The color of the switch thumb when it is in the inactive/off state, starting with '0xFF' for full opacity. |
-| useIOSStyle | boolean | If true, renders the switch using iOS-style appearance (CupertinoSwitch). When false, uses Material style (default) |
+| Property           | Type    | Description                                                                                                                                                                                              |
+| :----------------- | :------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| id                 | string  | ID to be referenced later                                                                                                                                                                                |
+| maxWidth           | integer | The max width of this Input widget (default 700). while min value can be `0` and maximum can be `5000`                                                                                                   |
+| label              | string  | Label for your widget                                                                                                                                                                                    |
+| labelHint          | string  | Hint text on your label                                                                                                                                                                                  |
+| hintText           | string  | Hint text explaining your widget                                                                                                                                                                         |
+| required           | boolean | Whether the field is required                                                                                                                                                                            |
+| enabled            | boolean | Enables or disables the interactivity and input functionality of the widget                                                                                                                              |
+| icon               | object  | [See properties](#icon)                                                                                                                                                                                  |
+| onChange           | action  | Call Ensemble's built-in functions or execute code when the switch value changes                                                                                                                         |
+| onChangeHaptic     | enum    | The type of haptic to perform when switch state is changed. It should be one of heavyImpact, mediumImpact, lightImpact, selectionClick, and vibrate                                                      |
+| value              | boolean | The current state of the switch. `true` for on, `false` for off                                                                                                                                          |
+| autoComplete       | boolean | Enable the Input search suggestion option                                                                                                                                                                |
+| items              | array   | List of values, or Objects with value/label pairs                                                                                                                                                        |
+| styles             | object  | [see properties](#styles)                                                                                                                                                                                |
+| leadingText        | string  | Sets the text displayed before the switch                                                                                                                                                                |
+| trailingText       | string  | Sets the text displayed after the switch                                                                                                                                                                 |
+| activeColor        | color   | The color of the switch track when it is in the active/on state, starting with '0xFF' for full opacity. |
+| inactiveColor      | color   | The color of the switch track when it is in the inactive/off state, starting with '0xFF' for full opacity.|
+| activeThumbColor   | color   | The color of the switch thumb when it is in the active/on state, starting with '0xFF' for full opacity. |
+| inactiveThumbColor | color   | The color of the switch thumb when it is in the inactive/off state, starting with '0xFF' for full opacity.|
+| useIOSStyle        | boolean | If true, renders the switch using iOS-style appearance (CupertinoSwitch). When false, uses Material style (default)                                                                                      |
 
 ### styles
 
@@ -61,7 +57,6 @@ The Switch Widget enables the rendering of switch toggle elements, providing use
 | borderRadius                 | string or integer | The border radius of the widget.This can be specified using CSS-like notation with 1 to 4 integers. Minimum value: 0.                                                                                                                                                                                                                         |
 | borderColor                  | integer or string | Sets the border color, starting with '0xFF' for full opacity. `transparent` `black` `blue` `white` `red` `grey` `teal` `amber` `pink` `purple` `yellow` `green` `brown` `cyan` `indigo` `lime` `orange`                                                                                                                                       |
 | borderWidth                  | integer           | Thickness of the border. Minimum value should be 0.                                                                                                                                                                                                                                                                                           |
-| expanded                     | boolean           | If the parent is a Row or Column, this flag will stretch this widget in the appropriate direction. (e.g stretch horizontally for parent of type Row)                                                                                                                                                                                          |
 
 ### icon
 
