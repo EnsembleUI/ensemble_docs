@@ -22,6 +22,7 @@ Ensemble is a platform where you can build, publish, and iterate native and web 
 - [SSL Configuration](https://docs.ensembleui.com/apis/api-ssl-configuration)
 - [GraphQL](https://docs.ensembleui.com/apis/graphql)
 - [Using WebSockets](https://docs.ensembleui.com/apis/websocket)
+- [Server-Sent Events (SSE)](https://docs.ensembleui.com/apis/sse)
 - [Theme](https://docs.ensembleui.com/theme-and-styling/theme)
 - [Animations in EnsembleUI](https://docs.ensembleui.com/theme-and-styling/animations)
 - [Using Custom Fonts](https://docs.ensembleui.com/theme-and-styling/custom-fonts)
