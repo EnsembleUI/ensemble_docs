@@ -31,5 +31,8 @@
   },
   "websocket": {
     "title": "WebSocket"
+  },
+  "sse": {
+    "title": "Server-Sent Events"
   }
 }
