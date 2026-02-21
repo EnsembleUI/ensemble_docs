@@ -179,9 +179,10 @@ createProject:
 - `data`: The fields and values for the new document. Note how `FieldValue` is being used to tell Firestore to set the server timestamp
 
 ### Set:
-The `set` operation can create a new document if it does not exist but if the document already exists, `set` will overwrite 
-the entire document with the data provided, unless we use the `merge` option.
-1. **Example**:
+The `set` operation can create a new document if it does not exist but if the document already exists, `set` will overwrite
+the entire document with the data provided, unless we use the `mergeOptions` option.
+
+1. **Basic Example (overwrites entire document)**:
 ```yaml
 setProject:
   inputs:
@@ -189,7 +190,6 @@ setProject:
     - projectID
     - proName
     - proDes
-    - proFiles
   type: firestore
   path: users/${userId}/Projects/${projectID}
   operation: set
@@ -198,6 +198,47 @@ setProject:
     description: ${proDes}
     setAt: ${FieldValue.serverTimestamp()}
 ```
+
+2. **Example with `merge: true` (merges all passed fields, preserves existing)**:
+```yaml
+setProject:
+  inputs:
+    - userId
+    - projectID
+  type: firestore
+  path: users/${userId}/Projects/${projectID}
+  operation: set
+  mergeOptions:
+    merge: true
+  data:
+    description: "Updated description"
+    updatedAt: ${FieldValue.serverTimestamp()}
+```
+**Explanation**: If the document exists, only `description` and `updatedAt` will be updated while preserving all other existing fields. If the document doesn't exist, it will be created with the provided data.
+
+3. **Example with `mergeFields` (only updates specified fields)**:
+```yaml
+setProject:
+  inputs:
+    - userId
+    - projectID
+  type: firestore
+  path: users/${userId}/Projects/${projectID}
+  operation: set
+  mergeOptions:
+    mergeFields:
+      - status
+      - updatedAt
+  data:
+    status: "active"
+    description: "This will be ignored"
+    updatedAt: ${FieldValue.serverTimestamp()}
+```
+**Explanation**: Only `status` and `updatedAt` will be written to the document. The `description` field in the data will be ignored because it's not listed in `mergeFields`.
+
+<Callout type="info">
+  If both `merge` and `mergeFields` are provided, `mergeFields` takes priority as it is more specific.
+</Callout>
 
 ### Update:
 The `update` operation only updates the fields specified in the provided data. If the document does not exist, `update` 
