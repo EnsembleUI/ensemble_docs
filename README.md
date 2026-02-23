@@ -10619,6 +10619,28 @@ The TextInput Widget enables the rendering of interactive text input fields, all
 
 Display and style text within your application.
 
+```yaml
+Text:
+    spans:
+        - text: "Read our "
+        - text: "Terms of Service"
+          textStyle:
+              color: 0xff4b93e7
+              decoration: underline
+          onTap:
+              navigateScreen:
+                  name: HelpScreen
+        - text: " and "
+        - widget:
+              Icon:
+                  name: info
+                  size: 18
+        - text: " for more details."
+    styles:
+        textStyle:
+            fontSize: 16
+```
+
 ---
 
 
