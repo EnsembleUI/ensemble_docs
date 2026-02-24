@@ -15,8 +15,8 @@ ViewGroup:
 
 **Output**
 
-![Alt text](/images/image-2.png)
-![Alt text](/images/image-3.png)
+<!-- Add screenshots: /images/profile-picture-item-1.png, profile-picture-item-2.png -->
+
 **Note:** `Its only specific item code, so as to stay relevant to our topic. You can see complete example` [here](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/aa634599-cd5d-411c-a4b6-1163f3b5c558?propertyPanelEnabled=true&instantPreviewDisabled=false&editorV2Enabled=true)
 
 ##### CustomNavBarItemWithImage

@@ -1,0 +1,7 @@
+{
+  "name": "ensemble-docs",
+  "compatibility_date": "2026-02-23",
+  "assets": {
+    "directory": "./out"
+  }
+}

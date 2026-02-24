@@ -29,7 +29,7 @@ Ensemble provides a browser-based IDE, [Ensemble Studio](https://studio.ensemble
 - [Studio overview](#studio-overview)
 - **Desktop App**
   - [Ensemble Studio Desktop App](#ensemble-studio-desktop-app)
-- **Screens and Widgets**
+- **Screens & Widgets**
   - [Ensemble Screen Structure](#ensemble-screen-structure)
   - [Layouts](#layouts)
   - [Screen Navigation](#screen-navigation)
@@ -48,7 +48,7 @@ Ensemble provides a browser-based IDE, [Ensemble Studio](https://studio.ensemble
   - [GraphQL](#graphql)
   - [Using WebSockets](#using-websockets)
   - [Server-Sent Events (SSE)](#server-sent-events-sse)
-- **Theme and Styling**
+- **Theme & Styling**
   - [Theme](#theme)
   - [Animations in EnsembleUI](#animations-in-ensembleui)
   - [Using Custom Fonts](#using-custom-fonts)
@@ -71,7 +71,7 @@ Ensemble provides a browser-based IDE, [Ensemble Studio](https://studio.ensemble
 - **Moengage**
   - [MoEngage Integration](#moengage-integration)
 - [Adobe Analytics](#adobe-analytics)
-- **Deep Link**
+- **Deep Linking**
   - [Setup Deeplink](#setup-deeplink)
   - [Setup Deferred Deeplink](#setup-deferred-deeplink)
 - **Extending Ensemble**
@@ -240,7 +240,7 @@ Ensemble provides a browser-based IDE, [Ensemble Studio](https://studio.ensemble
   - [showDialog](#showdialog)
   - [showNotification](#shownotification)
   - [uploadFiles](#uploadfiles)
-- **Javascript Reference**
+- **Javascript**
   - [Add logic using JavaScript](#add-logic-using-javascript)
   - [JavaScript Date](#javascript-date)
   - [Ensemble Objects and their properties](#ensemble-objects-and-their-properties)
@@ -255,7 +255,7 @@ Ensemble provides a browser-based IDE, [Ensemble Studio](https://studio.ensemble
   - [String Functions](#string-functions)
 - [AppInfo object](#appinfo-object)
 - [Device object](#device-object)
-- **Tips and Tricks**
+- **Tips & Tricks**
   - [Getting help from Ensemble team](#getting-help-from-ensemble-team)
   - [Custom BottomNavBar item styling](#custom-bottomnavbar-item-styling)
   - [Building responsive UIs](#building-responsive-uis)
@@ -972,7 +972,7 @@ Ensemble layouts are themselves widgets that contain other widgets. Here is a co
 | Flow         | [Link](#flow)          | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/3e901fb8-a0e8-4f52-979b-7f5f2547e650) |
 | ListView     | [Link](#listview)      | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/w0Wmu9ZMP4csk7IELSx3) |
 | GridView     | [Link](#gridview)      | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/DX5j2WVQFabmxD9FCD5h) |
-| StaggeredGrid | [Link](/pages/widgets/staggeredgrid.md) | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/a9iIs4wvgqDOhU4rN6GR) |
+| StaggeredGrid | [Link](/content/widgets/staggeredgrid.md) | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/a9iIs4wvgqDOhU4rN6GR) |
 | Stack        | [Link](#stack)         | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/572ecf3b-b9f2-46f4-960f-ff438e5fa1dc) |
 | DataGrid     | [Link](#datagrid-widget)      | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/c5940e18-f2c1-4318-8e68-a678a6ae7247) |
 | TabBar       | [Link](#tabbar)        | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/cebd491d-7d90-43f4-9f17-b8575de441ca) |
@@ -1096,12 +1096,12 @@ Ensemble widgets enable you to build both simple and complex applications.
 | Flow          | [Link](#flow)             | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/3e901fb8-a0e8-4f52-979b-7f5f2547e650) |
 | ListView      | [Link](#listview)         | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/w0Wmu9ZMP4csk7IELSx3)                 |
 | GridView      | [Link](#gridview)         | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/DX5j2WVQFabmxD9FCD5h)                 |
-| StaggeredGrid | [Link](/pages/widgets/staggeredgrid.md) | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/a9iIs4wvgqDOhU4rN6GR)                 |
+| StaggeredGrid | [Link](/content/widgets/staggeredgrid.md) | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/a9iIs4wvgqDOhU4rN6GR)                 |
 | Stack         | [Link](#stack)            | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/572ecf3b-b9f2-46f4-960f-ff438e5fa1dc) |
 | DataGrid      | [Link](#datagrid-widget)        | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/c5940e18-f2c1-4318-8e68-a678a6ae7247) |
 | TabBar        | [Link](#tabbar)           | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/cebd491d-7d90-43f4-9f17-b8575de441ca) |
 | Carousel      | [Link](#carousel-widget)         | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/2e1d88b1-f281-4c2c-9bb1-bd18016d2b8c) |
-| Collapsible      | [Link](/pages/widgets/collapsible.md)         | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/yTFRepwpRQJbvRYaVpRi) |
+| Collapsible      | [Link](/content/widgets/collapsible.md)         | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/yTFRepwpRQJbvRYaVpRi) |
 | Divider       | [Link](#divider)          | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/4a893a2e-5bde-400c-b974-b25b497d31a5) |
 | Spacer        | [Link](#spacer)           | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/1d7e42a9-5bbc-4b4b-9a02-8c102234ee05) |
 | Shape         | [Link](#shape-widget)            | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/Lg2nljyD46n2hiAUlBMP)                 |
@@ -1112,7 +1112,7 @@ Ensemble widgets enable you to build both simple and complex applications.
 | Widget          | Documentation                  | Kitchen sink example                                                                                                       |
 | --------------- | ------------------------------ | -------------------------------------------------------------------------------------------------------------------------- |
 | Form            | [Link](#form-widget)          | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/3107baf6-dfc3-42cd-b617-61c37b31f31e) |
-| TextInput       | [Link](/pages/widgets/textinput.md)     | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/abc081b1-bcb4-4db6-ae55-7987cb6c418e) |
+| TextInput       | [Link](/content/widgets/textinput.md)     | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/abc081b1-bcb4-4db6-ae55-7987cb6c418e) |
 | Button          | [Link](#button-widget)        | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/09c1087b-f9ee-4a8c-9286-e0e881184c07) |
 | Dropdown        | [Link](#dropdown-widget)      | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/fb8d28a2-834e-40a9-8419-155272fb0191) |
 | AutoComplete    | Coming soon                    | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/3tBTU9CUTu0IegpytNYa)                 |
@@ -1135,7 +1135,7 @@ Ensemble widgets enable you to build both simple and complex applications.
 
 | Widget             | Documentation                      | Kitchen sink example                                                                                                       |
 | ------------------ | ---------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| Progress indicator | [Link](/pages/widgets/progressindicator.md) | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/c2c248f2-a289-40d3-acd5-65a1a7f3c5a2) |
+| Progress indicator | [Link](/content/widgets/progressindicator.md) | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/c2c248f2-a289-40d3-acd5-65a1a7f3c5a2) |
 | Toast message      | [Link](#showtoast)        | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/9a576805-019a-4bd3-953f-3c623fbfb905) |
 
 ---
@@ -2823,7 +2823,7 @@ Following are the list of widgets that support Splash Feedback
 <!-- | Flow         | [Link](#flow)          | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/3e901fb8-a0e8-4f52-979b-7f5f2547e650) | -->
 <!-- | ListView     | [Link](#listview)      | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/w0Wmu9ZMP4csk7IELSx3) |
 | GridView     | [Link](#gridview)      | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/DX5j2WVQFabmxD9FCD5h) |
-| StaggeredGrid | [Link](/pages/widgets/staggeredgrid.md) | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/a9iIs4wvgqDOhU4rN6GR) | -->
+| StaggeredGrid | [Link](/content/widgets/staggeredgrid.md) | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/a9iIs4wvgqDOhU4rN6GR) | -->
 <!-- | DataGrid     | [Link](#datagrid-widget)      | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/c5940e18-f2c1-4318-8e68-a678a6ae7247) |
 | TabBar       | [Link](#tabbar)        | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/cebd491d-7d90-43f4-9f17-b8575de441ca) |
 | Carousel     | [Link](#carousel-widget)      | [Link](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/2e1d88b1-f281-4c2c-9bb1-bd18016d2b8c) |
@@ -6061,7 +6061,7 @@ If this is a brand-new app, you first need to register a unique Bundle ID and a 
 <img src="public/images/deploy/deploy_ios_1.png" alt="Add App" style="border: solid 1px lightgrey" />
 
 #### Preparing Ensemble for uploading
-* Make sure you completed the [Preparing your App](/pages/deploy/1-prepare-app.md) step, including following the starter repo's README instruction to configure and run your App.
+* Make sure you completed the [Preparing your App](/content/deploy/1-prepare-app.md) step, including following the starter repo's README instruction to configure and run your App.
 * Navigate to the app folder (e.g. my_first_app).
 * Under `ios` folder, open `Runner.xcworkspace` with [XCode](https://developer.apple.com/xcode/).
   * Select the Team (Apple Account) used to create the App and Bundle ID. You may need to log in to your Apple Developer Account under XCode > Preferences > Accounts.
@@ -6219,7 +6219,7 @@ Once the OAuth service successfully authenticates the user and redirect back to 
 
 # Deploy to Android devices
 
-* Make sure you completed the [Preparing your App](/pages/deploy/1-prepare-app.md) step, then navigate to the folder created (e.g. my_first_app).
+* Make sure you completed the [Preparing your App](/content/deploy/1-prepare-app.md) step, then navigate to the folder created (e.g. my_first_app).
 * Run `flutter create --platforms=android .` (note the period at the end)
 * Run `flutter build apk --no-tree-shake-icons` to build the APKs (destination is /build/app/outputs/flutter-apk/).
 * Connect your Android device to your computer, then run `adb install build/app/outputs/flutter-apk/app-release.apk`.
@@ -6237,7 +6237,7 @@ Once the OAuth service successfully authenticates the user and redirect back to 
 # Deploy to Android Play Store
 
 ## Pre-requisites
-* Make sure you completed the [Preparing your App](/pages/deploy/1-prepare-app.md) step, then navigate to the folder created (e.g. my_first_app).
+* Make sure you completed the [Preparing your App](/content/deploy/1-prepare-app.md) step, then navigate to the folder created (e.g. my_first_app).
 * Sign your Android app's release version. The below is a demonstration and maybe out-of-date. Please follow Android's latest documentation for up-to-date information.
   * Generate a release key using Java's keytool 
     * Run `keytool -genkey -v -keystore ~/<file_name>.jks -keyalg RSA -keysize 2048 -validity 10000 -alias <key>`
@@ -6791,7 +6791,7 @@ A control that can execute an action on tap or click.
 | label        | string  | The button label                                                                                                    |
 | enabled      | boolean | Enables or disables the interactivity and input functionality of the widget                                         |
 | submitForm   | boolean | If the button is inside a Form and upon on tap, it will execute the form's onSubmit action if this property is TRUE |
-| onTap        | [action](/pages/actions/directory.md)  | Call Ensemble's built-in functions or execute code                                         |
+| onTap        | [action](/content/actions/directory.md)  | Call Ensemble's built-in functions or execute code                                         |
 | onTapHaptic | enum | The type of haptic to perform when button is pressed. It should be one of heavyImpact, mediumImpact, lightImpact, selectionClick, and vibrate     |
 | endingIcon   | object  | Icon placed behind the label, according to device text alignment                                                    |
 | startingIcon | object  | Icon placed in front of the label, according to device text alignment                                               |
@@ -7284,7 +7284,7 @@ The Checkbox widget allows the rendering of checkbox input elements, enabling us
 | required     | boolean | Whether the field is required                                                                                                                                                                            |
 | enabled      | boolean | Enables or disables the interactivity and input functionality of the widget                                                                                                                              |
 | icon         | object  | [See properties](#icon)                                                                                                                                                                                  |
-| onChange     | [action](/pages/actions/directory.md)  | Call Ensemble's built-in functions or execute code when the input changes. Note for free-form text input, this event only dispatches if the text changes AND the focus is lost (e.g. clicking on button) |
+| onChange     | [action](/content/actions/directory.md)  | Call Ensemble's built-in functions or execute code when the input changes. Note for free-form text input, this event only dispatches if the text changes AND the focus is lost (e.g. clicking on button) |
 | value        | boolean  | true if checkbox is checked else otherwise                                                                                                                                                                |
 | autoComplete | boolean | Enable the Input search suggestion option                                                                                                                                                                |
 | items        | array   | List of values, or Objects with value/label pairs                                                                                                                                                        |
@@ -7807,7 +7807,7 @@ The DropDown Widget enables the rendering of dropdown menus, providing users wit
 ---
 
 # FittedColumn (deprecated)
-This widget is deprecated. Please use [FlexColumn](/pages/widgets/flex-column.md) instead.
+This widget is deprecated. Please use [FlexColumn](/content/widgets/flex-column.md) instead.
 
 Stretch to fit the parent (the parent is required to have a predetermined height), then distribute the vertical spaces evenly among its children. You can override the space distribution via 'childrenFits' attribute.
 
@@ -7896,7 +7896,7 @@ Stretch to fit the parent (the parent is required to have a predetermined height
 ---
 
 # FittedRow (deprecated)
-This widget is deprecated. Please use [FlexRow](/pages/widgets/flex-row.md) instead.
+This widget is deprecated. Please use [FlexRow](/content/widgets/flex-row.md) instead.
 
 Stretch to fit the parent (the parent is required to have a predetermined width), then distribute the horizontal spaces evenly among its children. You can override the space distribution via 'childrenFits' attribute.
 
@@ -8746,7 +8746,7 @@ The Icon Widget enables easy integration of icons from popular libraries like Fo
 [Test in Kitchen Sink](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/e7c686f5-b8a2-4670-9e6e-8fdb0fea768e)
 
 
-[List of supported icons](/pages/widgets/icon2.md)
+[List of supported icons](/content/widgets/icon2.md)
 
 
 ## Properties
@@ -8754,7 +8754,7 @@ The Icon Widget enables easy integration of icons from popular libraries like Fo
 | Property | Type   | Description                                                                                                                                                                                                                                                                                                                                                             |
 | :------- | :----- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | icon     | string | Icon name from Material Icons or Font Awesome                                                                                                                                                                                                                                                                                                                           |
-| library  | [string](/pages/widgets/icon2.md) | Which icon library to use, if there is no value for library then its considered to be default. `fontAwesome` `remix` ( for now only few remix icons are supported but we will support most them soon) You can check list of supported icons [here](/pages/widgets/icon2.md) |
+| library  | [string](/content/widgets/icon2.md) | Which icon library to use, if there is no value for library then its considered to be default. `fontAwesome` `remix` ( for now only few remix icons are supported but we will support most them soon) You can check list of supported icons [here](/content/widgets/icon2.md) |
 | onTap    | action | Call Ensemble's built-in functions or execute code                                                                                                                                                                                                                                                                                                                      |
 | onTapHaptic | enum | The type of haptic to perform when icon is pressed. It should be one of heavyImpact, mediumImpact, lightImpact, selectionClick, and vibrate |
 | styles   | object | [See properties](#styles)                                                                                                                                                                                                                                                                                                                                               |
@@ -10076,7 +10076,7 @@ Row is designed to arrange child widgets horizontally, where the intrinsic sizes
 ## Best Practices
 
 - Use Row to lay out the children horizontally from left to right. Enable scrollable if the children might exceed the available space.
-- **Avoid** using child widgets with no width constraint or sized itself to the parent (e.g. form inputs such as TextInput) inside the Row. [FlexRow](/pages/widgets/flex-row.md) may be a better choice in this case.
+- **Avoid** using child widgets with no width constraint or sized itself to the parent (e.g. form inputs such as TextInput) inside the Row. [FlexRow](/content/widgets/flex-row.md) may be a better choice in this case.
 - Avoid using nested scrollable Row for better UX.
 
 ## Key Concepts
@@ -10862,7 +10862,7 @@ Video:
 
 # WebView widget
 
-The WebView Widget enables seamless integration of web content within native apps and web apps, providing a versatile and consistent browsing experience across platforms. In addition to its core functionality, WebView also supports the use of cookies. [Learn more here!](/pages/tips-and-tricks/cookies.md)
+The WebView Widget enables seamless integration of web content within native apps and web apps, providing a versatile and consistent browsing experience across platforms. In addition to its core functionality, WebView also supports the use of cookies. [Learn more here!](/content/tips-and-tricks/cookies.md)
 
 ```yaml
 - WebView:
@@ -13855,8 +13855,8 @@ Applicable on iOS/Android only. Opens the app settings page where the user can m
 | minCountMessage         | string  | Custom message to show when captured/selected media is greater than minCount                                                   |
 | permissionDeniedMessage | string  | Set custom message when access to camera is denied                                                                             |
 | nextButtonLabel         | string  | Set custom label on next button.                                                                                               |
-| cameraRotateIcon        | widget  | Set custom icon for camera rotate button. [see here](/pages/widget-reference/Icon.md)                                                   |
-| galleryPickerIcon       | widget  | Set custom icon for gallery picker button. [see here](/pages/widget-reference/Icon.md)                                                  |
+| cameraRotateIcon        | widget  | Set custom icon for camera rotate button. [see here](/content/widget-reference/Icon.md)                                                   |
+| galleryPickerIcon       | widget  | Set custom icon for gallery picker button. [see here](/content/widget-reference/Icon.md)                                                  |
 | focusIcon               | widget  | Set custom icon for focus node.                                                                                                |
 | assistAngle             | object  | Show assist message whenever angle goes below minAngle or above minAngle. [see properties](#values-for-optionsassistangle)     |
 | assistSpeed             | object  | Show assist message whenever camera is moving faster than maxSpeed. [see properties](#values-for-optionsassistspeed)           |
@@ -14744,9 +14744,9 @@ When user clicks on button browser pop-up asks for permission and as you allow i
 
 **Output**
 
-![Alt text](public/images/actions/image-.png)
+![Alt text](public/images/actions/image.png)
 
-![Alt text](public/images/actions/image--2.png)
+![Alt text](public/images/actions/image-2.png)
 
 ---
 
@@ -15244,7 +15244,7 @@ The `showBottomModal` action is configured to call an `ActionsSheet` widget with
 
 | Property      | Type      | Description  |
 |:--------------|:----------|:-------------|
-| widget        | [Widget](/pages/widgets/.md) | Constructs the UI of the bottom modal using widgets. |
+| widget        | [Widget](/content/widgets/.md) | Constructs the UI of the bottom modal using widgets. |
 | styles        | [Styles](#styles) | Applies styles to customize the appearance of the modal. |
 | options       | [Options](#options) | Offers customization options for the modal behavior. |
 | onDismiss     | Action  | Execute predefined functions or custom code on modal dismiss. |
@@ -16955,7 +16955,7 @@ API:
 | onResponse | Action | The action to handle the response                                          |
 | onError    | Action | The action to handle errors                                                |
 
-Details about API [here](/pages/build/user-interface/1-page-structure.md)
+Details about API [here](/content/build/user-interface/1-page-structure.md)
 
 ---
 
@@ -17856,9 +17856,9 @@ When user clicks on button browser pop-up asks for permission and as you allow i
 
 **Output**
 
-![Alt text](public/images/actions/image-.png)
+![Alt text](public/images/actions/image.png)
 
-![Alt text](public/images/actions/image--2.png)
+![Alt text](public/images/actions/image-2.png)
 
 ---
 
@@ -17991,9 +17991,9 @@ Try complete example [here](https://studio.ensembleui.com/app/e24402cb-75e2-404c
 
 **Output**
 
-![Alt text](public/images/actions/image--4.png)
+![Alt text](public/images/actions/image-4.png)
 
-![Alt text](public/images/actions/image--5.png)
+![Alt text](public/images/actions/image-5.png)
 
 **Example with inputs**
 
@@ -18056,9 +18056,9 @@ MyCustomDialog:
 
 **Output**
 
-![Alt text](public/images/actions/image--1.png)
+![Alt text](public/images/actions/image-1.png)
 
-![Alt text](public/images/actions/image--3.png)
+![Alt text](public/images/actions/image-3.png)
 
 ---
 
@@ -22059,8 +22059,7 @@ ViewGroup:
 
 
 **Output**
-![Alt text](public/images/tips-and-tricks/image.png)
-![Alt text](public/images/tips-and-tricks/image-1.png)
+<!-- Add screenshots: /images/tips-and-tricks/icon-with-label-1.png, icon-with-label-2.png -->
 
 **Note:**`BottomNavBar is used to navigate across whole application so it always has a separate screen where it comes under [View Group]() with all the items corresponding to each screen of your application.`
 
@@ -22173,8 +22172,8 @@ ViewGroup:
 
 **Output**
 
-![Alt text](public/images/image-2.png)
-![Alt text](public/images/image-3.png)
+<!-- Add screenshots: /images/profile-picture-item-1.png, profile-picture-item-2.png -->
+
 **Note:** `Its only specific item code, so as to stay relevant to our topic. You can see complete example` [here](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/aa634599-cd5d-411c-a4b6-1163f3b5c558?propertyPanelEnabled=true&instantPreviewDisabled=false&editorV2Enabled=true)
 
 ##### CustomNavBarItemWithImage
@@ -22296,7 +22295,7 @@ You get the error **"FlexRow requires a width for child distribution."**
 
 ## Reason
 
-FlexRow's layout algorithm works by distributing a pre-defined width proportionally to all its children. If the FlexRow does not have an explicit width, its parent is required to constrain its width. This is a variation of [no-bounded-width](/pages/error/no-bounded-width.md) error, but specific to FlexRow.
+FlexRow's layout algorithm works by distributing a pre-defined width proportionally to all its children. If the FlexRow does not have an explicit width, its parent is required to constrain its width. This is a variation of [no-bounded-width](/content/error/no-bounded-width.md) error, but specific to FlexRow.
 
 ## Solution
 
@@ -22315,7 +22314,7 @@ You get the error **"FlexColumn requires a height for child distribution."**
 
 ## Reason
 
-FlexColumn's layout algorithm works by distributing a pre-defined height proportionally to all its children. If the FlexColumn does not have an explicit height, its parent is required to constrain its height. This is a variation of [no-bounded-height](/pages/error/no-bounded-height.md) error, but specific to FlexColumn.
+FlexColumn's layout algorithm works by distributing a pre-defined height proportionally to all its children. If the FlexColumn does not have an explicit height, its parent is required to constrain its height. This is a variation of [no-bounded-height](/content/error/no-bounded-height.md) error, but specific to FlexColumn.
 
 ## Solution
 

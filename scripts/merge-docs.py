@@ -132,23 +132,54 @@ def resolve_entry_path(dir_path, name):
     return None
 
 
+def load_meta(meta_path):
+    """Load _meta.json or _meta.js (Nextra 4) and return a dict of key -> value."""
+    if not os.path.isfile(meta_path):
+        return None
+    if meta_path.endswith(".json"):
+        with open(meta_path, "r", encoding="utf-8") as f:
+            return json.load(f)
+    # _meta.js: export default { ... }; convert to JSON-like and parse
+    with open(meta_path, "r", encoding="utf-8") as f:
+        text = f.read().strip()
+    if "export default " in text:
+        text = text.split("export default ", 1)[1].strip()
+    if text.endswith(";"):
+        text = text[:-1].strip()
+    # Quote bare keys (identifiers) so we get valid JSON: , key : -> , "key" :
+    normalized = re.sub(r"([{,]\s*)([a-zA-Z_][a-zA-Z0-9_-]*)(\s*:)", r'\1"\2"\3', text)
+    normalized = normalized.replace("'", '"')
+    # Remove trailing commas before } or ] (valid in JS, invalid in JSON)
+    normalized = re.sub(r",\s*}", "}", normalized)
+    normalized = re.sub(r",\s*]", "]", normalized)
+    try:
+        return json.loads(normalized)
+    except json.JSONDecodeError:
+        pass
+    return None
+
+
 def process_dir(dir_path, skip_index=False):
     """
-    Recursively traverse a docs directory following _meta.json for order and grouping.
+    Recursively traverse a docs directory following _meta.json or _meta.js for order and grouping.
     Returns a list of nodes that represent pages or groups.
     """
-    meta_file = os.path.join(dir_path, "_meta.json")
+    meta_json = os.path.join(dir_path, "_meta.json")
+    meta_js = os.path.join(dir_path, "_meta.js")
+    meta_file = meta_js if os.path.isfile(meta_js) else meta_json
     entries = []
     meta_descriptions = {}
 
-    if os.path.isfile(meta_file):
-        with open(meta_file, "r", encoding="utf-8") as f:
-            meta = json.load(f)
+    meta = load_meta(meta_file) if meta_file else None
+    if meta:
         for key, val in meta.items():
-            if isinstance(val, dict) and "description" in val:
-                # Store description for this key
-                meta_descriptions[key] = val["description"]
-                # Extract title if it exists
+            if isinstance(val, dict):
+                if val.get("type") == "separator":
+                    continue
+                if val.get("type") == "page" and val.get("href"):
+                    continue
+                if "description" in val:
+                    meta_descriptions[key] = val["description"]
                 title = val.get("title", key)
                 entries.append((key, title))
             else:
@@ -227,18 +258,20 @@ def generate_toc(nodes, depth=0):
         if "children" in node:
             title = to_sentence_case(node["title"])
             if node.get("index_path"):
+                # Use index page's first heading as link text, not group title.
                 anchor_text = node.get("heading", title)
                 anchor = slugify(anchor_text) if anchor_text else ""
-                toc_lines.append(f"{indent}- [{title}](#{anchor})")
+                toc_lines.append(f"{indent}- [{anchor_text}](#{anchor})")
             else:
                 toc_lines.append(f"{indent}- **{title}**")
             if node["children"]:
                 toc_lines += generate_toc(node["children"], depth + 1)
         else:
-            title = node["title"]  # For files, assume title is already correct.
+            # Use the page's first heading (from content) as link text, not meta title, so TOC matches doc headings.
+            title = node["title"]
             anchor_text = node.get("heading", title)
             anchor = slugify(anchor_text) if anchor_text else ""
-            toc_lines.append(f"{indent}- [{title}](#{anchor})")
+            toc_lines.append(f"{indent}- [{anchor_text}](#{anchor})")
     return toc_lines
 
 
@@ -254,7 +287,7 @@ def generate_llms_toc(nodes, base_url="https://docs.ensembleui.com"):
             # Add index page if it exists
             if node.get("index_path"):
                 title = node.get("heading", section_title)
-                rel_path = os.path.relpath(node["index_path"], "pages")
+                rel_path = os.path.relpath(node["index_path"], "content")
                 url_path = (
                     rel_path.replace("\\", "/").replace(".mdx", "").replace(".md", "")
                 )
@@ -270,11 +303,11 @@ def generate_llms_toc(nodes, base_url="https://docs.ensembleui.com"):
                 else:
                     lines.append(f"- [{title}]({url})")
 
-            # Add child pages
+            # Add child pages (use first heading from file as link text, not meta title)
             for child in node["children"]:
                 if "path" in child:
-                    title = child["title"]
-                    rel_path = os.path.relpath(child["path"], "pages")
+                    title = child.get("heading", child["title"])
+                    rel_path = os.path.relpath(child["path"], "content")
                     url_path = (
                         rel_path.replace("\\", "/")
                         .replace(".mdx", "")
@@ -287,9 +320,9 @@ def generate_llms_toc(nodes, base_url="https://docs.ensembleui.com"):
                     else:
                         lines.append(f"- [{title}]({url})")
         else:
-            # This is a standalone page at root level
-            title = node["title"]
-            rel_path = os.path.relpath(node["path"], "pages")
+            # This is a standalone page at root level (use first heading from file as link text)
+            title = node.get("heading", node["title"])
+            rel_path = os.path.relpath(node["path"], "content")
             url_path = (
                 rel_path.replace("\\", "/").replace(".mdx", "").replace(".md", "")
             )
@@ -308,9 +341,9 @@ def add_extension_to_link(match):
     prefix = match.group(1)  # [text](
     original_path = match.group(2)    # /path or path part
     
-    # Add /pages/ prefix if not already there
-    if not original_path.startswith('/pages/'):
-        path = '/pages' + original_path
+    # Add /content/ prefix if not already there
+    if not original_path.startswith('/content/'):
+        path = '/content' + original_path
     else:
         path = original_path
     
@@ -322,8 +355,8 @@ def add_extension_to_link(match):
             path = path_part
         
         # Extract the relative path for checking
-        if path.startswith('/pages/'):
-            rel_path = path[7:]  # Remove /pages/ prefix
+        if path.startswith('/content/'):
+            rel_path = path[9:]  # Remove /content/ prefix
         else:
             rel_path = path[1:] if path.startswith('/') else path
         
@@ -344,8 +377,8 @@ def add_extension_to_link(match):
         return prefix + path + (('#' + anchor_part) if anchor_part else '')
     
     # Extract the relative path for file checking
-    if path.startswith('/pages/'):
-        rel_path = path[7:]  # Remove /pages/ prefix
+    if path.startswith('/content/'):
+        rel_path = path[9:]  # Remove /content/ prefix
     else:
         rel_path = path[1:] if path.startswith('/') else path
     
@@ -359,8 +392,8 @@ def add_extension_to_link(match):
     
     # If content doesn't exist in merged docs, keep as external link with extension
     # Try to find the actual file to determine extension
-    full_path_mdx = os.path.join('pages', rel_path + '.mdx')
-    full_path_md = os.path.join('pages', rel_path + '.md')
+    full_path_mdx = os.path.join('content', rel_path + '.mdx')
+    full_path_md = os.path.join('content', rel_path + '.md')
     
     if os.path.exists(full_path_mdx):
         return prefix + path + '.mdx'
@@ -373,11 +406,11 @@ def add_extension_to_link(match):
 
 def check_content_exists_in_merged_docs(rel_path):
     """Check if the content for this path exists in our merged documentation structure."""
-    # Check if the file exists in our pages directory
-    full_path_mdx = os.path.join('pages', rel_path + '.mdx')
-    full_path_md = os.path.join('pages', rel_path + '.md')
-    full_path_dir = os.path.join('pages', rel_path, 'index.mdx')
-    full_path_dir_md = os.path.join('pages', rel_path, 'index.md')
+    # Check if the file exists in our content directory (Nextra 4)
+    full_path_mdx = os.path.join('content', rel_path + '.mdx')
+    full_path_md = os.path.join('content', rel_path + '.md')
+    full_path_dir = os.path.join('content', rel_path, 'index.mdx')
+    full_path_dir_md = os.path.join('content', rel_path, 'index.md')
     
     return (os.path.exists(full_path_mdx) or 
             os.path.exists(full_path_md) or 
@@ -387,11 +420,11 @@ def check_content_exists_in_merged_docs(rel_path):
 
 def get_heading_for_path(rel_path):
     """Get the heading text for a given path that will be used in the merged docs."""
-    # Try to find the file and get its heading
-    full_path_mdx = os.path.join('pages', rel_path + '.mdx')
-    full_path_md = os.path.join('pages', rel_path + '.md')
-    full_path_dir = os.path.join('pages', rel_path, 'index.mdx')
-    full_path_dir_md = os.path.join('pages', rel_path, 'index.md')
+    # Try to find the file and get its heading (content dir = Nextra 4)
+    full_path_mdx = os.path.join('content', rel_path + '.mdx')
+    full_path_md = os.path.join('content', rel_path + '.md')
+    full_path_dir = os.path.join('content', rel_path, 'index.mdx')
+    full_path_dir_md = os.path.join('content', rel_path, 'index.md')
     
     file_path = None
     if os.path.exists(full_path_mdx):
@@ -419,7 +452,7 @@ def clean_content(lines):
       - Converting MDX Callout blocks into Markdown note blocks.
       - Removing other MDX component blocks.
       - Fixing markdown and HTML image paths (inserting 'public/' before /images/).
-      - Fixing internal links (inserting 'pages/' before relative links and adding extensions).
+      - Fixing internal links (inserting 'content/' before relative links and adding extensions).
     """
     cleaned = []
     in_code_block = False
@@ -481,9 +514,9 @@ def clean_content(lines):
             line = md_image_pattern.sub(r"\1public\2", line)
             # Fix HTML image paths (add public before /images/).
             line = html_img_pattern.sub(r"\1public\2", line)
-            # Fix markdown links (add /pages/ before relative links and add extensions).
+            # Fix markdown links (add /content/ before relative links and add extensions).
             line = md_link_pattern.sub(lambda m: add_extension_to_link(m), line)
-            # Fix HTML links (add /pages/ before relative links and add extensions).
+            # Fix HTML links (add /content/ before relative links and add extensions).
             line = html_link_pattern.sub(lambda m: add_extension_to_link(m), line)
 
         cleaned.append(line)
@@ -523,21 +556,21 @@ def collect_content(nodes, level=1):
     return lines
 
 
-# Base directory settings
+# Base directory settings (Nextra 4 uses "content" instead of "pages")
 repo_root = os.getcwd()
-pages_dir = os.path.join(repo_root, "pages")
+content_dir = os.path.join(repo_root, "content")
 public_dir = os.path.join(repo_root, "public")
 
 # Ensure public directory exists
 os.makedirs(public_dir, exist_ok=True)
 
-# Process the pages directory
-structure = process_dir(pages_dir, skip_index=True)
+# Process the content directory
+structure = process_dir(content_dir, skip_index=True)
 
-# Read the root index.mdx content
-index_path = os.path.join(pages_dir, "index.mdx")
+# Read the root index content
+index_path = os.path.join(content_dir, "index.mdx")
 if not os.path.exists(index_path):
-    index_path = os.path.join(pages_dir, "index.md")
+    index_path = os.path.join(content_dir, "index.md")
 
 index_lines = []
 main_title = "Ensemble"
