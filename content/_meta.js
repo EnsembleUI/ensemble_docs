@@ -35,6 +35,6 @@ export default {
   'device-object': { title: 'Device object' },
   '---': { type: 'separator' },
   'tips-and-tricks': { title: 'Tips & Tricks' },
-  about: { title: 'About ↗', type: 'page', href: 'https://ensembleui.com' },
-  contact: { title: 'Ensemble Studio ↗', type: 'page', href: 'https://studio.ensembleui.com' },
+  about: { title: 'About', type: 'page', href: 'https://ensembleui.com' },
+  contact: { title: 'Ensemble Studio', type: 'page', href: 'https://studio.ensembleui.com' },
 }
