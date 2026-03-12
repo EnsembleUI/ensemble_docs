@@ -29,6 +29,9 @@
   "open-camera": {
     "title": "Open Camera"
   },
+  "open-face-camera": {
+    "title": "Open Face Camera"
+  },
   "pick-files": {
     "title": "Pick Files"
   },
