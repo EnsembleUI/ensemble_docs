@@ -1,48 +1,15 @@
 # openFaceCamera
 
-## Overview
+`openFaceCamera` action opens the device camera with real-time face detection. It automatically captures an image when the face is properly aligned (position, angle, etc.), making it ideal for selfies, profile photos, or any face-detection task on mobile and web. Use the `id` property to bind the captured image result (e.g. to a variable or data binding).
 
-The `ensemble_face_camera` module adds real-time face detection to the Ensemble framework.
-It is extracted from the original `ensemble_camera` package and focused on face-based capture workflows across Mobile and Web.
+### Setup in Ensemble Studio
 
-## What It Does
+1. Go to https://studio.ensembleui.com/
+2. Open your app
+3. From the left sidebar, click **Build & Deploy**
+4. In the **Build Settings** tab, enable the **Face Camera** module/feature and update.
+5. If building for iOS: switch to the **iOS** tab and add the required camera usage description (e.g. "We use the camera to capture your face for verification") and any face-related privacy descriptions
 
-- Real-time face detection on Mobile and Web
-- Auto-capture when alignment conditions are met
-- Configurable detection options (yaw, tilt, thresholds, performance mode)
-- Seamless integration with Ensemble via `openFaceCamera`
-- Direct Flutter widget support
-
-## Installation
-
-Add this to `pubspec.yaml`:
-
-```yaml
-dependencies:
-  ensemble_face_camera:
-    git:
-      url: https://github.com/EnsembleUI/ensemble.git
-      ref: main
-      path: modules/face_camera
-```
-
-## Required Setup
-
-Register the manager during app initialization:
-
-```dart
-import 'package:ensemble_face_camera/ensemble_face_camera.dart';
-
-GetIt.I.registerSingleton<FaceCameraManager>(
-  FaceCameraManagerImpl(),
-);
-```
-
-Without this registration, the `openFaceCamera` action will not work.
-
-## Action
-
-Use `openFaceCamera` in YAML.
 
 ### Properties
 
@@ -243,3 +210,4 @@ Use strict face detection thresholds for web capture.
             message: "Error capturing image: ${event.error}"
 ```
 
+To learn more about openCamera functionalities, test it out here in [Ensemble Kitchen Sink](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/iLJkHUPgX3ii9EdQ1D8K) app.
