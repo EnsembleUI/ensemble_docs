@@ -11873,7 +11873,7 @@ When an event is triggered (e.g. button is tapped), you can perform actions such
 | Property                                                    | Description                                                                                                                                                                                                                                                                                                   |
 | :---------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | [openCamera](open-camera.md)                                | openCamera action allows users to access their device's camera within the app for capturing images and videos.                                                                                                                                                                                                |
-| [openFaceCamera](open-face-camera.md)                       | openFaceCamera action provides face-aware capture with alignment guidance and optional auto-capture for selfie and verification flows.                                                                                                                                                                      |
+| [openFaceCamera](open-face-camera.md)                       | openFaceCamera action provides a camera plugin that detects face in real-time. flows.                                                                                                                                                                      |
 | [getLocation](get-location.md)                              | getLocation action retrieves the device's current location, enabling location-based functionalities within the app.                                                                                                                                                                                           |
 | [requestNotificationAccess](request-notification-access.md) | requestNotificationAccess action prompts users to grant permission for the app to send notifications to their device.                                                                                                                                                                                         |
 | [showNotification](show-notification.md)                    | showNotification action displays local notifications within the app, notifying users of important events or information.                                                                                                                                                                                      |
@@ -13865,7 +13865,6 @@ Applicable on iOS/Android only. Opens the app settings page where the user can m
 | assistSpeed             | object  | Show assist message whenever camera is moving faster than maxSpeed. [see properties](#values-for-optionsassistspeed)           |
 | autoCaptureInterval     | integer | If set any number n, on each n interval camera will capture                                                                    |
 | captureOverlay          | boolean | If set picture will be cropped according to overlay widget                                                                     |
-| faceDetection           | object  | Enable face detection. [see properties](#values-for-optionsfacedetection)                                                      |
 
 ##### Values for options.assistAngle
 
@@ -13882,51 +13881,7 @@ Applicable on iOS/Android only. Opens the app settings page where the user can m
 | maxSpeed           | number | Maximum speed in km/hr.                       |
 | assistSpeedMessage | number | Custom message to show when condition is hit. |
 
-##### Values for options.faceDetection
-
-| Property                  | Type    | Description                                                                                                                                       |
-| :------------------------ | :------ | :------------------------------------------------------------------------------------------------------------------------------------------------ |
-| enabled                   | boolean | Enable face detection.                                                                                                                            |
-| message                   | string  | use this pass a message above the camera                                                                                                          |
-| messageStyle              | object  | style applied to the message widget                                                                                                               |
-| showControls              | boolean | set false to hide all controls                                                                                                                    |
-| showCaptureControl        | boolean | set false to hide capture control icon                                                                                                            |
-| showFlashControl          | boolean | set false to hide flash control control icon                                                                                                      |
-| showCameraLensControl     | boolean | set false to hide camera lens control icon                                                                                                        |
-| indicatorShape            | string  | use this to change the shape of the face indicator `circle`, `square`                                                                             |
-| autoDisableCaptureControl | boolean | set true to disable capture control widget when no face is detected                                                                               |
-| autoCapture               | boolean | set true to capture image on face detected                                                                                                        |
-| imageResolution           | string  | use this to set image resolution `low`, `medium`, `high`                                                                                          |
-| defaultFlashMode          | string  | use this to set initial flash mode `off`, `auto`, `always`                                                                                        |
-| performanceMode           | string  | Use this to set your preferred performance mode. `accurate`, `fast`                                                                               |
-| accuracyConfig            | object  | Use this to set accuracy config for face detection. Accuracy config is only supported on web. [see properties](#values-for-optionsfacedetectionaccuracyconfig) |
-
-##### Values for options.faceDetection.accuracyConfig
-
-> [Note]
-> Accuracy config is only supported on web.
-
-| Property                   | Type   | Description                                                                  |
-| :------------------------- | :----- | :--------------------------------------------------------------------------- |
-| detectionThreshold         | number | Minimum confidence score required to consider a face detection valid.        |
-| intersectionRatioThreshold | number | Minimum allowed overlap ratio between the detected face and expected region. |
-| extraHeightFactor          | number | Additional height factor added to the face bounding box.                     |
-| inputSize                  | number | Size of the input image used for face detection.                             |
-| landmarkRatio              | number | Minimum acceptable alignment accuracy for facial landmarks.                  |
-| frameMargin                | number | Margin ratio to ensure face is not too close to frame edges.                 |
-| tiltAngleThreshold         | number | Maximum allowed tilt angle of the detected face (in degrees).                |
-| horizontalCenterTolerance  | number | Allowed tolerance for how centered the face must be horizontally.            |
-| earThreshold               | number | Minimum Eye Aspect Ratio (EAR) to detect open eyes.                          |
-| minFaceWidthRatio          | number | Minimum ratio of face width relative to the frame.                           |
-| maxFaceWidthRatio          | number | Maximum ratio of face width relative to the frame.                           |
-| qualityPassThreshold       | number | Minimum quality score required for a face to pass detection.                 |
-| yawLowerThreshold          | number | Lower bound of acceptable yaw (left-right head rotation) ratio.              |
-| yawUpperThreshold          | number | Upper bound of acceptable yaw (left-right head rotation) ratio.              |
-
-
 **Usage Examples**
-
-
 
 ```yaml
 View:
@@ -14101,106 +14056,22 @@ You can clear previous camera results while recapturing using `cameraId.clear()`
             id: captureLatest
 ```
 
-Capture image on face detected
-
-```yaml
-- Button:
-    label: Open Camera
-    onTap:
-      openCamera:
-        id: cameraWithFaceDetection
-        options:
-          initialCamera: front
-          faceDetection:
-            enabled: true
-            autoCapture: false
-            performanceMode: accurate
-            accuracyConfig: # accuracyConfig is only supported on web
-              detectionThreshold: 0.5
-              intersectionRatioThreshold: 0.9
-              extraHeightFactor: 0.6
-              inputSize: 224
-              landmarkRatio: 0.95
-              frameMargin: 0.05
-              tiltAngleThreshold: 6
-              horizontalCenterTolerance: 0.08
-              earThreshold: 0.25
-              minFaceWidthRatio: 0.18
-              maxFaceWidthRatio: 0.82
-              qualityPassThreshold: 0.8
-              yawLowerThreshold: 0.85
-              yawUpperThreshold: 1.15
-            message: "Align your face in the square"
-            messageStyle:
-              color: "#FF0000"
-              fontSize: 20
-        onCapture:
-          uploadFiles:
-            id: uploader
-            files: ${cameraWithFaceDetection.files[0]}
-            uploadApi: fileUploadApi
-            fieldName: file
-            onComplete:
-              showDialog:
-                body:
-                  Column:
-                    children:
-                      - TextInput:
-                          value: ${cameraWithFaceDetection.files[0]}
-                      - Image:
-                          source: ${cameraWithFaceDetection.files[0].path}
-```
-
-
 To learn more about openCamera functionalities, test it out here in [Ensemble Kitchen Sink](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/USuOaOZApSgzE2uVrqlv) app.
 
 ---
 
 # openFaceCamera
 
-## Overview
+`openFaceCamera` action opens the device camera with real-time face detection. It automatically captures an image when the face is properly aligned (position, angle, etc.), making it ideal for selfies, profile photos, or any face-detection task on mobile and web. Use the `id` property to bind the captured image result (e.g. to a variable or data binding).
 
-The `ensemble_face_camera` module adds real-time face detection to the Ensemble framework.
-It is extracted from the original `ensemble_camera` package and focused on face-based capture workflows across Mobile and Web.
+### Setup in Ensemble Studio
 
-## What It Does
+1. Go to https://studio.ensembleui.com/
+2. Open your app
+3. From the left sidebar, click **Build & Deploy**
+4. In the **Build Settings** tab, enable the **Face Camera** module/feature and update.
+5. If building for iOS: switch to the **iOS** tab and add the required camera usage description (e.g. "We use the camera to capture your face for verification") and any face-related privacy descriptions
 
-- Real-time face detection on Mobile and Web
-- Auto-capture when alignment conditions are met
-- Configurable detection options (yaw, tilt, thresholds, performance mode)
-- Seamless integration with Ensemble via `openFaceCamera`
-- Direct Flutter widget support
-
-## Installation
-
-Add this to `pubspec.yaml`:
-
-```yaml
-dependencies:
-  ensemble_face_camera:
-    git:
-      url: https://github.com/EnsembleUI/ensemble.git
-      ref: main
-      path: modules/face_camera
-```
-
-## Required Setup
-
-Register the manager during app initialization:
-
-```dart
-import 'package:ensemble_face_camera/ensemble_face_camera.dart';
-
-GetIt.I.registerSingleton<FaceCameraManager>(
-  FaceCameraManagerImpl(),
-);
-```
-
-Without this registration, the `openFaceCamera` action will not work.
-
-## Action
-
-Use `openFaceCamera` in YAML.
 
 ### Properties
 
@@ -14400,6 +14271,8 @@ Use strict face detection thresholds for web capture.
           showToast:
             message: "Error capturing image: ${event.error}"
 ```
+
+To learn more about openCamera functionalities, test it out here in [Ensemble Kitchen Sink](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/iLJkHUPgX3ii9EdQ1D8K) app.
 
 ---
 
@@ -17819,85 +17692,58 @@ To learn more about openCamera functionalities, test it out here in [Ensemble Ki
 
 # openFaceCamera
 
-Use `openFaceCamera` when you need face-aware capture (for example selfie verification, identity checks, or attendance) instead of generic photo capture.
+Use `openFaceCamera` when you need **real-time** face detection — such as selfies, profile photos etc — instead of plain camera access.
 
-`openFaceCamera` provides guided framing, face validation, and optional auto-capture once the face qualifies.
+It adds face detection, alignment guidance (framing overlay), status messages, and optional **auto-capture** when the face meets quality criteria.
 
-## When to use this instead of openCamera
+### When to use this instead of `openCamera`
 
-- You need face alignment guidance before capture.
-- You need automatic capture when a valid face is detected.
-- You need stricter face quality checks, especially on web via `accuracyConfig`.
+- You want visual guidance to center and align the face before capture
+- You need automatic capture once a valid face is detected
+- You want stricter face quality rules (especially on web with `accuracyConfig`)
 
-For generic photo/video capture or gallery-first flows, continue using [`openCamera`](#opencamera).
+### Key Properties
 
-## Properties
+| Property   | Type   | Description                                                                 |
+|------------|--------|-----------------------------------------------------------------------------|
+| id         | string | Bind captured result (access via `${yourId.files}`)                         |
+| onCapture  | action | Runs after successful capture (`event.data.files` available)                |
+| onError    | action | Handles errors (`event.error` available)                                    |
+| options    | object | Controls camera lens, UI, auto-capture, resolution, flash, and detection    |
 
-| Property  | Type   | Description                                                                     |
-| :-------- | :----- | :------------------------------------------------------------------------------ |
-| id        | string | Camera ID used to bind captured results (for example `${myFaceCamera.files}`). |
-| onCapture | action | Executes when an image is captured. Files are available in `event.data.files`. |
-| onError   | action | Executes on error. Error message is available via `event.error`.               |
-| options   | object | Face camera and detection configuration.                                        |
+### Quick Examples
 
-## options
-
-| Property                  | Type    | Description                                                                     |
-| :------------------------ | :------ | :------------------------------------------------------------------------------ |
-| initialCamera             | string  | Which lens to start with: `front` (default), `back`                            |
-| message                   | string  | Message shown above camera preview                                              |
-| messageStyle              | object  | Text style for `message`                                                        |
-| showControls              | boolean | Show/hide all camera controls. Default `true`                                   |
-| showCaptureControl        | boolean | Show/hide capture button. Default `true`                                        |
-| showFlashControl          | boolean | Show/hide flash control. Default `true`                                         |
-| showCameraLensControl     | boolean | Show/hide camera switch control. Default `true`                                 |
-| showStatusMessage         | boolean | Show/hide face detection status text. Default `true`                            |
-| indicatorShape            | string  | Face indicator shape: `circle`, `square`                                        |
-| autoDisableCaptureControl | boolean | Disable capture while no valid face is detected. Default `false`                |
-| autoCapture               | boolean | Automatically capture when face qualifies. Default `false`                      |
-| imageResolution           | string  | Capture resolution: `low`, `medium`, `high`, `veryHigh`, `ultraHigh`, `max`    |
-| defaultFlashMode          | string  | Initial flash mode: `off` (default), `auto`, `always`                           |
-| orientation               | string  | Camera orientation: `portraitUp`, `portraitDown`, `landscapeLeft`, `landscapeRight` |
-| performanceMode           | string  | Face detector mode: `fast` (default), `accurate`                                |
-| accuracyConfig            | object  | Fine-grained face detection thresholds. Web only.                               |
-
-## Usage
-
-### Basic
+**Basic face capture**
 
 ```yaml
 - Button:
     label: Open Face Camera
     onTap:
       openFaceCamera:
-        id: myFaceCamera
+        id: myFace
 ```
-
-### Auto-capture
+**Auto-capture verified selfie**
 
 ```yaml
 - Button:
-    label: Capture verified selfie
+    label: Capture Verified Selfie
     onTap:
       openFaceCamera:
         id: profilePhoto
         options:
           initialCamera: front
           autoCapture: true
+          message: "Align your face in the frame"
           performanceMode: accurate
-          message: "Align your face"
         onCapture:
-          executeCode:
-            body: |
-              console.log('Captured face image: ' + profilePhoto.files[0].path);
+          showToast:
+            message: "Selfie captured!"
         onError:
           showToast:
-            message: "Error capturing image: ${event.error}"
+            message: "Capture failed: ${event.error}"
 ```
 
-## Full Reference
-
-For complete module setup, advanced `accuracyConfig` fields, and more examples, see [`openFaceCamera` action docs](#openfacecamera).
+To learn more about openCamera functionalities, test it out here in [Ensemble Kitchen Sink](https://studio.ensembleui.com/app/e24402cb-75e2-404c-866c-29e6c3dd7992/screen/iLJkHUPgX3ii9EdQ1D8K) app.
 
 ---
 
