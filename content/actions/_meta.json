@@ -98,6 +98,9 @@
   "open-camera": {
     "title": "Open Camera"
   },
+  "open-face-camera": {
+    "title": "Open Face Camera"
+  },
   "open-plaid-link": {
     "title": "Open Plaid Link"
   },
