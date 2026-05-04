@@ -1,10 +1,8 @@
-## authenticateByBiometric
+# authenticateByBiometric
 
-It helps to authenticate user based on biometrics such as face and fingerprint based on sensor available on user's device. 
+It helps to authenticate user based on biometrics such as face and fingerprint based on sensor available on user's device.
 
-
-> [Note]  
-> It only works in native devices which has biometric sensors.
+> **Note:** It only works on native devices which have biometric sensors.
 
 
 ### Native Configuration
