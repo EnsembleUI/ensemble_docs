@@ -17,11 +17,39 @@ You can manage your assets using Ensemble Studio. [See how](/assets)
 | Property | Type   | Description |
 | :------- | :----- | :---------- |
 | source   | string | URL to or asset name of the image or an inline SVG string. If the URL is used, it is highly recommended that the dimensions is set (either with width/height or other means) to prevent the UI jerkiness while loading. |
+| headers  | object | An object containing custom HTTP headers to include when fetching the image from a URL. Only applies to network images (URLs). |
 | onTap    | action | Call Ensemble's built-in functions or execute code |
 | onTapHaptic | enum | The type of haptic to perform when image is pressed. It should be one of heavyImpact, mediumImpact, lightImpact, selectionClick, and vibrate |
 | styles   | object | [See properties](#styles) |
 
-### styles
+## Usage
+
+A simple example showing how to render a network image without custom headers:
+
+```yaml
+Image:
+  source: https://example.com/avatar.png
+  styles:
+    width: 200
+    height: 200
+    fit: cover
+```
+
+A second example showing how to include custom headers for network image requests:
+
+```yaml
+Image:
+  source: https://example.com/avatar.png
+  headers:
+    Authorization: Bearer ${ authToken }
+    Accept: image/png
+  styles:
+    width: 200
+    height: 200
+    fit: cover
+```
+
+## styles
 
 | Property | Type   | Description |
 | :------- | :----- | :---------- |
