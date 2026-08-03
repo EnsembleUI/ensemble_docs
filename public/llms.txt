@@ -52,6 +52,7 @@ Ensemble is a platform where you can build, publish, and iterate native and web 
 - [Custom Widgets](https://docs.ensembleui.com/concepts/custom-widgets)
 - [Preview your app](https://docs.ensembleui.com/test/preview-app)
 - [Automated Testing](https://docs.ensembleui.com/test/integration-tests)
+- [Ensemble Test Runner](https://docs.ensembleui.com/test/ensemble-test-runner)
 - [Preparing your App for deployment](https://docs.ensembleui.com/deploy/1-prepare-app)
 - [Configure Social Sign In for Deployment](https://docs.ensembleui.com/deploy/2-social-signin)
 - [Deploy to iOS TestFlight](https://docs.ensembleui.com/deploy/3-ios-appstore)
