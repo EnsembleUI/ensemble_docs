@@ -4,5 +4,8 @@
   },
   "integration-tests": {
     "title": "Integration Tests"
+  },
+  "ensemble-test-runner": {
+    "title": "Ensemble Test Runner"
   }
-} 
+}
